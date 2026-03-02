@@ -40,6 +40,6 @@ jobs:
       - uses: actions/configure-pages@v5       # Added
       - uses: actions/upload-pages-artifact@v3 # Added
         with:
-          path: 'site/'
+          path: 'site/' # Output directory of mkdocs build
       - uses: actions/deploy-pages@v4          # Added
         id: deployment

@@ -79,10 +79,12 @@ to start the docs run:
 ```bash
 
 # create venv and activate it
+cd docs
 python -m venv .venv
 source .venv/bin/activate
 # install requierements from /docs/requirements.txt
 pip install -r requirements.txt
+cd ..
 # then run from the root directory
 mkdocs serve
 ```

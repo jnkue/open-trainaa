@@ -29,7 +29,7 @@ theme:
     - content.code.copy
 
 nav:
-  - Welcome: Welcome.md
+  - Welcome: index.md
   - Getting Started:
       - Contributing: getting-started/contributing.md
       - Project Structure: getting-started/project-structure.md
