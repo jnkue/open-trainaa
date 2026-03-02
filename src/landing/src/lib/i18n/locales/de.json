@@ -1,0 +1,138 @@
+{
+  "seo": {
+    "title": "TRAINAA - Ihr 24/7 KI Fitness Coach",
+    "description": "Intelligente KI-basierte Trainingsplanung. Lassen Sie sich von unserem Personal Trainer zu neuen Bestleistungen führen.",
+    "keywords": "KI Trainer, Personal Trainer, Fitness Coach, Strava, Trainingsplan, AI Coach, Fitness App",
+    "ogTitle": "TRAINAA - Ihr 24/7 KI Fitness Coach",
+    "ogDescription": "Intelligente Trainingsplanung mit KI. Verbinden Sie Strava und erreichen Sie neue Bestleistungen.",
+    "twitterTitle": "TRAINAA - Ihr 24/7 KI Fitness Coach",
+    "twitterDescription": "Intelligente Trainingsplanung mit KI"
+  },
+  "landing": {
+    "hero": {
+      "title": "Dein persönlicher \nAusdauer-Coach",
+      "subtitle": "Erreiche deine Ziele mit personalisierten Trainingsplänen für Laufen, Radfahren und Triathlon"
+    },
+    "cta": {
+      "start": "Jetzt starten",
+      "or": "oder"
+    },
+    "mobile": {
+      "comingSoon": "Mobile Apps kommen bald"
+    },
+    "comingSoon": {
+      "title": "Demnachst",
+      "subtitle": "Wir arbeiten hart daran, dir etwas Grossartiges zu bringen",
+      "stayTuned": "Bleib dran"
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "activities": "Aktivitäten",
+    "development": "Entwicklung",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "profile": "Profil",
+    "theme": "Design",
+    "notifications": "Benachrichtigungen"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "description": "Verwalten Sie Ihre Kontoeinstellungen und Präferenzen.",
+    "account": {
+      "title": "Kontoeinstellungen",
+      "description": "Grundlegende Informationen zu Ihrem Konto.",
+      "email": "E-Mail-Adresse",
+      "emailReadonly": "Änderungen der E-Mail-Adresse sind derzeit nicht möglich.",
+      "status": "Konto-Status",
+      "active": "Aktiv"
+    },
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "description": "Konfigurieren Sie, wie Sie über Updates informiert werden möchten.",
+      "email": "E-Mail-Benachrichtigungen",
+      "emailDesc": "Erhalten Sie wichtige Updates per E-Mail.",
+      "push": "Push-Benachrichtigungen",
+      "pushDesc": "Erhalten Sie sofortige Benachrichtigungen im Browser.",
+      "weekly": "Wöchentliche Berichte",
+      "weeklyDesc": "Erhalten Sie eine wöchentliche Zusammenfassung Ihrer Aktivitäten.",
+      "reminders": "Aktivitätserinnerungen",
+      "remindersDesc": "Lassen Sie sich an geplante Trainings erinnern.",
+      "save": "Benachrichtigungseinstellungen speichern"
+    },
+    "providers": {
+      "title": "Verbundene Dienste",
+      "description": "Verwalten Sie Ihre Verbindungen zu externen Fitness-Diensten.",
+      "strava": {
+        "name": "Strava",
+        "connected": "Verbunden als {name}",
+        "notConnected": "Nicht verbunden",
+        "connect": "Verbinden",
+        "disconnect": "Trennen"
+      },
+      "future": "Weitere Fitness-Provider werden in Kürze verfügbar sein",
+      "futureList": "Garmin, Fitbit, Apple Health, Google Fit und mehr"
+    },
+    "privacy": {
+      "title": "Daten & Datenschutz",
+      "description": "Verwalten Sie Ihre Daten und Datenschutzeinstellungen.",
+      "export": "Meine Daten exportieren",
+      "exportDesc": "Laden Sie eine Kopie Ihrer Daten herunter."
+    },
+    "account_actions": {
+      "title": "Konto-Aktionen",
+      "description": "Wichtige Aktionen für Ihr Konto.",
+      "warning": "Diese Aktionen sind unwiderruflich. Bitte seien Sie vorsichtig.",
+      "logout": "Abmelden",
+      "delete": "Konto löschen"
+    },
+    "confirmations": {
+      "deleteAccount": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "disconnectStrava": "Möchten Sie die Verbindung zu Strava wirklich trennen? Sie verlieren den Zugriff auf Ihre Trainingsdaten.",
+      "exportNotReady": "Datenexport wird in Kürze verfügbar sein."
+    }
+  },
+  "common": {
+    "connected": "Verbunden",
+    "disconnected": "Getrennt",
+    "loading": "Wird geladen...",
+    "refresh": "Aktualisieren",
+    "sync": "Sync",
+    "syncing": "Synchronisiert...",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schließen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "yes": "Ja",
+    "no": "Nein"
+  },
+  "error": {
+    "404": {
+      "title": "Seite nicht gefunden",
+      "description": "Die angeforderte Seite konnte nicht gefunden werden. Möglicherweise wurde sie verschoben oder existiert nicht mehr."
+    },
+    "500": {
+      "title": "Serverfehler",
+      "description": "Es ist ein interner Serverfehler aufgetreten. Bitte versuchen Sie es später erneut."
+    },
+    "403": {
+      "title": "Zugriff verweigert",
+      "description": "Sie haben keine Berechtigung, auf diese Seite zuzugreifen."
+    },
+    "general": {
+      "title": "Ein Fehler ist aufgetreten",
+      "description": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    },
+    "cta": {
+      "home": "Zur Startseite",
+      "back": "Zurück"
+    },
+    "help": {
+      "text": "Wenn das Problem weiterhin besteht, kontaktieren Sie uns:"
+    }
+  }
+}

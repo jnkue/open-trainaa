@@ -1,0 +1,5 @@
+InvalidType
+This workout has wrong type
+
+Main Set
+- 10m Z2

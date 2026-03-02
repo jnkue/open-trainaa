@@ -1,0 +1,1 @@
+DROP FUNCTION public.log_user_infos_changes() cascade;

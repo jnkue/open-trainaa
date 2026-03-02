@@ -1,0 +1,120 @@
+name: Deploy to Staging Server
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create signing key file
+        run: |
+          mkdir -p src/supabase
+          cat > src/supabase/signing_key.json << 'EOF'
+          ${{ secrets.SUPABASE_SIGNING_KEY_JSON }}
+          EOF
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Link Supabase project
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.STAGING_DB_PASSWORD }}
+          SUPABASE_PROJECT_ID: ${{ secrets.STAGING_PROJECT_ID }}
+        run: cd src/supabase && supabase link --project-ref $SUPABASE_PROJECT_ID
+
+      - name: Push database migrations to Supabase
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.STAGING_DB_PASSWORD }}
+        run: cd src/supabase && supabase db push
+
+
+      - name: Read version from version.config.json
+        id: version
+        run: echo "VERSION=$(python3 -c "import json; print(json.load(open('version.config.json'))['appVersion'])")" >> $GITHUB_OUTPUT
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./src/backend/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/jnkue/trainaabackend:staging
+            ghcr.io/jnkue/trainaabackend:${{ steps.version.outputs.VERSION }}-staging
+          cache-from: type=registry,ref=ghcr.io/jnkue/trainaabackend:buildcache
+          cache-to: type=registry,ref=ghcr.io/jnkue/trainaabackend:buildcache,mode=max
+
+      - name: Copy docker-compose.yml config to server
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.STAGING_SSH_HOST }}
+          username: ${{ secrets.STAGING_SSH_USERNAME }}
+          key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          source: src/backend/docker-compose.staging.yml
+          target: /opt/apps/backend/
+          strip_components: 2
+          
+      - name: Copy docker-compose.yml and nginx config to server
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.STAGING_SSH_HOST }}
+          username: ${{ secrets.STAGING_SSH_USERNAME }}
+          key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          source: src/backend/traefik.yml
+          target: /opt/apps/backend/traefik/
+          strip_components: 2
+
+      - name: Deploy on VPS via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.STAGING_SSH_HOST }}
+          username: ${{ secrets.STAGING_SSH_USERNAME }}
+          key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          script: |
+            # Install Docker Compose if not present
+            if ! command -v docker compose &> /dev/null; then
+              sudo apt-get update
+              sudo apt-get install -y docker-compose-plugin
+            fi
+
+            mkdir -p /opt/apps/backend
+            cd /opt/apps/backend
+
+            touch traefik/acme.json
+            chmod 600 traefik/acme.json
+
+
+            # Create logs directory
+            mkdir -p logs
+            
+
+            # Login to GitHub Container Registry
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+            docker compose -f docker-compose.staging.yml pull
+            docker compose -f docker-compose.staging.yml up -d

@@ -1,0 +1,25 @@
+name: Chore
+description: Maintenance, refactoring, dependency updates, or CI/CD changes
+labels: ["chore"]
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which part of the project does this relate to?
+      options:
+        - Backend
+        - Mobile App
+        - Landing Page
+        - CI/CD
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done and why?
+    validations:
+      required: true

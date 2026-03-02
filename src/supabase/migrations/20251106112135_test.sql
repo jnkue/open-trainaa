@@ -1,0 +1,2 @@
+-- Mark strava_activity_id as deprecated - use external_id instead
+COMMENT ON COLUMN activities.strava_activity_id IS 'DEPRECATED: Use external_id instead. Kept for backward compatibility only. But delete later';

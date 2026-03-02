@@ -1,0 +1,26 @@
+name: CI Checks
+
+on:
+  pull_request:
+    branches: 
+      - main
+      - production
+    paths:
+      - 'src/app/**'
+
+jobs:
+  lint-and-test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: cd src/app && bun install
+      
+      - name: Run linter
+        run: cd src/app && bun lint
+      

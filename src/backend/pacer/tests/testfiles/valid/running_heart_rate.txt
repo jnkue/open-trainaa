@@ -1,0 +1,12 @@
+Running
+Heart Rate Training
+
+Warm Up
+- 15m HeartRate 120bpm #easy warm up
+
+Main Set
+- 20m HeartRate 160bpm #threshold effort
+- 5m HeartRate 140bpm #recovery
+
+Cool Down
+- 10m HeartRate 110bpm #easy cool down

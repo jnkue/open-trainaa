@@ -1,0 +1,121 @@
+{
+  "seo": {
+    "title": "TRAINAA - Il Tuo Coach Fitness IA 24/7",
+    "description": "Pianificazione intelligente dell'allenamento con IA. Connetti Strava e lascia che il nostro personal trainer ti guidi verso nuovi record.",
+    "keywords": "Allenatore IA, Personal Trainer, Coach Fitness, Strava, Piano di Allenamento, Coach IA, App Fitness",
+    "ogTitle": "TRAINAA - Il Tuo Coach Fitness IA 24/7",
+    "ogDescription": "Pianificazione intelligente con IA. Connetti Strava e raggiungi nuovi record personali.",
+    "twitterTitle": "TRAINAA - Il Tuo Coach Fitness IA 24/7",
+    "twitterDescription": "Pianificazione intelligente con IA"
+  },
+  "landing": {
+    "hero": {
+      "title": "Il tuo allenatore 24/7",
+      "subtitle": "Pianificazione intelligente dell'allenamento basata su IA che si adatta ai tuoi progressi. Connetti Strava e lascia che il nostro coach ti guidi verso nuovi record personali."
+    },
+    "cta": {
+      "start": "Inizia ora",
+      "or": "o"
+    },
+    "mobile": {
+      "comingSoon": "App mobili in arrivo"
+    },
+    "comingSoon": {
+      "title": "Prossimamente",
+      "subtitle": "Stiamo lavorando sodo per portarti qualcosa di straordinario",
+      "stayTuned": "Resta sintonizzato"
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "activities": "Attività",
+    "development": "Sviluppo",
+    "settings": "Impostazioni",
+    "logout": "Esci",
+    "profile": "Profilo",
+    "theme": "Tema",
+    "notifications": "Notifiche"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "description": "Gestisci le impostazioni e le preferenze del tuo account.",
+    "account": {
+      "title": "Impostazioni account",
+      "description": "Informazioni di base sul tuo account.",
+      "email": "Indirizzo email",
+      "emailReadonly": "Le modifiche dell'indirizzo email non sono attualmente possibili.",
+      "status": "Stato account",
+      "active": "Attivo"
+    },
+    "notifications": {
+      "title": "Notifiche",
+      "description": "Configura come vuoi essere informato sugli aggiornamenti.",
+      "email": "Notifiche email",
+      "emailDesc": "Ricevi aggiornamenti importanti via email.",
+      "push": "Notifiche push",
+      "pushDesc": "Ricevi notifiche istantanee nel browser.",
+      "weekly": "Report settimanali",
+      "weeklyDesc": "Ricevi un riepilogo settimanale delle tue attività.",
+      "reminders": "Promemoria attività",
+      "remindersDesc": "Ricevi promemoria per gli allenamenti programmati.",
+      "save": "Salva impostazioni notifiche"
+    },
+    "providers": {
+      "title": "Servizi connessi",
+      "description": "Gestisci le tue connessioni ai servizi fitness esterni.",
+      "strava": {
+        "name": "Strava",
+        "connected": "Connesso come {name}",
+        "notConnected": "Non connesso",
+        "connect": "Connetti",
+        "disconnect": "Disconnetti"
+      },
+      "future": "Altri provider fitness saranno presto disponibili",
+      "futureList": "Garmin, Fitbit, Apple Health, Google Fit e altri"
+    },
+    "privacy": {
+      "title": "Dati e privacy",
+      "description": "Controlla i tuoi dati e le impostazioni di privacy.",
+      "dataExport": "Esportazione dati",
+      "dataExportDesc": "Scarica tutti i tuoi dati di attività in un formato portatile.",
+      "export": "Esporta dati",
+      "dataDelete": "Eliminazione account",
+      "dataDeleteDesc": "Elimina permanentemente il tuo account e tutti i dati associati.",
+      "delete": "Elimina account",
+      "deleteWarning": "Questa azione è irreversibile e cancellerà tutti i tuoi dati."
+    },
+    "theme": {
+      "title": "Aspetto",
+      "description": "Personalizza l'aspetto dell'applicazione.",
+      "mode": "Modalità visualizzazione",
+      "light": "Chiaro",
+      "dark": "Scuro",
+      "system": "Sistema"
+    }
+  },
+  "error": {
+    "404": {
+      "title": "Pagina non trovata",
+      "description": "La pagina richiesta non è stata trovata. Potrebbe essere stata spostata o non esistere più."
+    },
+    "500": {
+      "title": "Errore del server",
+      "description": "Si è verificato un errore interno del server. Riprova più tardi."
+    },
+    "403": {
+      "title": "Accesso negato",
+      "description": "Non hai il permesso di accedere a questa pagina."
+    },
+    "general": {
+      "title": "Si è verificato un errore",
+      "description": "Si è verificato un errore imprevisto. Riprova."
+    },
+    "cta": {
+      "home": "Vai alla home",
+      "back": "Indietro"
+    },
+    "help": {
+      "text": "Se il problema persiste, contattaci:"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+    "file_id_mesgs": [
+        {
+            "type": "weight",
+            "manufacturer": "dynastream",
+            "product": 22,
+            "serial_number": 1234,
+            "time_created": "2009-09-09 20:38:00+00:00",
+            "garmin_product": "hrm_fit_single_byte_product_id"
+        }
+    ],
+    "user_profile_mesgs": [
+        {
+            "message_index": 0,
+            "gender": "male",
+            "age": 47,
+            "height": 1.79,
+            "weight": 71.0,
+            "local_id": 5
+        },
+        {
+            "message_index": 1,
+            "gender": "female",
+            "age": 52,
+            "height": 1.55,
+            "weight": 55.0,
+            "local_id": 6
+        }
+    ],
+    "weight_scale_mesgs": [
+        {
+            "timestamp": "2009-09-09 21:38:00+00:00",
+            "weight": 7580,
+            "percent_fat": 22.3,
+            "user_profile_index": 0
+        },
+        {
+            "timestamp": "2009-09-09 22:38:00+00:00",
+            "weight": 5820,
+            "percent_fat": 25.1,
+            "user_profile_index": 1
+        }
+    ],
+    "device_info_mesgs": [
+        {
+            "timestamp": "2009-09-09 21:38:00+00:00",
+            "battery_voltage": 1.5,
+            "cum_operating_time": 45126
+        },
+        {
+            "timestamp": "2009-09-09 22:38:00+00:00",
+            "battery_voltage": 1.5,
+            "cum_operating_time": 45158
+        }
+    ]
+}

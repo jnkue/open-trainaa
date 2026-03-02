@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pacer"
+version = "0.1.0"
+description = "Workout validator and processor for text-based workout definitions"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text="no license" }
+dependencies = []

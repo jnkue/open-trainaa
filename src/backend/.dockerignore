@@ -1,0 +1,42 @@
+# Minimal dockerignore - only exclude what's absolutely necessary
+
+# Version control
+**/.git
+
+# Virtual environments (must not be copied)
+**/.venv
+**/venv
+**/ENV
+**/env
+
+# Python cache
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# Node modules (for app and landing)
+**/node_modules
+
+# IDE
+.vscode
+.idea
+**/*.swp
+**/*.swo
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Logs
+**/*.log
+
+# OS files
+.DS_Store
+**/.DS_Store
+
+# Other
+.cache
+tmp
+temp

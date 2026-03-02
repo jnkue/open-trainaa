@@ -1,0 +1,5 @@
+InvalidType
+Bad Workout Type
+
+Main Set
+- 10m %FTP 88%

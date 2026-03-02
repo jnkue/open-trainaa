@@ -1,0 +1,8 @@
+Running
+Bad Intensity Format
+
+Main Set
+- 10m InvalidIntensity
+- 15m %FTP
+- 20m Z99
+- 5m Power 250watts

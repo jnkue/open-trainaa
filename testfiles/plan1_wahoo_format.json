@@ -1,0 +1,117 @@
+{
+    "header": {
+        "name": "Jacob's FTP Ladder",
+        "version": "1.0.0",
+        "description": "Warmup for 10 minutes, FTP ladder up, cool down for 5 minutes",
+        "workout_type_family": 0,
+        "ftp": 277
+    },
+    "intervals": [
+        {
+            "name": "No target for this warmup interval, just have fun!",
+            "exit_trigger_type": "time",
+            "exit_trigger_value": 600,
+            "intensity_type": "wu",
+            "targets": [
+                {
+                    "type": "ftp",
+                    "low": 0.45,
+                    "high": 0.55
+                }
+            ]
+        },
+        {
+            "name": "80% ON",
+            "exit_trigger_type": "time",
+            "exit_trigger_value": 360,
+            "intensity_type": "active",
+            "targets": [
+                {
+                    "type": "ftp",
+                    "low": 0.77,
+                    "high": 0.83
+                },
+                {
+                    "type": "rpm",
+                    "low": 90,
+                    "high": 105
+                }
+            ]
+        },
+        {
+            "name": "Recover",
+            "exit_trigger_type": "time",
+            "exit_trigger_value": 60,
+            "intensity_type": "recover",
+            "targets": [
+                {
+                    "type": "ftp",
+                    "low": 0.60,
+                    "high": 0.60
+                }
+            ]
+        },
+        {
+            "name": "90% ON",
+            "exit_trigger_type": "time",
+            "exit_trigger_value": 300,
+            "intensity_type": "active",
+            "targets": [
+                {
+                    "type": "ftp",
+                    "low": 0.87,
+                    "high": 0.93
+                },
+                {
+                    "type": "rpm",
+                    "low": 90,
+                    "high": 105
+                }
+            ]
+        },
+        {
+            "name": "Recover",
+            "exit_trigger_type": "time",
+            "exit_trigger_value": 60,
+            "intensity_type": "recover",
+            "targets": [
+                {
+                    "type": "ftp",
+                    "low": 0.60,
+                    "high": 0.60
+                }
+            ]
+        },
+        {
+            "name": "100% ON",
+            "exit_trigger_type": "time",
+            "exit_trigger_value": 240,
+            "intensity_type": "active",
+            "targets": [
+                {
+                    "type": "ftp",
+                    "low": 0.97,
+                    "high": 1.03
+                },
+                {
+                    "type": "rpm",
+                    "low": 90,
+                    "high": 105
+                }
+            ]
+        },
+        {
+            "name": "Cool Down",
+            "exit_trigger_type": "time",
+            "exit_trigger_value": 300,
+            "intensity_type": "cd",
+            "targets": [
+                {
+                    "type": "ftp",
+                    "low": 0.45,
+                    "high": 0.55
+                }
+            ]
+        }
+    ]
+}

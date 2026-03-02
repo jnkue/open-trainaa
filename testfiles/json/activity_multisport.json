@@ -1,0 +1,957 @@
+{
+    "file_id_mesgs": [
+        {
+            "type": "activity",
+            "manufacturer": "garmin",
+            "product": 3113,
+            "time_created": "2020-04-20 19:56:20+00:00",
+            "garmin_product": "fr945"
+        }
+    ],
+    "event_mesgs": [
+        {
+            "timestamp": "2020-04-20 19:56:20+00:00",
+            "event": "timer",
+            "event_type": "start",
+            "data": 0,
+            "event_group": 0,
+            "timer_trigger": "manual"
+        },
+        {
+            "timestamp": "2020-04-20 19:57:37+00:00",
+            "event": "timer",
+            "event_type": "stop_all",
+            "data": 0,
+            "event_group": 0,
+            "timer_trigger": "manual"
+        }
+    ],
+    "device_info_mesgs": [
+        {
+            "timestamp": "2020-04-20 19:56:20+00:00",
+            "device_index": "creator",
+            "manufacturer": "garmin",
+            "serial_number": 1234,
+            "product": 3113,
+            "software_version": 4.4,
+            "source_type": "local",
+            "garmin_product": "fr945"
+        },
+        {
+            "timestamp": "2020-04-20 19:56:20+00:00",
+            "device_index": 1,
+            "device_type": 4,
+            "manufacturer": "garmin",
+            "product": 3113,
+            "software_version": 4.4,
+            "source_type": "local",
+            "local_device_type": "barometer",
+            "garmin_product": "fr945"
+        },
+        {
+            "timestamp": "2020-04-20 19:56:20+00:00",
+            "device_index": 2,
+            "device_type": 8,
+            "manufacturer": 0,
+            "product": 0,
+            "software_version": 655.17,
+            "source_type": "local",
+            "local_device_type": 8
+        },
+        {
+            "timestamp": "2020-04-20 19:56:20+00:00",
+            "device_index": 3,
+            "device_type": 10,
+            "software_version": 4.7,
+            "source_type": "local",
+            "local_device_type": "whr"
+        },
+        {
+            "timestamp": "2020-04-20 19:56:20+00:00",
+            "device_index": 4,
+            "device_type": 12,
+            "manufacturer": "garmin",
+            "product": 3114,
+            "software_version": 4.01,
+            "source_type": "local",
+            "local_device_type": "sensor_hub",
+            "garmin_product": 3114
+        },
+        {
+            "timestamp": "2020-04-20 19:57:15+00:00",
+            "device_index": 5,
+            "device_type": 3,
+            "manufacturer": 0,
+            "product": 0,
+            "software_version": 0.0,
+            "source_type": "local",
+            "local_device_type": "accelerometer"
+        },
+        {
+            "timestamp": "2020-04-20 19:57:16+00:00",
+            "device_index": "creator",
+            "manufacturer": "garmin",
+            "serial_number": 1234,
+            "product": 3113,
+            "software_version": 4.4,
+            "source_type": "local",
+            "garmin_product": "fr945"
+        },
+        {
+            "timestamp": "2020-04-20 19:57:16+00:00",
+            "device_index": 1,
+            "device_type": 4,
+            "manufacturer": "garmin",
+            "product": 3113,
+            "software_version": 4.4,
+            "source_type": "local",
+            "local_device_type": "barometer",
+            "garmin_product": "fr945"
+        },
+        {
+            "timestamp": "2020-04-20 19:57:16+00:00",
+            "device_index": 2,
+            "device_type": 3,
+            "manufacturer": 23704,
+            "product": 13316,
+            "software_version": 0.0,
+            "source_type": "local",
+            "local_device_type": "accelerometer"
+        },
+        {
+            "timestamp": "2020-04-20 19:57:16+00:00",
+            "device_index": 3,
+            "device_type": 8,
+            "software_version": 0.0,
+            "source_type": "local",
+            "local_device_type": 8
+        },
+        {
+            "timestamp": "2020-04-20 19:57:16+00:00",
+            "device_index": 4,
+            "device_type": 10,
+            "software_version": 4.7,
+            "source_type": "local",
+            "local_device_type": "whr"
+        },
+        {
+            "timestamp": "2020-04-20 19:57:16+00:00",
+            "device_index": 5,
+            "device_type": 12,
+            "manufacturer": "garmin",
+            "product": 3114,
+            "software_version": 4.01,
+            "source_type": "local",
+            "local_device_type": "sensor_hub",
+            "garmin_product": 3114
+        },
+        {
+            "timestamp": "2020-04-20 19:57:37+00:00",
+            "device_index": "creator",
+            "manufacturer": "garmin",
+            "serial_number": 1234,
+            "product": 3113,
+            "software_version": 4.4,
+            "source_type": "local",
+            "garmin_product": "fr945"
+        },
+        {
+            "timestamp": "2020-04-20 19:57:37+00:00",
+            "device_index": 1,
+            "device_type": 4,
+            "manufacturer": "garmin",
+            "product": 3113,
+            "software_version": 4.4,
+            "source_type": "local",
+            "local_device_type": "barometer",
+            "garmin_product": "fr945"
+        },
+        {
+            "timestamp": "2020-04-20 19:57:37+00:00",
+            "device_index": 2,
+            "device_type": 3,
+            "manufacturer": 64800,
+            "product": 13316,
+            "software_version": 0.0,
+            "source_type": "local",
+            "local_device_type": "accelerometer"
+        },
+        {
+            "timestamp": "2020-04-20 19:57:37+00:00",
+            "device_index": 3,
+            "device_type": 8,
+            "manufacturer": 0,
+            "product": 0,
+            "software_version": 1.28,
+            "source_type": "local",
+            "local_device_type": 8
+        },
+        {
+            "timestamp": "2020-04-20 19:57:37+00:00",
+            "device_index": 4,
+            "device_type": 10,
+            "software_version": 4.7,
+            "source_type": "local",
+            "local_device_type": "whr"
+        },
+        {
+            "timestamp": "2020-04-20 19:57:37+00:00",
+            "device_index": 5,
+            "device_type": 12,
+            "manufacturer": "garmin",
+            "product": 3114,
+            "software_version": 4.01,
+            "source_type": "local",
+            "local_device_type": "sensor_hub",
+            "garmin_product": 3114
+        }
+    ],
+    "record_mesgs": [
+        {
+            "timestamp": "2020-04-20 19:56:20+00:00",
+            "heart_rate": 64,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:21+00:00",
+            "heart_rate": 64,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:22+00:00",
+            "heart_rate": 63,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:23+00:00",
+            "heart_rate": 63,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:24+00:00",
+            "heart_rate": 63,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:25+00:00",
+            "heart_rate": 62,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:26+00:00",
+            "heart_rate": 62,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:27+00:00",
+            "heart_rate": 62,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:28+00:00",
+            "heart_rate": 62,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:29+00:00",
+            "heart_rate": 62,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:30+00:00",
+            "heart_rate": 62,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:31+00:00",
+            "heart_rate": 62,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:32+00:00",
+            "heart_rate": 63,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:33+00:00",
+            "heart_rate": 63,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:34+00:00",
+            "heart_rate": 64,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:35+00:00",
+            "heart_rate": 65,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:36+00:00",
+            "heart_rate": 66,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:37+00:00",
+            "heart_rate": 67,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:38+00:00",
+            "heart_rate": 68,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:39+00:00",
+            "heart_rate": 69,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:40+00:00",
+            "heart_rate": 69,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:41+00:00",
+            "heart_rate": 69,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:42+00:00",
+            "heart_rate": 69,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:43+00:00",
+            "heart_rate": 69,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:44+00:00",
+            "heart_rate": 69,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:45+00:00",
+            "heart_rate": 69,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:46+00:00",
+            "heart_rate": 69,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:47+00:00",
+            "heart_rate": 69,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:48+00:00",
+            "heart_rate": 69,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:49+00:00",
+            "heart_rate": 70,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:50+00:00",
+            "heart_rate": 70,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:51+00:00",
+            "heart_rate": 71,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:52+00:00",
+            "heart_rate": 71,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:53+00:00",
+            "heart_rate": 71,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:54+00:00",
+            "heart_rate": 71,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:55+00:00",
+            "heart_rate": 71,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:56+00:00",
+            "heart_rate": 71,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:57+00:00",
+            "heart_rate": 71,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:58+00:00",
+            "heart_rate": 72,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:56:59+00:00",
+            "heart_rate": 72,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:00+00:00",
+            "heart_rate": 72,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:01+00:00",
+            "heart_rate": 72,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:02+00:00",
+            "heart_rate": 72,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:03+00:00",
+            "heart_rate": 72,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:04+00:00",
+            "heart_rate": 72,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:05+00:00",
+            "heart_rate": 72,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:06+00:00",
+            "heart_rate": 73,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:07+00:00",
+            "heart_rate": 73,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:08+00:00",
+            "heart_rate": 74,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:09+00:00",
+            "heart_rate": 75,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:10+00:00",
+            "heart_rate": 76,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:11+00:00",
+            "heart_rate": 76,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:12+00:00",
+            "heart_rate": 76,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:13+00:00",
+            "heart_rate": 76,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:14+00:00",
+            "heart_rate": 76,
+            "distance": 0.0,
+            "temperature": 30
+        },
+        {
+            "timestamp": "2020-04-20 19:57:15+00:00",
+            "heart_rate": 76,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:16+00:00",
+            "heart_rate": 76,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:17+00:00",
+            "heart_rate": 72,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:18+00:00",
+            "heart_rate": 74,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:19+00:00",
+            "heart_rate": 75,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:20+00:00",
+            "heart_rate": 75,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:21+00:00",
+            "heart_rate": 76,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:22+00:00",
+            "heart_rate": 75,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:23+00:00",
+            "heart_rate": 75,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:24+00:00",
+            "heart_rate": 77,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:25+00:00",
+            "heart_rate": 76,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:26+00:00",
+            "heart_rate": 75,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:27+00:00",
+            "heart_rate": 75,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:28+00:00",
+            "heart_rate": 74,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:29+00:00",
+            "heart_rate": 74,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:30+00:00",
+            "heart_rate": 73,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 31,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:31+00:00",
+            "heart_rate": 72,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:32+00:00",
+            "heart_rate": 71,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 31,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:33+00:00",
+            "heart_rate": 71,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:34+00:00",
+            "heart_rate": 71,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 31,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:35+00:00",
+            "heart_rate": 71,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:36+00:00",
+            "heart_rate": 72,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 31,
+            "fractional_cadence": 0.0
+        },
+        {
+            "timestamp": "2020-04-20 19:57:37+00:00",
+            "heart_rate": 70,
+            "cadence": 0,
+            "distance": 0.0,
+            "temperature": 30,
+            "fractional_cadence": 0.0
+        }
+    ],
+    "lap_mesgs": [
+        {
+            "message_index": 0,
+            "timestamp": "2020-04-20 19:56:24+00:00",
+            "event": "lap",
+            "event_type": "stop",
+            "start_time": "2020-04-20 19:56:20+00:00",
+            "total_elapsed_time": 4.226,
+            "total_timer_time": 4.226,
+            "total_distance": 0.0,
+            "total_calories": 0,
+            "avg_heart_rate": 64,
+            "max_heart_rate": 64,
+            "total_ascent": 0,
+            "total_descent": 0,
+            "lap_trigger": "manual",
+            "sport": "cycling",
+            "sub_sport": "mountain",
+            "avg_temperature": 29,
+            "max_temperature": 29,
+            "wkt_step_index": 0,
+            "enhanced_avg_speed": 0.0
+        },
+        {
+            "message_index": 1,
+            "timestamp": "2020-04-20 19:56:26+00:00",
+            "event": "lap",
+            "event_type": "stop",
+            "start_time": "2020-04-20 19:56:24+00:00",
+            "total_elapsed_time": 2.564,
+            "total_timer_time": 2.564,
+            "total_distance": 0.0,
+            "total_calories": 0,
+            "avg_heart_rate": 63,
+            "max_heart_rate": 63,
+            "total_ascent": 0,
+            "total_descent": 0,
+            "lap_trigger": "manual",
+            "sport": "cycling",
+            "sub_sport": "mountain",
+            "avg_temperature": 29,
+            "max_temperature": 29,
+            "wkt_step_index": 1,
+            "enhanced_avg_speed": 0.0
+        },
+        {
+            "message_index": 2,
+            "timestamp": "2020-04-20 19:56:29+00:00",
+            "event": "lap",
+            "event_type": "stop",
+            "start_time": "2020-04-20 19:56:26+00:00",
+            "total_elapsed_time": 2.104,
+            "total_timer_time": 2.104,
+            "total_distance": 0.0,
+            "total_calories": 0,
+            "avg_heart_rate": 62,
+            "max_heart_rate": 62,
+            "total_ascent": 0,
+            "total_descent": 0,
+            "lap_trigger": "manual",
+            "sport": "cycling",
+            "sub_sport": "mountain",
+            "avg_temperature": 30,
+            "max_temperature": 30,
+            "wkt_step_index": 2,
+            "enhanced_avg_speed": 0.0
+        },
+        {
+            "message_index": 3,
+            "timestamp": "2020-04-20 19:56:46+00:00",
+            "event": "lap",
+            "event_type": "stop",
+            "start_time": "2020-04-20 19:56:29+00:00",
+            "total_elapsed_time": 17.624,
+            "total_timer_time": 17.624,
+            "total_distance": 0.0,
+            "total_calories": 0,
+            "avg_heart_rate": 66,
+            "max_heart_rate": 69,
+            "total_ascent": 0,
+            "total_descent": 0,
+            "lap_trigger": "manual",
+            "sport": "cycling",
+            "sub_sport": "mountain",
+            "avg_temperature": 30,
+            "max_temperature": 30,
+            "wkt_step_index": 3,
+            "enhanced_avg_speed": 0.0
+        },
+        {
+            "message_index": 4,
+            "timestamp": "2020-04-20 19:57:15+00:00",
+            "event": "lap",
+            "event_type": "stop",
+            "start_time": "2020-04-20 19:56:46+00:00",
+            "total_elapsed_time": 28.835,
+            "total_timer_time": 28.835,
+            "total_distance": 0.0,
+            "total_calories": 1,
+            "avg_heart_rate": 72,
+            "max_heart_rate": 76,
+            "total_ascent": 0,
+            "total_descent": 0,
+            "lap_trigger": "session_end",
+            "sport": "cycling",
+            "sub_sport": "mountain",
+            "avg_temperature": 30,
+            "max_temperature": 30,
+            "enhanced_avg_speed": 0.0
+        },
+        {
+            "message_index": 5,
+            "timestamp": "2020-04-20 19:57:35+00:00",
+            "event": "lap",
+            "event_type": "stop",
+            "start_time": "2020-04-20 19:57:15+00:00",
+            "total_elapsed_time": 19.639,
+            "total_timer_time": 19.639,
+            "total_distance": 0.0,
+            "total_cycles": 0,
+            "total_calories": 1,
+            "avg_heart_rate": 74,
+            "max_heart_rate": 77,
+            "avg_cadence": 0,
+            "max_cadence": 0,
+            "total_ascent": 0,
+            "total_descent": 0,
+            "lap_trigger": "manual",
+            "sport": "running",
+            "sub_sport": "trail",
+            "avg_temperature": 30,
+            "max_temperature": 30,
+            "avg_fractional_cadence": 0.0,
+            "max_fractional_cadence": 0.0,
+            "enhanced_avg_speed": 0.0,
+            "enhanced_max_speed": 0.0,
+            "total_strides": 0,
+            "avg_running_cadence": 0,
+            "max_running_cadence": 0
+        },
+        {
+            "message_index": 6,
+            "timestamp": "2020-04-20 19:57:42+00:00",
+            "event": "lap",
+            "event_type": "stop",
+            "start_time": "2020-04-20 19:57:35+00:00",
+            "total_elapsed_time": 1.88,
+            "total_timer_time": 1.88,
+            "total_distance": 0.0,
+            "total_cycles": 0,
+            "total_calories": 0,
+            "avg_heart_rate": 71,
+            "max_heart_rate": 72,
+            "avg_cadence": 0,
+            "max_cadence": 0,
+            "total_ascent": 0,
+            "total_descent": 0,
+            "lap_trigger": "session_end",
+            "sport": "running",
+            "sub_sport": "trail",
+            "avg_temperature": 30,
+            "max_temperature": 30,
+            "avg_fractional_cadence": 0.0,
+            "max_fractional_cadence": 0.0,
+            "enhanced_avg_speed": 0.0,
+            "enhanced_max_speed": 0.0,
+            "total_strides": 0,
+            "avg_running_cadence": 0,
+            "max_running_cadence": 0
+        }
+    ],
+    "session_mesgs": [
+        {
+            "message_index": 0,
+            "timestamp": "2020-04-20 19:57:15+00:00",
+            "event": "lap",
+            "event_type": "stop",
+            "start_time": "2020-04-20 19:56:20+00:00",
+            "sport": "cycling",
+            "sub_sport": "mountain",
+            "total_elapsed_time": 55.353,
+            "total_timer_time": 55.353,
+            "total_distance": 0.0,
+            "total_calories": 1,
+            "avg_heart_rate": 69,
+            "max_heart_rate": 76,
+            "total_ascent": 0,
+            "total_descent": 0,
+            "total_training_effect": 0.0,
+            "first_lap_index": 0,
+            "num_laps": 5,
+            "trigger": "manual",
+            "avg_temperature": 30,
+            "max_temperature": 30,
+            "enhanced_avg_speed": 0.0,
+            "total_anaerobic_training_effect": 0.0
+        },
+        {
+            "message_index": 1,
+            "timestamp": "2020-04-20 19:57:42+00:00",
+            "event": "lap",
+            "event_type": "stop",
+            "start_time": "2020-04-20 19:57:15+00:00",
+            "sport": "running",
+            "sub_sport": "trail",
+            "total_elapsed_time": 21.519,
+            "total_timer_time": 21.519,
+            "total_distance": 0.0,
+            "total_calories": 1,
+            "avg_heart_rate": 74,
+            "max_heart_rate": 77,
+            "total_ascent": 0,
+            "total_descent": 0,
+            "total_training_effect": 0.0,
+            "first_lap_index": 5,
+            "num_laps": 2,
+            "trigger": "activity_end",
+            "avg_temperature": 30,
+            "max_temperature": 30,
+            "enhanced_avg_speed": 0.0,
+            "enhanced_max_speed": 0.0,
+            "total_anaerobic_training_effect": 0.0
+        }
+    ],
+    "activity_mesgs": [
+        {
+            "timestamp": "2020-04-20 19:57:42+00:00",
+            "total_timer_time": 76.872,
+            "num_sessions": 2,
+            "local_timestamp": 956325462
+        }
+    ]
+}

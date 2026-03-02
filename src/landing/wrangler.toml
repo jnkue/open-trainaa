@@ -1,0 +1,8 @@
+name = "trainaa-landing"
+compatibility_date = "2025-10-01"
+
+# Enable Node.js compatibility to support node:async_hooks and other Node.js APIs
+compatibility_flags = ["nodejs_compat"]
+
+# SvelteKit adapter will use these settings for Cloudflare Pages
+pages_build_output_dir = "build"

@@ -1,0 +1,14 @@
+Strength
+Full Body Circuit
+
+4x Upper Body
+- 45s Strength 85% #maximum effort
+- 15s Strength 0% #complete rest
+
+3x Lower Body
+- 60s Strength 80% #controlled movement
+- 20s Strength 0%
+
+Core Finisher
+- 90s Strength 70% #maintain form
+- 30s Strength 0%

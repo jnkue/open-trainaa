@@ -1,0 +1,56 @@
+# robots.txt for trainaa.com
+# Generated on September 21, 2025
+
+# Allow all web crawlers to access all content
+User-agent: *
+Allow: /
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Block crawling of admin, private, and development files
+Disallow: /admin/
+Disallow: /.env
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /.svelte-kit/
+Disallow: /src/
+Disallow: /build/
+Disallow: /_app/
+
+# Block crawling of temporary and cache files
+Disallow: /*?*utm_source=
+Disallow: /*?*utm_medium=
+Disallow: /*?*utm_campaign=
+Disallow: /*?*gclid=
+Disallow: /*?*fbclid=
+
+# Allow access to important assets
+Allow: /favicon.ico
+Allow: /robots.txt
+Allow: /sitemap.xml
+Allow: /logo-*.png
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.avif
+
+# Sitemap location
+Sitemap: https://trainaa.com/sitemap.xml
+
+# Contact information
+# Contact: hello@trainaa.com

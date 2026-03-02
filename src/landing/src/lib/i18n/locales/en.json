@@ -1,0 +1,138 @@
+{
+  "seo": {
+    "title": "TRAINAA - Your 24/7 AI Fitness Coach",
+    "description": "Smart AI-powered training planning. Let our personal trainer guide you to new personal bests.",
+    "keywords": "AI Trainer, Personal Trainer, Fitness Coach, Strava, Training Plan, AI Coach, Fitness App",
+    "ogTitle": "TRAINAA - Your 24/7 AI Fitness Coach",
+    "ogDescription": "Smart AI training planning. Connect Strava and achieve new personal bests.",
+    "twitterTitle": "TRAINAA - Your 24/7 AI Fitness Coach",
+    "twitterDescription": "Smart AI training planning."
+  },
+  "landing": {
+    "hero": {
+      "title": "Your personal endurance coach",
+      "subtitle": "Achieve your goals with personalized training plans for running, cycling and triathlon"
+    },
+    "cta": {
+      "start": "Start Now",
+      "or": "or"
+    },
+    "mobile": {
+      "comingSoon": "Mobile apps coming soon"
+    },
+    "comingSoon": {
+      "title": "Coming Soon",
+      "subtitle": "We're working hard to bring you something amazing",
+      "stayTuned": "Stay tuned"
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "activities": "Activities",
+    "development": "Development",
+    "settings": "Settings",
+    "logout": "Logout",
+    "profile": "Profile",
+    "theme": "Theme",
+    "notifications": "Notifications"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your account settings and preferences.",
+    "account": {
+      "title": "Account Settings",
+      "description": "Basic information about your account.",
+      "email": "Email Address",
+      "emailReadonly": "Email address changes are currently not possible.",
+      "status": "Account Status",
+      "active": "Active"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Configure how you want to be informed about updates.",
+      "email": "Email Notifications",
+      "emailDesc": "Receive important updates via email.",
+      "push": "Push Notifications",
+      "pushDesc": "Receive instant notifications in the browser.",
+      "weekly": "Weekly Reports",
+      "weeklyDesc": "Receive a weekly summary of your activities.",
+      "reminders": "Activity Reminders",
+      "remindersDesc": "Get reminded of scheduled workouts.",
+      "save": "Save Notification Settings"
+    },
+    "providers": {
+      "title": "Connected Services",
+      "description": "Manage your connections to external fitness services.",
+      "strava": {
+        "name": "Strava",
+        "connected": "Connected as {name}",
+        "notConnected": "Not connected",
+        "connect": "Connect",
+        "disconnect": "Disconnect"
+      },
+      "future": "More fitness providers will be available soon",
+      "futureList": "Garmin, Fitbit, Apple Health, Google Fit and more"
+    },
+    "privacy": {
+      "title": "Data & Privacy",
+      "description": "Manage your data and privacy settings.",
+      "export": "Export My Data",
+      "exportDesc": "Download a copy of your data."
+    },
+    "account_actions": {
+      "title": "Account Actions",
+      "description": "Important actions for your account.",
+      "warning": "These actions are irreversible. Please be careful.",
+      "logout": "Sign Out",
+      "delete": "Delete Account"
+    },
+    "confirmations": {
+      "deleteAccount": "Are you sure you want to delete your account? This action cannot be undone.",
+      "disconnectStrava": "Do you really want to disconnect from Strava? You will lose access to your training data.",
+      "exportNotReady": "Data export will be available soon."
+    }
+  },
+  "common": {
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "loading": "Loading...",
+    "refresh": "Refresh",
+    "sync": "Sync",
+    "syncing": "Syncing...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "error": {
+    "404": {
+      "title": "Page Not Found",
+      "description": "The requested page could not be found. It may have been moved or no longer exists."
+    },
+    "500": {
+      "title": "Server Error",
+      "description": "An internal server error occurred. Please try again later."
+    },
+    "403": {
+      "title": "Access Denied",
+      "description": "You do not have permission to access this page."
+    },
+    "general": {
+      "title": "An Error Occurred",
+      "description": "An unexpected error has occurred. Please try again."
+    },
+    "cta": {
+      "home": "Go Home",
+      "back": "Go Back"
+    },
+    "help": {
+      "text": "If the problem persists, contact us:"
+    }
+  }
+}

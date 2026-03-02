@@ -1,0 +1,119 @@
+{
+    "header": {
+        "name": "Rinat's Repeats",
+        "version": "1.0.0",
+        "description": "Warmup for 10 minutes, 3x400m, 10 minute ramped cool down",
+        "workout_type_family": 1,
+        "threshold_hr": 173
+    },
+    "intervals": [
+        {
+            "name": "Try to stay in zone 1",
+            "exit_trigger_type": "time",
+            "exit_trigger_value": 600,
+            "intensity_type": "wu",
+            "targets": [
+                {
+                    "type": "threshold_hr",
+                    "low": 0.70,
+                    "high": 0.80
+                }
+            ]
+        },
+        {
+            "name": "3 x 400m @ 10k pace",
+            "exit_trigger_type": "repeat",
+            "exit_trigger_value": 2,
+            "intervals": [
+                {
+                    "name": "400m @ 10k pace",
+                    "exit_trigger_type": "distance",
+                    "exit_trigger_value": 400,
+                    "intensity_type": "lt",
+                    "targets": [
+                        {
+                            "type": "speed",
+                            "low": 4.30,
+                            "high": 4.55
+                        }
+                    ]
+                },
+                {
+                    "name": "200m EZ",
+                    "exit_trigger_type": "distance",
+                    "exit_trigger_value": 200,
+                    "intensity_type": "recover",
+                    "targets": [
+                        {
+                            "type": "threshold_hr",
+                            "low": 0.70,
+                            "high": 0.80
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Cool Down",
+            "exit_trigger_type": "repeat",
+            "exit_trigger_value": 0,
+            "intensity_type": "cd",
+            "intervals": [
+                {
+                    "name": "CD part 1 - Zone 3",
+                    "exit_trigger_type": "time",
+                    "exit_trigger_value": 240,
+                    "controls": [
+                        {
+                            "type": "grade",
+                            "value": 0.03
+                        }
+                    ],
+                    "targets": [
+                        {
+                            "type": "threshold_hr",
+                            "low": 0.89,
+                            "high": 0.94
+                        }
+                    ]
+                },
+                {
+                    "name": "CD part 2 - Zone 2",
+                    "exit_trigger_type": "time",
+                    "exit_trigger_value": 240,
+                    "controls": [
+                        {
+                            "type": "grade",
+                            "value": 0.02
+                        }
+                    ],
+                    "targets": [
+                        {
+                            "type": "threshold_hr",
+                            "low": 0.80,
+                            "high": 0.88
+                        }
+                    ]
+                },
+                {
+                    "name": "CD part 3 - Zone 1",
+                    "exit_trigger_type": "time",
+                    "exit_trigger_value": 120,
+                    "controls": [
+                        {
+                            "type": "grade",
+                            "value": 0.01
+                        }
+                    ],
+                    "targets": [
+                        {
+                            "type": "threshold_hr",
+                            "low": 0.70,
+                            "high": 0.80
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

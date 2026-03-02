@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workout_file>
+    <author>trainaa</author>
+    <name>3*20min Sweet Spot 60 - ergdb</name>
+    <description>4x8mins @ 90% FTP with 4mins recovery.</description>
+    <sportType>bike</sportType>
+    <tags/>
+    <workout>
+        <SteadyState show_avg="1" Power="0.4" Duration="300"/>
+        <SteadyState show_avg="1" Power="0.5" Duration="300"/>
+        <IntervalsT OnPower="0.9" OffPower="0.5" show_avg="1" Repeat="3" OffDuration="300" OnDuration="1200">
+            <textevent message="3x"/>
+        </IntervalsT>
+        <SteadyState show_avg="1" Power="0.4" Duration="120"/>
+    </workout>
+</workout_file>

@@ -1,0 +1,25 @@
+{
+    "file_id_mesgs": [
+        {
+            "manufacturer": "garmin",
+            "product": 988,
+            "serial_number": 123456,
+            "type": "settings",
+            "garmin_product": "fr60"
+        }
+    ],
+    "user_profile_mesgs": [
+        {
+            "weight": 90.0,
+            "gender": "male",
+            "age": 28,
+            "height": 1.9,
+            "language": "english"
+        }
+    ],
+    "hrm_profile_mesgs": [
+        {
+            "hrm_ant_id": 100
+        }
+    ]
+}

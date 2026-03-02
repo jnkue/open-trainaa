@@ -1,0 +1,3 @@
+"""
+Garmin Connect integration routers.
+"""

@@ -1,0 +1,76 @@
+services:
+  # Multi-worker API service (handles HTTP requests)
+  trainaabackend:
+    image: ghcr.io/jnkue/trainaabackend:latest
+    container_name: trainaabackend
+    env_file:
+      - .env.production
+    environment:
+      - RUN_SCHEDULER=false  # Scheduler disabled in API workers
+    command: ["/backend/.venv/bin/uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--log-config", "logging_config.yaml"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/backend/logs
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fastapi.rule=Host(`backend.trainaa.com`)"
+      - "traefik.http.routers.fastapi.entrypoints=websecure"
+      - "traefik.http.routers.fastapi.tls.certresolver=letsencrypt"
+    restart: unless-stopped
+
+  # Single-worker scheduler service (runs background jobs)
+  trainaascheduler:
+    image: ghcr.io/jnkue/trainaabackend:latest
+    container_name: trainaascheduler
+    env_file:
+      - .env.production
+    environment:
+      - RUN_SCHEDULER=true  # Scheduler enabled in this service
+    command: ["/backend/.venv/bin/uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8001", "--workers", "1", "--log-config", "logging_config.yaml"]
+    ports:
+      - "8001:8001"  # Different port to avoid conflicts (not exposed externally)
+    volumes:
+      - ./logs:/backend/logs
+    restart: unless-stopped
+
+  # Redis service for temporary data storage (PKCE verifiers, caching)
+  redis:
+    image: redis:7-alpine
+    container_name: trainaaredis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"  # Internal only, not exposed via Traefik
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  traefik:
+    image: traefik:v3
+    container_name: traefik
+    restart: always
+    command:
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.letsencrypt.acme.tlschallenge=true"
+      - "--certificatesresolvers.letsencrypt.acme.email=janik.ue@gmail.com"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik:/letsencrypt
+
+volumes:
+  redis-data:

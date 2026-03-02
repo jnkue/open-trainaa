@@ -1,0 +1,56 @@
+site_name: ""
+
+theme:
+  name: material
+  logo: logo-white-docu.png
+  palette:
+    # Light mode
+    - scheme: default
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.tracking
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Welcome: Welcome.md
+  - Getting Started:
+      - Contributing: getting-started/contributing.md
+      - Project Structure: getting-started/project-structure.md
+  - Frontend:
+      - App: frontend/app/index.md
+      - Landing Page: frontend/landing-page/index.md
+  - Backend:
+      - API: backend/api.md
+      - Agent System: backend/agent-system.md
+      - Integrations: backend/integrations.md
+      - Workout Sync: backend/workout-sync.md
+      - Docker: backend/docker.md
+  - Database:
+      - Overview: database/index.md
+
+extra: 
+  homepage: https://trainaa.com
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+dev_addr: 127.0.0.1:8004

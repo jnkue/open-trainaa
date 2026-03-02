@@ -1,0 +1,2259 @@
+{
+    "file_id_mesgs": [
+        {
+            "serial_number": 1234,
+            "time_created": "2014-12-27 06:00:00+00:00",
+            "manufacturer": "garmin",
+            "product": 1837,
+            "number": 168,
+            "type": "monitoring_b",
+            "garmin_product": "vivo_fit"
+        }
+    ],
+    "device_info_mesgs": [
+        {
+            "timestamp": "2014-12-29 19:14:00+00:00",
+            "serial_number": 1234,
+            "manufacturer": 0,
+            "product": 1837,
+            "software_version": 3.6,
+            "battery_voltage": 5.875,
+            "hardware_version": 1
+        }
+    ],
+    "monitoring_mesgs": [
+        {
+            "timestamp_16": 27492,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 27612,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 29172,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "cycles": 50.0,
+            "timestamp_16": 29412,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "cycles": 157.5,
+            "timestamp_16": 29892,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 30432,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 161.0,
+            "timestamp_16": 30492,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 31032,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 165.5,
+            "timestamp_16": 31092,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 31572,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 176.0,
+            "timestamp_16": 31632,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 31692,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 31812,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 31932,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 31992,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 32112,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 32172,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 32232,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 32292,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 33372,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 33432,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 33672,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 33852,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 184.0,
+            "timestamp_16": 33912,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 34212,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 34272,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 34572,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 34752,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 34812,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 34872,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 193.0,
+            "timestamp_16": 34992,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 35172,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 35232,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 35292,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "cycles": 196.5,
+            "timestamp_16": 35352,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 35472,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 35532,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 35592,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 36132,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "cycles": 205.0,
+            "timestamp_16": 36192,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 36252,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 208.5,
+            "timestamp_16": 36312,
+            "current_activity_type_intensity": 6,
+            "activity_type": "walking",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 36372,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 212.0,
+            "timestamp_16": 36432,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 36552,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 218.5,
+            "timestamp_16": 36612,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 36912,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 37032,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 37272,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 37872,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 15.5,
+            "timestamp_16": 37932,
+            "current_activity_type_intensity": 161,
+            "activity_type": "running",
+            "intensity": 5
+        },
+        {
+            "cycles": 333.5,
+            "timestamp_16": 38232,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 38772,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "timestamp_16": 38832,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 39132,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 39192,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 40152,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 40212,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 40512,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 350.0,
+            "timestamp_16": 40572,
+            "current_activity_type_intensity": 134,
+            "activity_type": "walking",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 40932,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 367.5,
+            "timestamp_16": 41052,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 41232,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "cycles": 376.5,
+            "timestamp_16": 41352,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 41892,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 391.5,
+            "timestamp_16": 41952,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 42792,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 406.0,
+            "timestamp_16": 42912,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 43032,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 410.5,
+            "timestamp_16": 43092,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 43152,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "cycles": 441.5,
+            "timestamp_16": 43212,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 43272,
+            "current_activity_type_intensity": 232,
+            "activity_type": "sedentary",
+            "intensity": 7
+        },
+        {
+            "cycles": 453.0,
+            "timestamp_16": 43332,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 43392,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "cycles": 560.0,
+            "timestamp_16": 43632,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 43633,
+            "current_activity_type_intensity": 232,
+            "activity_type": "sedentary",
+            "intensity": 7
+        },
+        {
+            "cycles": 601.0,
+            "timestamp_16": 43812,
+            "current_activity_type_intensity": 134,
+            "activity_type": "walking",
+            "intensity": 4
+        },
+        {
+            "cycles": 623.0,
+            "timestamp_16": 43932,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 44412,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "cycles": 654.5,
+            "timestamp_16": 44592,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 45492,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 45552,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 46692,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 46752,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 46932,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 47112,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 47172,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 47232,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 47352,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 47472,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "cycles": 684.0,
+            "timestamp_16": 47712,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 48072,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "timestamp_16": 48132,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 48252,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 48432,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 714.5,
+            "timestamp_16": 48612,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 48672,
+            "current_activity_type_intensity": 232,
+            "activity_type": "sedentary",
+            "intensity": 7
+        },
+        {
+            "cycles": 743.0,
+            "timestamp_16": 48852,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 48912,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "cycles": 755.0,
+            "timestamp_16": 48972,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "cycles": 763.5,
+            "timestamp_16": 49032,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 49212,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 767.0,
+            "timestamp_16": 49272,
+            "current_activity_type_intensity": 6,
+            "activity_type": "walking",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 49452,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 828.0,
+            "timestamp_16": 49564,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "cycles": 842.5,
+            "timestamp_16": 49632,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 49692,
+            "current_activity_type_intensity": 232,
+            "activity_type": "sedentary",
+            "intensity": 7
+        },
+        {
+            "cycles": 851.5,
+            "timestamp_16": 49812,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 49992,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 50112,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 50472,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 857.0,
+            "timestamp_16": 50532,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 51192,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 51312,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 51432,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 51492,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 51612,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 51732,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "cycles": 870.0,
+            "timestamp_16": 51852,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 51912,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "timestamp_16": 51972,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 52032,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 52092,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 52152,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 52332,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 52692,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 52812,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 52932,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 53112,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 53412,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 53592,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 53832,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 54012,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 874.5,
+            "timestamp_16": 54072,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 54192,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 54252,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 54552,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 54612,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 54732,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 54792,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 54852,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 54912,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 54972,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 55032,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 55212,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 55272,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 55332,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 55392,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 55572,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 55692,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 55752,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 55812,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 55932,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 56412,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 56472,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 56532,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 56592,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 56712,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 56832,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 57252,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 57312,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 57372,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 57672,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 880.0,
+            "timestamp_16": 57732,
+            "current_activity_type_intensity": 134,
+            "activity_type": "walking",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 57972,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "timestamp_16": 58152,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 58272,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 903.0,
+            "timestamp_16": 58332,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 58392,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "timestamp_16": 58452,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 58512,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 58572,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 58692,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 59352,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 59412,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 59472,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 59592,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 60192,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 60252,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 60432,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 60552,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 60732,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 60792,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 60912,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 61152,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 61212,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 61272,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 906.5,
+            "timestamp_16": 61332,
+            "current_activity_type_intensity": 6,
+            "activity_type": "walking",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 61392,
+            "current_activity_type_intensity": 232,
+            "activity_type": "sedentary",
+            "intensity": 7
+        },
+        {
+            "cycles": 917.0,
+            "timestamp_16": 61452,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 61512,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "cycles": 1017.0,
+            "timestamp_16": 61812,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "cycles": 1032.5,
+            "timestamp_16": 61872,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 62352,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1112.5,
+            "timestamp_16": 62712,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "cycles": 1120.0,
+            "timestamp_16": 62772,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 63072,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "timestamp_16": 63132,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 63312,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 63612,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 63672,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 64032,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 64092,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 64152,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 64212,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 64392,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 64452,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 64512,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "cycles": 1133.0,
+            "timestamp_16": 64572,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 65292,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 1151.0,
+            "timestamp_16": 65412,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 416,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 1158.5,
+            "timestamp_16": 476,
+            "current_activity_type_intensity": 6,
+            "activity_type": "walking",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 956,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 1016,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 1136,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 1170.0,
+            "timestamp_16": 1196,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 1316,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1192.5,
+            "timestamp_16": 1376,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 2216,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 2276,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 2576,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 2636,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 2696,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 1201.0,
+            "timestamp_16": 2816,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 2876,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "cycles": 1223.0,
+            "timestamp_16": 2996,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 3116,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "cycles": 1226.0,
+            "timestamp_16": 3176,
+            "current_activity_type_intensity": 6,
+            "activity_type": "walking",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 3296,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "timestamp_16": 3356,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 3836,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 3956,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 4496,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 4616,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 4856,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1236.0,
+            "timestamp_16": 4916,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 5096,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 1258.0,
+            "timestamp_16": 5216,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 5276,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "cycles": 1277.5,
+            "timestamp_16": 5336,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 5576,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1293.5,
+            "timestamp_16": 5636,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 5756,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "timestamp_16": 5816,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 5876,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1307.0,
+            "timestamp_16": 5936,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 6056,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1311.5,
+            "timestamp_16": 6116,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 6236,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1320.5,
+            "timestamp_16": 6296,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 6536,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 1327.5,
+            "timestamp_16": 6596,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 6836,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1348.0,
+            "timestamp_16": 6896,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 7076,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1358.0,
+            "timestamp_16": 7196,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 7316,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 7376,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "cycles": 1365.5,
+            "timestamp_16": 7436,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 7496,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1408.5,
+            "timestamp_16": 7736,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 7976,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "timestamp_16": 8036,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 8096,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "cycles": 1414.0,
+            "timestamp_16": 8156,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 8336,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 8396,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 8516,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 1422.5,
+            "timestamp_16": 8576,
+            "current_activity_type_intensity": 134,
+            "activity_type": "walking",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 8636,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1444.0,
+            "timestamp_16": 8756,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 9416,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 9476,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 9596,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 1448.0,
+            "timestamp_16": 9656,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 9776,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 10556,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 10616,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 10676,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 1451.0,
+            "timestamp_16": 10736,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 10916,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 1467.5,
+            "timestamp_16": 10976,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 11696,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 11996,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 12056,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 1471.0,
+            "timestamp_16": 12116,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 12236,
+            "current_activity_type_intensity": 136,
+            "activity_type": "sedentary",
+            "intensity": 4
+        },
+        {
+            "cycles": 1476.5,
+            "timestamp_16": 12296,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 12896,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 12956,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 13016,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 13196,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 13256,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "cycles": 1508.0,
+            "timestamp_16": 13316,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 13436,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "cycles": 1515.0,
+            "timestamp_16": 13496,
+            "current_activity_type_intensity": 134,
+            "activity_type": "walking",
+            "intensity": 4
+        },
+        {
+            "timestamp_16": 15416,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 1528.5,
+            "timestamp_16": 15476,
+            "current_activity_type_intensity": 38,
+            "activity_type": "walking",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 15596,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "timestamp_16": 15656,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 15716,
+            "current_activity_type_intensity": 200,
+            "activity_type": "sedentary",
+            "intensity": 6
+        },
+        {
+            "cycles": 1538.0,
+            "timestamp_16": 15776,
+            "current_activity_type_intensity": 70,
+            "activity_type": "walking",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 16016,
+            "current_activity_type_intensity": 168,
+            "activity_type": "sedentary",
+            "intensity": 5
+        },
+        {
+            "timestamp_16": 16076,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 16316,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 16376,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 16856,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 16976,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 17156,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 17216,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 17336,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 17456,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 17936,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 17996,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 18116,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 18176,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 18236,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 18296,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 18596,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 18656,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 18896,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 19076,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 19196,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 19316,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 19376,
+            "current_activity_type_intensity": 40,
+            "activity_type": "sedentary",
+            "intensity": 1
+        },
+        {
+            "timestamp_16": 19436,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 19556,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 19676,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 19976,
+            "current_activity_type_intensity": 72,
+            "activity_type": "sedentary",
+            "intensity": 2
+        },
+        {
+            "timestamp_16": 20096,
+            "current_activity_type_intensity": 8,
+            "activity_type": "sedentary",
+            "intensity": 0
+        },
+        {
+            "timestamp_16": 20276,
+            "current_activity_type_intensity": 104,
+            "activity_type": "sedentary",
+            "intensity": 3
+        },
+        {
+            "cycles": 1571.0,
+            "timestamp_16": 20516,
+            "current_activity_type_intensity": 102,
+            "activity_type": "walking",
+            "intensity": 3
+        },
+        {
+            "timestamp_16": 20576,
+            "current_activity_type_intensity": 232,
+            "activity_type": "sedentary",
+            "intensity": 7
+        },
+        {
+            "timestamp": "2014-12-28 06:00:00+00:00",
+            "cycles": 1571.0,
+            "active_time": 607.0,
+            "active_calories": 68,
+            "duration_min": 1440,
+            "activity_type": "walking",
+            "steps": 3142
+        },
+        {
+            "timestamp": "2014-12-28 06:00:00+00:00",
+            "cycles": 15.5,
+            "active_time": 3.0,
+            "active_calories": 1,
+            "duration_min": 1440,
+            "activity_type": "running",
+            "steps": 31
+        }
+    ],
+    "event_mesgs": [
+        {
+            "timestamp": "2014-12-27 15:26:00+00:00",
+            "data16": 1,
+            "event": 41,
+            "event_type": "marker",
+            "data": 1
+        },
+        {
+            "timestamp": "2014-12-27 15:41:00+00:00",
+            "data16": 2,
+            "event": 41,
+            "event_type": "marker",
+            "data": 2
+        },
+        {
+            "timestamp": "2014-12-27 15:56:00+00:00",
+            "data16": 3,
+            "event": 41,
+            "event_type": "marker",
+            "data": 3
+        },
+        {
+            "timestamp": "2014-12-27 16:11:00+00:00",
+            "data16": 4,
+            "event": 41,
+            "event_type": "marker",
+            "data": 4
+        },
+        {
+            "timestamp": "2014-12-27 16:26:00+00:00",
+            "data16": 5,
+            "event": 41,
+            "event_type": "marker",
+            "data": 5
+        },
+        {
+            "timestamp": "2014-12-27 18:12:01+00:00",
+            "data16": 256,
+            "event": 41,
+            "event_type": "marker",
+            "data": 256
+        },
+        {
+            "timestamp": "2014-12-27 19:26:00+00:00",
+            "data16": 1,
+            "event": 41,
+            "event_type": "marker",
+            "data": 1
+        },
+        {
+            "timestamp": "2014-12-27 19:41:00+00:00",
+            "data16": 2,
+            "event": 41,
+            "event_type": "marker",
+            "data": 2
+        },
+        {
+            "timestamp": "2014-12-27 19:50:52+00:00",
+            "data16": 256,
+            "event": 41,
+            "event_type": "marker",
+            "data": 256
+        },
+        {
+            "timestamp": "2014-12-27 20:50:00+00:00",
+            "data16": 1,
+            "event": 41,
+            "event_type": "marker",
+            "data": 1
+        },
+        {
+            "timestamp": "2014-12-27 21:05:00+00:00",
+            "data16": 2,
+            "event": 41,
+            "event_type": "marker",
+            "data": 2
+        },
+        {
+            "timestamp": "2014-12-27 21:20:00+00:00",
+            "data16": 3,
+            "event": 41,
+            "event_type": "marker",
+            "data": 3
+        },
+        {
+            "timestamp": "2014-12-27 21:35:00+00:00",
+            "data16": 4,
+            "event": 41,
+            "event_type": "marker",
+            "data": 4
+        },
+        {
+            "timestamp": "2014-12-27 21:50:00+00:00",
+            "data16": 5,
+            "event": 41,
+            "event_type": "marker",
+            "data": 5
+        },
+        {
+            "timestamp": "2014-12-28 03:00:00+00:00",
+            "data16": 2048,
+            "event": 41,
+            "event_type": "marker",
+            "data": 2048
+        }
+    ],
+    "monitoring_info_mesgs": [
+        {
+            "timestamp": "2014-12-27 06:00:00+00:00",
+            "local_timestamp": 788572800,
+            "cycles_to_distance": [
+                1.512,
+                1.944
+            ],
+            "cycles_to_calories": [
+                0.0438,
+                0.1186
+            ],
+            "resting_metabolic_rate": 2042,
+            "activity_type": [
+                "walking",
+                "running"
+            ]
+        }
+    ]
+}
