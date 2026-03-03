@@ -90,7 +90,11 @@
     "termsAgreementPrefix": "En vous inscrivant, vous acceptez notre",
     "privacyPolicy": "Politique de confidentialité",
     "termsConditions": "Conditions générales",
-    "and": "et"
+    "and": "et",
+    "continueWithGoogle": "Continuer avec Google",
+    "orDivider": "ou",
+    "googleSignInError": "La connexion Google a échoué. Veuillez réessayer.",
+    "googlePlayServicesUnavailable": "Les services Google Play ne sont pas disponibles sur cet appareil."
   },
   "navigation": {
     "home": "Accueil",

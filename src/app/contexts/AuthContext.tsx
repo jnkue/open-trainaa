@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useEffect, useState} from "react";
 import {Session, User} from "@supabase/supabase-js";
 import {apiClient} from "../services/api";
+import i18n from "@/i18n";
 
 interface AuthContextType {
 	user: User | null;
@@ -10,6 +11,7 @@ interface AuthContextType {
 	isDeveloperMode?: boolean;
 	signIn: (email: string, password: string) => Promise<void>;
 	signUp: (email: string, password: string) => Promise<void>;
+	signInWithGoogle: () => Promise<void>;
 	signOut: () => Promise<void>;
 	refreshSession: () => Promise<void>;
 	resetPassword: (email: string) => Promise<void>;
@@ -120,6 +122,48 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
 		}
 	};
 
+	const ensureUserInfoExists = async (userId: string) => {
+		try {
+			const {data: existingInfo} = await apiClient.supabase
+				.from("user_infos")
+				.select("user_id")
+				.eq("user_id", userId)
+				.single();
+
+			if (!existingInfo) {
+				await apiClient.supabase.from("user_infos").insert([
+					{
+						user_id: userId,
+						language: i18n.language ?? "en",
+						automatic_calculation_mode: true,
+						preferred_units: "metric",
+						post_feedback_to_strava: false,
+						newsletter_opt_in: false,
+					},
+				]);
+			}
+		} catch (dbError) {
+			console.error("Failed to ensure user info exists:", dbError);
+		}
+	};
+
+	const signInWithGoogle = async () => {
+		setLoading(true);
+		try {
+			const result = await apiClient.signInWithGoogle();
+			if (result?.error) {
+				throw result.error;
+			}
+			if (result?.data?.user) {
+				await ensureUserInfoExists(result.data.user.id);
+			}
+			// Session will be updated via the auth state change listener
+		} catch (error) {
+			setLoading(false);
+			throw error;
+		}
+	};
+
 	const signOut = async () => {
 		setLoading(true);
 		try {
@@ -220,6 +264,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
 		isDeveloperMode,
 		signIn,
 		signUp,
+		signInWithGoogle,
 		signOut,
 		refreshSession,
 		resetPassword,

@@ -90,7 +90,11 @@
     "termsAgreementPrefix": "By signing up, you agree to our",
     "privacyPolicy": "Privacy Policy",
     "termsConditions": "Terms & Conditions",
-    "and": "and"
+    "and": "and",
+    "continueWithGoogle": "Continue with Google",
+    "orDivider": "or",
+    "googleSignInError": "Google sign-in failed. Please try again.",
+    "googlePlayServicesUnavailable": "Google Play Services is not available on this device."
   },
   "navigation": {
     "home": "Home",

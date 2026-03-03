@@ -8,14 +8,16 @@ import {StatusBar} from "expo-status-bar";
 import {Button, Input, Text} from "@/components/ui";
 import {useTranslation} from "react-i18next";
 import {Eye, EyeOff, Languages, Moon, Sun} from "lucide-react-native";
+import {GoogleIcon} from "@/components/icons/GoogleIcon";
 
 export default function LoginScreen() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
+	const [googleLoading, setGoogleLoading] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const [errors, setErrors] = useState<{email?: string; password?: string; general?: string}>({});
-	const {signIn} = useAuth();
+	const {signIn, signInWithGoogle} = useAuth();
 	const {isDark, theme, setTheme} = useTheme();
 	const {currentLanguage, availableLanguages, changeLanguage} = useLanguage();
 	const {t} = useTranslation();
@@ -76,6 +78,28 @@ export default function LoginScreen() {
 
 		// Default error message
 		return error?.message || t("auth.checkCredentials");
+	};
+
+	const handleGoogleSignIn = async () => {
+		setErrors({});
+		setGoogleLoading(true);
+		try {
+			await signInWithGoogle();
+			if (Platform.OS === "web") {
+				router.push("/");
+			} else {
+				router.push("/chat");
+			}
+		} catch (error: any) {
+			if (error.code === "CANCELLED") return;
+			if (error?.code === "PLAY_SERVICES_UNAVAILABLE") {
+				setErrors({general: t("auth.googlePlayServicesUnavailable")});
+			} else {
+				setErrors({general: t("auth.googleSignInError")});
+			}
+		} finally {
+			setGoogleLoading(false);
+		}
 	};
 
 	const handleLogin = async () => {
@@ -152,6 +176,30 @@ export default function LoginScreen() {
 											<Text className="text-destructive text-sm">{errors.general}</Text>
 										</View>
 									)}
+
+									{/* Google Sign-In */}
+									<Button
+										variant="outline"
+										onPress={handleGoogleSignIn}
+										disabled={googleLoading || loading}
+										className="h-12 flex-row items-center justify-center gap-3"
+									>
+										{googleLoading ? (
+											<ActivityIndicator color={isDark ? "#ffffff" : "#000000"} />
+										) : (
+											<View className="flex-row items-center justify-center gap-3">
+												<GoogleIcon size={20} />
+												<Text className="text-foreground font-medium">{t("auth.continueWithGoogle")}</Text>
+											</View>
+										)}
+									</Button>
+
+									{/* Divider */}
+									<View className="flex-row items-center">
+										<View className="flex-1 h-[1px] bg-border" />
+										<Text className="text-muted-foreground text-sm mx-4">{t("auth.orDivider")}</Text>
+										<View className="flex-1 h-[1px] bg-border" />
+									</View>
 
 									<View>
 										<Text className="text-base font-semibold text-foreground mb-3">{t("auth.email")}</Text>
