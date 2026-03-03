@@ -21,11 +21,11 @@ And dont forget to [Join our Discord](https://discord.gg/ehMPJErVRN)
 The app is in a early stage of development, so dont expect it to be perfect yet. But there is also a lot of potential and you can be part of the journey to build the best endurance training app for everybody.
 
 
-To get started locally, follow the instructions in the [Getting Started Guide](./docs/Welcome.md).
+To get started locally, follow the instructions in the [Getting Started Guide](https://jnkue.github.io/open-trainaa/).
 
 ## Contributing
 
-We welcome contributions from the community! If you're interested in contributing to TRAINAA, please check out our [Contributing Guide](./docs/getting-started/contributing.md) for guidelines on how to get involved.
+We welcome contributions from the community! If you're interested in contributing to TRAINAA, please check out our [Contributing Guide](https://jnkue.github.io/open-trainaa/getting-started/contributing/) for guidelines on how to get involved.
 
 
 ## Roadmap
@@ -35,6 +35,8 @@ We welcome contributions from the community! If you're interested in contributin
 - More algorithms for training planning and analysis
 - Push notifications, Proactive messages from the trainer
 - ...
+
+For a detailed roadmap a [github project](https://github.com/users/jnkue/projects/5) is set up.
 
 ## License
 
