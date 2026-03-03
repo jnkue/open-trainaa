@@ -307,9 +307,9 @@ PODS:
     - AppAuth/Core (~> 2.0)
     - GTMSessionFetcher/Core (< 4.0, >= 3.3)
   - GTMSessionFetcher/Core (3.5.0)
-  - hermes-engine (0.81.4):
-    - hermes-engine/Pre-built (= 0.81.4)
-  - hermes-engine/Pre-built (0.81.4)
+  - hermes-engine (0.81.5):
+    - hermes-engine/Pre-built (= 0.81.5)
+  - hermes-engine/Pre-built (0.81.5)
   - libavif/core (0.11.1)
   - libavif/libdav1d (0.11.1):
     - libavif/core
@@ -396,7 +396,7 @@ PODS:
     - React-utils
     - ReactNativeDependencies
     - Yoga
-  - React-Core-prebuilt (0.81.4):
+  - React-Core-prebuilt (0.81.5):
     - ReactNativeDependencies
   - React-Core/CoreModulesHeaders (0.81.5):
     - hermes-engine
@@ -2971,7 +2971,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   GTMAppAuth: 217a876b249c3c585a54fd6f73e6b58c4f5c4238
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
-  hermes-engine: 35c763d57c9832d0eef764316ca1c4d043581394
+  hermes-engine: 9f4dfe93326146a1c99eb535b1cb0b857a3cd172
   libavif: 84bbb62fb232c3018d6f1bab79beea87e35de7b7
   libdav1d: 23581a4d8ec811ff171ed5e2e05cd27bad64c39f
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
@@ -2986,7 +2986,7 @@ SPEC CHECKSUMS:
   React: 914f8695f9bf38e6418228c2ffb70021e559f92f
   React-callinvoker: 1c0808402aee0c6d4a0d8e7220ce6547af9fba71
   React-Core: c61410ef0ca6055e204a963992e363227e0fd1c5
-  React-Core-prebuilt: dde79b89f8863efebb1d532a3335f472927da669
+  React-Core-prebuilt: 02f0ad625ddd47463c009c2d0c5dd35c0d982599
   React-CoreModules: 1f6d1744b5f9f2ec684a4bb5ced25370f87e5382
   React-cxxreact: 3af79478e8187b63ffc22b794cd42d3fc1f1f2da
   React-debug: 6328c2228e268846161f10082e80dc69eac2e90a
@@ -3072,6 +3072,6 @@ SPEC CHECKSUMS:
   Sentry: b3ec44d01708fce73f99b544beb57e890eca4406
   Yoga: 5934998fbeaef7845dbf698f698518695ab4cd1a
 
-PODFILE CHECKSUM: 58ad1df246b584b52657442a1ca8b7ccae717a46
+PODFILE CHECKSUM: d4cb722d202bf9b8079b4d451f69f257db0a8ea8
 
 COCOAPODS: 1.16.2
