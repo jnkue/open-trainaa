@@ -341,6 +341,53 @@ export class ApiClient {
     return await this.supabase.auth.signInWithPassword({ email, password });
   }
 
+  async signInWithGoogle() {
+    if (Platform.OS === 'web') {
+      return await this.supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: typeof window !== 'undefined' ? window.location.origin : undefined,
+        },
+      });
+    }
+
+    const { GoogleSignin, statusCodes } = await import('@react-native-google-signin/google-signin');
+
+    GoogleSignin.configure({
+      webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
+      iosClientId: process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID,
+    });
+
+    try {
+      if (Platform.OS === 'android') {
+        await GoogleSignin.hasPlayServices();
+      }
+      const signInResult = await GoogleSignin.signIn();
+      console.log('Google signIn result:', JSON.stringify(signInResult, null, 2));
+      const idToken = signInResult?.data?.idToken;
+
+      if (!idToken) {
+        throw new Error('Google sign-in failed: no ID token received');
+      }
+
+      return await this.supabase.auth.signInWithIdToken({
+        provider: 'google',
+        token: idToken,
+      });
+    } catch (error: any) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        throw { code: 'CANCELLED', message: 'Google sign-in was cancelled' };
+      }
+      if (error.code === statusCodes.IN_PROGRESS) {
+        throw { code: 'IN_PROGRESS', message: 'Google sign-in is already in progress' };
+      }
+      if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        throw { code: 'PLAY_SERVICES_UNAVAILABLE', message: 'Google Play Services is not available' };
+      }
+      throw error;
+    }
+  }
+
   async signOut() {
     // Sign out with scope: 'local' to only clear local session
     // This prevents errors when the session is already expired on the server
