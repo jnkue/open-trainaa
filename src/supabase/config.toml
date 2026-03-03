@@ -282,7 +282,7 @@ skip_nonce_check = false
 enabled = true
 client_id = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_IDS)"
 secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_SECRET)"
-skip_nonce_check = false
+skip_nonce_check = true
 
 
 # Allow Solana wallet holders to sign in to your project via the Sign in with Solana (SIWS, EIP-4361) standard.
