@@ -359,8 +359,11 @@ export class ApiClient {
     });
 
     try {
-      await GoogleSignin.hasPlayServices();
+      if (Platform.OS === 'android') {
+        await GoogleSignin.hasPlayServices();
+      }
       const signInResult = await GoogleSignin.signIn();
+      console.log('Google signIn result:', JSON.stringify(signInResult, null, 2));
       const idToken = signInResult?.data?.idToken;
 
       if (!idToken) {

@@ -86,7 +86,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     ],
     "./plugins/withReactNativeShare.js",
     "@react-native-community/datetimepicker",
+    [
     "@react-native-google-signin/google-signin",
+    {
+      iosUrlScheme: `com.googleusercontent.apps.${(process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? "").split(".")[0]}`,
+    }
+  ]
   ],
   experiments: {
     typedRoutes: true,
