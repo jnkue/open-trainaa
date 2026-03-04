@@ -194,7 +194,46 @@ Our Website uses cookies. Cookies are small text files that are stored on your d
 
 **Legal basis:** Article 6(1)(f) GDPR (legitimate interest).
 
-### 6.2 Mobile App
+### 6.2 Google Analytics and Google Ads
+
+We use Google Analytics and Google Ads Conversion Tracking on our Website, services provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland (hereinafter "Google").
+
+Google Analytics is a web analytics service that collects and evaluates data about the behavior of visitors to our Website. Google Ads Conversion Tracking allows us to measure the effectiveness of our advertising campaigns. When you reach our Website through a Google advertisement, a conversion cookie is set.
+
+**Provider:** Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland (Parent company: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA)
+
+**Processed data:**
+
+- Cookie identifiers and comparable recognition features
+- IP address (possibly truncated)
+- Information about the browser and device used
+- Pages visited, time spent, and interactions on the Website
+- Referrer URL (website from which the user came)
+- Conversion data (e.g., whether a specific action was performed on the Website)
+- Demographic data and interests (if activated)
+
+**Purpose:** The data is used to analyze the use of our Website, compile reports on Website activity, measure the success of our advertising campaigns, optimize our advertising and Website content, and display relevant advertising to you.
+
+**Google Consent Mode v2:** We use Google Consent Mode v2. By default, no cookies for advertising or analytics purposes are set and no personal data is transmitted to Google until you give your explicit consent via our cookie banner. Without your consent, only cookieless pings are sent to Google, which do not contain personal data.
+
+**Legal basis:** Article 6(1)(a) GDPR (consent). Processing only takes place after your explicit consent via our cookie banner.
+
+**Cookies and storage duration:**
+
+- `_ga`: Distinguishes unique users (2 years)
+- `_ga_*`: Used to maintain session state (2 years)
+- `_gid`: Distinguishes unique users (24 hours)
+- `_gcl_aw`: Stores conversion information (90 days)
+- `_gcl_dc`: Stores conversion information (90 days)
+- `_gac_`: Contains campaign-related information (90 days)
+
+**Data transfer to third countries:** Data may be transferred to the USA. Google bases the data transfer on the EU Commission's standard contractual clauses in accordance with Article 46(2)(c) GDPR.
+
+**Withdrawal of consent:** You can withdraw your consent at any time by changing the cookie settings via our cookie banner or by deleting the corresponding cookies in your browser.
+
+**Further information:** Google Privacy Policy: https://policies.google.com/privacy
+
+### 6.3 Mobile App
 
 The App stores data locally on your device to ensure functionality and improve user experience. This includes:
 

@@ -201,8 +201,46 @@ Unsere Webseite verwendet Cookies. Cookies sind kleine Textdateien, die auf Ihre
 
 **Rechtsgrundlage:** Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
 
+### 6.2 Google Analytics und Google Ads
 
-### 6.2 Mobile App
+Wir verwenden auf unserer Webseite Google Analytics und Google Ads Conversion-Tracking, Dienste der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google").
+
+Google Analytics ist ein Webanalysedienst, der Daten über das Verhalten der Besucher unserer Webseite erhebt und auswertet. Google Ads Conversion-Tracking ermöglicht es uns, die Wirksamkeit unserer Werbekampagnen zu messen. Wenn Sie über eine Google-Werbeanzeige auf unsere Webseite gelangen, wird ein Conversion-Cookie gesetzt.
+
+**Anbieter:** Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (Mutterunternehmen: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA)
+
+**Verarbeitete Daten:**
+
+- Cookie-Kennungen und vergleichbare Erkennungsmerkmale
+- IP-Adresse (ggf. gekürzt)
+- Informationen zum verwendeten Browser und Endgerät
+- Besuchte Seiten, Verweildauer und Interaktionen auf der Webseite
+- Referrer-URL (Webseite, von der der Nutzer kommt)
+- Conversion-Daten (z. B. ob eine bestimmte Aktion auf der Webseite durchgeführt wurde)
+- Demografische Daten und Interessen (sofern aktiviert)
+
+**Zweck:** Die Daten werden verwendet, um die Nutzung unserer Webseite zu analysieren, Berichte über die Webseitenaktivitäten zu erstellen, den Erfolg unserer Werbeanzeigen zu messen, unsere Werbe- und Webseiteninhalte zu optimieren und Ihnen relevante Werbung anzuzeigen.
+
+**Google Consent Mode v2:** Wir setzen den Google Consent Mode v2 ein. Dadurch werden standardmäßig keine Cookies für Werbe- oder Analysezwecke gesetzt und keine personenbezogenen Daten an Google übermittelt, bis Sie über unser Cookie-Banner Ihre ausdrückliche Einwilligung erteilen. Ohne Ihre Einwilligung werden lediglich cookielose Pings an Google gesendet, die keine personenbezogenen Daten enthalten.
+
+**Rechtsgrundlage:** Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Die Verarbeitung erfolgt erst nach Ihrer ausdrücklichen Einwilligung über unser Cookie-Banner.
+
+**Cookies und Speicherdauer:**
+
+- `_ga`: Unterscheidet eindeutige Nutzer (2 Jahre)
+- `_ga_*`: Wird zur Aufrechterhaltung des Sitzungsstatus verwendet (2 Jahre)
+- `_gid`: Unterscheidet eindeutige Nutzer (24 Stunden)
+- `_gcl_aw`: Speichert Conversion-Informationen (90 Tage)
+- `_gcl_dc`: Speichert Conversion-Informationen (90 Tage)
+- `_gac_`: Enthält kampagnenbezogene Informationen (90 Tage)
+
+**Datenübermittlung in Drittländer:** Daten können in die USA übermittelt werden. Google stützt die Datenübermittlung auf die Standardvertragsklauseln der EU-Kommission gemäß Art. 46 Abs. 2 lit. c DSGVO.
+
+**Widerruf der Einwilligung:** Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie die Cookie-Einstellungen über unser Cookie-Banner ändern oder die entsprechenden Cookies in Ihrem Browser löschen.
+
+**Weitere Informationen:** Datenschutzerklärung von Google: https://policies.google.com/privacy
+
+### 6.3 Mobile App
 
 Die App speichert lokal auf Ihrem Gerät Daten, um die Funktionalität zu gewährleisten und die Nutzererfahrung zu verbessern. Dies umfasst:
 

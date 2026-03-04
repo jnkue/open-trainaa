@@ -110,6 +110,13 @@
     "yes": "Yes",
     "no": "No"
   },
+  "consent": {
+    "message": "We use cookies to analyze site traffic and optimize your experience. By accepting, you consent to our use of cookies for analytics and advertising purposes.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "privacyLink": "Learn more in our Privacy Policy.",
+    "ariaLabel": "Cookie consent"
+  },
   "error": {
     "404": {
       "title": "Page Not Found",

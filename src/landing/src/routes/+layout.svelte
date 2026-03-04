@@ -5,6 +5,7 @@
 	import '../lib/i18n';
 	import '../app.css';
 	import Footer from '$lib/components/footer/Footer.svelte';
+	import CookieConsentBanner from '$lib/components/consent/CookieConsentBanner.svelte';
 
 	let { children } = $props();
 	let background = "video";
@@ -161,4 +162,5 @@
 	</section>
 
 	<Footer />
+	<CookieConsentBanner />
 {/if}

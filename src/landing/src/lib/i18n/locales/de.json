@@ -110,6 +110,13 @@
     "yes": "Ja",
     "no": "Nein"
   },
+  "consent": {
+    "message": "Wir verwenden Cookies, um den Website-Traffic zu analysieren und Ihre Erfahrung zu optimieren. Durch Zustimmung erlauben Sie die Nutzung von Cookies zu Analyse- und Werbezwecken.",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen",
+    "privacyLink": "Mehr in unserer Datenschutzrichtlinie.",
+    "ariaLabel": "Cookie-Zustimmung"
+  },
   "error": {
     "404": {
       "title": "Seite nicht gefunden",
