@@ -40,7 +40,13 @@ export function usePushNotifications() {
 			if (data?.type === "feedback" && data?.session_id) {
 				router.push(`/activities/${data.session_id}` as any);
 			} else if (data?.type === "daily_overview") {
-				router.push("/" as any);
+				if (data.overview_type === "no_training") {
+					router.push("/chat" as any);
+				} else if (data.overview_type === "training" && data.workout_id) {
+					router.push(`/workouts/${data.workout_id}` as any);
+				} else {
+					router.push("/" as any);
+				}
 			}
 		}
 	}, [lastResponse, user?.id, router]);

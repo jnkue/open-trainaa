@@ -18,6 +18,45 @@ from api.services.workout_sync import get_sync_service
 from api.training_status import calculate_training_status_all_users
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
+
+# i18n strings for daily overview push notifications
+_DAILY_OVERVIEW_I18N = {
+    "en": {
+        "title": "Today's Plan",
+        "no_training": "We haven't planned your training yet — ask your trainer!",
+        "rest_day": "Today: Rest Day. Enjoy your recovery!",
+        "today": "Today",
+        "workouts_planned": "workout(s) planned",
+    },
+    "de": {
+        "title": "Dein Tagesplan",
+        "no_training": "Dein Training ist noch nicht geplant — frag deinen Trainer!",
+        "rest_day": "Heute: Ruhetag. Genieße die Erholung!",
+        "today": "Heute",
+        "workouts_planned": "Training(s) geplant",
+    },
+    "es": {
+        "title": "Tu plan de hoy",
+        "no_training": "Tu entrenamiento aún no está planificado — pregunta a tu entrenador!",
+        "rest_day": "Hoy: Día de descanso. Disfruta tu recuperación!",
+        "today": "Hoy",
+        "workouts_planned": "entrenamiento(s) planificado(s)",
+    },
+    "fr": {
+        "title": "Ton plan du jour",
+        "no_training": "Ton entraînement n'est pas encore prévu — demande à ton coach !",
+        "rest_day": "Aujourd'hui : Jour de repos. Profite de ta récupération !",
+        "today": "Aujourd'hui",
+        "workouts_planned": "entraînement(s) prévu(s)",
+    },
+}
+
+
+def _get_i18n(lang: str) -> dict:
+    """Get i18n strings for a language, falling back to English."""
+    return _DAILY_OVERVIEW_I18N.get(lang, _DAILY_OVERVIEW_I18N["en"])
+
+
 from apscheduler.triggers.interval import IntervalTrigger
 
 
@@ -88,8 +127,12 @@ def _is_target_hour_in_timezone(timezone_str: str, target_hour: int = 6) -> bool
         return False
 
 
-def _generate_daily_overview(user_id: str, timezone_str: str) -> dict | None:
+def _generate_daily_overview(
+    user_id: str, timezone_str: str, lang: str = "en"
+) -> dict | None:
     """Generate a brief overview of today's training plan for a user."""
+    i18n = _get_i18n(lang)
+
     try:
         tz = pytz.timezone(timezone_str)
         today = datetime.now(tz).date().isoformat()
@@ -106,48 +149,58 @@ def _generate_daily_overview(user_id: str, timezone_str: str) -> dict | None:
         .execute()
     )
 
-    status = (
-        supabase.table("training_status")
-        .select("fitness, fatigue, form")
-        .eq("user_id", user_id)
-        .order("date", desc=True)
-        .limit(1)
-        .execute()
-    )
-
     workout_count = len(workouts.data) if workouts.data else 0
 
-    if workout_count == 0 and not status.data:
-        return None
+    if workout_count == 0:
+        # Case 1: No training planned
+        return {
+            "title": i18n["title"],
+            "body": i18n["no_training"],
+            "data": {"type": "daily_overview", "overview_type": "no_training"},
+        }
 
-    parts = []
-    if workout_count > 0:
-        workout_names = [
-            w["workouts"]["name"]
-            for w in workouts.data
-            if w.get("workouts") and w["workouts"].get("name")
-        ]
-        if workout_names:
-            parts.append(f"Today: {', '.join(workout_names[:3])}")
-        else:
-            parts.append(f"{workout_count} workout(s) planned")
+    # Separate real workouts from rest days
+    real_workouts = [
+        w for w in workouts.data if w.get("workouts", {}).get("sport") != "rest_day"
+    ]
+    rest_workouts = [
+        w for w in workouts.data if w.get("workouts", {}).get("sport") == "rest_day"
+    ]
+
+    if not real_workouts and rest_workouts:
+        # Case 2: Rest day
+        return {
+            "title": i18n["title"],
+            "body": i18n["rest_day"],
+            "data": {"type": "daily_overview", "overview_type": "rest_day"},
+        }
+
+    # Case 3: Training planned
+    workout_names = [
+        w["workouts"]["name"]
+        for w in real_workouts
+        if w.get("workouts") and w["workouts"].get("name")
+    ]
+    first_workout_id = (
+        str(real_workouts[0].get("workout_id")) if real_workouts else None
+    )
+
+    if workout_names:
+        body = f"{i18n['today']}: {', '.join(workout_names[:3])}"
     else:
-        parts.append("Rest day - no workouts planned")
+        body = f"{len(real_workouts)} {i18n['workouts_planned']}"
 
-    if status.data:
-        s = status.data[0]
-        form_val = s.get("form", 0)
-        if form_val is not None:
-            if form_val > 10:
-                parts.append("Form: Fresh")
-            elif form_val > -10:
-                parts.append("Form: Balanced")
-            else:
-                parts.append("Form: Fatigued")
+    data = {
+        "type": "daily_overview",
+        "overview_type": "training",
+    }
+    if first_workout_id:
+        data["workout_id"] = first_workout_id
 
     return {
-        "title": "Training Overview",
-        "body": " | ".join(parts),
+        "title": i18n["title"],
+        "body": body,
+        "data": data,
     }
 
 
@@ -163,7 +216,7 @@ def run_daily_overview_notifications():
 
         users = (
             supabase.table("user_infos")
-            .select("user_id, timezone")
+            .select("user_id, timezone, language")
             .eq("push_notification_daily_overview", True)
             .execute()
         )
@@ -175,20 +228,20 @@ def run_daily_overview_notifications():
         for user_row in users.data:
             user_id = user_row["user_id"]
             timezone_str = user_row.get("timezone") or "UTC"
+            lang = user_row.get("language") or "en"
 
-            ### Deactivated for debugging
-            # if not _is_target_hour_in_timezone(timezone_str, target_hour=6):
-            #   continue
+            if not _is_target_hour_in_timezone(timezone_str, target_hour=6):
+                continue
 
             try:
-                overview = _generate_daily_overview(user_id, timezone_str)
+                overview = _generate_daily_overview(user_id, timezone_str, lang)
                 if overview:
                     asyncio.run(
                         send_push_notification(
                             user_id=user_id,
                             title=overview["title"],
                             body=overview["body"],
-                            data={"type": "daily_overview"},
+                            data=overview.get("data", {"type": "daily_overview"}),
                         )
                     )
                     sent_count += 1
@@ -239,10 +292,9 @@ def start_scheduler():
         )
 
         # Add the daily overview notification job (runs hourly, filters by user timezone)
-        # just for debugging every 5 minutes
         scheduler.add_job(
             func=run_daily_overview_notifications,
-            trigger=IntervalTrigger(minutes=5),
+            trigger=IntervalTrigger(hours=1),
             id="daily_overview_notifications",
             name="Daily Training Overview Notifications",
             replace_existing=True,
