@@ -294,7 +294,7 @@ def start_scheduler():
         # Add the daily overview notification job (runs hourly, filters by user timezone)
         scheduler.add_job(
             func=run_daily_overview_notifications,
-            trigger=IntervalTrigger(hours=1),
+            trigger=IntervalTrigger(minutes=2),
             id="daily_overview_notifications",
             name="Daily Training Overview Notifications",
             replace_existing=True,
