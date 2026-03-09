@@ -230,7 +230,10 @@
     "sectionIntegrations": "Integraciones",
     "sectionSubscription": "Suscripción",
     "sectionAdvanced": "Avanzado",
-    "sectionPrivacy": "Privacidad"
+    "sectionPrivacy": "Privacidad",
+    "timezoneLabel": "Zona horaria",
+    "timezoneDescription": "Se usa para el horario de la notificación diaria",
+    "timezoneSearchPlaceholder": "Buscar zonas horarias..."
   },
   "notifications": {
     "title": "Notificaciones",

@@ -138,7 +138,6 @@ function NavigationGuard({children}: {children: React.ReactNode}) {
 }
 
 function PushNotificationRegistration() {
-	const {user} = useAuth();
 	usePushNotifications();
 	return null;
 }
@@ -186,12 +185,12 @@ function AppContent() {
 									</Stack>
 
 									<StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+									<PushNotificationRegistration />
 
 								</NavigationThemeProvider>
 							</NavigationGuard>
 						</RevenueCatProvider>
 						<AnalyticsConsentWrapper />
-						<PushNotificationRegistration />
 					</AuthProvider>
 				</QueryClientProvider>
 			</SafeAreaProvider>

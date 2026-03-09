@@ -230,7 +230,10 @@
     "sectionIntegrations": "Intégrations",
     "sectionSubscription": "Abonnement",
     "sectionAdvanced": "Avancé",
-    "sectionPrivacy": "Confidentialité"
+    "sectionPrivacy": "Confidentialité",
+    "timezoneLabel": "Fuseau horaire",
+    "timezoneDescription": "Utilisé pour l'heure de la notification quotidienne",
+    "timezoneSearchPlaceholder": "Rechercher des fuseaux horaires..."
   },
   "notifications": {
     "title": "Notifications",

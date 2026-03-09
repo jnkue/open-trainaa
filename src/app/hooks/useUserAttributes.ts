@@ -22,7 +22,7 @@ export function useUserAttributes() {
 
 			const { data, error } = await apiClient.supabase
 				.from("user_infos")
-				.select("max_heart_rate, threshold_heart_rate, functional_threshold_power, run_threshold_pace, weight_kg, height_cm, automatic_calculation_mode, language, post_feedback_to_strava, push_notification_feedback, push_notification_daily_overview")
+				.select("max_heart_rate, threshold_heart_rate, functional_threshold_power, run_threshold_pace, weight_kg, height_cm, automatic_calculation_mode, language, timezone, post_feedback_to_strava, push_notification_feedback, push_notification_daily_overview")
 				.eq("user_id", user.id)
 				.maybeSingle();
 
@@ -39,6 +39,7 @@ export function useUserAttributes() {
 				attrs.automatic_calculation_mode = data.automatic_calculation_mode ?? true; // default to true
 				attrs.language = data.language ?? "en"; // default to English
 				attrs.post_feedback_to_strava = data.post_feedback_to_strava ?? false; // default to false
+				attrs.timezone = data.timezone ?? Intl.DateTimeFormat().resolvedOptions().timeZone;
 				attrs.push_notification_feedback = data.push_notification_feedback ?? false;
 				attrs.push_notification_daily_overview = data.push_notification_daily_overview ?? false;
 			}
