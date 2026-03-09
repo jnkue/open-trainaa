@@ -6,8 +6,8 @@ for the use of **trainaa.com** services
 
 These Terms and Conditions (Terms) apply to all contracts and uses of the mobile application **trainaa.com** (hereinafter "App") between the operator
 **Janik Uellendahl**
-Hofmühlstraße 6
-85072 Eichstätt
+Thersienstr. 8
+94032 Passau
 (hereinafter "Provider" or "we") and the users of the App (hereinafter "User" or "You").
 Deviating conditions of the User are not recognized unless the Provider expressly agrees to their validity in writing.
 The Terms of Use apply upon registration in the App, regardless of whether it is used free of charge or for a fee.
@@ -113,7 +113,7 @@ These Terms apply from September 27, 2025.
 
 ## Sample Withdrawal Form
 
-– To: Janik Uellendahl, Hofmühlstraße 6, 85072 Eichstätt, Email: <support@trainaa.com>
+– To: Janik Uellendahl, Thersienstr. 8 , 94032 Passau, Email: <support@trainaa.com>
 – I hereby revoke the contract I concluded for the subscription to the App trainaa.com.
 – Ordered on: [Date]
 – Name of consumer: [Name]

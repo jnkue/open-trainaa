@@ -6,8 +6,8 @@ für die Nutzung der Dienste **trainaa**
 
 Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge und Nutzungen der mobilen Applikation **trainaa** (nachfolgend „App“) zwischen dem Betreiber
 **Janik Uellendahl**
-Hofmühlstraße 6
-85072 Eichstätt
+Thersienstr. 8
+94032 Passau
 (nachfolgend „Anbieter“ oder „wir“) und den Nutzern der App (nachfolgend „Nutzer“ oder „Sie“).
 Abweichende Bedingungen des Nutzers werden nicht anerkannt, es sei denn, der Anbieter stimmt ihrer Geltung ausdrücklich schriftlich zu.
 Die Nutzungsbedigungen gelten mit der Regestrierung in der App unabgänig ob sie kostenfrei oder entgeltlich verwendet wird.
@@ -114,7 +114,7 @@ Das Muster-Widerrufsformular finden Sie untenstehend.
 Diese AGB gelten ab dem 27.09.2025.
 
 ## Muster-Widerrufsformular
-– An: Janik Uellendahl, Hofmühlstraße 6, 85072 Eichstätt, E-Mail: support@trainaa.com
+– An: Janik Uellendahl, Thersienstr. 8, 94032 Passau, E-Mail: support@trainaa.com
 – Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über das Abonnement der App trainaa.com.
 – Bestellt am: [Datum]
 – Name des Verbrauchers: [Name]
