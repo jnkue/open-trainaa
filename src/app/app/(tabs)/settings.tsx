@@ -7,8 +7,6 @@ import {AccountSection} from "@/components/AccountSection";
 import {SubscriptionSection} from "@/components/SubscriptionSection";
 import {AnalyticsSettingsSection} from "@/components/settings/AnalyticsSettingsSection";
 import {ApiKeySection} from "@/components/settings/ApiKeySection";
-import {NotificationSettingsSection} from "@/components/settings/NotificationSettingsSection";
-import {TimezoneSettingsSection} from "@/components/settings/TimezoneSettingsSection";
 
 import {useTranslation} from "react-i18next";
 
@@ -38,11 +36,6 @@ export default function SettingsScreen() {
 					{/* Account */}
 					<SectionGroupHeader title={t("settings.sectionAccount")} />
 					<UserInfoSection />
-
-					{/* Notifications */}
-					<SectionGroupHeader title={t("settings.sectionNotifications")} />
-					<NotificationSettingsSection />
-					<TimezoneSettingsSection />
 
 					{/* Training */}
 					<SectionGroupHeader title={t("settings.sectionTraining")} />

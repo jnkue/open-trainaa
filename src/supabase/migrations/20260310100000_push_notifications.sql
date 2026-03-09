@@ -3,8 +3,8 @@
 
 -- 1. Add notification preference columns to user_infos
 ALTER TABLE public.user_infos
-ADD COLUMN IF NOT EXISTS push_notification_feedback BOOLEAN DEFAULT FALSE,
-ADD COLUMN IF NOT EXISTS push_notification_daily_overview BOOLEAN DEFAULT FALSE;
+ADD COLUMN IF NOT EXISTS push_notification_feedback BOOLEAN DEFAULT TRUE,
+ADD COLUMN IF NOT EXISTS push_notification_daily_overview BOOLEAN DEFAULT TRUE;
 
 COMMENT ON COLUMN public.user_infos.push_notification_feedback IS
   'Whether to send push notification when AI feedback is generated for a ride. Default FALSE.';

@@ -8,7 +8,7 @@ Also handles daily overview push notifications.
 
 import asyncio
 import os
-from datetime import datetime, date
+from datetime import date, datetime
 
 import pytz
 from api.database import supabase
@@ -176,8 +176,9 @@ def run_daily_overview_notifications():
             user_id = user_row["user_id"]
             timezone_str = user_row.get("timezone") or "UTC"
 
-            if not _is_target_hour_in_timezone(timezone_str, target_hour=6):
-                continue
+            ### Deactivated for debugging
+            # if not _is_target_hour_in_timezone(timezone_str, target_hour=6):
+            #   continue
 
             try:
                 overview = _generate_daily_overview(user_id, timezone_str)
@@ -192,9 +193,7 @@ def run_daily_overview_notifications():
                     )
                     sent_count += 1
             except Exception as e:
-                LOGGER.warning(
-                    f"Failed to send daily overview to user {user_id}: {e}"
-                )
+                LOGGER.warning(f"Failed to send daily overview to user {user_id}: {e}")
 
         if sent_count > 0:
             LOGGER.info(f"Daily overview sent to {sent_count} users")
@@ -240,9 +239,10 @@ def start_scheduler():
         )
 
         # Add the daily overview notification job (runs hourly, filters by user timezone)
+        # just for debugging every 5 minutes
         scheduler.add_job(
             func=run_daily_overview_notifications,
-            trigger=IntervalTrigger(hours=1),
+            trigger=IntervalTrigger(minutes=5),
             id="daily_overview_notifications",
             name="Daily Training Overview Notifications",
             replace_existing=True,

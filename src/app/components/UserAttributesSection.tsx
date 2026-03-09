@@ -242,23 +242,21 @@ export function UserAttributesSection() {
 	}
 
 	return (
-		<SettingsSection title={t("userAttributes.title")} description={t("userAttributes.description")}>
-			<View className="flex-row items-center justify-between mb-4">
-				<View className="flex-1">
-					{/* Header content moved to SettingsSection props */}
+		<SettingsSection
+			title={t("userAttributes.title")}
+			description={t("userAttributes.description")}
+			rightElement={performanceSectionEnabled ? (
+				<View className="flex-row items-center">
+					{isSwitchLoading && (
+						<ActivityIndicator size="small" className="text-primary mr-2" />
+					)}
+					<Text className="text-sm text-muted-foreground mr-2">
+						{isAutomaticMode ? t("userAttributes.automatic") : t("userAttributes.manual")}
+					</Text>
+					<Switch checked={isAutomaticMode} onCheckedChange={setIsAutomaticMode} disabled={isSwitchLoading} />
 				</View>
-				{performanceSectionEnabled && (
-					<View className="flex-row items-center absolute right-0 -top-12">
-						{isSwitchLoading && (
-							<ActivityIndicator size="small" className="text-primary mr-2" />
-						)}
-						<Text className="text-sm text-muted-foreground mr-2">
-							{isAutomaticMode ? t("userAttributes.automatic") : t("userAttributes.manual")}
-						</Text>
-						<Switch checked={isAutomaticMode} onCheckedChange={setIsAutomaticMode} disabled={isSwitchLoading} />
-					</View>
-				)}
-			</View>
+			) : undefined}
+		>
 			{performanceSectionEnabled ? (
 				<>{renderFieldGroup("Performance-Parameter", performanceFields)}</>
 			) : (
