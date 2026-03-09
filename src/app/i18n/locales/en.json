@@ -237,11 +237,14 @@
     "sectionIntegrations": "Integrations",
     "sectionSubscription": "Subscription",
     "sectionAdvanced": "Advanced",
-    "sectionPrivacy": "Privacy"
+    "sectionPrivacy": "Privacy",
+    "timezoneLabel": "Timezone",
+    "timezoneDescription": "Used for daily notification timing",
+    "timezoneSearchPlaceholder": "Search timezones..."
   },
   "notifications": {
     "title": "Notifications",
-    "feedbackLabel": "Ride Feedback",
+    "feedbackLabel": "Feedback",
     "feedbackDescription": "Get notified when AI feedback is generated for your rides",
     "dailyOverviewLabel": "Daily Overview",
     "dailyOverviewDescription": "Receive a morning summary of today's planned workouts and training status"

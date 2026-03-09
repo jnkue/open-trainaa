@@ -129,7 +129,7 @@ async def send_feedback_notification(
 
     await send_push_notification(
         user_id=user_id,
-        title="Ride Feedback",
+        title="Trainer Feedback",
         body=truncated,
         data={"type": "feedback", "session_id": session_id},
     )

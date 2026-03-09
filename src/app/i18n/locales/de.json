@@ -192,7 +192,10 @@
     "sectionIntegrations": "Integrationen",
     "sectionSubscription": "Abonnement",
     "sectionAdvanced": "Erweitert",
-    "sectionPrivacy": "Datenschutz"
+    "sectionPrivacy": "Datenschutz",
+    "timezoneLabel": "Zeitzone",
+    "timezoneDescription": "Wird für den Versandzeitpunkt der täglichen Benachrichtigung verwendet",
+    "timezoneSearchPlaceholder": "Zeitzonen suchen..."
   },
   "notifications": {
     "title": "Benachrichtigungen",

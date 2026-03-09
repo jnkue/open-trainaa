@@ -3,7 +3,6 @@ import { Platform } from "react-native";
 import * as Notifications from "expo-notifications";
 import * as Device from "expo-device";
 import { useAuth } from "@/contexts/AuthContext";
-import { apiClient } from "@/services/api";
 import { useRouter } from "expo-router";
 
 Notifications.setNotificationHandler({
@@ -11,6 +10,8 @@ Notifications.setNotificationHandler({
 		shouldShowAlert: true,
 		shouldPlaySound: true,
 		shouldSetBadge: false,
+		shouldShowBanner: true,
+		shouldShowList: true,
 	}),
 });
 
@@ -18,10 +19,33 @@ export function usePushNotifications() {
 	const { user, session } = useAuth();
 	const router = useRouter();
 	const notificationListener = useRef<Notifications.EventSubscription>();
-	const responseListener = useRef<Notifications.EventSubscription>();
+	const lastHandledId = useRef<string | null>(null);
+
+	// Handle cold start + background tap via the recommended hook
+	const lastResponse = Notifications.useLastNotificationResponse();
+
+	useEffect(() => {
+		if (!lastResponse || !user?.id) return;
+
+		const responseId = lastResponse.notification.request.identifier;
+		if (lastHandledId.current === responseId) return;
+		lastHandledId.current = responseId;
+
+		const data = lastResponse.notification.request.content.data;
+
+		if (
+			lastResponse.actionIdentifier ===
+			Notifications.DEFAULT_ACTION_IDENTIFIER
+		) {
+			if (data?.type === "feedback" && data?.session_id) {
+				router.push(`/activities/${data.session_id}` as any);
+			} else if (data?.type === "daily_overview") {
+				router.push("/" as any);
+			}
+		}
+	}, [lastResponse, user?.id, router]);
 
 	const registerForPushNotifications = useCallback(async () => {
-		if (Platform.OS === "web") return null;
 		if (!Device.isDevice) {
 			console.log("Push notifications require a physical device");
 			return null;
@@ -106,38 +130,12 @@ export function usePushNotifications() {
 				console.log("Notification received:", notification);
 			});
 
-		responseListener.current =
-			Notifications.addNotificationResponseReceivedListener(
-				(response) => {
-					const data =
-						response.notification.request.content.data;
-
-					if (data?.type === "feedback" && data?.session_id) {
-						router.push(
-							`/(tabs)/activities/${data.session_id}` as any
-						);
-					} else if (data?.type === "daily_overview") {
-						router.push("/(tabs)" as any);
-					}
-				}
-			);
-
 		return () => {
-			if (notificationListener.current) {
-				Notifications.removeNotificationSubscription(
-					notificationListener.current
-				);
-			}
-			if (responseListener.current) {
-				Notifications.removeNotificationSubscription(
-					responseListener.current
-				);
-			}
+			notificationListener.current?.remove();
 		};
 	}, [
 		user?.id,
 		registerForPushNotifications,
 		registerTokenWithBackend,
-		router,
 	]);
 }
