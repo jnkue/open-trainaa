@@ -10,10 +10,7 @@ export function ProviderIntegrationsSection() {
 	const {t} = useTranslation();
 
 	return (
-		<SettingsSection 
-			title={t("settings.integrations")} 
-			description="Sync your activities and workouts"
-		>
+		<SettingsSection>
 			{/* Strava */}
 			{/*<StravaIntegration /> */}
 

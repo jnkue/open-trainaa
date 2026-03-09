@@ -230,7 +230,21 @@
     "manageSubscriptionAppStore": "You have an App Store subscription. To cancel it, go to Settings > [Your Name] > Subscriptions on your iPhone.",
     "manageSubscriptionPlayStore": "You have a Play Store subscription. To cancel it, open the Google Play Store app and go to Menu > Subscriptions.",
     "dangerZone": "Danger Zone",
-    "dangerZoneWarning": "Once you delete your account, there is no going back. Please be certain."
+    "dangerZoneWarning": "Once you delete your account, there is no going back. Please be certain.",
+    "sectionAccount": "Account",
+    "sectionNotifications": "Notifications",
+    "sectionTraining": "Training",
+    "sectionIntegrations": "Integrations",
+    "sectionSubscription": "Subscription",
+    "sectionAdvanced": "Advanced",
+    "sectionPrivacy": "Privacy"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "feedbackLabel": "Ride Feedback",
+    "feedbackDescription": "Get notified when AI feedback is generated for your rides",
+    "dailyOverviewLabel": "Daily Overview",
+    "dailyOverviewDescription": "Receive a morning summary of today's planned workouts and training status"
   },
   "integrations": {
     "strava": {

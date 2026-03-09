@@ -19,6 +19,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     supportsTablet: false,
     infoPlist: {
       ITSAppUsesNonExemptEncryption: false,
+      UIBackgroundModes: ["remote-notification"],
     },
     icon: "./assets/AppIcon.icon",
   },
@@ -86,6 +87,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     ],
     "./plugins/withReactNativeShare.js",
     "@react-native-community/datetimepicker",
+    [
+      "expo-notifications",
+      {
+        icon: "./assets/images/AppIcon.png",
+        color: "#000000",
+      },
+    ],
     [
     "@react-native-google-signin/google-signin",
     {

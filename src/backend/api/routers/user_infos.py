@@ -50,6 +50,8 @@ class UserAttributesBase(BaseModel):
     analytics_consent: Optional[bool] = (
         None  # NULL = not asked, TRUE = consented, FALSE = declined
     )
+    push_notification_feedback: bool = False
+    push_notification_daily_overview: bool = False
 
 
 class UserAttributesCreate(UserAttributesBase):

@@ -22,7 +22,7 @@ export function useUserAttributes() {
 
 			const { data, error } = await apiClient.supabase
 				.from("user_infos")
-				.select("max_heart_rate, threshold_heart_rate, functional_threshold_power, run_threshold_pace, weight_kg, height_cm, automatic_calculation_mode, language, post_feedback_to_strava")
+				.select("max_heart_rate, threshold_heart_rate, functional_threshold_power, run_threshold_pace, weight_kg, height_cm, automatic_calculation_mode, language, post_feedback_to_strava, push_notification_feedback, push_notification_daily_overview")
 				.eq("user_id", user.id)
 				.maybeSingle();
 
@@ -39,6 +39,8 @@ export function useUserAttributes() {
 				attrs.automatic_calculation_mode = data.automatic_calculation_mode ?? true; // default to true
 				attrs.language = data.language ?? "en"; // default to English
 				attrs.post_feedback_to_strava = data.post_feedback_to_strava ?? false; // default to false
+				attrs.push_notification_feedback = data.push_notification_feedback ?? false;
+				attrs.push_notification_daily_overview = data.push_notification_daily_overview ?? false;
 			}
 			return attrs;
 		},
@@ -54,7 +56,7 @@ export function useUserAttributes() {
 			let processedValue = value;
 			if (["max_heart_rate", "threshold_heart_rate", "functional_threshold_power", "weight_kg", "height_cm"].includes(key)) {
 				processedValue = value ? Number(value) : null;
-			} else if (key === "automatic_calculation_mode" || key === "post_feedback_to_strava") {
+			} else if (key === "automatic_calculation_mode" || key === "post_feedback_to_strava" || key === "push_notification_feedback" || key === "push_notification_daily_overview") {
 				processedValue = Boolean(value);
 			}
 

@@ -7,8 +7,17 @@ import {AccountSection} from "@/components/AccountSection";
 import {SubscriptionSection} from "@/components/SubscriptionSection";
 import {AnalyticsSettingsSection} from "@/components/settings/AnalyticsSettingsSection";
 import {ApiKeySection} from "@/components/settings/ApiKeySection";
+import {NotificationSettingsSection} from "@/components/settings/NotificationSettingsSection";
 
 import {useTranslation} from "react-i18next";
+
+function SectionGroupHeader({title}: {title: string}) {
+	return (
+		<Text className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-2 mb-2 mt-6">
+			{title}
+		</Text>
+	);
+}
 
 export default function SettingsScreen() {
 	const {t} = useTranslation();
@@ -25,17 +34,35 @@ export default function SettingsScreen() {
 			<ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
 				<View className="max-w-3xl xl:max-w-7xl mx-auto w-full p-4 md:p-6">
 
-					{/* Profile & Subscriptions */}
+					{/* Account */}
+					<SectionGroupHeader title={t("settings.sectionAccount")} />
 					<UserInfoSection />
+
+					{/* Notifications */}
+					<SectionGroupHeader title={t("settings.sectionNotifications")} />
+					<NotificationSettingsSection />
+
+					{/* Training */}
+					<SectionGroupHeader title={t("settings.sectionTraining")} />
+					<UserAttributesSection />
+
+					{/* Integrations */}
+					<SectionGroupHeader title={t("settings.sectionIntegrations")} />
+					<ProviderIntegrationsSection />
+
+					{/* Subscription */}
+					<SectionGroupHeader title={t("settings.sectionSubscription")} />
 					<SubscriptionSection />
+
+					{/* Advanced */}
+					<SectionGroupHeader title={t("settings.sectionAdvanced")} />
 					<ApiKeySection />
 
-					{/* Integrations & Data */}
-					<ProviderIntegrationsSection />
-					<UserAttributesSection />
+					{/* Privacy */}
+					<SectionGroupHeader title={t("settings.sectionPrivacy")} />
 					<AnalyticsSettingsSection />
 
-					{/* Account Management */}
+					{/* About & Account Management */}
 					<AccountSection />
 				</View>
 			</ScrollView>
