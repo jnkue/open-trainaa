@@ -4,8 +4,8 @@
 Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:
 
 Janik Uellendahl
-Hofmühlstraße 6
-85072 Eichstätt
+Thersienstr. 8
+94032 Passsau
 E-Mail: info@trainaa.com
 
 Diese Datenschutzerklärung gilt für die Nutzung der mobilen Applikation **trainaa.com** (nachfolgend „App"), sowie der Webseite **trainaa.com** (nachfolgend „Webseite"), und informiert die Nutzer (nachfolgend „Nutzer" oder „Sie") über die Art, den Umfang und den Zweck der Erhebung und Verwendung personenbezogener Daten durch den Anbieter (nachfolgend „Anbieter" oder „wir").
@@ -314,13 +314,13 @@ Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets de
 
 Die aktuelle Datenschutzerklärung kann jederzeit in der App und auf der Webseite abgerufen werden.
 
-**Stand: 27.09.2025** 
+**Stand: 09.03.2026** 
 
 ## 14. Kontakt zum Datenschutz
 
 Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten, bei Auskünften, Berichtigung, Sperrung oder Löschung von Daten sowie Widerruf erteilter Einwilligungen wenden Sie sich bitte an:
 
 Janik Uellendahl
-Hofmühlstraße 6
-85072 Eichstätt
+Theresienstr. 8
+94032 Passau
 E-Mail: info@trainaa.com

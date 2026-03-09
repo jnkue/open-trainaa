@@ -4,8 +4,8 @@
 The controller within the meaning of data protection laws, in particular the EU General Data Protection Regulation (GDPR), is:
 
 Janik Uellendahl
-Hofmühlstraße 6
-85072 Eichstätt
+Thersienstr. 8
+94032 Passau
 Email: info@trainaa.com
 
 This privacy policy applies to the use of the mobile application **TRAINAA** (hereinafter "App"), as well as the website **trainaa.com** (hereinafter "Website"), and informs users (hereinafter "Users" or "You") about the nature, scope, and purpose of the collection and use of personal data by the provider (hereinafter "Provider" or "we").
@@ -305,13 +305,13 @@ We reserve the right to adapt this privacy policy so that it always complies wit
 
 The current privacy policy can be accessed at any time in the App and on the Website.
 
-**Last updated: September 27, 2025**
+**Last updated: March 09 20226**
 
 ## 14. Contact for Data Protection
 
 If you have questions about the collection, processing, or use of your personal data, for information, rectification, blocking, or deletion of data, as well as revocation of consents given, please contact:
 
 Janik Uellendahl
-Hofmühlstraße 6
-85072 Eichstätt
+Theresienstr. 8
+94032 Passau
 Email: info@trainaa.com
