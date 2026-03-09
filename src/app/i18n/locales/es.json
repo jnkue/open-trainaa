@@ -223,7 +223,21 @@
     "manageSubscriptionAppStore": "Tienes una suscripción del App Store. Para cancelarla, ve a Configuración > [Tu nombre] > Suscripciones en tu iPhone.",
     "manageSubscriptionPlayStore": "Tienes una suscripción de Play Store. Para cancelarla, abre la app de Google Play Store y ve a Menú > Suscripciones.",
     "dangerZone": "Zona de peligro",
-    "dangerZoneWarning": "Una vez que elimines tu cuenta, no hay vuelta atrás. Por favor asegúrate."
+    "dangerZoneWarning": "Una vez que elimines tu cuenta, no hay vuelta atrás. Por favor asegúrate.",
+    "sectionAccount": "Cuenta",
+    "sectionNotifications": "Notificaciones",
+    "sectionTraining": "Entrenamiento",
+    "sectionIntegrations": "Integraciones",
+    "sectionSubscription": "Suscripción",
+    "sectionAdvanced": "Avanzado",
+    "sectionPrivacy": "Privacidad"
+  },
+  "notifications": {
+    "title": "Notificaciones",
+    "feedbackLabel": "Feedback de entrenamiento",
+    "feedbackDescription": "Recibe una notificación cuando se genere feedback de IA para tus entrenamientos",
+    "dailyOverviewLabel": "Resumen diario",
+    "dailyOverviewDescription": "Recibe un resumen matutino de los entrenamientos planificados y tu estado de entrenamiento"
   },
   "integrations": {
     "strava": {

@@ -6,6 +6,7 @@ from uuid import UUID
 from agent.feedback_agent import give_feedback
 from api.database import supabase
 from api.log import LOGGER
+from api.services.push_notifications import send_feedback_notification
 from api.training_status import calculate_training_status, date_needs_update
 from dotenv import load_dotenv
 
@@ -615,6 +616,17 @@ async def post_processing_of_session(session_id):
         await post_feedback_to_strava(
             user_id, custom_data_id, session_id, result["feedback"]
         )
+
+    # STEP 5: Send push notification with feedback (if user has it enabled)
+    if result and result.get("success") and result.get("feedback"):
+        try:
+            await send_feedback_notification(
+                user_id=user_id,
+                feedback_text=result["feedback"],
+                session_id=str(session_id),
+            )
+        except Exception as e:
+            LOGGER.warning(f"Failed to send feedback push notification: {e}")
 
     LOGGER.info(f"✅ Completed post-processing for session {session_id}")
     return

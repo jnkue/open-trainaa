@@ -34,6 +34,7 @@ from api.routers.user_feedback import router as user_feedback_router
 from api.routers.user_infos import router as user_infos_router
 from api.routers.subscriptions import router as subscriptions_router
 from api.routers.revenuecat_webhook import router as revenuecat_webhook_router
+from api.routers.push_tokens import router as push_tokens_router
 from api.routers.stripe_billing import router as stripe_billing_router
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
@@ -301,6 +302,7 @@ app.include_router(subscriptions_router)  # Subscriptions: /subscriptions/
 app.include_router(
     revenuecat_webhook_router
 )  # RevenueCat webhooks: /webhooks/revenuecat/
+app.include_router(push_tokens_router)  # Push tokens: /push-tokens/
 app.include_router(stripe_billing_router)  # Stripe billing: /stripe/
 
 
