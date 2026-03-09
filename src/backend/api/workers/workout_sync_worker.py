@@ -230,8 +230,8 @@ def run_daily_overview_notifications():
             timezone_str = user_row.get("timezone") or "UTC"
             lang = user_row.get("language") or "en"
 
-            if not _is_target_hour_in_timezone(timezone_str, target_hour=6):
-                continue
+            # if not _is_target_hour_in_timezone(timezone_str, target_hour=6):
+            #    continue
 
             try:
                 overview = _generate_daily_overview(user_id, timezone_str, lang)
