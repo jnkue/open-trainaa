@@ -9,15 +9,17 @@ import {Button, Input, Text} from "@/components/ui";
 import {useTranslation} from "react-i18next";
 import {Eye, EyeOff, Languages, Moon, Sun} from "lucide-react-native";
 import {GoogleIcon} from "@/components/icons/GoogleIcon";
+import {AppleIcon} from "@/components/icons/AppleIcon";
 
 export default function LoginScreen() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [googleLoading, setGoogleLoading] = useState(false);
+	const [appleLoading, setAppleLoading] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const [errors, setErrors] = useState<{email?: string; password?: string; general?: string}>({});
-	const {signIn, signInWithGoogle} = useAuth();
+	const {signIn, signInWithGoogle, signInWithApple} = useAuth();
 	const {isDark, theme, setTheme} = useTheme();
 	const {currentLanguage, availableLanguages, changeLanguage} = useLanguage();
 	const {t} = useTranslation();
@@ -103,6 +105,29 @@ export default function LoginScreen() {
 		}
 	};
 
+	const handleAppleSignIn = async () => {
+		setErrors({});
+		setAppleLoading(true);
+		try {
+			await signInWithApple();
+			if (Platform.OS === "web") {
+				router.push("/");
+			} else {
+				router.push("/chat");
+			}
+		} catch (error: any) {
+			console.error("Apple sign-in error:", error);
+			if (error.code === "CANCELLED") return;
+			if (error.code === "UNAVAILABLE") {
+				setErrors({general: t("auth.appleSignInUnavailable")});
+			} else {
+				setErrors({general: t("auth.appleSignInError")});
+			}
+		} finally {
+			setAppleLoading(false);
+		}
+	};
+
 	const handleLogin = async () => {
 		// Clear previous errors
 		setErrors({});
@@ -182,7 +207,7 @@ export default function LoginScreen() {
 									<Button
 										variant="outline"
 										onPress={handleGoogleSignIn}
-										disabled={googleLoading || loading}
+										disabled={googleLoading || appleLoading || loading}
 										className="h-12 flex-row items-center justify-center gap-3"
 									>
 										{googleLoading ? (
@@ -194,6 +219,25 @@ export default function LoginScreen() {
 											</View>
 										)}
 									</Button>
+
+									{/* Apple Sign-In (iOS only) */}
+									{Platform.OS !== "android" && (
+										<Button
+											variant="outline"
+											onPress={handleAppleSignIn}
+											disabled={appleLoading || googleLoading || loading}
+											className="h-12 flex-row items-center justify-center gap-3"
+										>
+											{appleLoading ? (
+												<ActivityIndicator color={isDark ? "#ffffff" : "#000000"} />
+											) : (
+												<View className="flex-row items-center justify-center gap-3">
+													<AppleIcon size={20} color={isDark ? "#ffffff" : "#000000"} />
+													<Text className="text-foreground font-medium">{t("auth.continueWithApple")}</Text>
+												</View>
+											)}
+										</Button>
+									)}
 
 									{/* Divider */}
 									<View className="flex-row items-center">

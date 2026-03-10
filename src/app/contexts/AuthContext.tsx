@@ -12,6 +12,7 @@ interface AuthContextType {
 	signIn: (email: string, password: string) => Promise<void>;
 	signUp: (email: string, password: string) => Promise<void>;
 	signInWithGoogle: () => Promise<void>;
+	signInWithApple: () => Promise<void>;
 	signOut: () => Promise<void>;
 	refreshSession: () => Promise<void>;
 	resetPassword: (email: string) => Promise<void>;
@@ -164,6 +165,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
 		}
 	};
 
+	const signInWithApple = async () => {
+		setLoading(true);
+		try {
+			const result = await apiClient.signInWithApple();
+			if (result?.error) {
+				throw result.error;
+			}
+			if (result?.data?.user) {
+				await ensureUserInfoExists(result.data.user.id);
+			}
+		} catch (error) {
+			setLoading(false);
+			throw error;
+		}
+	};
+
 	const signOut = async () => {
 		setLoading(true);
 		try {
@@ -265,6 +282,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
 		signIn,
 		signUp,
 		signInWithGoogle,
+		signInWithApple,
 		signOut,
 		refreshSession,
 		resetPassword,

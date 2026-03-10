@@ -21,6 +21,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       ITSAppUsesNonExemptEncryption: false,
       UIBackgroundModes: ["remote-notification"],
     },
+    entitlements: {
+      "com.apple.developer.applesignin": ["Default"],
+    },
     icon: "./assets/AppIcon.icon",
   },
   android: {
@@ -99,7 +102,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     {
       iosUrlScheme: `com.googleusercontent.apps.${(process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? "").split(".")[0]}`,
     }
-  ]
+  ],
+    "expo-apple-authentication"
   ],
   experiments: {
     typedRoutes: true,

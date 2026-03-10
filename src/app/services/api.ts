@@ -388,6 +388,67 @@ export class ApiClient {
     }
   }
 
+  async signInWithApple() {
+    if (Platform.OS === 'web') {
+      return await this.supabase.auth.signInWithOAuth({
+        provider: 'apple',
+        options: {
+          redirectTo: typeof window !== 'undefined' ? window.location.origin : undefined,
+        },
+      });
+    }
+
+    const AppleAuthentication = await import('expo-apple-authentication');
+
+    const isAvailable = await AppleAuthentication.isAvailableAsync();
+    if (!isAvailable) {
+      throw { code: 'UNAVAILABLE', message: 'Apple Sign-In is not available on this device' };
+    }
+
+    const { randomUUID } = await import('expo-crypto');
+    const nonce = randomUUID();
+
+    try {
+      const credential = await AppleAuthentication.signInAsync({
+        requestedScopes: [
+          AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+          AppleAuthentication.AppleAuthenticationScope.EMAIL,
+        ],
+        nonce,
+      });
+
+      const idToken = credential.identityToken;
+      if (!idToken) {
+        throw new Error('Apple sign-in failed: no identity token received');
+      }
+
+      const result = await this.supabase.auth.signInWithIdToken({
+        provider: 'apple',
+        token: idToken,
+        nonce,
+      });
+
+      // Apple only provides the full name on the first sign-in
+      if (credential.fullName?.givenName || credential.fullName?.familyName) {
+        const fullName = [credential.fullName.givenName, credential.fullName.familyName]
+          .filter(Boolean)
+          .join(' ');
+        if (fullName) {
+          await this.supabase.auth.updateUser({
+            data: { full_name: fullName },
+          });
+        }
+      }
+
+      return result;
+    } catch (error: any) {
+      if (error.code === 'ERR_REQUEST_CANCELED') {
+        throw { code: 'CANCELLED', message: 'Apple sign-in was cancelled' };
+      }
+      throw error;
+    }
+  }
+
   async signOut() {
     // Sign out with scope: 'local' to only clear local session
     // This prevents errors when the session is already expired on the server

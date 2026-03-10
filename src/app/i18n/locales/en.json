@@ -92,8 +92,11 @@
     "termsConditions": "Terms & Conditions",
     "and": "and",
     "continueWithGoogle": "Continue with Google",
+    "continueWithApple": "Continue with Apple",
     "orDivider": "or",
     "googleSignInError": "Google sign-in failed. Please try again.",
+    "appleSignInError": "Apple sign-in failed. Please try again.",
+    "appleSignInUnavailable": "Apple Sign-In is not available on this device.",
     "googlePlayServicesUnavailable": "Google Play Services is not available on this device."
   },
   "navigation": {

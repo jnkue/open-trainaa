@@ -92,8 +92,11 @@
     "termsConditions": "Allgemeinen Geschäftsbedingungen",
     "and": "und",
     "continueWithGoogle": "Weiter mit Google",
+    "continueWithApple": "Weiter mit Apple",
     "orDivider": "oder",
     "googleSignInError": "Google-Anmeldung fehlgeschlagen. Bitte erneut versuchen.",
+    "appleSignInError": "Apple-Anmeldung fehlgeschlagen. Bitte versuche es erneut.",
+    "appleSignInUnavailable": "Apple-Anmeldung ist auf diesem Gerät nicht verfügbar.",
     "googlePlayServicesUnavailable": "Google Play-Dienste sind auf diesem Gerät nicht verfügbar."
   },
   "navigation": {
