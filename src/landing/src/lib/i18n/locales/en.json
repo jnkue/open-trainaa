@@ -111,11 +111,17 @@
     "no": "No"
   },
   "consent": {
-    "message": "We use cookies to analyze site traffic and optimize your experience. By accepting, you consent to our use of cookies for analytics and advertising purposes.",
-    "accept": "Accept",
+    "message": "We use cookies for analytics and advertising. No data is collected until you give your consent.",
+    "acceptAll": "Accept all",
     "decline": "Decline",
+    "settings": "Customize",
+    "confirmSelection": "Confirm selection",
     "privacyLink": "Learn more in our Privacy Policy.",
-    "ariaLabel": "Cookie consent"
+    "ariaLabel": "Cookie consent",
+    "analyticsLabel": "Analytics",
+    "analyticsDescription": "Helps us understand how visitors use our website to improve the user experience.",
+    "advertisingLabel": "Advertising",
+    "advertisingDescription": "Enables personalized ads and conversion tracking via Google Ads."
   },
   "error": {
     "404": {
