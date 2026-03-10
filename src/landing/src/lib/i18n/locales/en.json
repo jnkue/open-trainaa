@@ -24,6 +24,11 @@
       "title": "Coming Soon",
       "subtitle": "We're working hard to bring you something amazing",
       "stayTuned": "Stay tuned"
+    },
+    "openSource": {
+      "title": "Open Source",
+      "subtitle": "TRAINAA is fully open source.",
+      "cta": "View on GitHub"
     }
   },
   "navigation": {
