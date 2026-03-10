@@ -17,12 +17,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     bundleIdentifier: "com.trainaa.app",
     supportsTablet: false,
+    usesAppleSignIn: true,
     infoPlist: {
       ITSAppUsesNonExemptEncryption: false,
       UIBackgroundModes: ["remote-notification"],
-    },
-    entitlements: {
-      "com.apple.developer.applesignin": ["Default"],
     },
     icon: "./assets/AppIcon.icon",
   },
