@@ -94,11 +94,11 @@ export default function TabLayout() {
 					>
 						<Tabs.Screen name="index" />
 						<Tabs.Screen name="activities" options={{href: "/activities"}} />
-						{/* <Tabs.Screen name="workouts" options={{href: "/workouts"}} /> */}
 						<Tabs.Screen name="calendar" options={{href: "/calendar"}} />
 
 						<Tabs.Screen name="chat" />
 						<Tabs.Screen name="settings" />
+						<Tabs.Screen name="workouts" options={{href: null}} />
 						<Tabs.Screen name="connect-strava" options={{href: null}} />
 						<Tabs.Screen name="connect-wahoo" options={{href: null}} />
 						<Tabs.Screen name="connect-garmin" options={{href: null}} />
@@ -198,13 +198,6 @@ export default function TabLayout() {
 								href: "/activities",
 							}}
 						/>
-						{/* <Tabs.Screen
-							name="workouts"
-							options={{
-								title: t("navigation.workouts"),
-								href: "/workouts",
-							}}
-						/> */}
 						<Tabs.Screen
 							name="calendar"
 							options={{
@@ -225,6 +218,7 @@ export default function TabLayout() {
 								title: t("navigation.settings"),
 							}}
 						/>
+						<Tabs.Screen name="workouts" options={{href: null}} />
 						<Tabs.Screen name="connect-strava" options={{href: null}} />
 						<Tabs.Screen name="connect-wahoo" options={{href: null}} />
 						<Tabs.Screen name="connect-garmin" options={{href: null}} />

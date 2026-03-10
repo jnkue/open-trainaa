@@ -29,6 +29,7 @@ import * as Sentry from '@sentry/react-native';
 import {analyticsConsentStorage} from '@/utils/analyticsConsent';
 import {AnalyticsConsentModal} from '@/components/AnalyticsConsentModal';
 import {useAnalyticsConsent} from '@/hooks/useAnalyticsConsent';
+import {usePushNotifications} from '@/hooks/usePushNotifications';
 
 const ENVIRONMENT = process.env.EXPO_PUBLIC_ENVIRONMENT;
 
@@ -136,6 +137,11 @@ function NavigationGuard({children}: {children: React.ReactNode}) {
 	return <>{children}</>;
 }
 
+function PushNotificationRegistration() {
+	usePushNotifications();
+	return null;
+}
+
 function AnalyticsConsentWrapper() {
 	const {user} = useAuth();
 	const {showModal, saveConsent} = useAnalyticsConsent();
@@ -179,6 +185,7 @@ function AppContent() {
 									</Stack>
 
 									<StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+									<PushNotificationRegistration />
 
 								</NavigationThemeProvider>
 							</NavigationGuard>

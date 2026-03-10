@@ -273,7 +273,9 @@ async def node_tool_execution(state: TrainerAgentState, config: dict) -> dict:
     # Check if last message has tool calls
     if messages and hasattr(messages[-1], "tool_calls") and messages[-1].tool_calls:
         try:
-            tool_node = ToolNode(tools_trainer_agent)
+            # handle_tool_errors=True ensures validation errors (e.g. missing required args)
+            # are returned as ToolMessages with correct tool_call_id instead of raising exceptions
+            tool_node = ToolNode(tools_trainer_agent, handle_tool_errors=True)
 
             # Create a new config without Langfuse callbacks for tool execution
             # This prevents Langfuse from trying to trace tool executions as ChatOpenAI calls
@@ -333,12 +335,26 @@ async def node_tool_execution(state: TrainerAgentState, config: dict) -> dict:
             from langchain_core.messages import ToolMessage
 
             LOGGER.error(f"Error in trainer tool execution: {e}", exc_info=True)
-            # Return error as a ToolMessage
-            error_msg = ToolMessage(
-                content=f"Tool execution failed: {str(e)}",
-                tool_call_id=str(uuid4()),
-            )
-            return {"messages": [error_msg]}
+            # Return error as ToolMessages matching each pending tool call ID
+            # Using the correct tool_call_id is critical so the LLM can associate
+            # the error with its original tool call and retry properly
+            pending_tool_calls = messages[-1].tool_calls if messages else []
+            error_messages = []
+            for tc in pending_tool_calls:
+                error_messages.append(
+                    ToolMessage(
+                        content=f"Tool execution failed: {str(e)}",
+                        tool_call_id=tc.get("id", str(uuid4())),
+                    )
+                )
+            if not error_messages:
+                error_messages.append(
+                    ToolMessage(
+                        content=f"Tool execution failed: {str(e)}",
+                        tool_call_id=str(uuid4()),
+                    )
+                )
+            return {"messages": error_messages}
 
     return {}
 

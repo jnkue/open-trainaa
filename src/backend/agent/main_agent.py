@@ -436,17 +436,22 @@ async def node_generate_response(state: ChatAgentState, config: RunnableConfig) 
         # Stream the response - we MUST fully consume the stream for Langfuse to track properly
         # We cannot break early, even when tool calls are detected
         agent_message = ""
-        response_with_tool_calls = None
-        final_response = None  # Store the complete final response
+        has_tool_calls = False
+        full_response = None  # Accumulated complete response from all chunks
 
         async for chunk in llm_with_tools.astream(llm_messages, config=config):
-            # Store the final complete chunk (last one will be the full response)
-            final_response = chunk
+            # Accumulate chunks to build the complete response
+            # Each chunk is an incremental AIMessageChunk - they must be concatenated
+            # to reconstruct the full message with complete tool call arguments
+            if full_response is None:
+                full_response = chunk
+            else:
+                full_response = full_response + chunk
 
             if hasattr(chunk, "tool_calls") and chunk.tool_calls:
                 # Tool calls detected - mark it but continue consuming stream
-                if response_with_tool_calls is None:
-                    response_with_tool_calls = chunk
+                if not has_tool_calls:
+                    has_tool_calls = True
                     LOGGER.info(
                         f"🔧 Tool calls detected: {[tc.get('name') for tc in chunk.tool_calls]}"
                     )
@@ -456,26 +461,20 @@ async def node_generate_response(state: ChatAgentState, config: RunnableConfig) 
                 write_to_stream({"type": "chunk", "content": chunk.content})
                 agent_message += chunk.content
 
-        # Use the final response for tool calls (most complete)
-        if response_with_tool_calls and final_response:
-            # Update with the final response which may have accumulated data
-            if hasattr(final_response, "tool_calls") and final_response.tool_calls:
-                response_with_tool_calls = final_response
-
-        # Check if we found tool calls
-        if response_with_tool_calls:
+        # Check if we found tool calls (use accumulated full_response which has complete args)
+        if full_response and hasattr(full_response, "tool_calls") and full_response.tool_calls:
             tool_call_names = [
-                tc.get("name") for tc in response_with_tool_calls.tool_calls
+                tc.get("name") for tc in full_response.tool_calls
             ]
             LOGGER.info("✅ LLM Response received:")
             LOGGER.info(
-                f"  - Response type: Tool calls ({len(response_with_tool_calls.tool_calls)})"
+                f"  - Response type: Tool calls ({len(full_response.tool_calls)})"
             )
             LOGGER.info(f"  - Tools to execute: {tool_call_names}")
             if agent_message:
                 LOGGER.info(f"  - Partial content length: {len(agent_message)} chars")
             LOGGER.debug(
-                f"  - Tool call details: {[{tc.get('name'): tc.get('args')} for tc in response_with_tool_calls.tool_calls]}"
+                f"  - Tool call details: {[{tc.get('name'): tc.get('args')} for tc in full_response.tool_calls]}"
             )
             LOGGER.info(
                 "✅ Completed node_generate_response - Proceeding to tool execution"
@@ -495,11 +494,11 @@ async def node_generate_response(state: ChatAgentState, config: RunnableConfig) 
             write_to_stream({"type": "info", "content": "Calling tools..."})
 
             # Ensure content is never None (prevents Langfuse "undefined" error)
-            if response_with_tool_calls.content is None:
-                response_with_tool_calls.content = ""
+            if full_response.content is None:
+                full_response.content = ""
 
             result = {
-                "messages": [response_with_tool_calls],
+                "messages": [full_response],
                 "error": None,
             }
 
@@ -743,8 +742,10 @@ async def safe_tool_node(state: ChatAgentState, config: RunnableConfig) -> dict:
         config: The runnable config (required by LangGraph, contains configurable params and callbacks)
     """
     try:
-        # Create ToolNode instance
-        tool_node_instance = ToolNode(tools=tools_main_agent)
+        # Create ToolNode instance with error handling enabled
+        # handle_tool_errors=True ensures validation errors (e.g. missing required args)
+        # are returned as ToolMessages with correct tool_call_id instead of raising exceptions
+        tool_node_instance = ToolNode(tools=tools_main_agent, handle_tool_errors=True)
 
         # Log which tools are being called for debugging
         messages = state.get("messages", [])
@@ -811,12 +812,25 @@ async def safe_tool_node(state: ChatAgentState, config: RunnableConfig) -> dict:
         return result
     except Exception as e:
         LOGGER.error(f"Error in tool execution: {e}", exc_info=True)
-        # Return error as a ToolMessage with proper formatting
-        error_msg = ToolMessage(
-            content=f"Tool execution failed: {str(e)}",
-            tool_call_id=str(uuid4()),
-        )
-        return {"messages": [error_msg]}
+        # Return error as ToolMessages matching each pending tool call ID
+        # Using the correct tool_call_id is critical so the LLM can associate
+        # the error with its original tool call and retry properly
+        error_messages = []
+        for tc in tool_calls:
+            error_messages.append(
+                ToolMessage(
+                    content=f"Tool execution failed: {str(e)}",
+                    tool_call_id=tc.get("id", str(uuid4())),
+                )
+            )
+        if not error_messages:
+            error_messages.append(
+                ToolMessage(
+                    content=f"Tool execution failed: {str(e)}",
+                    tool_call_id=str(uuid4()),
+                )
+            )
+        return {"messages": error_messages}
 
 
 def should_summarize(state: ChatAgentState) -> str:

@@ -12,7 +12,7 @@ export function AnalyticsSettingsSection() {
 	if (isLoading) return null;
 
 	return (
-		<SettingsSection title={t("analytics.settingsTitle")}>
+		<SettingsSection>
 			<View className="flex-row items-center justify-between">
 				<View className="flex-1 mr-4">
 					<Text className="text-base text-foreground font-medium">

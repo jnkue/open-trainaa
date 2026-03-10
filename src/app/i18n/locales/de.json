@@ -185,7 +185,24 @@
     "manageSubscriptionAppStore": "Sie haben ein App Store-Abonnement. Um es zu kündigen, gehen Sie zu Einstellungen > [Ihr Name] > Abonnements auf Ihrem iPhone.",
     "manageSubscriptionPlayStore": "Sie haben ein Play Store-Abonnement. Um es zu kündigen, öffnen Sie die Google Play Store App und gehen Sie zu Menü > Abonnements.",
     "dangerZone": "Gefahrenzone",
-    "dangerZoneWarning": "Sobald Sie Ihr Konto löschen, gibt es kein Zurück mehr. Bitte seien Sie sich sicher."
+    "dangerZoneWarning": "Sobald Sie Ihr Konto löschen, gibt es kein Zurück mehr. Bitte seien Sie sich sicher.",
+    "sectionAccount": "Konto",
+    "sectionNotifications": "Benachrichtigungen",
+    "sectionTraining": "Training",
+    "sectionIntegrations": "Integrationen",
+    "sectionSubscription": "Abonnement",
+    "sectionAdvanced": "Erweitert",
+    "sectionPrivacy": "Datenschutz",
+    "timezoneLabel": "Zeitzone",
+    "timezoneDescription": "Wird für den Versandzeitpunkt der täglichen Benachrichtigung verwendet",
+    "timezoneSearchPlaceholder": "Zeitzonen suchen..."
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "feedbackLabel": "Trainings-Feedback",
+    "feedbackDescription": "Erhalte eine Benachrichtigung, wenn KI-Feedback für dein Training erstellt wird",
+    "dailyOverviewLabel": "Tagesübersicht",
+    "dailyOverviewDescription": "Erhalte morgens eine Zusammenfassung deiner geplanten Trainings und deines Trainingsstatus"
   },
   "integrations": {
     "strava": {

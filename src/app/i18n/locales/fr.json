@@ -223,7 +223,24 @@
     "manageSubscriptionAppStore": "Vous avez un abonnement App Store. Pour l'annuler, allez dans Réglages > [Votre nom] > Abonnements sur votre iPhone.",
     "manageSubscriptionPlayStore": "Vous avez un abonnement Play Store. Pour l'annuler, ouvrez l'application Google Play Store et allez dans Menu > Abonnements.",
     "dangerZone": "Zone de danger",
-    "dangerZoneWarning": "Une fois que vous supprimez votre compte, il n'y a pas de retour en arrière. Soyez certain."
+    "dangerZoneWarning": "Une fois que vous supprimez votre compte, il n'y a pas de retour en arrière. Soyez certain.",
+    "sectionAccount": "Compte",
+    "sectionNotifications": "Notifications",
+    "sectionTraining": "Entraînement",
+    "sectionIntegrations": "Intégrations",
+    "sectionSubscription": "Abonnement",
+    "sectionAdvanced": "Avancé",
+    "sectionPrivacy": "Confidentialité",
+    "timezoneLabel": "Fuseau horaire",
+    "timezoneDescription": "Utilisé pour l'heure de la notification quotidienne",
+    "timezoneSearchPlaceholder": "Rechercher des fuseaux horaires..."
+  },
+  "notifications": {
+    "title": "Notifications",
+    "feedbackLabel": "Feedback d'entraînement",
+    "feedbackDescription": "Recevez une notification lorsque le feedback IA est généré pour vos entraînements",
+    "dailyOverviewLabel": "Aperçu quotidien",
+    "dailyOverviewDescription": "Recevez un résumé matinal de vos entraînements planifiés et de votre statut d'entraînement"
   },
   "integrations": {
     "strava": {

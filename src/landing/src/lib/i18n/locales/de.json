@@ -111,11 +111,17 @@
     "no": "Nein"
   },
   "consent": {
-    "message": "Wir verwenden Cookies, um den Website-Traffic zu analysieren und Ihre Erfahrung zu optimieren. Durch Zustimmung erlauben Sie die Nutzung von Cookies zu Analyse- und Werbezwecken.",
-    "accept": "Akzeptieren",
+    "message": "Wir verwenden Cookies zu Analyse- und Werbezwecken. Es werden keine Daten erfasst, bevor Sie Ihre Zustimmung erteilen.",
+    "acceptAll": "Alle akzeptieren",
     "decline": "Ablehnen",
+    "settings": "Anpassen",
+    "confirmSelection": "Auswahl bestätigen",
     "privacyLink": "Mehr in unserer Datenschutzrichtlinie.",
-    "ariaLabel": "Cookie-Zustimmung"
+    "ariaLabel": "Cookie-Zustimmung",
+    "analyticsLabel": "Analyse",
+    "analyticsDescription": "Hilft uns zu verstehen, wie Besucher unsere Website nutzen, um das Nutzererlebnis zu verbessern.",
+    "advertisingLabel": "Werbung",
+    "advertisingDescription": "Ermöglicht personalisierte Anzeigen und Conversion-Tracking über Google Ads."
   },
   "error": {
     "404": {

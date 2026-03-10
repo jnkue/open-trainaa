@@ -160,6 +160,7 @@ export default function RegisterScreen() {
 						{
 							user_id: user.id,
 							language: currentLanguage,
+							timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 							automatic_calculation_mode: true,
 							preferred_units: "metric",
 							post_feedback_to_strava: false,
