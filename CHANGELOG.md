@@ -19,6 +19,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [1.0.5] - 2026-03-10
+
+### Added
+- Push notifications for daily overview and trainer feedback.
+
+### Changed
+- Settings UI
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
 
 ## [1.0.4] - 2026-03-03
 
