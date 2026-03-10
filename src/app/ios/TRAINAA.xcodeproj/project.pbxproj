@@ -8,30 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		19057273C4D74445B2B57098 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 37273BE676824FBABAD360E6 /* AppIcon.icon */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		B4DC26E5F9AAC24296168702 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 49A0EF07722609F728ACE8C2 /* PrivacyInfo.xcprivacy */; };
+		612888E3642BA91FF39ED462 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059BDECCB116912683161CF /* ExpoModulesProvider.swift */; };
+		7FCBF805338437D5AF82F66D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DA39F30DCC82D6F48DFE3C6F /* PrivacyInfo.xcprivacy */; };
+		A4EFC7F49E584490B19AE954 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 047DBE2368114CA2A3E7A9A7 /* AppIcon.icon */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		E3500EAF3F4AD67B007EB98C /* libPods-TRAINAA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F4B7D62A59B2599B5E2AB1 /* libPods-TRAINAA.a */; };
-		EC6FCB91A2039F883A6B9E48 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD304C7E3C2FA5B83DC87A69 /* ExpoModulesProvider.swift */; };
+		D2EED0BC8D1174FA49AA88CC /* libPods-TRAINAA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEEB30E8EDC3BEA5519537B /* libPods-TRAINAA.a */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047DBE2368114CA2A3E7A9A7 /* AppIcon.icon */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AppIcon.icon; path = TRAINAA/AppIcon.icon; sourceTree = "<group>"; };
+		0E282C3C47A32729D470BDC0 /* Pods-TRAINAA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TRAINAA.release.xcconfig"; path = "Target Support Files/Pods-TRAINAA/Pods-TRAINAA.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* TRAINAA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRAINAA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TRAINAA/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = TRAINAA/Info.plist; sourceTree = "<group>"; };
-		20F4B7D62A59B2599B5E2AB1 /* libPods-TRAINAA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TRAINAA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		37273BE676824FBABAD360E6 /* AppIcon.icon */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AppIcon.icon; path = TRAINAA/AppIcon.icon; sourceTree = "<group>"; };
-		397CF18755BFAB7AD2DC0ADC /* Pods-TRAINAA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TRAINAA.debug.xcconfig"; path = "Target Support Files/Pods-TRAINAA/Pods-TRAINAA.debug.xcconfig"; sourceTree = "<group>"; };
-		49A0EF07722609F728ACE8C2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = TRAINAA/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		7EEEB30E8EDC3BEA5519537B /* libPods-TRAINAA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TRAINAA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9059BDECCB116912683161CF /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-TRAINAA/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = TRAINAA/SplashScreen.storyboard; sourceTree = "<group>"; };
+		B161B869A71D52E1440998EA /* Pods-TRAINAA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TRAINAA.debug.xcconfig"; path = "Target Support Files/Pods-TRAINAA/Pods-TRAINAA.debug.xcconfig"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		CD304C7E3C2FA5B83DC87A69 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-TRAINAA/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		DA39F30DCC82D6F48DFE3C6F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = TRAINAA/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = TRAINAA/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* TRAINAA-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TRAINAA-Bridging-Header.h"; path = "TRAINAA/TRAINAA-Bridging-Header.h"; sourceTree = "<group>"; };
-		FACCD7635EB33E6F1EE2E068 /* Pods-TRAINAA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TRAINAA.release.xcconfig"; path = "Target Support Files/Pods-TRAINAA/Pods-TRAINAA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,22 +39,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3500EAF3F4AD67B007EB98C /* libPods-TRAINAA.a in Frameworks */,
+				D2EED0BC8D1174FA49AA88CC /* libPods-TRAINAA.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0003B294B92D4DD84BB1AF57 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				397CF18755BFAB7AD2DC0ADC /* Pods-TRAINAA.debug.xcconfig */,
-				FACCD7635EB33E6F1EE2E068 /* Pods-TRAINAA.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* TRAINAA */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,19 +55,37 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				37273BE676824FBABAD360E6 /* AppIcon.icon */,
-				49A0EF07722609F728ACE8C2 /* PrivacyInfo.xcprivacy */,
+				047DBE2368114CA2A3E7A9A7 /* AppIcon.icon */,
+				DA39F30DCC82D6F48DFE3C6F /* PrivacyInfo.xcprivacy */,
 			);
 			name = TRAINAA;
+			sourceTree = "<group>";
+		};
+		205F815EA0D6E9665CFCE957 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				85974A273959A036444074CB /* TRAINAA */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				20F4B7D62A59B2599B5E2AB1 /* libPods-TRAINAA.a */,
+				7EEEB30E8EDC3BEA5519537B /* libPods-TRAINAA.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A1345EC7A57E8BEEE24C246 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B161B869A71D52E1440998EA /* Pods-TRAINAA.debug.xcconfig */,
+				0E282C3C47A32729D470BDC0 /* Pods-TRAINAA.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -93,8 +102,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				0003B294B92D4DD84BB1AF57 /* Pods */,
-				ACB8B2634088498DA7F0F7BD /* ExpoModulesProviders */,
+				7A1345EC7A57E8BEEE24C246 /* Pods */,
+				205F815EA0D6E9665CFCE957 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -109,20 +118,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9CD151618029B8776951D9A8 /* TRAINAA */ = {
+		85974A273959A036444074CB /* TRAINAA */ = {
 			isa = PBXGroup;
 			children = (
-				CD304C7E3C2FA5B83DC87A69 /* ExpoModulesProvider.swift */,
+				9059BDECCB116912683161CF /* ExpoModulesProvider.swift */,
 			);
 			name = TRAINAA;
-			sourceTree = "<group>";
-		};
-		ACB8B2634088498DA7F0F7BD /* ExpoModulesProviders */ = {
-			isa = PBXGroup;
-			children = (
-				9CD151618029B8776951D9A8 /* TRAINAA */,
-			);
-			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -142,14 +143,14 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "TRAINAA" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				2EABF96409C7E76019E60AF1 /* [Expo] Configure project */,
+				EC167D0CE00D136AE56C9833 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				86E1602145654DEDAA7CFF7E /* Upload Debug Symbols to Sentry */,
-				591DD090FF1C22E7C3DE03DE /* [CP] Embed Pods Frameworks */,
+				83DC4A5A8F88463BBEFFFC7E /* Upload Debug Symbols to Sentry */,
+				E5AAD5917CF4D5D728399E2D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,8 +200,8 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				19057273C4D74445B2B57098 /* AppIcon.icon in Resources */,
-				B4DC26E5F9AAC24296168702 /* PrivacyInfo.xcprivacy in Resources */,
+				A4EFC7F49E584490B19AE954 /* AppIcon.icon in Resources */,
+				7FCBF805338437D5AF82F66D /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,52 +245,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2EABF96409C7E76019E60AF1 /* [Expo] Configure project */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/.xcode.env",
-				"$(SRCROOT)/.xcode.env.local",
-				"$(SRCROOT)/TRAINAA/TRAINAA.entitlements",
-				"$(SRCROOT)/Pods/Target Support Files/Pods-TRAINAA/expo-configure-project.sh",
-			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(SRCROOT)/Pods/Target Support Files/Pods-TRAINAA/ExpoModulesProvider.swift",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-TRAINAA/expo-configure-project.sh\"\n";
-		};
-		591DD090FF1C22E7C3DE03DE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TRAINAA/Pods-TRAINAA-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TRAINAA/Pods-TRAINAA-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
@@ -366,7 +321,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TRAINAA/Pods-TRAINAA-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		86E1602145654DEDAA7CFF7E /* Upload Debug Symbols to Sentry */ = {
+		83DC4A5A8F88463BBEFFFC7E /* Upload Debug Symbols to Sentry */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -380,6 +335,52 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh `${NODE_BINARY:-node} --print \"require('path').dirname(require.resolve('@sentry/react-native/package.json')) + '/scripts/sentry-xcode-debug-files.sh'\"`";
 		};
+		E5AAD5917CF4D5D728399E2D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TRAINAA/Pods-TRAINAA-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TRAINAA/Pods-TRAINAA-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC167D0CE00D136AE56C9833 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env",
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/TRAINAA/TRAINAA.entitlements",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-TRAINAA/expo-configure-project.sh",
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Pods/Target Support Files/Pods-TRAINAA/ExpoModulesProvider.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-TRAINAA/expo-configure-project.sh\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -388,7 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				EC6FCB91A2039F883A6B9E48 /* ExpoModulesProvider.swift in Sources */,
+				612888E3642BA91FF39ED462 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,17 +398,12 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 397CF18755BFAB7AD2DC0ADC /* Pods-TRAINAA.debug.xcconfig */;
+			baseConfigurationReference = B161B869A71D52E1440998EA /* Pods-TRAINAA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TRAINAA/TRAINAA.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2M3MQ8K539;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -427,30 +423,23 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trainaa.app;
-				PRODUCT_NAME = "TRAINAA";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "*[expo] com.trainaa.app AdHoc 1773175859327";
+				PRODUCT_NAME = TRAINAA;
 				SWIFT_OBJC_BRIDGING_HEADER = "TRAINAA/TRAINAA-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FACCD7635EB33E6F1EE2E068 /* Pods-TRAINAA.release.xcconfig */;
+			baseConfigurationReference = 0E282C3C47A32729D470BDC0 /* Pods-TRAINAA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TRAINAA/TRAINAA.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2M3MQ8K539;
 				INFOPLIST_FILE = TRAINAA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -465,12 +454,10 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trainaa.app;
-				PRODUCT_NAME = "TRAINAA";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "*[expo] com.trainaa.app AdHoc 1773175859327";
+				PRODUCT_NAME = TRAINAA;
 				SWIFT_OBJC_BRIDGING_HEADER = "TRAINAA/TRAINAA-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -504,8 +491,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -531,7 +517,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -569,8 +555,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -607,7 +592,7 @@
 				13B07F951A680F5B00A75B9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "TRAINAA" */ = {
 			isa = XCConfigurationList;
@@ -616,7 +601,7 @@
 				83CBBA211A601CBA00E9B192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
