@@ -18,6 +18,7 @@ from api.services.workout_sync import get_sync_service
 from api.training_status import calculate_training_status_all_users
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
+from apscheduler.triggers.interval import IntervalTrigger
 
 # i18n strings for daily overview push notifications
 _DAILY_OVERVIEW_I18N = {
@@ -55,9 +56,6 @@ _DAILY_OVERVIEW_I18N = {
 def _get_i18n(lang: str) -> dict:
     """Get i18n strings for a language, falling back to English."""
     return _DAILY_OVERVIEW_I18N.get(lang, _DAILY_OVERVIEW_I18N["en"])
-
-
-from apscheduler.triggers.interval import IntervalTrigger
 
 
 def run_batch_sync():
