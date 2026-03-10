@@ -24,6 +24,11 @@
       "title": "Demnachst",
       "subtitle": "Wir arbeiten hart daran, dir etwas Grossartiges zu bringen",
       "stayTuned": "Bleib dran"
+    },
+    "openSource": {
+      "title": "Open Source",
+      "subtitle": "TRAINAA ist vollständig Open Source",
+      "cta": "Auf GitHub ansehen"
     }
   },
   "navigation": {

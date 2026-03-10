@@ -13,6 +13,7 @@
           <li><a href="/imprint" class="hover:text-gray-300 text-sm">Imprint</a></li>
           <li><a href="/privacy" class="hover:text-gray-300 text-sm">Privacy</a></li>
           <li><a href="/terms" class="hover:text-gray-300 text-sm">Terms</a></li>
+          <li><a href="https://github.com/jnkue/open-trainaa" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 text-sm">GitHub</a></li>
         </ul>
       </nav>
     </div>
