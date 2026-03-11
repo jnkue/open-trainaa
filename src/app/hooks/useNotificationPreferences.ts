@@ -4,8 +4,8 @@ import { apiClient } from "@/services/api";
 
 export function useNotificationPreferences() {
 	const { user } = useAuth();
-	const [feedbackEnabled, setFeedbackEnabled] = useState(false);
-	const [dailyOverviewEnabled, setDailyOverviewEnabled] = useState(false);
+	const [feedbackEnabled, setFeedbackEnabled] = useState(true);
+	const [dailyOverviewEnabled, setDailyOverviewEnabled] = useState(true);
 	const [isLoading, setIsLoading] = useState(true);
 
 	const fetchPreferences = useCallback(async () => {
@@ -25,10 +25,10 @@ export function useNotificationPreferences() {
 			if (error) throw error;
 
 			setFeedbackEnabled(
-				data?.push_notification_feedback ?? false
+				data?.push_notification_feedback ?? true
 			);
 			setDailyOverviewEnabled(
-				data?.push_notification_daily_overview ?? false
+				data?.push_notification_daily_overview ?? true
 			);
 		} catch (error) {
 			console.error(

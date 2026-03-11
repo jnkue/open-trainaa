@@ -111,21 +111,6 @@ export function AnalyticsConsentModal({
 
 						<View className="gap-3 mt-2">
 							<TouchableOpacity
-								onPress={() => handleChoice(false)}
-								disabled={isSubmitting}
-								className="rounded-lg p-4"
-								style={{
-									borderWidth: 1,
-									borderColor: isDark ? "#333333" : "#e5e7eb",
-									opacity: isSubmitting ? 0.6 : 1,
-								}}
-							>
-								<Text className="text-base font-medium text-muted-foreground text-center">
-									{t("analytics.decline")}
-								</Text>
-							</TouchableOpacity>
-
-							<TouchableOpacity
 								onPress={() => handleChoice(true)}
 								disabled={isSubmitting}
 								className="rounded-lg p-4 bg-primary"
@@ -138,6 +123,21 @@ export function AnalyticsConsentModal({
 										{t("analytics.acceptAndContinue")}
 									</Text>
 								)}
+							</TouchableOpacity>
+
+							<TouchableOpacity
+								onPress={() => handleChoice(false)}
+								disabled={isSubmitting}
+								className="rounded-lg p-4"
+								style={{
+									borderWidth: 1,
+									borderColor: isDark ? "#333333" : "#e5e7eb",
+									opacity: isSubmitting ? 0.6 : 1,
+								}}
+							>
+								<Text className="text-base font-medium text-muted-foreground text-center">
+									{t("analytics.decline")}
+								</Text>
 							</TouchableOpacity>
 						</View>
 					</View>

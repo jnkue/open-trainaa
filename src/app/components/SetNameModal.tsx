@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {View, Text, TouchableOpacity, Modal, TextInput, ActivityIndicator, useWindowDimensions} from "react-native";
+import {View, Text, TouchableOpacity, Modal, TextInput, ActivityIndicator, useWindowDimensions, KeyboardAvoidingView, Platform} from "react-native";
 import {useTheme} from "@/contexts/ThemeContext";
 import {useTranslation} from "react-i18next";
 
@@ -49,14 +49,16 @@ export function SetNameModal({open, onSave}: SetNameModalProps) {
 
 	return (
 		<Modal visible={open} transparent animationType="slide">
-			<View style={{
-				flex: 1,
-				backgroundColor: "rgba(0, 0, 0, 0.5)",
-				...(isLargeScreen
-					? {justifyContent: "center", alignItems: "center"}
-					: {}),
-			}}>
-				{!isLargeScreen && <View style={{flex: 1, minHeight: 60}} />}
+			<KeyboardAvoidingView
+				behavior={Platform.OS === "ios" ? "padding" : "height"}
+				style={{
+					flex: 1,
+					backgroundColor: "rgba(0, 0, 0, 0.5)",
+					...(isLargeScreen
+						? {justifyContent: "center", alignItems: "center"}
+						: {justifyContent: "flex-end"}),
+				}}
+			>
 				<View style={cardStyle}>
 					<View className="p-6">
 						<Text className="text-xl font-bold text-foreground mb-4">
@@ -91,7 +93,7 @@ export function SetNameModal({open, onSave}: SetNameModalProps) {
 						</TouchableOpacity>
 					</View>
 				</View>
-			</View>
+			</KeyboardAvoidingView>
 		</Modal>
 	);
 }
