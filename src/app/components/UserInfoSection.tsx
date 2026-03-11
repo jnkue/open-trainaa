@@ -84,12 +84,7 @@ export function UserInfoSection() {
 	const provider = user?.app_metadata?.provider as string | undefined;
 	const isOAuthUser = provider === "google" || provider === "apple";
 
-	const displayName = useMemo(() => {
-		const metaName = user?.user_metadata?.full_name;
-		if (metaName) return metaName;
-		if (user?.email) return user.email.split("@")[0];
-		return "";
-	}, [user?.user_metadata?.full_name, user?.email]);
+	const displayName = (user?.user_metadata?.full_name as string) || "";
 
 	const showEmail = !isApplePrivateRelay && !!user?.email;
 

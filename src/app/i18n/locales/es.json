@@ -860,6 +860,11 @@
       "description": "Feedback directamente en tus sesiones de entrenamiento"
     }
   },
+  "setName": {
+    "title": "¿Cómo te llamas?",
+    "placeholder": "Ingresa tu nombre",
+    "continue": "Continuar"
+  },
   "analytics": {
     "consentTitle": "Ayúdanos a mejorar",
     "consentDescription": "Usamos herramientas para rastrear errores y mejorar la calidad de la IA. Estos datos nos ayudan a hacer la app más estable y mejorar tu experiencia de coaching.",

@@ -24,9 +24,9 @@
     "_developerTeamID" : "2M3MQ8K539",
     "_disableDialogs" : false,
     "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 794917521.87243199,
     "_locale" : "en_US",
     "_renewalBillingIssuesEnabled" : false,
-    "_shouldSetupSyncOnLoad" : true,
     "_storefront" : "USA",
     "_storeKitErrors" : [
 
@@ -34,7 +34,48 @@
     "_timeRate" : 0
   },
   "subscriptionGroups" : [
+    {
+      "id" : "21918219",
+      "localizations" : [
 
+      ],
+      "name" : "PRO",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "8.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6758697482",
+          "introductoryOffer" : {
+            "internalID" : "5A7427DD",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Access to unlimited messages with the Coach",
+              "displayName" : "Monthly PRO",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "pro_0999_1m",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly 9.99",
+          "subscriptionGroupID" : "21918219",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
   ],
   "version" : {
     "major" : 4,

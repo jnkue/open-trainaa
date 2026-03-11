@@ -871,6 +871,11 @@
       "description": "Feedback direkt zu deinen Trainingseinheiten"
     }
   },
+  "setName": {
+    "title": "Wie heisst du?",
+    "placeholder": "Name eingeben",
+    "continue": "Weiter"
+  },
   "analytics": {
     "consentTitle": "Hilf uns, besser zu werden",
     "consentDescription": "Wir verwenden Tools zur Fehlerverfolgung und Verbesserung der KI-Qualität. Diese Daten helfen uns, die App stabiler zu machen und dein Coaching-Erlebnis zu verbessern.",

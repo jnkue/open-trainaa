@@ -870,6 +870,11 @@
       "description": "Feedback directly on your training sessions"
     }
   },
+  "setName": {
+    "title": "What's your name?",
+    "placeholder": "Enter your name",
+    "continue": "Continue"
+  },
   "analytics": {
     "consentTitle": "Help Us Improve",
     "consentDescription": "We use tools to track errors and improve AI quality. This data helps us make the app more stable and your coaching experience better.",

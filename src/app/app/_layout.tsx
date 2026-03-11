@@ -1,6 +1,6 @@
 import "../polyfills";
 import "../global.css";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {DarkTheme, DefaultTheme, ThemeProvider as NavigationThemeProvider} from "@react-navigation/native";
 import {PostHogProvider} from "posthog-react-native";
 import {useFonts} from "expo-font";
@@ -30,6 +30,8 @@ import {analyticsConsentStorage} from '@/utils/analyticsConsent';
 import {AnalyticsConsentModal} from '@/components/AnalyticsConsentModal';
 import {useAnalyticsConsent} from '@/hooks/useAnalyticsConsent';
 import {usePushNotifications} from '@/hooks/usePushNotifications';
+import {SetNameModal} from '@/components/SetNameModal';
+import {apiClient} from '@/services/api';
 
 const ENVIRONMENT = process.env.EXPO_PUBLIC_ENVIRONMENT;
 
@@ -142,11 +144,33 @@ function PushNotificationRegistration() {
 	return null;
 }
 
+function SetNameWrapper() {
+	const {user} = useAuth();
+	const [showModal, setShowModal] = useState(false);
+	const needsName = !!user && !user.user_metadata?.full_name;
+
+	useEffect(() => {
+		setShowModal(needsName);
+	}, [needsName]);
+
+	if (!user) return null;
+
+	return (
+		<SetNameModal
+			open={showModal}
+			onSave={async (name) => {
+				await apiClient.supabase.auth.updateUser({data: {full_name: name}});
+				setShowModal(false);
+			}}
+		/>
+	);
+}
+
 function AnalyticsConsentWrapper() {
 	const {user} = useAuth();
 	const {showModal, saveConsent} = useAnalyticsConsent();
 
-	if (!user) return null;
+	if (!user || !user.user_metadata?.full_name) return null;
 
 	return <AnalyticsConsentModal open={showModal} onConsent={saveConsent} />;
 }
@@ -190,6 +214,7 @@ function AppContent() {
 								</NavigationThemeProvider>
 							</NavigationGuard>
 						</RevenueCatProvider>
+						<SetNameWrapper />
 						<AnalyticsConsentWrapper />
 					</AuthProvider>
 				</QueryClientProvider>
