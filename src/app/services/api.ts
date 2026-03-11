@@ -405,8 +405,9 @@ export class ApiClient {
       throw { code: 'UNAVAILABLE', message: 'Apple Sign-In is not available on this device' };
     }
 
-    const { randomUUID } = await import('expo-crypto');
-    const nonce = randomUUID();
+    const { randomUUID, digestStringAsync, CryptoDigestAlgorithm } = await import('expo-crypto');
+    const rawNonce = randomUUID();
+    const hashedNonce = await digestStringAsync(CryptoDigestAlgorithm.SHA256, rawNonce);
 
     try {
       const credential = await AppleAuthentication.signInAsync({
@@ -414,7 +415,7 @@ export class ApiClient {
           AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
           AppleAuthentication.AppleAuthenticationScope.EMAIL,
         ],
-        nonce,
+        nonce: hashedNonce,
       });
 
       const idToken = credential.identityToken;
@@ -425,7 +426,7 @@ export class ApiClient {
       const result = await this.supabase.auth.signInWithIdToken({
         provider: 'apple',
         token: idToken,
-        nonce,
+        nonce: rawNonce,
       });
 
       // Apple only provides the full name on the first sign-in

@@ -236,41 +236,43 @@ export default function RegisterScreen() {
 										</View>
 									)}
 
-									{/* Google Sign-Up */}
-									<Button
-										variant="outline"
-										onPress={handleGoogleSignUp}
-										disabled={googleLoading || appleLoading || loading}
-										className="h-12 flex-row items-center justify-center gap-3"
-									>
-										{googleLoading ? (
-											<ActivityIndicator color={isDark ? "#ffffff" : "#000000"} />
-										) : (
-											<View className="flex-row items-center justify-center gap-3">
-												<GoogleIcon size={20} />
-												<Text className="text-foreground font-medium">{t("auth.continueWithGoogle")}</Text>
-											</View>
-										)}
-									</Button>
-
-									{/* Apple Sign-Up (iOS only) */}
-									{Platform.OS !== "android" && (
+									<View className="gap-3">
+										{/* Google Sign-Up */}
 										<Button
 											variant="outline"
-											onPress={handleAppleSignUp}
-											disabled={appleLoading || googleLoading || loading}
+											onPress={handleGoogleSignUp}
+											disabled={googleLoading || appleLoading || loading}
 											className="h-12 flex-row items-center justify-center gap-3"
 										>
-											{appleLoading ? (
+											{googleLoading ? (
 												<ActivityIndicator color={isDark ? "#ffffff" : "#000000"} />
 											) : (
 												<View className="flex-row items-center justify-center gap-3">
-													<AppleIcon size={20} color={isDark ? "#ffffff" : "#000000"} />
-													<Text className="text-foreground font-medium">{t("auth.continueWithApple")}</Text>
+													<GoogleIcon size={20} />
+													<Text className="text-foreground font-medium">{t("auth.continueWithGoogle")}</Text>
 												</View>
 											)}
 										</Button>
-									)}
+
+										{/* Apple Sign-Up (iOS only) */}
+										{Platform.OS !== "android" && (
+											<Button
+												variant="outline"
+												onPress={handleAppleSignUp}
+												disabled={appleLoading || googleLoading || loading}
+												className="h-12 flex-row items-center justify-center gap-3"
+											>
+												{appleLoading ? (
+													<ActivityIndicator color={isDark ? "#ffffff" : "#000000"} />
+												) : (
+													<View className="flex-row items-center justify-center gap-3">
+														<AppleIcon size={20} color={isDark ? "#ffffff" : "#000000"} />
+														<Text className="text-foreground font-medium">{t("auth.continueWithApple")}</Text>
+													</View>
+												)}
+											</Button>
+										)}
+									</View>
 
 									{/* Divider */}
 									<View className="flex-row items-center">

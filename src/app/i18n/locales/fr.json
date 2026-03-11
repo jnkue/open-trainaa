@@ -236,7 +236,10 @@
     "sectionPrivacy": "Confidentialité",
     "timezoneLabel": "Fuseau horaire",
     "timezoneDescription": "Utilisé pour l'heure de la notification quotidienne",
-    "timezoneSearchPlaceholder": "Rechercher des fuseaux horaires..."
+    "timezoneSearchPlaceholder": "Rechercher des fuseaux horaires...",
+    "signedInWith": "Connecté avec",
+    "providerGoogle": "Google",
+    "providerApple": "Apple"
   },
   "notifications": {
     "title": "Notifications",

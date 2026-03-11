@@ -198,7 +198,10 @@
     "sectionPrivacy": "Datenschutz",
     "timezoneLabel": "Zeitzone",
     "timezoneDescription": "Wird für den Versandzeitpunkt der täglichen Benachrichtigung verwendet",
-    "timezoneSearchPlaceholder": "Zeitzonen suchen..."
+    "timezoneSearchPlaceholder": "Zeitzonen suchen...",
+    "signedInWith": "Angemeldet mit",
+    "providerGoogle": "Google",
+    "providerApple": "Apple"
   },
   "notifications": {
     "title": "Benachrichtigungen",

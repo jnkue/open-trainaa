@@ -243,7 +243,10 @@
     "sectionPrivacy": "Privacy",
     "timezoneLabel": "Timezone",
     "timezoneDescription": "Used for daily notification timing",
-    "timezoneSearchPlaceholder": "Search timezones..."
+    "timezoneSearchPlaceholder": "Search timezones...",
+    "signedInWith": "Signed in with",
+    "providerGoogle": "Google",
+    "providerApple": "Apple"
   },
   "notifications": {
     "title": "Notifications",

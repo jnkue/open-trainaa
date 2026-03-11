@@ -236,7 +236,10 @@
     "sectionPrivacy": "Privacidad",
     "timezoneLabel": "Zona horaria",
     "timezoneDescription": "Se usa para el horario de la notificación diaria",
-    "timezoneSearchPlaceholder": "Buscar zonas horarias..."
+    "timezoneSearchPlaceholder": "Buscar zonas horarias...",
+    "signedInWith": "Sesión iniciada con",
+    "providerGoogle": "Google",
+    "providerApple": "Apple"
   },
   "notifications": {
     "title": "Notificaciones",

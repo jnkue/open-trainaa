@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		047DBE2368114CA2A3E7A9A7 /* AppIcon.icon */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AppIcon.icon; path = TRAINAA/AppIcon.icon; sourceTree = "<group>"; };
+		047DBE2368114CA2A3E7A9A7 /* AppIcon.icon */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AppIcon.icon; path = TRAINAA/AppIcon.icon; sourceTree = "<group>"; };
 		0E282C3C47A32729D470BDC0 /* Pods-TRAINAA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TRAINAA.release.xcconfig"; path = "Target Support Files/Pods-TRAINAA/Pods-TRAINAA.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* TRAINAA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRAINAA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TRAINAA/Images.xcassets; sourceTree = "<group>"; };
@@ -28,7 +28,7 @@
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = TRAINAA/SplashScreen.storyboard; sourceTree = "<group>"; };
 		B161B869A71D52E1440998EA /* Pods-TRAINAA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TRAINAA.debug.xcconfig"; path = "Target Support Files/Pods-TRAINAA/Pods-TRAINAA.debug.xcconfig"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		DA39F30DCC82D6F48DFE3C6F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = TRAINAA/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		DA39F30DCC82D6F48DFE3C6F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = TRAINAA/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = TRAINAA/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* TRAINAA-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TRAINAA-Bridging-Header.h"; path = "TRAINAA/TRAINAA-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -84,7 +84,6 @@
 				B161B869A71D52E1440998EA /* Pods-TRAINAA.debug.xcconfig */,
 				0E282C3C47A32729D470BDC0 /* Pods-TRAINAA.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -404,6 +403,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TRAINAA/TRAINAA.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2M3MQ8K539;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -423,11 +423,11 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trainaa.app;
-				PRODUCT_NAME = TRAINAA;
+				PRODUCT_NAME = "TRAINAA";
 				SWIFT_OBJC_BRIDGING_HEADER = "TRAINAA/TRAINAA-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -454,10 +454,10 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trainaa.app;
-				PRODUCT_NAME = TRAINAA;
+				PRODUCT_NAME = "TRAINAA";
 				SWIFT_OBJC_BRIDGING_HEADER = "TRAINAA/TRAINAA-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
