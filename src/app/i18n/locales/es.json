@@ -92,8 +92,11 @@
     "termsConditions": "Términos y condiciones",
     "and": "y",
     "continueWithGoogle": "Continuar con Google",
+    "continueWithApple": "Continuar con Apple",
     "orDivider": "o",
     "googleSignInError": "Error al iniciar sesión con Google. Por favor, inténtalo de nuevo.",
+    "appleSignInError": "Error al iniciar sesión con Apple. Inténtalo de nuevo.",
+    "appleSignInUnavailable": "Iniciar sesión con Apple no está disponible en este dispositivo.",
     "googlePlayServicesUnavailable": "Google Play Services no está disponible en este dispositivo."
   },
   "navigation": {
@@ -233,7 +236,10 @@
     "sectionPrivacy": "Privacidad",
     "timezoneLabel": "Zona horaria",
     "timezoneDescription": "Se usa para el horario de la notificación diaria",
-    "timezoneSearchPlaceholder": "Buscar zonas horarias..."
+    "timezoneSearchPlaceholder": "Buscar zonas horarias...",
+    "signedInWith": "Sesión iniciada con",
+    "providerGoogle": "Google",
+    "providerApple": "Apple"
   },
   "notifications": {
     "title": "Notificaciones",

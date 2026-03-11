@@ -92,8 +92,11 @@
     "termsConditions": "Conditions générales",
     "and": "et",
     "continueWithGoogle": "Continuer avec Google",
+    "continueWithApple": "Continuer avec Apple",
     "orDivider": "ou",
     "googleSignInError": "La connexion Google a échoué. Veuillez réessayer.",
+    "appleSignInError": "La connexion Apple a échoué. Veuillez réessayer.",
+    "appleSignInUnavailable": "La connexion Apple n'est pas disponible sur cet appareil.",
     "googlePlayServicesUnavailable": "Les services Google Play ne sont pas disponibles sur cet appareil."
   },
   "navigation": {
@@ -233,7 +236,10 @@
     "sectionPrivacy": "Confidentialité",
     "timezoneLabel": "Fuseau horaire",
     "timezoneDescription": "Utilisé pour l'heure de la notification quotidienne",
-    "timezoneSearchPlaceholder": "Rechercher des fuseaux horaires..."
+    "timezoneSearchPlaceholder": "Rechercher des fuseaux horaires...",
+    "signedInWith": "Connecté avec",
+    "providerGoogle": "Google",
+    "providerApple": "Apple"
   },
   "notifications": {
     "title": "Notifications",

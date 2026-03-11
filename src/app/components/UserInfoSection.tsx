@@ -3,6 +3,7 @@ import {View, Text, TouchableOpacity, Modal, FlatList, TextInput, SafeAreaView} 
 import {useAuth} from "@/contexts/AuthContext";
 import {useTranslation} from "react-i18next";
 import {useLanguage} from "@/contexts/LanguageContext";
+import {apiClient} from "@/services/api";
 
 import {ChangePasswordModal} from "./ChangePasswordModal";
 import {SettingsSection} from "@/components/settings/SettingsSection";
@@ -74,6 +75,47 @@ export function UserInfoSection() {
 	const [showLanguageModal, setShowLanguageModal] = useState(false);
 	const [showTimezoneModal, setShowTimezoneModal] = useState(false);
 	const [timezoneSearch, setTimezoneSearch] = useState("");
+	const [isEditingName, setIsEditingName] = useState(false);
+	const [nameInput, setNameInput] = useState("");
+	const [nameSaving, setNameSaving] = useState(false);
+
+	const isApplePrivateRelay = user?.email?.endsWith("@privaterelay.appleid.com") ?? false;
+
+	const provider = user?.app_metadata?.provider as string | undefined;
+	const isOAuthUser = provider === "google" || provider === "apple";
+
+	const displayName = useMemo(() => {
+		const metaName = user?.user_metadata?.full_name;
+		if (metaName) return metaName;
+		if (user?.email) return user.email.split("@")[0];
+		return "";
+	}, [user?.user_metadata?.full_name, user?.email]);
+
+	const showEmail = !isApplePrivateRelay && !!user?.email;
+
+	const handleStartEditName = () => {
+		setNameInput(displayName);
+		setIsEditingName(true);
+	};
+
+	const handleSaveName = async () => {
+		const trimmed = nameInput.trim();
+		if (!trimmed || trimmed === displayName) {
+			setIsEditingName(false);
+			return;
+		}
+		setNameSaving(true);
+		try {
+			await apiClient.supabase.auth.updateUser({
+				data: { full_name: trimmed },
+			});
+			setIsEditingName(false);
+		} catch (error) {
+			console.error("Failed to update name:", error);
+		} finally {
+			setNameSaving(false);
+		}
+	};
 
 	const {
 		feedbackEnabled,
@@ -107,21 +149,62 @@ export function UserInfoSection() {
 				{/* User Info */}
 				<View className="flex-row items-center py-1">
 					<View className="w-12 h-12 rounded-full bg-primary items-center justify-center mr-3">
-						<Text className="text-lg font-semibold text-primary-foreground">{user.email?.[0]?.toUpperCase() || "U"}</Text>
+						<Text className="text-lg font-semibold text-primary-foreground">{displayName[0]?.toUpperCase() || "U"}</Text>
 					</View>
 					<View className="flex-1">
-						<Text className="text-base font-semibold text-foreground">{user.email}</Text>
+						{isEditingName ? (
+							<View className="flex-row items-center gap-2">
+								<TextInput
+									className="flex-1 text-base text-foreground bg-muted rounded-lg px-3 py-2"
+									value={nameInput}
+									onChangeText={setNameInput}
+									autoFocus
+									onSubmitEditing={handleSaveName}
+									returnKeyType="done"
+									editable={!nameSaving}
+								/>
+								<TouchableOpacity onPress={handleSaveName} disabled={nameSaving}>
+									<IconSymbol name="checkmark" size={20} color="#22C55E" />
+								</TouchableOpacity>
+								<TouchableOpacity onPress={() => setIsEditingName(false)} disabled={nameSaving}>
+									<IconSymbol name="xmark" size={20} color="#9CA3AF" />
+								</TouchableOpacity>
+							</View>
+						) : (
+							<TouchableOpacity onPress={handleStartEditName}>
+								<View className="flex-row items-center gap-1">
+									<Text className="text-base font-semibold text-foreground">{displayName}</Text>
+									<IconSymbol name="pencil" size={14} color="#9CA3AF" />
+								</View>
+							</TouchableOpacity>
+						)}
+						{showEmail && (
+							<Text className="text-sm text-muted-foreground">{user.email}</Text>
+						)}
 					</View>
 				</View>
 
 				<Divider />
 
-				<SettingsRow
-					label={t("auth.changePassword")}
-					onPress={() => setShowChangePassword(true)}
-				/>
+				{isOAuthUser && (
+					<>
+						<SettingsRow
+							label={t("settings.signedInWith")}
+							value={provider === "google" ? t("settings.providerGoogle") : t("settings.providerApple")}
+						/>
+						<Divider />
+					</>
+				)}
 
-				<Divider />
+				{!isOAuthUser && (
+					<>
+						<SettingsRow
+							label={t("auth.changePassword")}
+							onPress={() => setShowChangePassword(true)}
+						/>
+						<Divider />
+					</>
+				)}
 
 				<SettingsRow
 					label={t("settings.language")}
@@ -167,7 +250,10 @@ export function UserInfoSection() {
 			)}
 
 			{/* Change Password Modal */}
-			<ChangePasswordModal visible={showChangePassword} onClose={() => setShowChangePassword(false)} />
+			<ChangePasswordModal
+				visible={showChangePassword}
+				onClose={() => setShowChangePassword(false)}
+			/>
 
 			{/* Language Modal */}
 			<Modal

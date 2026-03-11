@@ -17,6 +17,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     bundleIdentifier: "com.trainaa.app",
     supportsTablet: false,
+    usesAppleSignIn: true,
     infoPlist: {
       ITSAppUsesNonExemptEncryption: false,
       UIBackgroundModes: ["remote-notification"],
@@ -99,7 +100,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     {
       iosUrlScheme: `com.googleusercontent.apps.${(process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? "").split(".")[0]}`,
     }
-  ]
+  ],
+    "expo-apple-authentication"
   ],
   experiments: {
     typedRoutes: true,

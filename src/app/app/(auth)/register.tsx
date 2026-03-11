@@ -12,6 +12,7 @@ import {useTranslation} from "react-i18next";
 import {Eye, EyeOff, Languages, Moon, Sun} from "lucide-react-native";
 import {apiClient} from "@/services/api";
 import {GoogleIcon} from "@/components/icons/GoogleIcon";
+import {AppleIcon} from "@/components/icons/AppleIcon";
 
 export default function RegisterScreen() {
 	const [email, setEmail] = useState("");
@@ -23,8 +24,9 @@ export default function RegisterScreen() {
 	const [loading, setLoading] = useState(false);
 	const [passwordFocused, setPasswordFocused] = useState(false);
 	const [googleLoading, setGoogleLoading] = useState(false);
+	const [appleLoading, setAppleLoading] = useState(false);
 	const [errors, setErrors] = useState<{email?: string; password?: string; confirmPassword?: string; general?: string}>({});
-	const {signUp, signInWithGoogle} = useAuth();
+	const {signUp, signInWithGoogle, signInWithApple} = useAuth();
 	const {isDark, theme, setTheme} = useTheme();
 	const {currentLanguage, availableLanguages, changeLanguage} = useLanguage();
 	const {t} = useTranslation();
@@ -114,6 +116,23 @@ export default function RegisterScreen() {
 			}
 		} finally {
 			setGoogleLoading(false);
+		}
+	};
+
+	const handleAppleSignUp = async () => {
+		setErrors({});
+		setAppleLoading(true);
+		try {
+			await signInWithApple();
+		} catch (error: any) {
+			if (error.code === "CANCELLED") return;
+			if (error.code === "UNAVAILABLE") {
+				setErrors({general: t("auth.appleSignInUnavailable")});
+			} else {
+				setErrors({general: t("auth.appleSignInError")});
+			}
+		} finally {
+			setAppleLoading(false);
 		}
 	};
 
@@ -217,22 +236,43 @@ export default function RegisterScreen() {
 										</View>
 									)}
 
-									{/* Google Sign-Up */}
-									<Button
-										variant="outline"
-										onPress={handleGoogleSignUp}
-										disabled={googleLoading || loading}
-										className="h-12 flex-row items-center justify-center gap-3"
-									>
-										{googleLoading ? (
-											<ActivityIndicator color={isDark ? "#ffffff" : "#000000"} />
-										) : (
-											<View className="flex-row items-center justify-center gap-3">
-												<GoogleIcon size={20} />
-												<Text className="text-foreground font-medium">{t("auth.continueWithGoogle")}</Text>
-											</View>
+									<View className="gap-3">
+										{/* Google Sign-Up */}
+										<Button
+											variant="outline"
+											onPress={handleGoogleSignUp}
+											disabled={googleLoading || appleLoading || loading}
+											className="h-12 flex-row items-center justify-center gap-3"
+										>
+											{googleLoading ? (
+												<ActivityIndicator color={isDark ? "#ffffff" : "#000000"} />
+											) : (
+												<View className="flex-row items-center justify-center gap-3">
+													<GoogleIcon size={20} />
+													<Text className="text-foreground font-medium">{t("auth.continueWithGoogle")}</Text>
+												</View>
+											)}
+										</Button>
+
+										{/* Apple Sign-Up (iOS only) */}
+										{Platform.OS !== "android" && (
+											<Button
+												variant="outline"
+												onPress={handleAppleSignUp}
+												disabled={appleLoading || googleLoading || loading}
+												className="h-12 flex-row items-center justify-center gap-3"
+											>
+												{appleLoading ? (
+													<ActivityIndicator color={isDark ? "#ffffff" : "#000000"} />
+												) : (
+													<View className="flex-row items-center justify-center gap-3">
+														<AppleIcon size={20} color={isDark ? "#ffffff" : "#000000"} />
+														<Text className="text-foreground font-medium">{t("auth.continueWithApple")}</Text>
+													</View>
+												)}
+											</Button>
 										)}
-									</Button>
+									</View>
 
 									{/* Divider */}
 									<View className="flex-row items-center">
