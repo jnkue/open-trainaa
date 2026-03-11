@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		1AA722952F61790900541215 /* storekit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 1AA722942F61790900541215 /* storekit.storekit */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		612888E3642BA91FF39ED462 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059BDECCB116912683161CF /* ExpoModulesProvider.swift */; };
 		7FCBF805338437D5AF82F66D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DA39F30DCC82D6F48DFE3C6F /* PrivacyInfo.xcprivacy */; };
@@ -23,6 +24,7 @@
 		13B07F961A680F5B00A75B9A /* TRAINAA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRAINAA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TRAINAA/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = TRAINAA/Info.plist; sourceTree = "<group>"; };
+		1AA722942F61790900541215 /* storekit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = storekit.storekit; sourceTree = "<group>"; };
 		7EEEB30E8EDC3BEA5519537B /* libPods-TRAINAA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TRAINAA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9059BDECCB116912683161CF /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-TRAINAA/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = TRAINAA/SplashScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 				047DBE2368114CA2A3E7A9A7 /* AppIcon.icon */,
 				DA39F30DCC82D6F48DFE3C6F /* PrivacyInfo.xcprivacy */,
+				1AA722942F61790900541215 /* storekit.storekit */,
 			);
 			name = TRAINAA;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
+				1AA722952F61790900541215 /* storekit.storekit in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
 				A4EFC7F49E584490B19AE954 /* AppIcon.icon in Resources */,
@@ -423,11 +427,11 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trainaa.app;
-				PRODUCT_NAME = "TRAINAA";
+				PRODUCT_NAME = TRAINAA;
 				SWIFT_OBJC_BRIDGING_HEADER = "TRAINAA/TRAINAA-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -454,10 +458,10 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trainaa.app;
-				PRODUCT_NAME = "TRAINAA";
+				PRODUCT_NAME = TRAINAA;
 				SWIFT_OBJC_BRIDGING_HEADER = "TRAINAA/TRAINAA-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
