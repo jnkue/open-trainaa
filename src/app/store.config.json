@@ -1,0 +1,52 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "version": "1.0.5",
+    "copyright": "2025 Janik Uellendahl",
+    "release": {
+      "automaticRelease": true
+    },
+    "info": {
+      "en-US": {
+        "description": "Take your performance to the next level with a personalized training companion designed for cyclists, runners, and triathletes.\n\nKey Features:\n\nHighly Individualized Training Plans: Get a training plan that is truly tailored to your goals, fitness level, and schedule. Stop using generic plans and start training smarter.\n\nEffortless Workout Creation: Easily build and customize workouts for Cycling, Running, and Triathlon. Spend less time planning and more time executing.\n\nSeamless Device Synchronization: Automatically sync your planned workouts directly to your favorite devices, including Garmin and Wahoo. Your training plan is ready to go when you are.\n\nFeedback on Every Session: Receive meaningful feedback and analysis after every completed session. Learn what worked, where to improve, and how to optimize your next workout.\n\n\n\nMore information:\nPrivacy: https://trainaa.com/privacy\nTerms: https://trainaa.com/terms\nImprint: https://trainaa.com/imprint\nLicense Agreement: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": [
+          "Running Training",
+          "cycling Training",
+          "Triathlon training",
+          "Trainingplan",
+          "AI Coach"
+        ],
+        "releaseNotes": "- Push notifications\n- Apple login\n- Google login",
+        "marketingUrl": "https://trainaa.com",
+        "supportUrl": "https://trainaa.com",
+        "title": "TRAINAA",
+        "subtitle": "Coach: Run, Bike & Triathlon",
+        "privacyPolicyUrl": "https://trainaa.com/privacy"
+      }
+    },
+    "categories": [
+      "HEALTH_AND_FITNESS",
+      "SPORTS"
+    ],
+    "advisory": {
+      "ageRatingOverride": "NONE",
+      "alcoholTobaccoOrDrugUseOrReferences": "NONE",
+      "contests": "NONE",
+      "gambling": false,
+      "gamblingSimulated": "NONE",
+      "horrorOrFearThemes": "NONE",
+      "kidsAgeBand": null,
+      "koreaAgeRatingOverride": "NONE",
+      "lootBox": false,
+      "matureOrSuggestiveThemes": "NONE",
+      "medicalOrTreatmentInformation": "INFREQUENT_OR_MILD",
+      "profanityOrCrudeHumor": "NONE",
+      "sexualContentGraphicAndNudity": "NONE",
+      "sexualContentOrNudity": "NONE",
+      "unrestrictedWebAccess": false,
+      "violenceCartoonOrFantasy": "NONE",
+      "violenceRealistic": "NONE",
+      "violenceRealisticProlongedGraphicOrSadistic": "NONE"
+    }
+  }
+}
