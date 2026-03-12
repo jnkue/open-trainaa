@@ -1,4 +1,4 @@
-package com.trainaa.app
+package com.pacerchat.app
 
 import android.app.Application
 import android.content.res.Configuration

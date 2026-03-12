@@ -37,7 +37,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         "com.google.android.gms.permission.AD_ID"
       ],
     edgeToEdgeEnabled: true,
-    package: "com.trainaa.app",
+    package: "com.pacerchat.app",
     config: {
       googleMaps: {
         apiKey: process.env.GOOGLE_MAPS_API_KEY ?? "",
