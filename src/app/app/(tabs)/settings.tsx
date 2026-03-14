@@ -1,5 +1,5 @@
-import React from "react";
-import {View, Text, ScrollView} from "react-native";
+import React, {useCallback, useState} from "react";
+import {View, Text, ScrollView, RefreshControl} from "react-native";
 import {UserInfoSection} from "@/components/UserInfoSection";
 import {ProviderIntegrationsSection} from "@/components/ProviderIntegrationsSection";
 import {UserAttributesSection} from "@/components/UserAttributesSection";
@@ -9,6 +9,8 @@ import {AnalyticsSettingsSection} from "@/components/settings/AnalyticsSettingsS
 import {ApiKeySection} from "@/components/settings/ApiKeySection";
 
 import {useTranslation} from "react-i18next";
+import {useRevenueCat} from "@/contexts/RevenueCatContext";
+import {useTheme} from "@/contexts/ThemeContext";
 
 function SectionGroupHeader({title}: {title: string}) {
 	return (
@@ -20,6 +22,18 @@ function SectionGroupHeader({title}: {title: string}) {
 
 export default function SettingsScreen() {
 	const {t} = useTranslation();
+	const {refreshCustomerInfo} = useRevenueCat();
+	const {colorScheme} = useTheme();
+	const [refreshing, setRefreshing] = useState(false);
+
+	const onRefresh = useCallback(async () => {
+		setRefreshing(true);
+		try {
+			await refreshCustomerInfo();
+		} finally {
+			setRefreshing(false);
+		}
+	}, [refreshCustomerInfo]);
 
 	return (
 		<View className="flex-1 bg-background">
@@ -30,7 +44,17 @@ export default function SettingsScreen() {
 				</View>
 			</View>
 
-			<ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+			<ScrollView
+				className="flex-1"
+				showsVerticalScrollIndicator={false}
+				refreshControl={
+					<RefreshControl
+						refreshing={refreshing}
+						onRefresh={onRefresh}
+						tintColor={colorScheme === "dark" ? "#ECEDEE" : "#11181C"}
+					/>
+				}
+			>
 				<View className="max-w-3xl xl:max-w-7xl mx-auto w-full p-4 md:p-6">
 
 					{/* Account */}

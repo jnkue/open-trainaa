@@ -42,8 +42,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       googleMaps: {
         apiKey: process.env.GOOGLE_MAPS_API_KEY ?? "",
       },
-    },
-    versionCode: 1,
+    }
   },
   web: {
     bundler: "metro",

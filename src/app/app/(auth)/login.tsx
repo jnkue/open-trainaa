@@ -93,11 +93,14 @@ export default function LoginScreen() {
 				router.push("/chat");
 			}
 		} catch (error: any) {
-			console.error("Google sign-in error:", error);
 			if (error.code === "CANCELLED") return;
 			if (error?.code === "PLAY_SERVICES_UNAVAILABLE") {
-				setErrors({general: t("auth.googlePlayServicesUnavailable")});
-			} else {
+				setErrors({ general: t("auth.googlePlayServicesUnavailable") });
+			}
+			if (error?.code === "NETWORK_ERROR") {
+				setErrors({ general: t("auth.networkError") });
+			}
+			else {
 				setErrors({general: t("auth.googleSignInError")});
 			}
 		} finally {

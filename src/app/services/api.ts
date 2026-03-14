@@ -356,6 +356,7 @@ export class ApiClient {
     GoogleSignin.configure({
       webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
       iosClientId: process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID,
+      offlineAccess: true,
     });
 
     try {
@@ -363,7 +364,6 @@ export class ApiClient {
         await GoogleSignin.hasPlayServices();
       }
       const signInResult = await GoogleSignin.signIn();
-      console.log('Google signIn result:', JSON.stringify(signInResult, null, 2));
       const idToken = signInResult?.data?.idToken;
 
       if (!idToken) {
