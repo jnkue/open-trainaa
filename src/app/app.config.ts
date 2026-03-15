@@ -38,6 +38,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       ],
     edgeToEdgeEnabled: true,
     package: "com.pacerchat.app",
+    googleServicesFile: "./google-services.json",
     config: {
       googleMaps: {
         apiKey: process.env.GOOGLE_MAPS_API_KEY ?? "",
