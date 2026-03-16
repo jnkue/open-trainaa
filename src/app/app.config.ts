@@ -37,13 +37,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         "com.google.android.gms.permission.AD_ID"
       ],
     edgeToEdgeEnabled: true,
-    package: "com.trainaa.app",
+    package: "com.pacerchat.app",
+    googleServicesFile: "./google-services.json",
     config: {
       googleMaps: {
         apiKey: process.env.GOOGLE_MAPS_API_KEY ?? "",
       },
-    },
-    versionCode: 1,
+    }
   },
   web: {
     bundler: "metro",

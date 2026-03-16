@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {View, Text, TouchableOpacity, ActivityIndicator, Platform} from "react-native";
+import {View, Text, TouchableOpacity, ActivityIndicator, Platform, Linking} from "react-native";
 import {useRevenueCat} from "@/contexts/RevenueCatContext";
 import {useTranslation} from "react-i18next";
 import {format} from "date-fns";
@@ -98,8 +98,7 @@ export function SubscriptionSection() {
 			if (result.store === 'play_store') {
 				if (Platform.OS === 'android') {
 					// On Android, use native subscription management
-					console.log("Android: Opening native subscription management");
-					await Purchases.showManageSubscriptions();
+					await Linking.openURL("https://play.google.com/store/account/subscriptions?package=com.pacerchat.app");
 				} else {
 					// On other platforms, show message to manage on Android
 					showAlert(

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "735326490810",
+    "project_id": "com-pacerchat-app",
+    "storage_bucket": "com-pacerchat-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735326490810:android:665432e6220945f8bfb283",
+        "android_client_info": {
+          "package_name": "com.pacerchat.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNtocqVuFBruMELqbbn_S0W1JDX8hBGf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -120,6 +120,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.28.3",
+    "@react-native-community/cli-platform-android": "^20.1.2",
     "@tanstack/eslint-plugin-query": "^5.86.0",
     "@types/react": "~19.1.10",
     "babel-plugin-transform-remove-console": "^6.9.4",
