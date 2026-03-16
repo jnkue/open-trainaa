@@ -5,6 +5,7 @@ Sends push notifications via Expo Push Notification Service.
 Docs: https://docs.expo.dev/push-notifications/sending-notifications/
 """
 
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 import httpx
@@ -99,6 +100,22 @@ def _remove_invalid_token(user_id: str, token: str):
         LOGGER.warning(f"Failed to remove invalid token: {e}")
 
 
+def _is_bulk_upload(user_id: str, window_minutes: int = 5) -> bool:
+    """
+    Returns True if more than one session was created for this user in the last
+    `window_minutes` minutes — indicating a bulk import (e.g. first Garmin/Wahoo sync).
+    """
+    cutoff = (datetime.now(timezone.utc) - timedelta(minutes=window_minutes)).isoformat()
+    result = (
+        supabase.table("sessions")
+        .select("id", count="exact")
+        .eq("user_id", user_id)
+        .gte("created_at", cutoff)
+        .execute()
+    )
+    return (result.count or 0) > 1
+
+
 async def send_feedback_notification(
     user_id: str,
     feedback_text: str,
@@ -107,7 +124,14 @@ async def send_feedback_notification(
     """
     Send a push notification with ride feedback.
     Checks user preference before sending.
+    Skips notification when a bulk upload is detected (multiple recent sessions).
     """
+    if _is_bulk_upload(user_id):
+        LOGGER.debug(
+            f"Bulk upload detected for user {user_id}, skipping feedback notification"
+        )
+        return
+
     prefs = (
         supabase.table("user_infos")
         .select("push_notification_feedback")
