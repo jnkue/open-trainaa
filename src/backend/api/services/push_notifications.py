@@ -5,7 +5,7 @@ Sends push notifications via Expo Push Notification Service.
 Docs: https://docs.expo.dev/push-notifications/sending-notifications/
 """
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from typing import Optional
 
 import httpx
@@ -100,20 +100,23 @@ def _remove_invalid_token(user_id: str, token: str):
         LOGGER.warning(f"Failed to remove invalid token: {e}")
 
 
-def _is_bulk_upload(user_id: str, window_minutes: int = 5) -> bool:
+def _is_todays_activity(session_id: str) -> bool:
     """
-    Returns True if more than one session was created for this user in the last
-    `window_minutes` minutes — indicating a bulk import (e.g. first Garmin/Wahoo sync).
+    Returns True if the session's start_time is today (UTC).
+    Only today's activities warrant a push notification — older sessions are not
+    actionable and bulk historical syncs should not trigger notifications.
     """
-    cutoff = (datetime.now(timezone.utc) - timedelta(minutes=window_minutes)).isoformat()
     result = (
         supabase.table("sessions")
-        .select("id", count="exact")
-        .eq("user_id", user_id)
-        .gte("created_at", cutoff)
+        .select("start_time")
+        .eq("id", session_id)
+        .single()
         .execute()
     )
-    return (result.count or 0) > 1
+    if not result.data or not result.data.get("start_time"):
+        return False
+    session_date = datetime.fromisoformat(result.data["start_time"]).date()
+    return session_date == datetime.now(timezone.utc).date()
 
 
 async def send_feedback_notification(
@@ -124,11 +127,11 @@ async def send_feedback_notification(
     """
     Send a push notification with ride feedback.
     Checks user preference before sending.
-    Skips notification when a bulk upload is detected (multiple recent sessions).
+    Only sends for today's activities — skips historical sessions (e.g. bulk syncs).
     """
-    if _is_bulk_upload(user_id):
+    if not _is_todays_activity(session_id):
         LOGGER.debug(
-            f"Bulk upload detected for user {user_id}, skipping feedback notification"
+            f"Session {session_id} is not from today, skipping feedback notification"
         )
         return
 
