@@ -202,9 +202,9 @@ function AppContent() {
 							<NavigationGuard>
 								<NavigationThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
 									<Stack>
-										<Stack.Screen name="index" options={{headerShown: false}} />
-										<Stack.Screen name="(auth)" options={{headerShown: false}} />
-										<Stack.Screen name="(tabs)" options={{headerShown: false}} />
+										<Stack.Screen name="index" options={{headerShown: false, title: "TRAINAA"}} />
+										<Stack.Screen name="(auth)" options={{headerShown: false, title: "TRAINAA"}} />
+										<Stack.Screen name="(tabs)" options={{headerShown: false, title: "TRAINAA"}} />
 										<Stack.Screen name="+not-found" />
 									</Stack>
 

@@ -436,6 +436,7 @@
       "feedbackSaveSuccess": "Feedback successfully saved!",
       "feedbackSaveError": "Failed to save feedback. Please try again.",
       "loadingFeedback": "Loading feedback...",
+      "perceivedExertion": "Perceived Exertion",
       "feedback": {
         "feel": "Feel",
         "rpe": "Rate of Perceived Exertion (RPE)",

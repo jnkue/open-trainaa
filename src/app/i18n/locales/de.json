@@ -392,6 +392,7 @@
       "feedbackSaveSuccess": "Feedback erfolgreich gespeichert!",
       "feedbackSaveError": "Fehler beim Speichern des Feedbacks. Bitte versuche es erneut.",
       "loadingFeedback": "Lade Feedback...",
+      "perceivedExertion": "Anstrengungsempfinden",
       "feedback": {
         "feel": "Gefühl",
         "rpe": "Anstrengungsempfinden (RPE)",
