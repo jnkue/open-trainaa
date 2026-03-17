@@ -616,7 +616,8 @@
     "filter": "Filtrer",
     "sort": "Trier",
     "refresh": "Actualiser",
-    "share": "Partager"
+    "share": "Partager",
+    "environmentBanner": "{{environment}}"
   },
   "theme": {
     "light": "Clair",

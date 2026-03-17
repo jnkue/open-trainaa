@@ -31,6 +31,7 @@ import {AnalyticsConsentModal} from '@/components/AnalyticsConsentModal';
 import {useAnalyticsConsent} from '@/hooks/useAnalyticsConsent';
 import {usePushNotifications} from '@/hooks/usePushNotifications';
 import {SetNameModal} from '@/components/SetNameModal';
+import {EnvironmentBanner} from '@/components/EnvironmentBanner';
 import {apiClient} from '@/services/api';
 
 const ENVIRONMENT = process.env.EXPO_PUBLIC_ENVIRONMENT;
@@ -220,6 +221,7 @@ function AppContent() {
 				</QueryClientProvider>
 			</SafeAreaProvider>
 			<PortalHost name="root" />
+		<EnvironmentBanner />
 		</GestureHandlerRootView>
 	);
 }

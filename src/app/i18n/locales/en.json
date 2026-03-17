@@ -626,7 +626,8 @@
     "sort": "Sort",
     "refresh": "Refresh",
     "share": "Share",
-    "add": "Add"
+    "add": "Add",
+    "environmentBanner": "{{environment}}"
   },
   "theme": {
     "light": "Light",

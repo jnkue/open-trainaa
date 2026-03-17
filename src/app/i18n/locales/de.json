@@ -583,7 +583,8 @@
     "share": "Teilen",
     "refresh": "Aktualisieren",
     "all": "Alle",
-    "add": "Hinzufügen"
+    "add": "Hinzufügen",
+    "environmentBanner": "{{environment}}"
   },
   "theme": {
     "light": "Hell",
