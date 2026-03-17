@@ -9,7 +9,7 @@
       }
     ]
   },
-  "identifier" : "AAC19A58",
+  "identifier" : "A753694B",
   "nonRenewingSubscriptions" : [
 
   ],
@@ -24,7 +24,7 @@
     "_developerTeamID" : "2M3MQ8K539",
     "_disableDialogs" : false,
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 794917521.87243199,
+    "_lastSynchronizedDate" : 795450755.69372404,
     "_locale" : "en_US",
     "_renewalBillingIssuesEnabled" : false,
     "_storefront" : "USA",
@@ -53,7 +53,7 @@
           "groupNumber" : 1,
           "internalID" : "6758697482",
           "introductoryOffer" : {
-            "internalID" : "5A7427DD",
+            "internalID" : "FAAC7E68",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"
