@@ -111,5 +111,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     eas: {
       projectId: "96d10c90-5cd3-42da-84d9-aaa688560941" },
   },
+    updates: {
+    url: "https://u.expo.dev/96d10c90-5cd3-42da-84d9-aaa688560941"
+  },
+  runtimeVersion: { policy: "fingerprint" },
   owner: "pacer",
 });
