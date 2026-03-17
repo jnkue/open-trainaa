@@ -40,3 +40,8 @@ app-example
 .env.local
 .env
 .env_files
+
+
+# Native directories
+/android
+/ios

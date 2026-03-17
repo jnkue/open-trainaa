@@ -1,7 +1,7 @@
 {
   "name": "mobile",
   "main": "expo-router/entry",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -59,9 +59,11 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "expo": "~54.0.33",
+    "expo-apple-authentication": "~8.0.8",
     "expo-application": "~7.0.8",
     "expo-blur": "~15.0.8",
     "expo-constants": "~18.0.13",
+    "expo-crypto": "~15.0.8",
     "expo-dev-client": "~6.0.20",
     "expo-device": "~8.0.10",
     "expo-document-picker": "~14.0.8",
@@ -81,6 +83,7 @@
     "expo-status-bar": "~3.0.9",
     "expo-symbols": "~1.0.8",
     "expo-system-ui": "~6.0.9",
+    "expo-updates": "~29.0.16",
     "expo-web-browser": "~15.0.10",
     "html-to-image": "^1.11.13",
     "i18next": "^25.5.2",
@@ -118,6 +121,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.28.3",
+    "@react-native-community/cli-platform-android": "^20.1.2",
     "@tanstack/eslint-plugin-query": "^5.86.0",
     "@types/react": "~19.1.10",
     "babel-plugin-transform-remove-console": "^6.9.4",

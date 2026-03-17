@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {
 	View,
 	Text,
@@ -6,9 +6,10 @@ import {
 	Modal,
 	ScrollView,
 	ActivityIndicator,
+	useWindowDimensions,
 } from "react-native";
-import { useTheme } from "@/contexts/ThemeContext";
-import { useTranslation } from "react-i18next";
+import {useTheme} from "@/contexts/ThemeContext";
+import {useTranslation} from "react-i18next";
 
 interface AnalyticsConsentModalProps {
 	open: boolean;
@@ -19,9 +20,11 @@ export function AnalyticsConsentModal({
 	open,
 	onConsent,
 }: AnalyticsConsentModalProps) {
-	const { isDark } = useTheme();
-	const { t } = useTranslation();
+	const {isDark} = useTheme();
+	const {t} = useTranslation();
 	const [isSubmitting, setIsSubmitting] = useState(false);
+	const {width} = useWindowDimensions();
+	const isLargeScreen = width >= 768;
 
 	const handleChoice = async (consented: boolean) => {
 		setIsSubmitting(true);
@@ -34,20 +37,36 @@ export function AnalyticsConsentModal({
 		}
 	};
 
+	const cardStyle = {
+		backgroundColor: isDark ? "#1f1f23" : "#ffffff",
+		borderTopColor: isDark ? "#333333" : "#e5e7eb",
+		maxHeight: "85%" as const,
+		...(isLargeScreen
+			? {
+				borderRadius: 24,
+				borderWidth: 1,
+				borderColor: isDark ? "#333333" : "#e5e7eb",
+				maxWidth: 480,
+				width: "100%" as const,
+			}
+			: {
+				borderTopLeftRadius: 24,
+				borderTopRightRadius: 24,
+				borderTopWidth: 1,
+			}),
+	};
+
 	return (
 		<Modal visible={open} transparent animationType="slide">
-			<View style={{ flex: 1, backgroundColor: "rgba(0, 0, 0, 0.5)" }}>
-				<View style={{ flex: 1, minHeight: 60 }} />
-				<View
-					style={{
-						backgroundColor: isDark ? "#1f1f23" : "#ffffff",
-						borderTopLeftRadius: 24,
-						borderTopRightRadius: 24,
-						borderTopWidth: 1,
-						borderTopColor: isDark ? "#333333" : "#e5e7eb",
-						maxHeight: "85%",
-					}}
-				>
+			<View style={{
+				flex: 1,
+				backgroundColor: "rgba(0, 0, 0, 0.5)",
+				...(isLargeScreen
+					? {justifyContent: "center", alignItems: "center"}
+					: {}),
+			}}>
+				{!isLargeScreen && <View style={{flex: 1, minHeight: 60}} />}
+				<View style={cardStyle}>
 					<View className="p-6">
 						<Text className="text-xl font-bold text-foreground mb-2">
 							{t("analytics.consentTitle")}
@@ -55,7 +74,7 @@ export function AnalyticsConsentModal({
 
 						<ScrollView
 							showsVerticalScrollIndicator={false}
-							contentContainerStyle={{ paddingBottom: 8 }}
+							contentContainerStyle={{paddingBottom: 8}}
 						>
 							<Text className="text-sm text-muted-foreground mb-4">
 								{t("analytics.consentDescription")}
@@ -95,7 +114,7 @@ export function AnalyticsConsentModal({
 								onPress={() => handleChoice(true)}
 								disabled={isSubmitting}
 								className="rounded-lg p-4 bg-primary"
-								style={{ opacity: isSubmitting ? 0.6 : 1 }}
+								style={{opacity: isSubmitting ? 0.6 : 1}}
 							>
 								{isSubmitting ? (
 									<ActivityIndicator color="#fff" />

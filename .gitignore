@@ -219,7 +219,6 @@ testDB.db-wal
 *.toc
 *.vrb
 *.xdy
-*.xml
 *blx.bib
 .bak 
 .mtc

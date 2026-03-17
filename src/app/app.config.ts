@@ -17,6 +17,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     bundleIdentifier: "com.trainaa.app",
     supportsTablet: false,
+    usesAppleSignIn: true,
     infoPlist: {
       ITSAppUsesNonExemptEncryption: false,
       UIBackgroundModes: ["remote-notification"],
@@ -36,13 +37,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         "com.google.android.gms.permission.AD_ID"
       ],
     edgeToEdgeEnabled: true,
-    package: "com.trainaa.app",
+    package: "com.pacerchat.app",
+    googleServicesFile: "./google-services.json",
     config: {
       googleMaps: {
         apiKey: process.env.GOOGLE_MAPS_API_KEY ?? "",
       },
-    },
-    versionCode: 1,
+    }
   },
   web: {
     bundler: "metro",
@@ -99,7 +100,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     {
       iosUrlScheme: `com.googleusercontent.apps.${(process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? "").split(".")[0]}`,
     }
-  ]
+  ],
+    "expo-apple-authentication"
   ],
   experiments: {
     typedRoutes: true,
@@ -109,5 +111,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     eas: {
       projectId: "96d10c90-5cd3-42da-84d9-aaa688560941" },
   },
+    updates: {
+    url: "https://u.expo.dev/96d10c90-5cd3-42da-84d9-aaa688560941"
+  },
+  runtimeVersion: { policy: "fingerprint" },
   owner: "pacer",
 });

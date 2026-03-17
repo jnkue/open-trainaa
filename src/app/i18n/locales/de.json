@@ -92,8 +92,11 @@
     "termsConditions": "Allgemeinen Geschäftsbedingungen",
     "and": "und",
     "continueWithGoogle": "Weiter mit Google",
+    "continueWithApple": "Weiter mit Apple",
     "orDivider": "oder",
     "googleSignInError": "Google-Anmeldung fehlgeschlagen. Bitte erneut versuchen.",
+    "appleSignInError": "Apple-Anmeldung fehlgeschlagen. Bitte versuche es erneut.",
+    "appleSignInUnavailable": "Apple-Anmeldung ist auf diesem Gerät nicht verfügbar.",
     "googlePlayServicesUnavailable": "Google Play-Dienste sind auf diesem Gerät nicht verfügbar."
   },
   "navigation": {
@@ -195,7 +198,10 @@
     "sectionPrivacy": "Datenschutz",
     "timezoneLabel": "Zeitzone",
     "timezoneDescription": "Wird für den Versandzeitpunkt der täglichen Benachrichtigung verwendet",
-    "timezoneSearchPlaceholder": "Zeitzonen suchen..."
+    "timezoneSearchPlaceholder": "Zeitzonen suchen...",
+    "signedInWith": "Angemeldet mit",
+    "providerGoogle": "Google",
+    "providerApple": "Apple"
   },
   "notifications": {
     "title": "Benachrichtigungen",
@@ -386,6 +392,7 @@
       "feedbackSaveSuccess": "Feedback erfolgreich gespeichert!",
       "feedbackSaveError": "Fehler beim Speichern des Feedbacks. Bitte versuche es erneut.",
       "loadingFeedback": "Lade Feedback...",
+      "perceivedExertion": "Anstrengungsempfinden",
       "feedback": {
         "feel": "Gefühl",
         "rpe": "Anstrengungsempfinden (RPE)",
@@ -576,7 +583,8 @@
     "share": "Teilen",
     "refresh": "Aktualisieren",
     "all": "Alle",
-    "add": "Hinzufügen"
+    "add": "Hinzufügen",
+    "environmentBanner": "{{environment}}"
   },
   "theme": {
     "light": "Hell",
@@ -864,6 +872,11 @@
       "title": "Session Feedback",
       "description": "Feedback direkt zu deinen Trainingseinheiten"
     }
+  },
+  "setName": {
+    "title": "Wie heisst du?",
+    "placeholder": "Name eingeben",
+    "continue": "Weiter"
   },
   "analytics": {
     "consentTitle": "Hilf uns, besser zu werden",

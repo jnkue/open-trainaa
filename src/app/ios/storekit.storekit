@@ -9,7 +9,7 @@
       }
     ]
   },
-  "identifier" : "D0972152",
+  "identifier" : "A753694B",
   "nonRenewingSubscriptions" : [
 
   ],
@@ -24,7 +24,7 @@
     "_developerTeamID" : "2M3MQ8K539",
     "_disableDialogs" : false,
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 791888323.09219301,
+    "_lastSynchronizedDate" : 795450755.69372404,
     "_locale" : "en_US",
     "_renewalBillingIssuesEnabled" : false,
     "_storefront" : "USA",
@@ -53,14 +53,14 @@
           "groupNumber" : 1,
           "internalID" : "6758697482",
           "introductoryOffer" : {
-            "internalID" : "693C2CDD",
+            "internalID" : "FAAC7E68",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"
           },
           "localizations" : [
             {
-              "description" : "Get access to unlimited messages with the AI Coach",
+              "description" : "Access to unlimited messages with the Coach",
               "displayName" : "Monthly PRO",
               "locale" : "en_US"
             }

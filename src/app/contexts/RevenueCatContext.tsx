@@ -270,13 +270,24 @@ export const RevenueCatProvider: React.FC<RevenueCatProviderProps> = ({
 				setCustomerInfo(null); // Don't use V2 API structure on web
 				console.log("Customer info refreshed, Pro status:", response.is_pro_subscriber, "byok:", response.has_byok_key, "store:", response.subscription_store);
 			} else if (Platform.OS === "ios" || Platform.OS === "android") {
+				// Check native RevenueCat SDK first
 				const info = await Purchases.getCustomerInfo();
 				setCustomerInfo(info);
 				const hasProEntitlement = info.entitlements.active[ENTITLEMENT_ID] !== undefined;
-				setIsProSubscriber(hasProEntitlement);
-				const store = hasProEntitlement ? info.entitlements.active[ENTITLEMENT_ID]?.store?.toLowerCase() : null;
-				setSubscriptionStore(store);
-				console.log("Customer info refreshed, Pro status:", hasProEntitlement, "store:", store);
+
+				if (hasProEntitlement) {
+					setIsProSubscriber(true);
+					const store = info.entitlements.active[ENTITLEMENT_ID]?.store?.toLowerCase() ?? null;
+					setSubscriptionStore(store);
+					console.log("Customer info refreshed (native), Pro status: true, store:", store);
+				} else {
+					// No native entitlement — check backend for cross-platform subscriptions (e.g. Stripe/web)
+					const response = await apiClient.getSubscriptionStatus();
+					setIsProSubscriber(response.is_pro_subscriber);
+					setHasByokKey(response.has_byok_key);
+					setSubscriptionStore(response.subscription_store);
+					console.log("Customer info refreshed (backend), Pro status:", response.is_pro_subscriber, "store:", response.subscription_store);
+				}
 			}
 		} catch (error) {
 			console.error("Error refreshing customer info:", error);

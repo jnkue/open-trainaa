@@ -92,8 +92,11 @@
     "termsConditions": "Terms & Conditions",
     "and": "and",
     "continueWithGoogle": "Continue with Google",
+    "continueWithApple": "Continue with Apple",
     "orDivider": "or",
     "googleSignInError": "Google sign-in failed. Please try again.",
+    "appleSignInError": "Apple sign-in failed. Please try again.",
+    "appleSignInUnavailable": "Apple Sign-In is not available on this device.",
     "googlePlayServicesUnavailable": "Google Play Services is not available on this device."
   },
   "navigation": {
@@ -240,7 +243,10 @@
     "sectionPrivacy": "Privacy",
     "timezoneLabel": "Timezone",
     "timezoneDescription": "Used for daily notification timing",
-    "timezoneSearchPlaceholder": "Search timezones..."
+    "timezoneSearchPlaceholder": "Search timezones...",
+    "signedInWith": "Signed in with",
+    "providerGoogle": "Google",
+    "providerApple": "Apple"
   },
   "notifications": {
     "title": "Notifications",
@@ -430,6 +436,7 @@
       "feedbackSaveSuccess": "Feedback successfully saved!",
       "feedbackSaveError": "Failed to save feedback. Please try again.",
       "loadingFeedback": "Loading feedback...",
+      "perceivedExertion": "Perceived Exertion",
       "feedback": {
         "feel": "Feel",
         "rpe": "Rate of Perceived Exertion (RPE)",
@@ -619,7 +626,8 @@
     "sort": "Sort",
     "refresh": "Refresh",
     "share": "Share",
-    "add": "Add"
+    "add": "Add",
+    "environmentBanner": "{{environment}}"
   },
   "theme": {
     "light": "Light",
@@ -863,6 +871,11 @@
       "title": "Session Feedback",
       "description": "Feedback directly on your training sessions"
     }
+  },
+  "setName": {
+    "title": "What's your name?",
+    "placeholder": "Enter your name",
+    "continue": "Continue"
   },
   "analytics": {
     "consentTitle": "Help Us Improve",
