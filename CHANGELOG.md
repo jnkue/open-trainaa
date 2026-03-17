@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [unrealesed]
 
 ### Added
+- Added Expo Updates for OTA updates.
+- Small UI changes
 
 ### Changed
 
@@ -16,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Fixed
+- Multiple push notifications being sent when bulk upload
 
 ### Security
 
