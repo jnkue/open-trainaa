@@ -5,6 +5,7 @@ Sends push notifications via Expo Push Notification Service.
 Docs: https://docs.expo.dev/push-notifications/sending-notifications/
 """
 
+from datetime import datetime, timezone
 from typing import Optional
 
 import httpx
@@ -99,6 +100,25 @@ def _remove_invalid_token(user_id: str, token: str):
         LOGGER.warning(f"Failed to remove invalid token: {e}")
 
 
+def _is_todays_activity(session_id: str) -> bool:
+    """
+    Returns True if the session's start_time is today (UTC).
+    Only today's activities warrant a push notification — older sessions are not
+    actionable and bulk historical syncs should not trigger notifications.
+    """
+    result = (
+        supabase.table("sessions")
+        .select("start_time")
+        .eq("id", session_id)
+        .single()
+        .execute()
+    )
+    if not result.data or not result.data.get("start_time"):
+        return False
+    session_date = datetime.fromisoformat(result.data["start_time"]).date()
+    return session_date == datetime.now(timezone.utc).date()
+
+
 async def send_feedback_notification(
     user_id: str,
     feedback_text: str,
@@ -107,7 +127,14 @@ async def send_feedback_notification(
     """
     Send a push notification with ride feedback.
     Checks user preference before sending.
+    Only sends for today's activities — skips historical sessions (e.g. bulk syncs).
     """
+    if not _is_todays_activity(session_id):
+        LOGGER.debug(
+            f"Session {session_id} is not from today, skipping feedback notification"
+        )
+        return
+
     prefs = (
         supabase.table("user_infos")
         .select("push_notification_feedback")

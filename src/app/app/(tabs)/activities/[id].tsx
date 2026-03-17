@@ -687,11 +687,11 @@ const UserFeedbackSection = React.memo(({sessionId, initialUserFeedback}: {sessi
 
 	// Feel options: 0=Very Weak, 25=Weak, 50=Normal, 75=Strong, 100=Very Strong
 	const feelOptions = [
-		{value: 0, label: "Very Weak", emoji: "😫", color: "#ef4444"},
-		{value: 25, label: "Weak", emoji: "😕", color: "#f97316"},
-		{value: 50, label: "Normal", emoji: "😐", color: "#f59e0b"},
-		{value: 75, label: "Strong", emoji: "🙂", color: "#84cc16"},
-		{value: 100, label: "Very Strong", emoji: "💪", color: "#22c55e"},
+		{value: 0, label: "Very Weak", color: "#ef4444"},
+		{value: 25, label: "Weak", color: "#f97316"},
+		{value: 50, label: "Normal", color: "#f59e0b"},
+		{value: 75, label: "Strong", color: "#84cc16"},
+		{value: 100, label: "Very Strong", color: "#22c55e"},
 	];
 
 	// RPE options: 0-100 with labels
@@ -777,12 +777,13 @@ const UserFeedbackSection = React.memo(({sessionId, initialUserFeedback}: {sessi
 										borderColor: `${selectedFeel.color}30`,
 									}}
 								>
-									<Text className="text-lg mr-3">{selectedFeel.emoji}</Text>
-									<View>
-										<Text className="font-semibold text-base" style={{color: selectedFeel.color}}>
-											{t(`activities.detail.feedback.feelValues.${selectedFeel.value}`)}
-										</Text>
-									</View>
+									<View
+										className="w-3 h-3 rounded-full mr-3"
+										style={{backgroundColor: selectedFeel.color}}
+									/>
+									<Text className="font-semibold text-base" style={{color: selectedFeel.color}}>
+										{t(`activities.detail.feedback.feelValues.${selectedFeel.value}`)}
+									</Text>
 								</View>
 							</View>
 						)}
@@ -797,7 +798,7 @@ const UserFeedbackSection = React.memo(({sessionId, initialUserFeedback}: {sessi
 									className={`flex-row items-center p-3 rounded-xl border ${isDark ? "bg-muted/50 border-border" : "bg-secondary/30 border-secondary"}`}
 								>
 									<View
-										className="w-8 h-8 rounded-full items-center justifyContent-center mr-3"
+										className="w-8 h-8 rounded-full items-center justify-center mr-3"
 										style={{backgroundColor: isDark ? "#3b82f6" : "#2563eb"}}
 									>
 										<Text className="text-white text-xs font-bold">{rpe}</Text>
@@ -806,7 +807,6 @@ const UserFeedbackSection = React.memo(({sessionId, initialUserFeedback}: {sessi
 										<Text className="font-semibold text-base text-foreground">
 											{t(`activities.detail.feedback.rpeValues.${selectedRpe.value}`)}
 										</Text>
-										<Text className="text-xs text-muted-foreground">{t("activities.detail.perceivedExertion")}</Text>
 									</View>
 								</View>
 							</View>
@@ -835,7 +835,10 @@ const UserFeedbackSection = React.memo(({sessionId, initialUserFeedback}: {sessi
 											minWidth: 55,
 										}}
 									>
-										<Text className="text-lg">{option.emoji}</Text>
+										<View
+										className="w-3 h-3 rounded-full"
+										style={{backgroundColor: option.color}}
+									/>
 										<Text
 											numberOfLines={1}
 											adjustsFontSizeToFit
