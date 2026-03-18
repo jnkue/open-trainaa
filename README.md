@@ -9,11 +9,11 @@ TRAINAA is an open-source endurance training app based on LLMs and agent systems
 
 [Start now on the web](https://app.trainaa.com)
 
-or download the app on IOS:
+or download the app:
 
 [App Store](https://apps.apple.com/de/app/trainaa/id6758528495)
 
-Android (Play Store) coming soon!
+[Google Play](https://play.google.com/store/apps/details?id=com.pacerchat.app)
 
 
 And dont forget to [Join our Discord](https://discord.gg/ehMPJErVRN) 
