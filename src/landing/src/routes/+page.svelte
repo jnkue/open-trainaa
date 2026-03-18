@@ -146,13 +146,10 @@
 			<a href="https://apps.apple.com/de/app/trainaa/id6758528495" target="_blank" rel="noopener noreferrer" class="h-16 w-48 flex items-center justify-center transition-transform duration-300 hover:scale-102">
 				<img src="/appstore/apple-badge.svg" alt="Download on the App Store" class="h-16 w-full object-contain" />
 			</a>
-			<!-- Google Play Store with Coming Soon overlay -->
-			<div class="relative h-16">
-				<img src="/appstore/google-badge.png" alt="Get it on Google Play" class="h-16 w-auto" />
-				<div class="absolute inset-0 bg-black/60 flex items-center justify-center rounded-md">
-					<span class="uppercase tracking-wide text-lg text-white ">Coming Soon</span>
-				</div>
-			</div>
+			<!-- Google Play Store -->
+			<a href="https://play.google.com/store/apps/details?id=com.pacerchat.app" target="_blank" rel="noopener noreferrer" class="h-16 w-48 flex items-center justify-center transition-transform duration-300 hover:scale-102">
+				<img src="/appstore/google-badge.png" alt="Get it on Google Play" class="h-16 w-full object-contain" />
+			</a>
 		</div>
 	</div>
 
