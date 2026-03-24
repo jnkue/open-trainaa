@@ -2,8 +2,11 @@ import { useEffect, useCallback, useRef } from "react";
 import { Platform } from "react-native";
 import * as Notifications from "expo-notifications";
 import * as Device from "expo-device";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "expo-router";
+
+const PUSH_TOKEN_KEY = "expo_push_token";
 
 Notifications.setNotificationHandler({
 	handleNotification: async () => ({
@@ -108,6 +111,7 @@ export function usePushNotifications() {
 				);
 
 				if (response.ok) {
+					await AsyncStorage.setItem(PUSH_TOKEN_KEY, token);
 					console.log("Push token registered with backend");
 				} else {
 					console.error(
@@ -144,4 +148,38 @@ export function usePushNotifications() {
 		registerForPushNotifications,
 		registerTokenWithBackend,
 	]);
+
+}
+
+/**
+ * Unregister the push token from the backend.
+ * Call this before signing out so the session token is still valid.
+ */
+export async function unregisterPushToken(accessToken: string): Promise<void> {
+	try {
+		const token = await AsyncStorage.getItem(PUSH_TOKEN_KEY);
+		if (!token) return;
+
+		const response = await fetch(
+			`${process.env.EXPO_PUBLIC_BACKEND_BASE_URL}/v1/push-tokens/unregister?token=${encodeURIComponent(token)}`,
+			{
+				method: "DELETE",
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+
+		// Always clear local token — even if the backend call failed,
+		// the next login will re-register and clean up stale associations.
+		await AsyncStorage.removeItem(PUSH_TOKEN_KEY);
+
+		if (response.ok) {
+			console.log("Push token unregistered from backend");
+		} else {
+			console.error("Failed to unregister push token:", response.status);
+		}
+	} catch (error) {
+		console.error("Error unregistering push token:", error);
+	}
 }
