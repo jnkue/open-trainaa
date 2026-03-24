@@ -5,7 +5,7 @@ This router provides unified access to activities from all providers (Strava, Ga
 
 import os
 from datetime import datetime
-from typing import Optional
+from typing import Literal, Optional
 from uuid import UUID
 
 from fastapi import (
@@ -18,7 +18,7 @@ from fastapi import (
     UploadFile,
 )
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator, validator
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 from supabase import Client, create_client
@@ -2658,3 +2658,200 @@ async def create_activity_from_fit(
     except Exception as e:
         LOGGER.error(f"Error processing FIT file: {e}")
         raise HTTPException(status_code=500, detail="Failed to process FIT file")
+
+
+# --- JSON Activity Upload (for Apple Health and other client-side integrations) ---
+
+
+class RecordsPayload(BaseModel):
+    timestamp: list[int] = Field(default_factory=list)
+    heart_rate: list[Optional[int]] = Field(default_factory=list)
+    latitude: list[Optional[float]] = Field(default_factory=list)
+    longitude: list[Optional[float]] = Field(default_factory=list)
+    altitude: list[Optional[float]] = Field(default_factory=list)
+    speed: list[Optional[float]] = Field(default_factory=list)
+    distance: list[Optional[float]] = Field(default_factory=list)
+    cadence: list[Optional[int]] = Field(default_factory=list)
+    power: list[Optional[int]] = Field(default_factory=list)
+    temperature: list[Optional[int]] = Field(default_factory=list)
+
+
+class ActivityJsonUpload(BaseModel):
+    upload_source: Literal["apple_health", "garmin", "wahoo", "strava", "manual"] = Field(
+        ..., description="Source provider, e.g. 'apple_health'"
+    )
+    external_id: str = Field(
+        ..., description="External ID for deduplication, e.g. HealthKit workout UUID"
+    )
+    sport: str = Field(..., description="Sport type, e.g. 'running'")
+    sub_sport: Optional[str] = None
+    start_time: str = Field(
+        ..., description="ISO 8601 start time, e.g. '2024-01-15T08:30:00Z'"
+    )
+    total_distance: Optional[float] = Field(None, ge=0, description="Meters")
+    total_elapsed_time: Optional[float] = Field(None, ge=0, description="Seconds")
+    total_timer_time: Optional[float] = Field(None, ge=0, description="Seconds")
+    total_calories: Optional[int] = Field(None, ge=0)
+    avg_heart_rate: Optional[int] = Field(None, ge=0)
+    max_heart_rate: Optional[int] = Field(None, ge=0)
+    avg_speed: Optional[float] = Field(None, ge=0, description="m/s")
+    max_speed: Optional[float] = Field(None, ge=0, description="m/s")
+    avg_cadence: Optional[int] = Field(None, ge=0)
+    total_elevation_gain: Optional[float] = Field(None, ge=0, description="Meters")
+    records: Optional[RecordsPayload] = None
+
+    @field_validator("start_time")
+    @classmethod
+    def validate_start_time(cls, v: str) -> str:
+        try:
+            datetime.fromisoformat(v.replace("Z", "+00:00"))
+        except ValueError:
+            raise ValueError("start_time must be a valid ISO 8601 datetime string")
+        return v
+
+
+@router.post("/upload-json")
+async def create_activity_from_json(
+    payload: ActivityJsonUpload,
+    background_tasks: BackgroundTasks,
+    current_user: User = Depends(get_current_user),
+):
+    """Upload an activity from structured JSON data (e.g. Apple Health).
+
+    Unlike FIT file uploads, this endpoint accepts pre-parsed workout data
+    as JSON. Handles deduplication via external_id + upload_source and
+    cross-provider dedup via start_time matching.
+    """
+    try:
+        # Check for duplicate by external_id + upload_source
+        existing = (
+            supabase.table("activities")
+            .select("id")
+            .eq("user_id", current_user.id)
+            .eq("external_id", payload.external_id)
+            .eq("upload_source", payload.upload_source)
+            .limit(1)
+            .execute()
+        )
+
+        if existing.data:
+            return {
+                "detail": "Activity already imported",
+                "activity_id": existing.data[0]["id"],
+                "is_duplicate": True,
+            }
+
+        # Create activity record
+        activity_data = {
+            "user_id": current_user.id,
+            "num_sessions": 1,
+            "upload_source": payload.upload_source,
+            "external_id": payload.external_id,
+            "total_distance": payload.total_distance,
+            "total_elapsed_time": payload.total_elapsed_time,
+        }
+
+        activity_result = supabase.table("activities").insert(activity_data).execute()
+        if not activity_result.data:
+            raise HTTPException(
+                status_code=500, detail="Failed to create activity record"
+            )
+
+        activity_id = activity_result.data[0]["id"]
+        LOGGER.info(
+            f"Created activity {activity_id} from {payload.upload_source} for user {current_user.id}"
+        )
+
+        # Create session record
+        session_data = {
+            "user_id": current_user.id,
+            "activity_id": activity_id,
+            "session_number": 0,
+            "sport": payload.sport,
+            "sub_sport": payload.sub_sport,
+            "start_time": payload.start_time,
+            "total_distance": payload.total_distance,
+            "total_elapsed_time": payload.total_elapsed_time,
+            "total_timer_time": payload.total_timer_time,
+            "total_calories": payload.total_calories,
+            "avg_heart_rate": payload.avg_heart_rate,
+            "max_heart_rate": payload.max_heart_rate,
+            "avg_speed": payload.avg_speed,
+            "max_speed": payload.max_speed,
+            "avg_cadence": payload.avg_cadence,
+            "total_elevation_gain": payload.total_elevation_gain,
+        }
+
+        # Remove None values
+        session_data = {k: v for k, v in session_data.items() if v is not None}
+
+        session_result = supabase.table("sessions").insert(session_data).execute()
+        if not session_result.data:
+            raise HTTPException(
+                status_code=500, detail="Failed to create session record"
+            )
+
+        session_id = session_result.data[0]["id"]
+        LOGGER.info(f"Created session {session_id} for activity {activity_id}")
+
+        # Create records if provided
+        if payload.records and payload.records.timestamp:
+            record_data = {
+                "session_id": session_id,
+                "activity_id": activity_id,
+                "timestamp": payload.records.timestamp,
+                "heart_rate": payload.records.heart_rate or [],
+                "latitude": payload.records.latitude or [],
+                "longitude": payload.records.longitude or [],
+                "altitude": payload.records.altitude or [],
+                "speed": payload.records.speed or [],
+                "distance": payload.records.distance or [],
+                "cadence": payload.records.cadence or [],
+                "power": payload.records.power or [],
+                "temperature": payload.records.temperature or [],
+                "position": [],
+            }
+
+            # Build position array from lat/lon
+            for i in range(len(payload.records.timestamp)):
+                lat = (
+                    payload.records.latitude[i]
+                    if i < len(payload.records.latitude)
+                    else None
+                )
+                lon = (
+                    payload.records.longitude[i]
+                    if i < len(payload.records.longitude)
+                    else None
+                )
+                if lat is not None and lon is not None:
+                    record_data["position"].append(f"POINT({lon} {lat})")
+                else:
+                    record_data["position"].append(None)
+
+            try:
+                supabase.table("records").insert(record_data).execute()
+                LOGGER.info(
+                    f"Created records for session {session_id} with {len(payload.records.timestamp)} data points"
+                )
+            except Exception as e:
+                LOGGER.warning(f"Failed to create records: {e}")
+                # Non-fatal: activity and session are still valid without records
+
+        # Run post-processing in background (dedup detection, HR load, feedback)
+        background_tasks.add_task(post_processing_of_session, session_id)
+
+        return {
+            "detail": "Activity uploaded successfully",
+            "activity_id": activity_id,
+            "session_id": session_id,
+            "is_duplicate": False,
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        LOGGER.error(f"Error creating activity from JSON: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=500, detail="Failed to create activity"
+        )

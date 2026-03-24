@@ -71,6 +71,10 @@
     </dict>
     <key>NSFaceIDUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to access your Face ID biometric data.</string>
+    <key>NSHealthShareUsageDescription</key>
+    <string>TRAINAA reads your workouts from Apple Health to provide training analysis.</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>TRAINAA wants to update your health data</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to save images to your camera roll.</string>
     <key>NSPhotoLibraryUsageDescription</key>

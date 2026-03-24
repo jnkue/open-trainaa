@@ -130,6 +130,11 @@ export function GarminIntegration() {
 					<View className="flex-row items-center justify-between mb-3">
 						<View className="flex-row items-center gap-2">
 							<View className="w-2 h-2 rounded-full bg-green-500" />
+							<Image
+								source={require("@/assets/images/garmin/garmin_connect.png")}
+								style={{width: 20, height: 20, borderRadius: 4}}
+								resizeMode="contain"
+							/>
 							<Text className="text-base font-medium text-foreground">Garmin Connect™</Text>
 						</View>
 						<TouchableOpacity className="bg-secondary rounded-lg px-3 py-1.5" onPress={handleDisconnectGarmin}>

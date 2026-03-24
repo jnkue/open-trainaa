@@ -16,6 +16,7 @@
     "@expo/vector-icons": "^15.0.3",
     "@garmin/fitsdk": "^21.178.0",
     "@hookform/resolvers": "^3.10.0",
+    "@kingstinct/react-native-healthkit": "^13.3.1",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@react-native-community/datetimepicker": "8.4.4",
