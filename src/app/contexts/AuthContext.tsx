@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useEffect, useState} from "react";
 import {Session, User} from "@supabase/supabase-js";
 import {apiClient} from "../services/api";
+import {unregisterPushToken} from "@/hooks/usePushNotifications";
 import i18n from "@/i18n";
 
 interface AuthContextType {
@@ -184,6 +185,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
 	const signOut = async () => {
 		setLoading(true);
 		try {
+			// Unregister push token while session is still valid (best-effort, 5s timeout)
+			if (session?.access_token) {
+				await Promise.race([
+					unregisterPushToken(session.access_token),
+					new Promise((resolve) => setTimeout(resolve, 5000)),
+				]);
+			}
+
 			console.log("AuthContext.signOut: calling apiClient.signOut");
 			const {error} = await apiClient.signOut();
 			console.log("AuthContext.signOut: apiClient.signOut returned", {error});
