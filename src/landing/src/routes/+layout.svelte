@@ -94,7 +94,7 @@
 				playsinline
 				preload="none"
 				poster="/background.avif"
-				class="fixed inset-0 -z-10 h-lvh w-full object-cover {videoLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000"
+				class="fixed  -z-10 h-lvh w-full object-cover {videoLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000"
 			>
 				<!-- WebM for better compression (when available) -->
 				<source src="/background.webm" type="video/webm" />
