@@ -1,16 +1,28 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { locale } from 'svelte-i18n';
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 
 	let currentLocale = 'de';
+	let platform: 'ios' | 'android' | 'desktop' = 'desktop';
 
 	// Subscribe to locale changes
 	locale.subscribe(value => {
 		if (value) {
 			currentLocale = value;
+		}
+	});
+
+	onMount(() => {
+		const ua = navigator.userAgent.toLowerCase();
+		if (/iphone|ipad|ipod/.test(ua)) {
+			platform = 'ios';
+		} else if (/android/.test(ua)) {
+			platform = 'android';
 		}
 	});
 
@@ -65,6 +77,10 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 	<link rel="manifest" href="/site.webmanifest" />
+
+	<!-- Preload app store badges -->
+	<link rel="preload" href="/appstore/apple-badge.svg" as="image" type="image/svg+xml" />
+	<link rel="preload" href="/appstore/google-badge.png" as="image" type="image/png" />
 
 	<!-- Preconnect for performance -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -140,15 +156,15 @@
 			<span class="uppercase tracking-wide text-lg">{$_('landing.cta.start')}</span>
 		</a>
 
-		<!-- App Store Badges -->
+		<!-- App Store Badges (order based on device platform) -->
 		<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
 			<!-- Apple App Store -->
-			<a href="https://apps.apple.com/de/app/trainaa/id6758528495" target="_blank" rel="noopener noreferrer" class="h-16 w-48 flex items-center justify-center transition-transform duration-300 hover:scale-102">
-				<img src="/appstore/apple-badge.svg" alt="Download on the App Store" class="h-16 w-full object-contain" />
+			<a href="https://apps.apple.com/de/app/trainaa/id6758528495" target="_blank" rel="noopener noreferrer" class="h-16 w-48 flex items-center justify-center transition-transform duration-300 hover:scale-102 {platform === 'android' ? 'order-2 sm:order-2' : 'order-1 sm:order-1'}">
+				<img src="/appstore/apple-badge.svg" alt="Download on the App Store" class="h-16 w-full object-contain" loading="eager" fetchpriority="high" />
 			</a>
 			<!-- Google Play Store -->
-			<a href="https://play.google.com/store/apps/details?id=com.pacerchat.app" target="_blank" rel="noopener noreferrer" class="h-16 w-48 flex items-center justify-center transition-transform duration-300 hover:scale-102">
-				<img src="/appstore/google-badge.png" alt="Get it on Google Play" class="h-16 w-full object-contain" />
+			<a href="https://play.google.com/store/apps/details?id=com.pacerchat.app" target="_blank" rel="noopener noreferrer" class="h-16 w-48 flex items-center justify-center transition-transform duration-300 hover:scale-102 {platform === 'android' ? 'order-1 sm:order-1' : 'order-2 sm:order-2'}">
+				<img src="/appstore/google-badge.png" alt="Get it on Google Play" class="h-16 w-full object-contain" loading="eager" fetchpriority="high" />
 			</a>
 		</div>
 	</div>
