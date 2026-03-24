@@ -143,7 +143,7 @@
 <!-- Hero Section -->
 <main class="mx-auto flex flex-col items-center text-center flex-grow">
 
-	<div class="mt-40 flex flex-col items-center gap-8">
+	<div class="mt-20 md:mt-40 flex flex-col items-center gap-8">
 		<!-- Hero Title -->
  		<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white max-w-2xl">{$_('landing.hero.title')}</h1>
 		<p class="text-lg md:text-xl text-white/80 max-w-2xl">{$_('landing.hero.subtitle')}</p> 
@@ -151,13 +151,13 @@
 		<!-- Start Now Button -->
 		<a
 			href="https://app.trainaa.com"
-			class="flex items-center justify-center h-16 w-48 rounded-lg bg-white text-black font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+			class="flex items-center justify-center h-16 w-48 rounded-lg bg-white text-black font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 {platform !== 'desktop' ? 'order-2' : ''}"
 		>
 			<span class="uppercase tracking-wide text-lg">{$_('landing.cta.start')}</span>
 		</a>
 
 		<!-- App Store Badges (order based on device platform) -->
-		<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 {platform !== 'desktop' ? 'order-1' : ''}">
 			<!-- Apple App Store -->
 			<a href="https://apps.apple.com/de/app/trainaa/id6758528495" target="_blank" rel="noopener noreferrer" class="h-16 w-48 flex items-center justify-center transition-transform duration-300 hover:scale-102 {platform === 'android' ? 'order-2 sm:order-2' : 'order-1 sm:order-1'}">
 				<img src="/appstore/apple-badge.svg" alt="Download on the App Store" class="h-16 w-full object-contain" loading="eager" fetchpriority="high" />
