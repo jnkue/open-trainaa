@@ -1,9 +1,10 @@
 import React from "react";
-import {View, Text} from "react-native";
+import {View, Text, Platform} from "react-native";
 import {useTranslation} from "react-i18next";
 //import {StravaIntegration} from "./integrations/StravaIntegration";
 import { WahooIntegration } from "./integrations/WahooIntegration";
 import { GarminIntegration } from "./integrations/GarminIntegration";
+import { AppleHealthIntegration } from "./integrations/AppleHealthIntegration";
 import {SettingsSection} from "@/components/settings/SettingsSection";
 
 export function ProviderIntegrationsSection() {
@@ -19,6 +20,9 @@ export function ProviderIntegrationsSection() {
 
 			{/* Garmin */}
 			<GarminIntegration />
+
+			{/* Apple Health (iOS only) */}
+			{Platform.OS === "ios" && <AppleHealthIntegration />}
 
 			{/* More integrations coming soon */}
 			<View className="mt-3 pt-5 border-t border-border">

@@ -252,6 +252,22 @@
       "workoutImportPermissionMissing": "Um Workouts hochzuladen, müssen Sie die WORKOUT_IMPORT-Berechtigung erteilen. Aktualisieren Sie Ihre Berechtigungen in den Garmin Connect-Einstellungen oder verbinden Sie Ihr Konto erneut.",
       "activityExportPermissionMissing": "Um Aktivitäten herunterzuladen, müssen Sie die ACTIVITY_EXPORT-Berechtigung erteilen. Aktualisieren Sie Ihre Berechtigungen in den Garmin Connect-Einstellungen oder verbinden Sie Ihr Konto erneut.",
       "reconnect": "Erneut verbinden"
+    },
+    "appleHealth": {
+      "connect": "Tippen zum Verbinden",
+      "connected": "Mit Apple Health verbunden",
+      "permissionDenied": "Apple Health Berechtigungen wurden abgelehnt. Gehen Sie zu Einstellungen > Datenschutz > Health.",
+      "importNow": "Workouts jetzt importieren",
+      "importing": "Importiere...",
+      "importSuccess": "{{count}} Workout(s) erfolgreich importiert",
+      "importError": "Import der Workouts aus Apple Health fehlgeschlagen",
+      "noWorkoutsFound": "Keine neuen Workouts in Apple Health gefunden",
+      "selectWorkouts": "Workouts zum Import auswählen",
+      "alreadyImported": "Bereits importiert",
+      "disconnectTitle": "Apple Health trennen",
+      "disconnectMessage": "Die Synchronisierung mit Apple Health wird gestoppt. Bestehende Aktivitäten werden nicht gelöscht. Um die Berechtigungen vollständig zu widerrufen, gehen Sie zu iOS Einstellungen > Datenschutz > Health.",
+      "disconnectSuccess": "Apple Health wurde getrennt",
+      "lastSynced": "Zuletzt synchronisiert um {{time}}"
     }
   },
   "userAttributes": {

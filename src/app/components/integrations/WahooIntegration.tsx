@@ -166,6 +166,11 @@ export function WahooIntegration() {
 					<View className="flex-row items-center justify-between mb-3">
 						<View className="flex-row items-center gap-2">
 							<View className="w-2 h-2 rounded-full bg-green-500" />
+							<Image
+								source={require("@/assets/images/wahoo/wahoo_logo_small_black.png")}
+								style={{width: 20, height: 20, borderRadius: 4, tintColor: isDark ? "#ffffff" : "#000000"}}
+								resizeMode="contain"
+							/>
 							<Text className="text-base font-medium text-foreground">Wahoo</Text>
 						</View>
 						<TouchableOpacity className="bg-secondary rounded-lg px-3 py-1.5" onPress={handleDisconnectWahoo}>

@@ -22,6 +22,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       ITSAppUsesNonExemptEncryption: false,
       UIBackgroundModes: ["remote-notification"],
     },
+    entitlements: {
+      "com.apple.developer.healthkit": true,
+    },
     icon: "./assets/AppIcon.icon",
   },
   android: {
@@ -101,7 +104,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       iosUrlScheme: `com.googleusercontent.apps.${(process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? "").split(".")[0]}`,
     }
   ],
-    "expo-apple-authentication"
+    "expo-apple-authentication",
+    [
+      "@kingstinct/react-native-healthkit",
+      {
+        NSHealthShareUsageDescription:
+          "TRAINAA reads your workouts from Apple Health to provide training analysis.",
+      },
+    ],
   ],
   experiments: {
     typedRoutes: true,
