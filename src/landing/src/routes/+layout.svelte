@@ -102,8 +102,8 @@
 				<source src="/background.mp4" type="video/mp4" />
 			</video>
 
-		<!-- Dark overlay for readability -->
-		<div class="fixed inset-0 -z-10 bg-black/50"></div>
+		<!-- Dark overlay for readability (extended for iOS Safari transparent address bar) -->
+		<div class="fixed -z-10 top-[-50px] left-0 right-0 bottom-[-50px] bg-black/50"></div>
 
 		<!-- Language Switcher Dropdown -->
 		<div class="absolute top-4 right-4 z-50" bind:this={dropdownRef}>
