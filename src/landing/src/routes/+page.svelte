@@ -143,7 +143,7 @@
 <!-- Hero Section -->
 <main class="mx-auto flex flex-col items-center text-center flex-grow">
 
-	<div class="mt-20 md:mt-40 flex flex-col items-center gap-8">
+	<div class="mt-20 md:mt-40 flex flex-col items-center gap-8 px-6">
 		<!-- Hero Title -->
  		<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white max-w-2xl">{$_('landing.hero.title')}</h1>
 		<p class="text-lg md:text-xl text-white/80 max-w-2xl">{$_('landing.hero.subtitle')}</p> 
