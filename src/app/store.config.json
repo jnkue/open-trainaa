@@ -1,14 +1,14 @@
 {
   "configVersion": 0,
   "apple": {
-    "version": "1.0.5",
+    "version": "1.1.1",
     "copyright": "2025 Janik Uellendahl",
     "release": {
       "automaticRelease": true
     },
     "info": {
       "en-US": {
-        "description": "Your 24/7 endurance coach. Get a fully personalized training plan for running, cycling, or triathlon — built around your goals, fitness level, and schedule. No generic plans. No guesswork.\n\nRUNNING\nTrain smarter for your next 5K, 10K, half marathon, or full marathon. TRAINAA builds a plan around your current fitness and target race — then adapts as you progress.\n\nCYCLING\nWhether you're prepping for a gran fondo or just want to get faster, your coach creates structured cycling workouts tailored to your ability and available training time.\n\nTRIATHLON\nFrom sprint distance to Ironman 70.3 and full Ironman — TRAINAA coaches you across all three disciplines with a single, coordinated training plan.\n\nWHY TRAINAA?\n\nTruly personalized — not a one-size-fits-all template. Your plan is built for YOU.\nSmart feedback — get insights after every session so you know what's working.\nSyncs with Garmin & Wahoo — your workouts appear on your device automatically.\nAdapts to your life — miss a session? Your plan adjusts.\n100% Open Source — transparent, trustworthy, community-driven.\nFree to start — no credit card required.\n\nHOW IT WORKS\n\n1. Tell TRAINAA your sport, goal, and fitness level.\n2. TRAINAA generates a personalized weekly training plan.\n3. Workouts sync to your Garmin or Wahoo device.\n4. After each session, get feedback and performance insights.\n5. Your plan evolves with you.\n\nWHAT ATHLETES SAY\nJoin hundreds of runners, cyclists, and triathletes who've replaced generic plans with a smarter approach to endurance training.\n\nINTEGRATIONS\n- Garmin Connect\n- Wahoo\n\nSPORTS SUPPORTED\n- Running (5K to marathon)\n- Cycling (road, gravel, indoor)\n- Triathlon (sprint, Olympic, 70.3, Ironman)\n\nOpen Source — view the code on GitHub.\n\nPrivacy Policy: https://trainaa.com/privacy\nTerms: https://trainaa.com/terms",
+        "description": "Your 24/7 endurance coach. Get a fully personalized training plan for running, cycling, or triathlon — built around your goals, fitness level, and schedule. No generic plans. No guesswork.\n\nRUNNING\nTrain smarter for your next 5K, 10K, half marathon, or full marathon. TRAINAA builds a plan around your current fitness and target race — then adapts as you progress.\n\nCYCLING\nWhether you're prepping for a gran fondo or just want to get faster, your coach creates structured cycling workouts tailored to your ability and available training time.\n\nTRIATHLON\nFrom sprint distance to Ironman 70.3 and full Ironman — TRAINAA coaches you across all three disciplines with a single, coordinated training plan.\n\nWHY TRAINAA?\n\nTruly personalized — not a one-size-fits-all template. Your plan is built for YOU.\nSmart feedback — get insights after every session so you know what's working.\nSyncs with Apple Health, Garmin & Wahoo — your workouts appear on your device automatically.\nAdapts to your life — miss a session? Your plan adjusts.\n100% Open Source — transparent, trustworthy, community-driven.\nFree to start — no credit card required.\n\nHOW IT WORKS\n\n1. Tell TRAINAA your sport, goal, and fitness level.\n2. TRAINAA generates a personalized weekly training plan.\n3. Workouts sync to your Garmin or Wahoo device.\n4. After each session, get feedback and performance insights.\n5. Your plan evolves with you.\n\nWHAT ATHLETES SAY\nJoin hundreds of runners, cyclists, and triathletes who've replaced generic plans with a smarter approach to endurance training.\n\nINTEGRATIONS\n- Apple Health\n- Garmin Connect\n- Wahoo\n\nSPORTS SUPPORTED\n- Running (5K to marathon)\n- Cycling (road, gravel, indoor)\n- Triathlon (sprint, Olympic, 70.3, Ironman)\n\nOpen Source — view the code on GitHub.\n\nPrivacy Policy: https://trainaa.com/privacy\nTerms: https://trainaa.com/terms",
         "keywords": [
           "training",
           "plan",
@@ -25,15 +25,15 @@
           "sprint",
           "coach"
         ],
-        "releaseNotes": "- Push notifications \n-Apple Login \n-Google Login",
+        "releaseNotes": "-Apple Health \n-Improvements \n-Bug fixes",
         "marketingUrl": "https://trainaa.com",
         "supportUrl": "https://trainaa.com",
-        "title": "TRAINAA",
-        "subtitle": "Coach: Run, Bike & Triathlon",
+        "title": "TRAINAA: Endurance Training",
+        "subtitle": "Run, Bike & Triathlon Plans",
         "privacyPolicyUrl": "https://trainaa.com/privacy"
       },
       "de-DE": {
-        "description": "Dein 24/7 Trainingscoach für Laufen, Radfahren und Triathlon.\n\nSchluss mit generischen Trainingsplänen. TRAINAA erstellt dir einen personalisierten Plan — abgestimmt auf deine Ziele, dein Fitnesslevel und deinen Alltag. Und passt ihn an, während du trainierst.\n\nLAUFEN\nOb 5K, 10K, Halbmarathon oder Marathon — dein Coach baut deinen Plan rund um dein aktuelles Fitnessniveau und dein Wettkampfziel auf.\n\nRADFAHREN\nStrukturierte Radeinheiten, die zu deiner Verfügbarkeit und deinem Niveau passen. Für Straße, Gravel oder Indoor.\n\nTRIATHLON\nVon Sprint bis Ironman 70.3 und Langdistanz — TRAINAA koordiniert alle drei Disziplinen in einem durchdachten Plan.\n\nWARUM TRAINAA?\n\nWirklich personalisiert — kein Template, sondern ein Plan nur für dich.\nSmartes Feedback nach jeder Einheit — verstehe, was gut läuft und was nicht.\nGarmin & Wahoo Sync — deine Workouts landen automatisch auf deinem Gerät.\nPasst sich an — Einheit verpasst? Dein Plan passt sich an.\n100% Open Source — transparent, vertrauenswürdig, community-getrieben.\nKostenlos starten — keine Kreditkarte nötig.\n\nSO FUNKTIONIERT ES\n\n1. Sag TRAINAA dein Ziel, deine Sportart und dein Level.\n2. TRAINAA erstellt einen personalisierten Wochenplan.\n3. Workouts werden automatisch mit Garmin oder Wahoo synchronisiert.\n4. Nach jeder Einheit erhältst du Feedback und Performance-Insights.\n5. Dein Plan entwickelt sich mit dir.\n\nUNTERSTÜTZTE SPORTARTEN\n- Laufen (5K bis Marathon)\n- Radfahren (Straße, Gravel, Indoor)\n- Triathlon (Sprint, Olympisch, 70.3, Ironman)\n\nINTEGRATIONEN\n- Garmin Connect\n- Wahoo\n\nOpen Source — den Code findest du auf GitHub.\n\nDatenschutz: https://trainaa.com/privacy\nAGB: https://trainaa.com/terms\nImpressum: https://trainaa.com/imprint",
+        "description": "Dein 24/7 Trainingscoach für Laufen, Radfahren und Triathlon.\n\nSchluss mit generischen Trainingsplänen. TRAINAA erstellt dir einen personalisierten Plan — abgestimmt auf deine Ziele, dein Fitnesslevel und deinen Alltag. Und passt ihn an, während du trainierst.\n\nLAUFEN\nOb 5K, 10K, Halbmarathon oder Marathon — dein Coach baut deinen Plan rund um dein aktuelles Fitnessniveau und dein Wettkampfziel auf.\n\nRADFAHREN\nStrukturierte Radeinheiten, die zu deiner Verfügbarkeit und deinem Niveau passen. Für Straße, Gravel oder Indoor.\n\nTRIATHLON\nVon Sprint bis Ironman 70.3 und Langdistanz — TRAINAA koordiniert alle drei Disziplinen in einem durchdachten Plan.\n\nWARUM TRAINAA?\n\nWirklich personalisiert — kein Template, sondern ein Plan nur für dich.\nSmartes Feedback nach jeder Einheit — verstehe, was gut läuft und was nicht.\nApple Health, Garmin & Wahoo Sync — deine Workouts landen automatisch auf deinem Gerät.\nPasst sich an — Einheit verpasst? Dein Plan passt sich an.\n100% Open Source — transparent, vertrauenswürdig, community-getrieben.\nKostenlos starten — keine Kreditkarte nötig.\n\nSO FUNKTIONIERT ES\n\n1. Sag TRAINAA dein Ziel, deine Sportart und dein Level.\n2. TRAINAA erstellt einen personalisierten Wochenplan.\n3. Workouts werden automatisch mit Garmin oder Wahoo synchronisiert.\n4. Nach jeder Einheit erhältst du Feedback und Performance-Insights.\n5. Dein Plan entwickelt sich mit dir.\n\nUNTERSTÜTZTE SPORTARTEN\n- Laufen (5K bis Marathon)\n- Radfahren (Straße, Gravel, Indoor)\n- Triathlon (Sprint, Olympisch, 70.3, Ironman)\n\nINTEGRATIONEN\n- Apple Health\n- Garmin Connect\n- Wahoo\n\nOpen Source — den Code findest du auf GitHub.\n\nDatenschutz: https://trainaa.com/privacy\nAGB: https://trainaa.com/terms\nImpressum: https://trainaa.com/imprint",
         "keywords": [
           "trainingsplan",
           "radfahren",
@@ -46,7 +46,7 @@
           "schwimmen",
           "laufplan"
         ],
-        "releaseNotes": "- Push notifications \n-Apple Login \n-Google Login ",
+        "releaseNotes": "-Apple Health \n-Verbesserungen \n-Bugfixes",
         "marketingUrl": "https://trainaa.com",
         "supportUrl": "https://trainaa.com",
         "title": "TRAINAA",
