@@ -41,3 +41,4 @@ app-example
 .env.local
 *.aab
 *.apk
+*.ipa

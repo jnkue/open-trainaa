@@ -53,7 +53,7 @@ class TrainingStatusCalculator:
 
             # Convert to DataFrame for easier processing
             df = pd.DataFrame(sessions_data)
-            df["start_time"] = pd.to_datetime(df["start_time"])
+            df["start_time"] = pd.to_datetime(df["start_time"], format="ISO8601")
             df["date"] = df["start_time"].dt.date
 
             # Group by date and aggregate daily metrics

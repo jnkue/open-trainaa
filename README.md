@@ -30,11 +30,24 @@ We welcome contributions from the community! If you're interested in contributin
 
 ## Roadmap
 
-- More integrations (Strava does not allow a intergration!)
-- Different trainer personalities
-- More algorithms for training planning and analysis
-- Push notifications, Proactive messages from the trainer
-- ...
+### First priority 
+
+- **More integrations** —  Apple Health, Polar, Suunto, Corso etc. (Strava does not allow integration.)
+
+- **Goal setting** — Users can set explicit goals (e.g. a target race with date, or general objectives like "stay fit" or "lose weight"). Goals are extracted from chat by the agent today; explicit goal-setting UI comes next. Goals are injected into the AI context to personalize all coaching.
+- **Auto-generated training plans** — Reactive system that generates and adjusts training based on goals, training history, and completed/missed sessions without the need for constant user interaction. Includes explicit "generate training" actions so users don't have to chat for every plan update.
+- **Improve training plan generation** — Include more algorithmc logic into the backend (e.g. periodization, recovery weeks, tapering) rather than relying on the LLM to figure it out. More structured prompting and post-processing to ensure valid plans.
+- **Workout analytics & trends** — Personal records, volume/intensity over time, progress toward goals.
+
+### Second priority
+
+- **AI backend overhaul** — Migrate away from LangChain to direct SDK calls for more control, better debugging, and lower abstraction overhead. Improve prompt engineering and coaching quality.
+
+
+
+### Backlog
+
+- **Different trainer personalities** — Choose coaching styles (strict, encouraging, data-driven, etc.).
 
 For a detailed roadmap a [github project](https://github.com/users/jnkue/projects/5) is set up.
 

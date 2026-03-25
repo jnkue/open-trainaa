@@ -911,6 +911,41 @@ export class ApiClient {
     return result;
   }
 
+  async uploadActivityJson(payload: {
+    upload_source: string;
+    external_id: string;
+    sport: string;
+    sub_sport?: string;
+    start_time: string;
+    total_distance?: number;
+    total_elapsed_time?: number;
+    total_timer_time?: number;
+    total_calories?: number;
+    avg_heart_rate?: number;
+    max_heart_rate?: number;
+    avg_speed?: number;
+    max_speed?: number;
+    avg_cadence?: number;
+    total_elevation_gain?: number;
+    records?: {
+      timestamp: number[];
+      heart_rate?: (number | null)[];
+      latitude?: (number | null)[];
+      longitude?: (number | null)[];
+      altitude?: (number | null)[];
+      speed?: (number | null)[];
+      distance?: (number | null)[];
+      cadence?: (number | null)[];
+      power?: (number | null)[];
+      temperature?: (number | null)[];
+    };
+  }): Promise<{ detail: string; activity_id: string; session_id?: string; is_duplicate: boolean }> {
+    return this.apiCall('/v1/activities/upload-json', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  }
+
   // Strava integration methods
   async getStravaAuthUrl(redirectUri?: string): Promise<{ authorization_url?: string; authorize_url?: string }> {
     const endpoint = redirectUri

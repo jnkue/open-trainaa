@@ -20,6 +20,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [1.1.1] - 2026-03-25
+
+### Added
+- Google Health integration for activity tracking.
+
+
+### Changed
+- UI Activity detail
+
+### Deprecated
+
+### Removed
+
+### Fixed
+- Push Notification is user is not logged in
+
+### Security
+
 ## [1.1.0] - 2026-03-17
 
 ### Added

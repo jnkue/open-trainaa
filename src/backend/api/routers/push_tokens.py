@@ -6,6 +6,7 @@ Handles registration and removal of Expo push notification tokens.
 from typing import Optional
 
 from api.auth import User, get_current_user
+from api.database import supabase
 from api.log import LOGGER
 from api.utils.general import get_user_supabase_client
 from fastapi import APIRouter, Depends, HTTPException, Request
@@ -47,6 +48,12 @@ async def register_push_token(
     """Register or update a push notification token for the current user."""
     try:
         user_supabase = get_user_supabase_client(credentials.credentials)
+
+        # Remove this token from any other user first (uses service-role
+        # client to bypass RLS, since the current user can't delete others' rows).
+        supabase.table("user_push_tokens").delete().eq(
+            "expo_push_token", body.expo_push_token
+        ).neq("user_id", current_user.id).execute()
 
         result = (
             user_supabase.table("user_push_tokens")
