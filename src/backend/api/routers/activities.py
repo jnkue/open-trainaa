@@ -8,6 +8,12 @@ from datetime import datetime
 from typing import Literal, Optional
 from uuid import UUID
 
+from api.auth import User, get_current_user
+from api.log import LOGGER
+from api.models.sport_types import FIT_SPORT_ID_MAPPING, SportType
+from api.training_status import calculate_training_status
+from api.utils import get_user_supabase_client, post_processing_of_session
+from api.utils.fit_value_validator import get_valid_fit_int, get_valid_fit_value
 from fastapi import (
     APIRouter,
     BackgroundTasks,
@@ -21,14 +27,8 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, Field, field_validator, validator
 from slowapi import Limiter
 from slowapi.util import get_remote_address
-from supabase import Client, create_client
 
-from api.auth import User, get_current_user
-from api.log import LOGGER
-from api.models.sport_types import FIT_SPORT_ID_MAPPING, SportType
-from api.training_status import calculate_training_status
-from api.utils import get_user_supabase_client, post_processing_of_session
-from api.utils.fit_value_validator import get_valid_fit_int, get_valid_fit_value
+from supabase import Client, create_client
 
 security_bearer = HTTPBearer()
 
@@ -813,6 +813,12 @@ def _create_session_record(activity_id, user_id, session_number, session_msg):
             "total_elevation_gain": get_valid_fit_value(
                 session_msg.get("total_ascent"), expected_type="uint16"
             ),
+            "avg_power": get_valid_fit_int(
+                session_msg.get("avg_power"), expected_type="uint16"
+            ),
+            "max_power": get_valid_fit_int(
+                session_msg.get("max_power"), expected_type="uint16"
+            ),
             "feel": get_valid_fit_int(workout_feel, expected_type="uint8"),
             "rpe": get_valid_fit_int(workout_rpe, expected_type="uint8"),
         }
@@ -1596,6 +1602,14 @@ async def get_session_complete(
                     "length": array_length,
                 }
 
+        # Fallback: compute avg/max power from records if session doesn't have it
+        if session_data.get("avg_power") is None and records_data:
+            power_arr = records_data.get("data", {}).get("power", [])
+            valid_power = [v for v in power_arr if v is not None and v > 0]
+            if valid_power:
+                session_data["avg_power"] = round(sum(valid_power) / len(valid_power))
+                session_data["max_power"] = max(valid_power)
+
         LOGGER.info(
             f"📊 Retrieved complete session data for {session_id} (records: {include_records})"
         )
@@ -1787,6 +1801,8 @@ async def get_activity_detail(
                     max_speed,
                     avg_cadence,
                     total_elevation_gain,
+                    avg_power,
+                    max_power,
                     session_custom_data(title)
                 )
             """)
@@ -1854,12 +1870,38 @@ async def get_activity_detail(
             max_heartrate=primary_session.get("max_heart_rate"),
             average_speed=primary_session.get("avg_speed"),
             max_speed=primary_session.get("max_speed"),
-            average_power=None,  # Power data would be in records table
-            max_power=None,  # Power data would be in records table
+            average_power=primary_session.get("avg_power"),
+            max_power=primary_session.get("max_power"),
             description=f"{activity_data.get('num_sessions', 1)} session(s)",
             provider_name=provider_name,
             strava_activity_id=activity_data.get("strava_activity_id"),
         )
+
+        # Fallback: compute power from records if session doesn't have it
+        if activity.average_power is None:
+            try:
+                session_ids = [s["id"] for s in sessions if s.get("id")]
+                if session_ids:
+                    records_resp = (
+                        supabase.table("records")
+                        .select("power")
+                        .in_("session_id", session_ids)
+                        .execute()
+                    )
+                    if records_resp.data:
+                        all_power = []
+                        for row in records_resp.data:
+                            power_arr = row.get("power") or []
+                            all_power.extend(
+                                v for v in power_arr if v is not None and v > 0
+                            )
+                        if all_power:
+                            activity.average_power = round(
+                                sum(all_power) / len(all_power)
+                            )
+                            activity.max_power = max(all_power)
+            except Exception:
+                pass  # Non-critical, skip if records unavailable
 
         LOGGER.info(f"📊 Retrieved activity detail for {activity_id}")
 
@@ -2677,8 +2719,8 @@ class RecordsPayload(BaseModel):
 
 
 class ActivityJsonUpload(BaseModel):
-    upload_source: Literal["apple_health", "garmin", "wahoo", "strava", "manual"] = Field(
-        ..., description="Source provider, e.g. 'apple_health'"
+    upload_source: Literal["apple_health", "garmin", "wahoo", "strava", "manual"] = (
+        Field(..., description="Source provider, e.g. 'apple_health'")
     )
     external_id: str = Field(
         ..., description="External ID for deduplication, e.g. HealthKit workout UUID"
@@ -2852,6 +2894,4 @@ async def create_activity_from_json(
         raise
     except Exception as e:
         LOGGER.error(f"Error creating activity from JSON: {e}", exc_info=True)
-        raise HTTPException(
-            status_code=500, detail="Failed to create activity"
-        )
+        raise HTTPException(status_code=500, detail="Failed to create activity")

@@ -497,75 +497,48 @@ const EnhancedMetricsGrid = React.memo(({activity, colorScheme, recordsResponse}
 					return null;
 				})()}
 
-				{/* Compact metrics in rows */}
-				<View className="">
-					{/* Device Information - aligned to the right */}
-					{(activity.device_name && activity.device_name !== "unknown")  && (
-						<View className="flex-row justify-end mb-3">
-							<View className="flex-1 mx-1">
-								<View className="bg-muted rounded-lg p-3">
-									<Text className="text-xs text-muted-foreground mb-1">{t("activities.detail.device")}</Text>
-									<Text className="text-sm font-medium text-foreground">{activity.device_name}</Text>
-								</View>
-							</View>
+				{/* Metrics overview */}
+				<View className="gap-3">
+					{/* Simple metrics - single value per row */}
+					{primaryMetrics.filter((m) => !m.maxValue).map((metric, index) => (
+						<View key={`simple-${index}`} className="flex-row items-center justify-between py-2 px-1">
+							<Text className="text-sm text-muted-foreground">{metric.label}</Text>
+							<Text className="text-base font-semibold text-foreground">{metric.value}</Text>
 						</View>
-					)}
+					))}
 
-					{/* Primary row - most important metrics */}
-					<View className="flex-row justify-between mb-3">
-						{primaryMetrics.slice(0, 3).map((metric, index) => (
-							<View key={index} className="flex-1 mx-1">
-								<View className="bg-muted rounded-lg p-3">
-									<View className="flex-row items-center justify-between mb-1">
-										<Text className="text-xs font-medium text-muted-foreground">{metric.label}</Text>
-										{metric.unit && <Text className="text-xs text-muted-foreground">{metric.unit}</Text>}
-									</View>
-									{metric.maxValue ? (
-										<View>
-											<View className="flex-row items-center justify-between">
-												<Text className="text-xs text-muted-foreground">{t("activities.detail.avg")}</Text>
-												<Text className="text-sm font-bold text-foreground">{metric.value}</Text>
-											</View>
-											<View className="flex-row items-center justify-between mt-1">
-												<Text className="text-xs text-muted-foreground">{t("activities.detail.max")}</Text>
-												<Text className="text-sm font-bold text-primary">{metric.maxValue}</Text>
-											</View>
-										</View>
-									) : (
-										<Text className="text-lg font-bold text-foreground">{metric.value}</Text>
-									)}
+					{/* Avg/Max metrics table - heart rate, speed, power */}
+					{(() => {
+						const rangeMetrics = primaryMetrics.filter((m) => m.maxValue);
+						if (rangeMetrics.length === 0) return null;
+						return (
+							<View className="bg-muted rounded-lg px-3 py-2">
+								{/* Header row */}
+								<View className="flex-row items-center mb-1">
+									<View className="flex-1" />
+									<Text className="text-[10px] text-muted-foreground uppercase tracking-wider w-16 text-right">{t("activities.detail.avg")}</Text>
+									<Text className="text-[10px] text-muted-foreground uppercase tracking-wider w-16 text-right">{t("activities.detail.max")}</Text>
 								</View>
+								{/* Metric rows */}
+								{rangeMetrics.map((metric, index) => (
+									<View key={`range-${index}`} className={`flex-row items-center py-1.5 ${index > 0 ? "border-t border-border/30" : ""}`}>
+										<View className="flex-1 flex-row items-baseline gap-1">
+											<Text className="text-xs text-muted-foreground" numberOfLines={1}>{metric.label}</Text>
+											{metric.unit && <Text className="text-[10px] text-muted-foreground">({metric.unit})</Text>}
+										</View>
+										<Text className="text-sm font-semibold text-foreground w-16 text-right">{metric.value}</Text>
+										<Text className="text-sm font-semibold text-primary w-16 text-right">{metric.maxValue}</Text>
+									</View>
+								))}
 							</View>
-						))}
-					</View>
+						);
+					})()}
 
-					{/* Secondary row if we have more primary metrics */}
-					{primaryMetrics.length > 3 && (
-						<View className="flex-row justify-between">
-							{primaryMetrics.slice(3, 6).map((metric, index) => (
-								<View key={index} className="flex-1 mx-1">
-									<View className="bg-muted rounded-lg p-3">
-										<View className="flex-row items-center justify-between mb-1">
-											<Text className="text-xs font-medium text-muted-foreground">{metric.label}</Text>
-											{metric.unit && <Text className="text-xs text-muted-foreground">{metric.unit}</Text>}
-										</View>
-										{metric.maxValue ? (
-											<View>
-												<View className="flex-row items-center justify-between">
-													<Text className="text-xs text-muted-foreground">{t("activities.detail.avg")}</Text>
-													<Text className="text-sm font-bold text-foreground">{metric.value}</Text>
-												</View>
-												<View className="flex-row items-center justify-between mt-1">
-													<Text className="text-xs text-muted-foreground">{t("activities.detail.max")}</Text>
-													<Text className="text-sm font-bold text-primary">{metric.maxValue}</Text>
-												</View>
-											</View>
-										) : (
-											<Text className="text-lg font-bold text-foreground">{metric.value}</Text>
-										)}
-									</View>
-								</View>
-							))}
+					{/* Device */}
+					{(activity.device_name && activity.device_name !== "unknown") && (
+						<View className="flex-row items-center justify-between py-2 px-1">
+							<Text className="text-sm text-muted-foreground">{t("activities.detail.device")}</Text>
+							<Text className="text-sm font-medium text-foreground">{activity.device_name}</Text>
 						</View>
 					)}
 				</View>
@@ -743,102 +716,66 @@ const UserFeedbackSection = React.memo(({sessionId, initialUserFeedback}: {sessi
 
 	return (
 		<Card className="mx-4 mt-4 overflow-hidden">
-			<CardHeader className="pb-3">
-				<View className="flex-row items-center justify-between">
-					<CardTitle className="text-lg">{t("activities.detail.yourFeedback")}</CardTitle>
-
-					{hasSavedFeedback && !isEditing && (
-						<TouchableOpacity
-							onPress={() => setIsEditing(true)}
-							className={`p-2 rounded-full ${isDark ? "bg-muted hover:bg-muted/80" : "bg-secondary hover:bg-secondary/80"}`}
-							style={{width: 32, height: 32, alignItems: "center", justifyContent: "center"}}
-						>
-							<IconSymbol name="pencil" size={12} color={isDark ? "#9ca3af" : "#6b7280"} />
-						</TouchableOpacity>
-					)}
-				</View>
-				{(!hasSavedFeedback || isEditing) && <CardDescription>{t("activities.detail.howDidYouFeel")}</CardDescription>}
-			</CardHeader>
-
-			<CardContent className="p-4 pt-0">
+			<CardContent className="p-4">
 				{hasSavedFeedback && !isEditing ? (
-					// READ-ONLY VIEW
-					<View className="flex-row flex-wrap gap-4">
-						{/* Feel Display */}
-						{selectedFeel && (
-							<View className="flex-1 min-w-[45%]">
-								<Text className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
-									{t("activities.detail.feedback.feel")}
-								</Text>
-								<View
-									className="flex-row items-center p-3 rounded-xl border"
-									style={{
-										backgroundColor: `${selectedFeel.color}10`,
-										borderColor: `${selectedFeel.color}30`,
-									}}
-								>
+					// READ-ONLY VIEW — compact inline display
+					<TouchableOpacity onPress={() => setIsEditing(true)} activeOpacity={0.7}>
+						<View className="flex-row items-center justify-between">
+							<Text className="text-sm font-semibold text-foreground">{t("activities.detail.yourFeedback")}</Text>
+							<IconSymbol name="pencil" size={12} color={isDark ? "#9ca3af" : "#6b7280"} />
+						</View>
+						<View className="flex-row items-center gap-4 mt-2">
+							{selectedFeel && (
+								<View className="flex-row items-center gap-1.5">
 									<View
-										className="w-3 h-3 rounded-full mr-3"
+										className="w-2.5 h-2.5 rounded-full"
 										style={{backgroundColor: selectedFeel.color}}
 									/>
-									<Text className="font-semibold text-base" style={{color: selectedFeel.color}}>
+									<Text className="text-sm text-muted-foreground">
 										{t(`activities.detail.feedback.feelValues.${selectedFeel.value}`)}
 									</Text>
 								</View>
-							</View>
-						)}
-
-						{/* RPE Display */}
-						{selectedRpe && (
-							<View className="flex-1 min-w-[45%]">
-								<Text className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
-									{t("activities.detail.feedback.rpe")}
-								</Text>
-								<View
-									className={`flex-row items-center p-3 rounded-xl border ${isDark ? "bg-muted/50 border-border" : "bg-secondary/30 border-secondary"}`}
-								>
-									<View
-										className="w-8 h-8 rounded-full items-center justify-center mr-3"
-										style={{backgroundColor: isDark ? "#3b82f6" : "#2563eb"}}
-									>
-										<Text className="text-white text-xs font-bold">{rpe}</Text>
-									</View>
-									<View>
-										<Text className="font-semibold text-base text-foreground">
-											{t(`activities.detail.feedback.rpeValues.${selectedRpe.value}`)}
-										</Text>
-									</View>
+							)}
+							{selectedRpe && (
+								<View className="flex-row items-center gap-1.5">
+									<Text className="text-sm font-semibold text-foreground">{rpe}</Text>
+									<Text className="text-sm text-muted-foreground">
+										RPE — {t(`activities.detail.feedback.rpeValues.${selectedRpe.value}`)}
+									</Text>
 								</View>
-							</View>
-						)}
-					</View>
+							)}
+						</View>
+					</TouchableOpacity>
 				) : (
 					// EDIT VIEW
-					<View className="gap-5">
+					<View className="gap-4">
+						<Text className="text-sm font-semibold text-foreground">
+							{t("activities.detail.yourFeedback")}
+						</Text>
+
 						{/* Feel Selection */}
 						<SectionContainer>
-							<Text className="text-sm font-semibold text-foreground mb-3 ml-1">
+							<Text className="text-xs font-medium text-muted-foreground mb-2">
 								{t("activities.detail.feedback.howDidYouFeel")}
 							</Text>
-							<View className="flex-row justify-between gap-2 overflow-hidden">
+							<View className="flex-row justify-between gap-1.5">
 								{feelOptions.map((option) => (
 									<TouchableOpacity
 										key={option.value}
 										onPress={() => setFeel(option.value)}
 										activeOpacity={0.7}
-										className="flex-1 items-center gap-1.5 p-1.5 rounded-xl border transition-all"
+										className="flex-1 items-center gap-1 py-1.5 px-1 rounded-lg border"
 										style={{
 											backgroundColor:
-												feel === option.value ? `${option.color}15` : isDark ? "transparent" : "#f9fafb",
+												feel === option.value ? `${option.color}15` : "transparent",
 											borderColor: feel === option.value ? option.color : isDark ? "#333" : "#e5e7eb",
-											borderWidth: feel === option.value ? 2 : 1,
-											minWidth: 55,
+											borderWidth: feel === option.value ? 1.5 : 1,
 										}}
 									>
 										<View
-										className="w-3 h-3 rounded-full"
-										style={{backgroundColor: option.color}}
-									/>
+											className="w-2.5 h-2.5 rounded-full"
+											style={{backgroundColor: option.color}}
+										/>
 										<Text
 											numberOfLines={1}
 											adjustsFontSizeToFit
@@ -854,71 +791,64 @@ const UserFeedbackSection = React.memo(({sessionId, initialUserFeedback}: {sessi
 							</View>
 						</SectionContainer>
 
-						<View className="h-[1px] bg-border/50" />
-
 						{/* RPE Selection */}
 						<SectionContainer>
-							<View className="flex-col items-start justify-between mb-4">
-								<Text className="text-sm font-semibold text-foreground ml-1 mb-2">{t("activities.detail.feedback.rpe")}</Text>
+							<View className="flex-row items-center justify-between mb-1">
+								<Text className="text-xs font-medium text-muted-foreground">{t("activities.detail.feedback.rpe")}</Text>
 								{rpe !== null && (
-									<View className="px-2.5 py-1 rounded-full bg-primary">
-										<Text className="text-xs font-bold text-primary-foreground">
-											{rpe} — {t(`activities.detail.feedback.rpeValues.${rpe}`)}
-										</Text>
-									</View>
+									<Text className="text-xs font-semibold text-foreground">
+										{rpe} — {t(`activities.detail.feedback.rpeValues.${rpe}`)}
+									</Text>
 								)}
 							</View>
-
-							<View className="px-2">
-								<Slider
-									minimumValue={0}
-									maximumValue={100}
-									step={10}
-									value={rpe ?? 0}
-									onSlidingComplete={(value) => setRpe(value)}
-									minimumTrackTintColor={isDark ? "#3b82f6" : "#2563eb"}
-									maximumTrackTintColor={isDark ? "#374151" : "#e5e7eb"}
-									thumbTintColor={isDark ? "#60a5fa" : "#3b82f6"}
-									style={{height: 40}}
-								/>
-								<View className="flex-row justify-between mt-1 px-1">
-									<Text className="text-[10px] bg-muted px-2 py-0.5 rounded-md overflow-hidden text-muted-foreground">
-										{t("activities.detail.feedback.rpeMin")}
-									</Text>
-									<Text className="text-[10px] bg-muted px-2 py-0.5 rounded-md overflow-hidden text-muted-foreground">
-										{t("activities.detail.feedback.rpeMax")}
-									</Text>
-								</View>
+							<Slider
+								minimumValue={0}
+								maximumValue={100}
+								step={10}
+								value={rpe ?? 0}
+								onSlidingComplete={(value) => setRpe(value)}
+								minimumTrackTintColor={isDark ? "#3b82f6" : "#2563eb"}
+								maximumTrackTintColor={isDark ? "#374151" : "#e5e7eb"}
+								thumbTintColor={isDark ? "#60a5fa" : "#3b82f6"}
+								style={{height: 36}}
+							/>
+							<View className="flex-row justify-between px-1">
+								<Text className="text-[10px] text-muted-foreground">
+									{t("activities.detail.feedback.rpeMin")}
+								</Text>
+								<Text className="text-[10px] text-muted-foreground">
+									{t("activities.detail.feedback.rpeMax")}
+								</Text>
 							</View>
 						</SectionContainer>
 
 						{/* Feedback Messages */}
 						{saveSuccess && (
-							<View className="bg-green-500/10 border border-green-500/20 rounded-lg p-3 flex-row items-center justify-center">
-								<IconSymbol name="checkmark.circle.fill" size={16} color="#22c55e" />
-								<Text className="ml-2 text-green-600 dark:text-green-400 text-sm font-medium">
+							<View className="flex-row items-center justify-center">
+								<IconSymbol name="checkmark.circle.fill" size={14} color="#22c55e" />
+								<Text className="ml-1.5 text-green-600 dark:text-green-400 text-xs font-medium">
 									{t("activities.detail.feedbackSaveSuccess")}
 								</Text>
 							</View>
 						)}
 
 						{error && (
-							<View className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 flex-row items-center justify-center">
-								<IconSymbol name="exclamationmark.triangle.fill" size={16} color="#ef4444" />
-								<Text className="ml-2 text-red-600 dark:text-red-400 text-sm font-medium">{error}</Text>
+							<View className="flex-row items-center justify-center">
+								<IconSymbol name="exclamationmark.triangle.fill" size={14} color="#ef4444" />
+								<Text className="ml-1.5 text-red-600 dark:text-red-400 text-xs font-medium">{error}</Text>
 							</View>
 						)}
 
 						{/* Action Buttons */}
-						<View className="flex-row gap-3 pt-1">
+						<View className="flex-row gap-2">
 							{hasSavedFeedback && (
 								<TouchableOpacity
 									onPress={() => setIsEditing(false)}
-									className={`flex-1 rounded-lg p-2.5 flex-row items-center justify-center border ${
-										isDark ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-white"
+									className={`flex-1 rounded-lg py-2 items-center border ${
+										isDark ? "border-border" : "border-gray-200"
 									}`}
 								>
-									<Text className="text-muted-foreground font-semibold text-sm">{t("activities.detail.cancel")}</Text>
+									<Text className="text-muted-foreground font-medium text-sm">{t("activities.detail.cancel")}</Text>
 								</TouchableOpacity>
 							)}
 
@@ -928,19 +858,16 @@ const UserFeedbackSection = React.memo(({sessionId, initialUserFeedback}: {sessi
 									disabled={saveFeedbackMutation.isPending}
 									className={`${
 										hasSavedFeedback ? "flex-[2]" : "w-full"
-									} bg-primary rounded-lg p-2.5 flex-row items-center justify-center shadow-sm`}
+									} bg-primary rounded-lg py-2 items-center`}
 								>
 									{saveFeedbackMutation.isPending ? (
-										<ActivityIndicator size="small" color="#ffffff" />
+										<ActivityIndicator size="small" color={isDark ? "#000000" : "#ffffff"} />
 									) : (
-										<>
-											<IconSymbol name="checkmark" size={16} color="#ffffff" />
-											<Text className="text-white font-bold text-sm ml-2">
-												{hasSavedFeedback
-													? t("activities.detail.updateFeedback")
-													: t("activities.detail.saveFeedback")}
-											</Text>
-										</>
+										<Text className="text-primary-foreground font-semibold text-sm">
+											{hasSavedFeedback
+												? t("activities.detail.updateFeedback")
+												: t("activities.detail.saveFeedback")}
+										</Text>
 									)}
 								</TouchableOpacity>
 							)}
@@ -1175,8 +1102,8 @@ export default function SessionDetailScreen() {
 			max_heartrate: session.max_heart_rate,
 			average_speed: session.avg_speed,
 			max_speed: session.max_speed,
-			average_power: undefined,
-			max_power: undefined,
+			average_power: session.avg_power,
+			max_power: session.max_power,
 			description: session.sub_sport,
 			provider_name: "session",
 			strava_activity_id: session.strava_activity_id,
