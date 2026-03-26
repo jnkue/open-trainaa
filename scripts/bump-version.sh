@@ -120,6 +120,14 @@ else
     echo "  Warning: bunx not found, skipping expo prebuild. Run 'cd src/app && bunx expo prebuild' manually."
 fi
 
+#7. Run uv sync to update version in uv.lock
+if command -v uv &> /dev/null; then
+    (cd "$ROOT_DIR/src/backend" && uv sync)
+    echo "  Ran uv sync (uv.lock updated)"
+else
+    echo "  Warning: uv not found, skipping uv sync. Run 'cd src/backend && uv sync' manually."
+fi
+
 echo ""
 echo "All versions bumped to $NEW_VERSION"
 echo "Min supported version: $MIN_SUPPORTED"
