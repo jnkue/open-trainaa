@@ -2740,6 +2740,8 @@ class ActivityJsonUpload(BaseModel):
     max_speed: Optional[float] = Field(None, ge=0, description="m/s")
     avg_cadence: Optional[int] = Field(None, ge=0)
     total_elevation_gain: Optional[float] = Field(None, ge=0, description="Meters")
+    avg_power: Optional[int] = Field(None, ge=0, description="Watts")
+    max_power: Optional[int] = Field(None, ge=0, description="Watts")
     records: Optional[RecordsPayload] = None
 
     @field_validator("start_time")
@@ -2822,6 +2824,8 @@ async def create_activity_from_json(
             "max_speed": payload.max_speed,
             "avg_cadence": payload.avg_cadence,
             "total_elevation_gain": payload.total_elevation_gain,
+            "avg_power": payload.avg_power,
+            "max_power": payload.max_power,
         }
 
         # Remove None values

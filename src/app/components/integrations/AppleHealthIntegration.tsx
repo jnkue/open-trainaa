@@ -107,7 +107,7 @@ export function AppleHealthIntegration() {
   return (
     <View className="pt-5 border-border mb-3">
       <TouchableOpacity
-        className={`border-2 border-dashed border-border rounded-xl p-4 ${connecting ? "opacity-50" : "active:opacity-70"}`}
+        className={`border border-border rounded-xl px-4 py-3 ${connecting ? "opacity-50" : "active:opacity-70"}`}
         onPress={handleConnect}
         disabled={connecting}
       >
@@ -117,11 +117,15 @@ export function AppleHealthIntegration() {
             <Text className="text-foreground font-medium">{t("settings.connecting")}</Text>
           </View>
         ) : (
-          <View className="items-center gap-2">
-            <Text className="text-sm font-medium text-muted-foreground">Tap to connect</Text>
-            <View className="flex-row items-center gap-3">
-              <Image source={appleHealthIcon} style={{ width: 50, height: 50 }} resizeMode="contain" />
+          <View className="flex-row items-center justify-between">
+            <View className="flex-1 flex-row items-center gap-3">
+              <Image source={appleHealthIcon} style={{ width: 28, height: 28 }} resizeMode="contain" />
+              <View className="flex-1">
+                <Text className="text-base font-medium text-foreground">Apple Health</Text>
+                <Text className="text-xs text-muted-foreground" numberOfLines={3}>{t("integrations.appleHealth.syncDescription")}</Text>
+              </View>
             </View>
+            <Text className="text-xs font-medium text-primary ml-3 shrink-0">{t("settings.connect")}</Text>
           </View>
         )}
       </TouchableOpacity>

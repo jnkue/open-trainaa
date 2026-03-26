@@ -25,11 +25,13 @@ export default function SettingsScreen() {
 	const {refreshCustomerInfo} = useRevenueCat();
 	const {colorScheme} = useTheme();
 	const [refreshing, setRefreshing] = useState(false);
+	const [refreshKey, setRefreshKey] = useState(0);
 
 	const onRefresh = useCallback(async () => {
 		setRefreshing(true);
 		try {
 			await refreshCustomerInfo();
+			setRefreshKey((k) => k + 1);
 		} finally {
 			setRefreshing(false);
 		}
@@ -55,7 +57,7 @@ export default function SettingsScreen() {
 					/>
 				}
 			>
-				<View className="max-w-3xl xl:max-w-7xl mx-auto w-full p-4 md:p-6">
+				<View key={refreshKey} className="max-w-3xl xl:max-w-7xl mx-auto w-full p-4 md:p-6">
 
 					{/* Account */}
 					<SectionGroupHeader title={t("settings.sectionAccount")} />

@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from "react";
-import {View, ScrollView, TouchableOpacity, ActivityIndicator, StyleSheet, Platform, Linking, ActionSheetIOS} from "react-native";
+import {View, ScrollView, TouchableOpacity, ActivityIndicator, StyleSheet, Platform, Linking, ActionSheetIOS, Image} from "react-native";
 import Slider from "@react-native-community/slider";
 import {StatusBar} from "expo-status-bar";
 import {useLocalSearchParams, router, useNavigation} from "expo-router";
@@ -881,6 +881,40 @@ const UserFeedbackSection = React.memo(({sessionId, initialUserFeedback}: {sessi
 
 UserFeedbackSection.displayName = "UserFeedbackSection";
 
+const SOURCE_CONFIG: Record<string, {label: string; logo: ReturnType<typeof require>}> = {
+	strava: {label: "activities.detail.sourceStrava", logo: require("@/assets/images/strava.png")},
+	garmin: {label: "activities.detail.sourceGarmin", logo: require("@/assets/images/garmin/garmin_connect.png")},
+	wahoo: {label: "activities.detail.sourceWahoo", logo: require("@/assets/images/wahoo/wahoo_logo_small_black.png")},
+	apple_health: {label: "activities.detail.sourceAppleHealth", logo: require("@/assets/images/apple_health.png")},
+};
+
+const SourceCard = React.memo(({uploadSource}: {uploadSource?: string | null}) => {
+	const {t} = useTranslation();
+	if (!uploadSource || uploadSource === "file_upload") return null;
+	const config = SOURCE_CONFIG[uploadSource];
+	if (!config) return null;
+	return (
+		<Card className="mx-4 mt-4">
+			<CardHeader className="pb-0">
+				<CardTitle className="flex-row items-center text-lg">
+					<Text>{t("activities.detail.source")}</Text>
+				</CardTitle>
+			</CardHeader>
+			<CardContent className="pt-3">
+				<View className="flex-row items-center gap-3">
+					<Image
+						source={config.logo}
+						style={{width: 24, height: 24, borderRadius: 4}}
+						resizeMode="contain"
+					/>
+					<Text className="text-base font-medium text-foreground">{t(config.label)}</Text>
+				</View>
+			</CardContent>
+		</Card>
+	);
+});
+SourceCard.displayName = "SourceCard";
+
 // Performance Charts and Indicators Component with Zoomable Line Charts
 const PerformanceChartsSection = React.memo(({activity, records}: {activity: ActivityDetail; records?: ActivityRecord[]}) => {
 	const {t} = useTranslation();
@@ -969,17 +1003,7 @@ const PerformanceChartsSection = React.memo(({activity, records}: {activity: Act
 	const hasData = speedData.length > 0 || hrData.length > 0 || powerData.length > 0;
 
 	if (!hasData) {
-		return (
-			<Card className="mx-4 mt-4">
-				<CardHeader className="pb-3">
-					<CardTitle className="text-lg">{t("activities.detail.performanceCharts")}</CardTitle>
-					<CardDescription className="text-sm">{t("activities.detail.noPerformanceData")}</CardDescription>
-				</CardHeader>
-				<CardContent className="pt-0">
-					<Text className="text-center text-muted-foreground py-4">{t("activities.detail.noDetailedData")}</Text>
-				</CardContent>
-			</Card>
-		);
+		return null;
 	}
 
 	return (
@@ -1350,6 +1374,9 @@ export default function SessionDetailScreen() {
 				</View>
 				{/* Social Media Overlays Section */}
 				<SocialMediaOverlaysSection activity={activity} records={records} feedback={sessionData?.trainer_feedback || null} />
+
+				{/* Source Section */}
+				<SourceCard uploadSource={activity?.upload_source} />
 
 				{/* Bottom padding */}
 				<View style={{height: 40}} />

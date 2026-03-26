@@ -273,7 +273,10 @@
       "syncing": "Synchronisation...",
       "reauthRequired": "Reconnexion requise",
       "reauthMessage": "Votre connexion Wahoo doit être rétablie. Veuillez reconnecter votre compte.",
-      "reconnect": "Reconnecter"
+      "reconnect": "Reconnecter",
+      "syncDescription": "Synchroniser entraînements et activités",
+      "uploadWorkouts": "Envoyer les entraînements",
+      "downloadActivities": "Télécharger les activités"
     },
     "garmin": {
       "disconnectTitle": "Déconnecter Garmin",
@@ -289,7 +292,8 @@
       "permissionRequired": "Permission requise",
       "workoutImportPermissionMissing": "Pour télécharger des entraînements, vous devez accorder la permission WORKOUT_IMPORT. Mettez à jour vos permissions dans les paramètres Garmin Connect ou reconnectez votre compte.",
       "activityExportPermissionMissing": "Pour télécharger des activités, vous devez accorder la permission ACTIVITY_EXPORT. Mettez à jour vos permissions dans les paramètres Garmin Connect ou reconnectez votre compte.",
-      "reconnect": "Reconnecter"
+      "reconnect": "Reconnecter",
+      "syncDescription": "Synchroniser entraînements et activités"
     },
     "appleHealth": {
       "connect": "Appuyez pour connecter",
@@ -305,7 +309,8 @@
       "disconnectTitle": "Déconnecter Apple Health",
       "disconnectMessage": "La synchronisation avec Apple Health sera arrêtée. Vos activités existantes ne seront pas supprimées. Pour révoquer complètement les autorisations, allez dans Réglages iOS > Confidentialité > Santé.",
       "disconnectSuccess": "Apple Health déconnecté",
-      "lastSynced": "Dernière synchronisation à {{time}}"
+      "lastSynced": "Dernière synchronisation à {{time}}",
+      "syncDescription": "Importer les activités automatiquement"
     }
   },
   "userAttributes": {
@@ -504,7 +509,12 @@
       "reprocessFile": "Retraiter le fichier",
       "reprocessTitle": "Retraiter l'activité",
       "reprocessNotImplemented": "La fonction de retraitement n'est pas encore disponible. Elle sera ajoutée dans une future mise à jour.",
-      "reprocessError": "Échec du retraitement de l'activité. Veuillez réessayer."
+      "reprocessError": "Échec du retraitement de l'activité. Veuillez réessayer.",
+      "source": "Source",
+      "sourceStrava": "Strava",
+      "sourceGarmin": "Garmin",
+      "sourceWahoo": "Wahoo",
+      "sourceAppleHealth": "Apple Health"
     },
     "overlays": {
       "title": "Soyez fier de ce que vous avez accompli",
