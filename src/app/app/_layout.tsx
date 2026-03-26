@@ -128,12 +128,7 @@ function NavigationGuard({children}: {children: React.ReactNode}) {
 		else if (user && inAuthGroup && !isResetPasswordRoute) {
 			console.log("✅ User logged in, redirecting from auth to tabs");
 			// Use setTimeout to ensure navigation happens in next tick (works better on web)
-			// On mobile, redirect to chat. On web, redirect to index
-			if (Platform.OS === "web") {
-				setTimeout(() => router.replace("/(tabs)"), 0);
-			} else {
-				setTimeout(() => router.replace("/(tabs)/chat"), 0);
-			}
+			setTimeout(() => router.replace("/(tabs)"), 0);
 		}
 	}, [user, isProSubscriber, authLoading, subscriptionLoading, initialized, segments, router]);
 

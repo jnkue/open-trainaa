@@ -273,7 +273,10 @@
       "syncing": "Sincronizando...",
       "reauthRequired": "Reconexión necesaria",
       "reauthMessage": "Su conexión con Wahoo necesita ser restablecida. Por favor, reconecte su cuenta.",
-      "reconnect": "Reconectar"
+      "reconnect": "Reconectar",
+      "syncDescription": "Sincronizar entrenamientos y actividades",
+      "uploadWorkouts": "Subir entrenamientos",
+      "downloadActivities": "Descargar actividades"
     },
     "garmin": {
       "disconnectTitle": "Desconectar Garmin",
@@ -289,7 +292,8 @@
       "permissionRequired": "Permiso requerido",
       "workoutImportPermissionMissing": "Para subir entrenamientos, necesitas otorgar el permiso WORKOUT_IMPORT. Actualiza tus permisos en la configuración de Garmin Connect o reconecta tu cuenta.",
       "activityExportPermissionMissing": "Para descargar actividades, necesitas otorgar el permiso ACTIVITY_EXPORT. Actualiza tus permisos en la configuración de Garmin Connect o reconecta tu cuenta.",
-      "reconnect": "Reconectar"
+      "reconnect": "Reconectar",
+      "syncDescription": "Sincronizar entrenamientos y actividades"
     },
     "appleHealth": {
       "connect": "Toca para conectar",
@@ -305,7 +309,8 @@
       "disconnectTitle": "Desconectar Apple Health",
       "disconnectMessage": "Se detendrá la sincronización con Apple Health. Tus actividades existentes no se eliminarán. Para revocar completamente los permisos, ve a Ajustes de iOS > Privacidad > Salud.",
       "disconnectSuccess": "Apple Health desconectado",
-      "lastSynced": "Última sincronización a las {{time}}"
+      "lastSynced": "Última sincronización a las {{time}}",
+      "syncDescription": "Importar actividades automáticamente"
     }
   },
   "userAttributes": {
@@ -504,7 +509,12 @@
       "reprocessFile": "Reprocesar archivo",
       "reprocessTitle": "Reprocesar actividad",
       "reprocessNotImplemented": "La función de reprocesamiento aún no está disponible. Se añadirá en una actualización futura.",
-      "reprocessError": "Error al reprocesar la actividad. Por favor intenta de nuevo."
+      "reprocessError": "Error al reprocesar la actividad. Por favor intenta de nuevo.",
+      "source": "Fuente",
+      "sourceStrava": "Strava",
+      "sourceGarmin": "Garmin",
+      "sourceWahoo": "Wahoo",
+      "sourceAppleHealth": "Apple Health"
     },
     "overlays": {
       "title": "Siéntete orgulloso de lo que has logrado",

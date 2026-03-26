@@ -521,7 +521,11 @@ export class ApiClient {
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`Failed to claim invitation code: ${errorText}`);
+        const isHtml = errorText.trimStart().startsWith('<') || errorText.includes('<!DOCTYPE');
+        const message = isHtml
+          ? `Server error (${response.status})`
+          : `Failed to claim invitation code: ${errorText}`;
+        throw new Error(message);
       }
 
       return await response.json();
@@ -567,7 +571,11 @@ export class ApiClient {
     if (!response.ok) {
       const errorText = await response.text();
       console.error('API Error:', response.status, errorText);
-      throw new Error(`API Error: ${response.status} - ${errorText}`);
+      const isHtml = errorText.trimStart().startsWith('<') || errorText.includes('<!DOCTYPE');
+      const message = isHtml
+        ? `Server error (${response.status})`
+        : `API Error: ${response.status} - ${errorText}`;
+      throw new Error(message);
     }
 
     const result = await response.json();
@@ -903,7 +911,11 @@ export class ApiClient {
     if (!response.ok) {
       const errorText = await response.text();
       console.error('FIT Upload Error:', response.status, errorText);
-      throw new Error(`API Error: ${response.status} - ${errorText}`);
+      const isHtml = errorText.trimStart().startsWith('<') || errorText.includes('<!DOCTYPE');
+      const message = isHtml
+        ? `Server error (${response.status})`
+        : `API Error: ${response.status} - ${errorText}`;
+      throw new Error(message);
     }
 
     const result = await response.json();
@@ -926,6 +938,8 @@ export class ApiClient {
     avg_speed?: number;
     max_speed?: number;
     avg_cadence?: number;
+    avg_power?: number;
+    max_power?: number;
     total_elevation_gain?: number;
     records?: {
       timestamp: number[];

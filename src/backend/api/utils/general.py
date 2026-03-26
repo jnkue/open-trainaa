@@ -1,5 +1,5 @@
 import os
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 from uuid import UUID
 
@@ -566,6 +566,15 @@ async def post_processing_of_session(session_id):
                     f"📝 Copied feel/rpe to custom_data for session {session_id}: feel={feel}, rpe={rpe}"
                 )
 
+    # Fetch session start_time once for use in both calculations and feedback check
+    _session_data = (
+        supabase.table("sessions")
+        .select("user_id", "start_time")
+        .eq("id", str(session_id))
+        .execute()
+    )
+    session_date = _session_data.data[0]["start_time"] if _session_data.data else None
+
     # STEP 2: For duplicate sessions, skip expensive calculations
     if is_duplicate:
         LOGGER.info(
@@ -588,13 +597,6 @@ async def post_processing_of_session(session_id):
         hr_load = calculate_hr_load_for_session(str(session_id))
         LOGGER.info(f"💓 Calculated HR load {hr_load} for session {session_id}")
 
-        data = (
-            supabase.table("sessions")
-            .select("user_id", "start_time")
-            .eq("id", str(session_id))
-            .execute()
-        )
-        session_date = data.data[0]["start_time"]
         if not session_date:
             LOGGER.error(f"❌ No start_time found for session {session_id}")
         else:
@@ -609,7 +611,22 @@ async def post_processing_of_session(session_id):
         calculate_training_status()
 
     # STEP 3: Generate or retrieve feedback (skips generation for duplicates)
-    result = await generate_or_retrieve_feedback(session_id, custom_data_id, user_id)
+    # Only generate feedback for sessions within the last 7 days
+    result = None
+    skip_feedback = False
+
+    if session_date:
+        check_date = session_date
+        if isinstance(check_date, str):
+            check_date = datetime.fromisoformat(check_date.replace("Z", "+00:00"))
+        if check_date < datetime.now(timezone.utc) - timedelta(days=7):
+            LOGGER.info(
+                f"Skipping feedback for session {session_id} - older than 7 days"
+            )
+            skip_feedback = True
+
+    if not skip_feedback:
+        result = await generate_or_retrieve_feedback(session_id, custom_data_id, user_id)
 
     # STEP 4: Post feedback to Strava (for ALL sessions if conditions are met)
     if result and result.get("success") and result.get("feedback"):

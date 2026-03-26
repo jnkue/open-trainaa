@@ -121,7 +121,7 @@ export function GarminIntegration() {
 				<View className="border border-destructive/50 bg-destructive/10 rounded-lg p-3">
 					<View className="flex-row items-center gap-2 mb-1">
 						<View className="w-2 h-2 rounded-full bg-destructive" />
-						<Text className="text-sm font-medium text-destructive">Garmin Connect™</Text>
+						<Text className="text-sm font-medium text-destructive">Garmin</Text>
 					</View>
 					<Text className="text-xs text-destructive/80 ml-4">Error loading status: {garminError}</Text>
 				</View>
@@ -135,7 +135,7 @@ export function GarminIntegration() {
 								style={{width: 20, height: 20, borderRadius: 4}}
 								resizeMode="contain"
 							/>
-							<Text className="text-base font-medium text-foreground">Garmin Connect™</Text>
+							<Text className="text-base font-medium text-foreground">Garmin</Text>
 						</View>
 						<TouchableOpacity className="bg-secondary rounded-lg px-3 py-1.5" onPress={handleDisconnectGarmin}>
 							<Text className="text-secondary-foreground text-xs font-medium">{t("settings.disconnect")}</Text>
@@ -158,25 +158,10 @@ export function GarminIntegration() {
 							/>
 						</View>
 					</View>
-
-					{/* 					{garminStatus.data.upload_workouts_enabled && (
-						<TouchableOpacity
-							className={`mt-3 bg-primary rounded-lg px-4 py-2.5 ${garminSyncing ? "opacity-50" : "active:opacity-70"}`}
-							onPress={handleSyncGarminWorkouts}
-							disabled={garminSyncing}
-						>
-							<View className="flex-row items-center justify-center gap-2">
-								{garminSyncing && <ActivityIndicator size="small" color="#fff" />}
-								<Text className="text-primary-foreground text-sm font-medium">
-									{garminSyncing ? t("integrations.garmin.syncing") : t("integrations.garmin.syncWorkoutsNow")}
-								</Text>
-							</View>
-						</TouchableOpacity>
-					)} */}
 				</>
 			) : (
 				<TouchableOpacity
-					className={`border-2 border-dashed border-border rounded-xl p-4 ${garminConnecting ? "opacity-50" : "active:opacity-70"}`}
+					className={`border border-border rounded-xl px-4 py-3 ${garminConnecting ? "opacity-50" : "active:opacity-70"}`}
 					onPress={handleConnectGarmin}
 					disabled={garminConnecting}
 				>
@@ -186,13 +171,19 @@ export function GarminIntegration() {
 							<Text className="text-foreground font-medium">{t("settings.connecting")}</Text>
 						</View>
 					) : (
-						<View className="items-center gap-2">
-							<Text className="text-sm font-medium text-muted-foreground">Tap to connect</Text>
-							<Image
-								source={require("@/assets/images/garmin/garmin_connect.png")}
-								style={{width: 160, height: 50}}
-								resizeMode="contain"
-							/>
+						<View className="flex-row items-center justify-between">
+							<View className="flex-1 flex-row items-center gap-3">
+								<Image
+									source={require("@/assets/images/garmin/garmin_connect.png")}
+									style={{width: 28, height: 28}}
+									resizeMode="contain"
+								/>
+								<View className="flex-1">
+									<Text className="text-base font-medium text-foreground">Garmin</Text>
+									<Text className="text-xs text-muted-foreground" numberOfLines={3}>{t("integrations.garmin.syncDescription")}</Text>
+								</View>
+							</View>
+							<Text className="text-xs font-medium text-primary ml-3 shrink-0">{t("settings.connect")}</Text>
 						</View>
 					)}
 				</TouchableOpacity>
