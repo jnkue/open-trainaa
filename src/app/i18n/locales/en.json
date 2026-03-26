@@ -280,7 +280,10 @@
       "syncing": "Syncing...",
       "reauthRequired": "Reconnection required",
       "reauthMessage": "Your Wahoo connection needs to be re-established. Please reconnect your account.",
-      "reconnect": "Reconnect"
+      "reconnect": "Reconnect",
+      "syncDescription": "Sync workouts and activities",
+      "uploadWorkouts": "Upload workouts",
+      "downloadActivities": "Download activities"
     },
     "garmin": {
       "disconnectTitle": "Disconnect Garmin",
@@ -296,7 +299,8 @@
       "permissionRequired": "Permission Required",
       "workoutImportPermissionMissing": "To upload workouts, you need to grant WORKOUT_IMPORT permission. Update your permissions in Garmin Connect settings or reconnect your account.",
       "activityExportPermissionMissing": "To download activities, you need to grant ACTIVITY_EXPORT permission. Update your permissions in Garmin Connect settings or reconnect your account.",
-      "reconnect": "Reconnect"
+      "reconnect": "Reconnect",
+      "syncDescription": "Sync workouts and activities"
     },
     "appleHealth": {
       "connect": "Tap to connect",
@@ -312,7 +316,8 @@
       "disconnectTitle": "Disconnect Apple Health",
       "disconnectMessage": "This will stop syncing with Apple Health. Your existing activities will not be deleted. To fully revoke permissions, go to iOS Settings > Privacy > Health.",
       "disconnectSuccess": "Apple Health disconnected",
-      "lastSynced": "Last synced at {{time}}"
+      "lastSynced": "Last synced at {{time}}",
+      "syncDescription": "Import activities automatically"
     }
   },
   "userAttributes": {
@@ -513,7 +518,12 @@
       "reprocessFile": "Reprocess File",
       "reprocessTitle": "Reprocess Activity",
       "reprocessNotImplemented": "The reprocess feature is not yet available. It will be added in a future update.",
-      "reprocessError": "Failed to reprocess activity. Please try again."
+      "reprocessError": "Failed to reprocess activity. Please try again.",
+      "source": "Source",
+      "sourceStrava": "Strava",
+      "sourceGarmin": "Garmin",
+      "sourceWahoo": "Wahoo",
+      "sourceAppleHealth": "Apple Health"
     },
     "overlays": {
       "title": "Be proud of what you've achieved",

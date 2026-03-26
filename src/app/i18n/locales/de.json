@@ -235,7 +235,10 @@
       "syncing": "Synchronisiere...",
       "reauthRequired": "Erneute Verbindung erforderlich",
       "reauthMessage": "Ihre Wahoo-Verbindung muss neu hergestellt werden. Bitte verbinden Sie Ihr Konto erneut.",
-      "reconnect": "Neu verbinden"
+      "reconnect": "Neu verbinden",
+      "syncDescription": "Workouts und Aktivitäten synchronisieren",
+      "uploadWorkouts": "Workouts hochladen",
+      "downloadActivities": "Aktivitäten herunterladen"
     },
     "garmin": {
       "disconnectTitle": "Garmin-Verbindung trennen",
@@ -251,7 +254,8 @@
       "permissionRequired": "Berechtigung erforderlich",
       "workoutImportPermissionMissing": "Um Workouts hochzuladen, müssen Sie die WORKOUT_IMPORT-Berechtigung erteilen. Aktualisieren Sie Ihre Berechtigungen in den Garmin Connect-Einstellungen oder verbinden Sie Ihr Konto erneut.",
       "activityExportPermissionMissing": "Um Aktivitäten herunterzuladen, müssen Sie die ACTIVITY_EXPORT-Berechtigung erteilen. Aktualisieren Sie Ihre Berechtigungen in den Garmin Connect-Einstellungen oder verbinden Sie Ihr Konto erneut.",
-      "reconnect": "Erneut verbinden"
+      "reconnect": "Erneut verbinden",
+      "syncDescription": "Workouts und Aktivitäten synchronisieren"
     },
     "appleHealth": {
       "connect": "Tippen zum Verbinden",
@@ -267,7 +271,8 @@
       "disconnectTitle": "Apple Health trennen",
       "disconnectMessage": "Die Synchronisierung mit Apple Health wird gestoppt. Bestehende Aktivitäten werden nicht gelöscht. Um die Berechtigungen vollständig zu widerrufen, gehen Sie zu iOS Einstellungen > Datenschutz > Health.",
       "disconnectSuccess": "Apple Health wurde getrennt",
-      "lastSynced": "Zuletzt synchronisiert um {{time}}"
+      "lastSynced": "Zuletzt synchronisiert um {{time}}",
+      "syncDescription": "Aktivitäten automatisch importieren"
     }
   },
   "userAttributes": {
@@ -469,7 +474,12 @@
       "reprocessFile": "Datei neu verarbeiten",
       "reprocessTitle": "Aktivität neu verarbeiten",
       "reprocessNotImplemented": "Die Funktion zum erneuten Verarbeiten ist noch nicht verfügbar. Sie wird in einem zukünftigen Update hinzugefügt.",
-      "reprocessError": "Aktivität konnte nicht neu verarbeitet werden. Bitte versuchen Sie es erneut."
+      "reprocessError": "Aktivität konnte nicht neu verarbeitet werden. Bitte versuchen Sie es erneut.",
+      "source": "Quelle",
+      "sourceStrava": "Strava",
+      "sourceGarmin": "Garmin",
+      "sourceWahoo": "Wahoo",
+      "sourceAppleHealth": "Apple Health"
     },
     "overlays": {
       "title": "Teile was du erreicht hast",

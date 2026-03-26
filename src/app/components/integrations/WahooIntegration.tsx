@@ -180,7 +180,7 @@ export function WahooIntegration() {
 
 					<View className="w-full space-y-3 mt-4 bg-secondary/30 rounded-lg p-3">
 						<View className="flex-row items-center justify-between">
-							<Text className="text-sm text-foreground">Upload workouts</Text>
+							<Text className="text-sm text-foreground">{t("integrations.wahoo.uploadWorkouts")}</Text>
 							<Switch
 								checked={wahooStatus.data.upload_workouts_enabled || false}
 								onCheckedChange={handleUploadWorkoutsToggle}
@@ -188,7 +188,7 @@ export function WahooIntegration() {
 							/>
 						</View>
 						<View className="flex-row items-center justify-between mt-3">
-							<Text className="text-sm text-foreground">Download activities</Text>
+							<Text className="text-sm text-foreground">{t("integrations.wahoo.downloadActivities")}</Text>
 							<Switch
 								checked={wahooStatus.data.download_activities_enabled ?? true}
 								onCheckedChange={handleDownloadActivitiesToggle}
@@ -215,7 +215,7 @@ export function WahooIntegration() {
 				</>
 			) : (
 				<TouchableOpacity
-					className={`border-2 border-dashed border-border rounded-xl p-4 ${wahooConnecting ? "opacity-50" : "active:opacity-70"}`}
+					className={`border border-border rounded-xl px-4 py-3 ${wahooConnecting ? "opacity-50" : "active:opacity-70"}`}
 					onPress={handleConnectWahoo}
 					disabled={wahooConnecting}
 				>
@@ -225,13 +225,19 @@ export function WahooIntegration() {
 							<Text className="text-foreground font-medium">{t("settings.connecting")}</Text>
 						</View>
 					) : (
-						<View className="items-center gap-2">
-							<Text className="text-sm font-medium text-muted-foreground">Tap to connect</Text>
-							<Image
-								source={require("@/assets/images/wahoo/WahooOnly_BlackOnWhite_TransBkgd_Logo.png")}
-								style={{width: 160, height: 50, tintColor: isDark ? "#ffffff" : "#000000"}}
-								resizeMode="contain"
-							/>
+						<View className="flex-row items-center justify-between">
+							<View className="flex-1 flex-row items-center gap-3">
+								<Image
+									source={require("@/assets/images/wahoo/wahoo_logo_small_black.png")}
+									style={{width: 28, height: 28, tintColor: isDark ? "#ffffff" : "#000000"}}
+									resizeMode="contain"
+								/>
+								<View className="flex-1">
+									<Text className="text-base font-medium text-foreground">Wahoo</Text>
+									<Text className="text-xs text-muted-foreground" numberOfLines={3}>{t("integrations.wahoo.syncDescription")}</Text>
+								</View>
+							</View>
+							<Text className="text-xs font-medium text-primary ml-3 shrink-0">{t("settings.connect")}</Text>
 						</View>
 					)}
 				</TouchableOpacity>

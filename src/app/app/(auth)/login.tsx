@@ -87,11 +87,7 @@ export default function LoginScreen() {
 		setGoogleLoading(true);
 		try {
 			await signInWithGoogle();
-			if (Platform.OS === "web") {
-				router.push("/");
-			} else {
-				router.push("/chat");
-			}
+			router.push("/");
 		} catch (error: any) {
 			if (error.code === "CANCELLED") return;
 			if (error?.code === "PLAY_SERVICES_UNAVAILABLE") {
@@ -113,11 +109,7 @@ export default function LoginScreen() {
 		setAppleLoading(true);
 		try {
 			await signInWithApple();
-			if (Platform.OS === "web") {
-				router.push("/");
-			} else {
-				router.push("/chat");
-			}
+			router.push("/");
 		} catch (error: any) {
 			console.error("Apple sign-in error:", error);
 			if (error.code === "CANCELLED") return;
@@ -156,12 +148,7 @@ export default function LoginScreen() {
 		setLoading(true);
 		try {
 			await signIn(email, password);
-			// On web, redirect to index. On mobile, redirect to chat
-			if (Platform.OS === "web") {
-				router.push("/");
-			} else {
-				router.push("/chat");
-			}
+			router.push("/");
 		} catch (error: any) {
 			console.error("Login error:", error);
 			setErrors({general: getSupabaseErrorMessage(error)});

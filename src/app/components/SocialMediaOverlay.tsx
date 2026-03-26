@@ -613,7 +613,7 @@ export const SocialMediaOverlay: React.FC<SocialMediaOverlayProps> = ({activity,
 					</SvgText>
 
 					<SvgText x={STORY_WIDTH / 2} y={1585} fontSize="42" fill={textColor} fontWeight="500" textAnchor="middle">
-						Max: {Math.round(activity.max_heartrate || 0)} bpm
+						{`Max: ${Math.round(activity.max_heartrate || 0)} bpm`}
 					</SvgText>
 				</G>
 
@@ -694,14 +694,14 @@ export const SocialMediaOverlay: React.FC<SocialMediaOverlayProps> = ({activity,
 				{/* Stats box */}
 				<G>
 					<SvgText x={STORY_WIDTH / 2} y={1450} fontSize="52" fill={textColor} fontWeight="700" textAnchor="middle">
-						{Math.round(activity.elevation_gain || 0)}m
+						{`${Math.round(activity.elevation_gain || 0)}m`}
 					</SvgText>
 					<SvgText x={STORY_WIDTH / 2} y={1490} fontSize="28" fill={textColor} opacity={0.6} textAnchor="middle">
 						ELEVATION GAIN
 					</SvgText>
 
 					<SvgText x={STORY_WIDTH / 2} y={1585} fontSize="42" fill={textColor} fontWeight="500" textAnchor="middle">
-						Range: {Math.round(maxElev - minElev)}m
+						{`Range: ${Math.round(maxElev - minElev)}m`}
 					</SvgText>
 				</G>
 
@@ -783,14 +783,14 @@ export const SocialMediaOverlay: React.FC<SocialMediaOverlayProps> = ({activity,
 				{/* Stats box */}
 				<G>
 					<SvgText x={STORY_WIDTH / 2} y={1450} fontSize="52" fill={textColor} fontWeight="700" textAnchor="middle">
-						{Math.round(avgPower)}W
+						{`${Math.round(avgPower)}W`}
 					</SvgText>
 					<SvgText x={STORY_WIDTH / 2} y={1490} fontSize="28" fill={textColor} opacity={0.6} textAnchor="middle">
 						AVG POWER
 					</SvgText>
 
 					<SvgText x={STORY_WIDTH / 2} y={1585} fontSize="42" fill={textColor} fontWeight="500" textAnchor="middle">
-						Max: {Math.round(maxPower)}W
+						{`Max: ${Math.round(maxPower)}W`}
 					</SvgText>
 				</G>
 

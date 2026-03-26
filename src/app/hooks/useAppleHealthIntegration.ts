@@ -8,7 +8,7 @@ import {
   isHealthKitAvailable,
   requestHealthKitPermissions,
   fetchWorkouts,
-  fetchHeartRateSamples,
+  fetchWorkoutSamples,
   convertToUploadPayload,
   isConnected,
   setConnected,
@@ -49,13 +49,10 @@ export function useAppleHealthIntegration() {
 
       const workouts = await fetchWorkouts(startDate, endDate);
 
-      for (const workout of workouts) {
+      for (const { data: workout, proxy } of workouts) {
         try {
-          const hrSamples = await fetchHeartRateSamples(
-            workout.startDate,
-            workout.endDate,
-          );
-          const payload = convertToUploadPayload(workout, hrSamples);
+          const samples = await fetchWorkoutSamples(workout, proxy);
+          const payload = convertToUploadPayload(workout, samples);
           const result = await apiClient.uploadActivityJson(payload);
 
           if (!result.is_duplicate) {
