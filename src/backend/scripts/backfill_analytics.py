@@ -30,17 +30,17 @@ if os.path.exists(env_path):
 
     load_dotenv(env_path)
 
-from collections import defaultdict
+from collections import defaultdict  # noqa: E402
 
-from api.analytics.cp_model import fit_cp_model
-from api.analytics.power_curve import extract_power_curve
-from api.analytics.vdot import calculate_vdot_for_session
-from api.analytics.hr_curve import (
+from api.analytics.cp_model import fit_cp_model  # noqa: E402
+from api.analytics.power_curve import extract_power_curve  # noqa: E402
+from api.analytics.vdot import calculate_vdot_for_session  # noqa: E402
+from api.analytics.hr_curve import (  # noqa: E402
     filter_hr_data, extract_hr_curve, estimate_session_lthr,
     calculate_efficiency_factor, calculate_hr_zone_time, detect_max_hr,
 )
 
-from supabase import create_client
+from supabase import create_client  # noqa: E402
 
 
 def get_supabase():
