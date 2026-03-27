@@ -21,16 +21,21 @@ COMMENT ON COLUMN public.user_sport_settings.threshold_heart_rate IS 'Lactate th
 GRANT SELECT, INSERT, UPDATE, DELETE ON user_sport_settings TO authenticated;
 GRANT ALL ON user_sport_settings TO service_role;
 ALTER TABLE user_sport_settings ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Users can view own sport settings" ON user_sport_settings;
 CREATE POLICY "Users can view own sport settings" ON user_sport_settings
     FOR SELECT USING (user_id = (SELECT auth.uid()));
+DROP POLICY IF EXISTS "Users can insert own sport settings" ON user_sport_settings;
 CREATE POLICY "Users can insert own sport settings" ON user_sport_settings
     FOR INSERT WITH CHECK (user_id = (SELECT auth.uid()));
+DROP POLICY IF EXISTS "Users can update own sport settings" ON user_sport_settings;
 CREATE POLICY "Users can update own sport settings" ON user_sport_settings
     FOR UPDATE USING (user_id = (SELECT auth.uid()));
+DROP POLICY IF EXISTS "Users can delete own sport settings" ON user_sport_settings;
 CREATE POLICY "Users can delete own sport settings" ON user_sport_settings
     FOR DELETE USING (user_id = (SELECT auth.uid()));
 
 -- Auto-update updated_at
+DROP TRIGGER IF EXISTS set_updated_at_user_sport_settings ON public.user_sport_settings;
 CREATE TRIGGER set_updated_at_user_sport_settings
     BEFORE UPDATE ON public.user_sport_settings
     FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
@@ -49,15 +54,19 @@ CREATE INDEX IF NOT EXISTS idx_sessions_analytics_hr
     ON public.sessions(user_id, start_time)
     WHERE hr_curve IS NOT NULL;
 
--- Recreate views to pick up new columns
-CREATE OR REPLACE VIEW sessions_no_duplicates
+-- Recreate views to pick up new columns (must DROP first — CREATE OR REPLACE
+-- cannot reorder/add columns in the middle of an existing view)
+DROP VIEW IF EXISTS sessions_with_custom_data_no_duplicates;
+DROP VIEW IF EXISTS sessions_no_duplicates;
+
+CREATE VIEW sessions_no_duplicates
 WITH (security_invoker = true) AS
 SELECT s.*
 FROM sessions s
 INNER JOIN activities a ON s.activity_id = a.id
 WHERE a.duplicate_of IS NULL;
 
-CREATE OR REPLACE VIEW sessions_with_custom_data_no_duplicates
+CREATE VIEW sessions_with_custom_data_no_duplicates
 WITH (security_invoker = true) AS
 SELECT
     s.id, s.user_id, s.activity_id, s.session_number,
