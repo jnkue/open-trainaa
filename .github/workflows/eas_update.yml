@@ -1,0 +1,35 @@
+name: EAS Update (OTA)
+
+on:
+  push:
+    branches:
+      - ACTIVATE-WHEN-READY
+    paths:
+      - 'src/app/**'
+  workflow_dispatch:
+
+jobs:
+  eas-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: cd src/app && bun install --frozen-lockfile
+
+      - name: Setup EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Publish OTA update
+        run: |
+          cd src/app
+          eas update --channel production \
+            --message "$(git log -1 --pretty=%s)" \
+            --non-interactive

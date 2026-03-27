@@ -5,7 +5,8 @@ on:
     branches:
       - production
     paths:
-      - 'src/**'
+      - 'src/backend/**'
+      - 'src/supabase/**'
   workflow_dispatch:
     
 jobs:
@@ -13,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       packages: write
-      contents: write
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -53,9 +54,9 @@ jobs:
         run: cd src/supabase && supabase db push
 
 
-      - name: Read version from version.config.json
-        id: version
-        run: echo "VERSION=$(python3 -c "import json; print(json.load(open('version.config.json'))['appVersion'])")" >> $GITHUB_OUTPUT
+      - name: Get short SHA
+        id: sha
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
@@ -65,7 +66,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/jnkue/trainaabackend:latest
-            ghcr.io/jnkue/trainaabackend:${{ steps.version.outputs.VERSION }}
+            ghcr.io/jnkue/trainaabackend:prod-${{ steps.sha.outputs.SHORT_SHA }}
           cache-from: type=registry,ref=ghcr.io/jnkue/trainaabackend:buildcache
           cache-to: type=registry,ref=ghcr.io/jnkue/trainaabackend:buildcache,mode=max
 
@@ -118,15 +119,3 @@ jobs:
 
             docker compose -f docker-compose.production.yml pull
             docker compose -f docker-compose.production.yml up -d
-
-      - name: Tag release
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          VERSION=${{ steps.version.outputs.VERSION }}
-          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
-            echo "Tag v$VERSION already exists, skipping"
-          else
-            git tag -a "v$VERSION" -m "Release $VERSION"
-            git push origin "v$VERSION"
-          fi
