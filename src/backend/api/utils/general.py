@@ -470,7 +470,7 @@ async def post_processing_of_session(session_id):
     they were already performed for the original session.
     """
     # Import here to avoid circular dependency
-    from api.routers.ai_tools import calculate_ftp, max_heart_rate_user, save_max_watts
+    from api.routers.ai_tools import calculate_ftp, max_heart_rate_user
 
     session_data = (
         supabase.table("sessions").select("user_id").eq("id", str(session_id)).execute()
@@ -584,7 +584,176 @@ async def post_processing_of_session(session_id):
         # Only perform calculations for original (non-duplicate) sessions
         LOGGER.info(f"🆕 Processing original session {session_id}")
 
-        save_max_watts(str(session_id))
+        # Analytics: extract power curve (replaces save_max_watts) and calculate VDOT
+        try:
+            from api.analytics.power_curve import extract_power_curve
+            from api.analytics.cp_model import fit_cp_model
+            from api.analytics.vdot import calculate_vdot_for_session
+
+            session_info = (
+                supabase.table("sessions")
+                .select("sport, total_distance, total_timer_time, avg_heart_rate, avg_power, user_id")
+                .eq("id", str(session_id))
+                .single()
+                .execute()
+            )
+            sport = session_info.data.get("sport", "") if session_info.data else ""
+
+            if sport == "cycling":
+                records_resp = (
+                    supabase.table("records")
+                    .select("power")
+                    .eq("session_id", str(session_id))
+                    .execute()
+                )
+                power_data = records_resp.data[0]["power"] if records_resp.data and records_resp.data[0].get("power") else []
+                if power_data:
+                    power_curve = extract_power_curve(power_data)
+                    update_fields = {
+                        "power_curve": power_curve,
+                        "max_watts_5_min": power_curve.get("300", 0),
+                        "max_watts_20_min": power_curve.get("1200", 0),
+                        "max_watts_60_min": power_curve.get("3600", 0),
+                    }
+                    cp_result = fit_cp_model(power_curve)
+                    if cp_result:
+                        update_fields["cp_estimate"] = round(cp_result[0], 1)
+                        update_fields["w_prime_estimate"] = round(cp_result[1], 0)
+                    supabase.table("sessions").update(update_fields).eq("id", str(session_id)).execute()
+                    LOGGER.info(f"Saved power curve ({len(power_curve)} points) for session {session_id}")
+
+            elif sport == "running":
+                distance = session_info.data.get("total_distance")
+                timer_time = session_info.data.get("total_timer_time")
+                if distance and timer_time:
+                    speed_data = None
+                    distance_data = None
+                    try:
+                        records_resp = (
+                            supabase.table("records")
+                            .select("speed, distance")
+                            .eq("session_id", str(session_id))
+                            .execute()
+                        )
+                        if records_resp.data and records_resp.data[0]:
+                            speed_data = records_resp.data[0].get("speed")
+                            distance_data = records_resp.data[0].get("distance")
+                    except Exception:
+                        pass
+
+                    vdot = calculate_vdot_for_session(
+                        float(distance), float(timer_time),
+                        speed_data=speed_data, distance_data=distance_data,
+                    )
+                    if vdot:
+                        supabase.table("sessions").update(
+                            {"vdot_estimate": round(vdot, 1)}
+                        ).eq("id", str(session_id)).execute()
+                        LOGGER.info(f"Saved VDOT {vdot:.1f} for session {session_id}")
+        except Exception as e:
+            LOGGER.error(f"Error in analytics post-processing for session {session_id}: {e}")
+
+        # HR Analytics: extract HR curve, compute EF, detect max HR, update LTHR
+        try:
+            from api.analytics.hr_curve import (
+                filter_hr_data, extract_hr_curve, estimate_session_lthr,
+                calculate_efficiency_factor, calculate_hr_zone_time, detect_max_hr,
+            )
+
+            if sport in ("cycling", "running"):
+                records_hr_resp = (
+                    supabase.table("records")
+                    .select("heart_rate")
+                    .eq("session_id", str(session_id))
+                    .execute()
+                )
+                raw_hr = records_hr_resp.data[0]["heart_rate"] if records_hr_resp.data and records_hr_resp.data[0].get("heart_rate") else []
+                if raw_hr:
+                    hr_update_fields = {}
+
+                    filtered = filter_hr_data(raw_hr)
+                    if filtered:
+                        hr_curve = extract_hr_curve(filtered)
+                        if hr_curve:
+                            hr_update_fields["hr_curve"] = hr_curve
+
+                        avg_hr = session_info.data.get("avg_heart_rate") if session_info.data else None
+                        if avg_hr:
+                            ef = calculate_efficiency_factor(
+                                sport=sport,
+                                avg_heart_rate=avg_hr,
+                                avg_power=session_info.data.get("avg_power") if sport == "cycling" and session_info.data else None,
+                                total_distance=float(session_info.data.get("total_distance", 0)) if sport == "running" and session_info.data else None,
+                                total_timer_time=float(session_info.data.get("total_timer_time", 0)) if sport == "running" and session_info.data else None,
+                            )
+                            if ef:
+                                hr_update_fields["efficiency_factor"] = ef
+
+                        # Zone time
+                        try:
+                            lthr_resp = (
+                                supabase.table("user_sport_settings")
+                                .select("threshold_heart_rate")
+                                .eq("user_id", str(user_id))
+                                .eq("sport", sport)
+                                .single()
+                                .execute()
+                            )
+                            lthr = lthr_resp.data.get("threshold_heart_rate") if lthr_resp.data else None
+                            if lthr and filtered:
+                                zone_time = calculate_hr_zone_time(filtered, lthr)
+                                hr_update_fields["hr_zone_time"] = zone_time
+                        except Exception:
+                            pass
+
+                    if hr_update_fields:
+                        supabase.table("sessions").update(hr_update_fields).eq("id", str(session_id)).execute()
+                        LOGGER.info(f"Saved HR analytics for session {session_id}: {list(hr_update_fields.keys())}")
+
+                    # Max HR + LTHR update in user_sport_settings
+                    max_hr = detect_max_hr(raw_hr)
+                    if max_hr:
+                        try:
+                            existing = (
+                                supabase.table("user_sport_settings")
+                                .select("max_heart_rate, max_heart_rate_source, threshold_heart_rate")
+                                .eq("user_id", str(user_id))
+                                .eq("sport", sport)
+                                .single()
+                                .execute()
+                            )
+                            if existing.data:
+                                updates = {}
+                                current_max = existing.data.get("max_heart_rate") or 0
+                                source = existing.data.get("max_heart_rate_source", "auto")
+                                if source == "auto" and max_hr > current_max:
+                                    updates["max_heart_rate"] = max_hr
+                                if filtered:
+                                    hr_curve_for_lthr = hr_update_fields.get("hr_curve") or extract_hr_curve(filtered)
+                                    session_lthr = estimate_session_lthr(hr_curve_for_lthr)
+                                    if session_lthr:
+                                        current_lthr = existing.data.get("threshold_heart_rate") or 0
+                                        if session_lthr > current_lthr:
+                                            updates["threshold_heart_rate"] = round(session_lthr, 1)
+                                if updates:
+                                    supabase.table("user_sport_settings").update(updates).eq("user_id", str(user_id)).eq("sport", sport).execute()
+                            else:
+                                new_entry = {
+                                    "user_id": str(user_id),
+                                    "sport": sport,
+                                    "max_heart_rate": max_hr,
+                                    "max_heart_rate_source": "auto",
+                                }
+                                if filtered:
+                                    hr_curve_for_lthr = hr_update_fields.get("hr_curve") or extract_hr_curve(filtered)
+                                    session_lthr = estimate_session_lthr(hr_curve_for_lthr)
+                                    if session_lthr:
+                                        new_entry["threshold_heart_rate"] = round(session_lthr, 1)
+                                supabase.table("user_sport_settings").insert(new_entry).execute()
+                        except Exception as e:
+                            LOGGER.warning(f"Error updating user_sport_settings for {session_id}: {e}")
+        except Exception as e:
+            LOGGER.error(f"Error in HR analytics post-processing for session {session_id}: {e}")
 
         max_heart_rate = max_heart_rate_user(user_id)
         ftp = calculate_ftp(user_id)

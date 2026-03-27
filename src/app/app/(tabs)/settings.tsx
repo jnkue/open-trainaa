@@ -2,7 +2,7 @@ import React, {useCallback, useState} from "react";
 import {View, Text, ScrollView, RefreshControl} from "react-native";
 import {UserInfoSection} from "@/components/UserInfoSection";
 import {ProviderIntegrationsSection} from "@/components/ProviderIntegrationsSection";
-import {UserAttributesSection} from "@/components/UserAttributesSection";
+
 import {AccountSection} from "@/components/AccountSection";
 import {SubscriptionSection} from "@/components/SubscriptionSection";
 import {AnalyticsSettingsSection} from "@/components/settings/AnalyticsSettingsSection";
@@ -62,10 +62,6 @@ export default function SettingsScreen() {
 					{/* Account */}
 					<SectionGroupHeader title={t("settings.sectionAccount")} />
 					<UserInfoSection />
-
-					{/* Training */}
-					<SectionGroupHeader title={t("settings.sectionTraining")} />
-					<UserAttributesSection />
 
 					{/* Integrations */}
 					<SectionGroupHeader title={t("settings.sectionIntegrations")} />
