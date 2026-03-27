@@ -54,9 +54,9 @@ jobs:
         run: cd src/supabase && supabase db push
 
 
-      - name: Read version from version.config.json
-        id: version
-        run: echo "VERSION=$(python3 -c "import json; print(json.load(open('version.config.json'))['appVersion'])")" >> $GITHUB_OUTPUT
+      - name: Get short SHA
+        id: sha
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
@@ -66,7 +66,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/jnkue/trainaabackend:staging
-            ghcr.io/jnkue/trainaabackend:${{ steps.version.outputs.VERSION }}-staging
+            ghcr.io/jnkue/trainaabackend:staging-${{ steps.sha.outputs.SHORT_SHA }}
           cache-from: type=registry,ref=ghcr.io/jnkue/trainaabackend:buildcache
           cache-to: type=registry,ref=ghcr.io/jnkue/trainaabackend:buildcache,mode=max
 

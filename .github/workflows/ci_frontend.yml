@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: cd src/app && bun install
       
+      - name: Check i18n translations
+        run: cd src/app && node scripts/check-i18n.js
+
       - name: Run linter
         run: cd src/app && bun lint
-      
+

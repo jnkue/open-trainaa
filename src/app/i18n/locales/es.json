@@ -119,6 +119,8 @@
     "loadingWorkouts": "Cargando entrenamientos...",
     "searchPlaceholder": "Buscar entrenamientos...",
     "visualization": "Visualización",
+    "structure": "Estructura",
+    "name": "Nombre",
     "workoutText": "Entrenamiento",
     "sport": "Deporte",
     "duration": "Duración",
@@ -130,7 +132,12 @@
     "descriptionPlaceholder": "Descripción (opcional)",
     "workoutTextPlaceholder": "Ingresa el texto del entrenamiento...",
     "updateSuccess": "Entrenamiento actualizado exitosamente",
-    "updateError": "Error al actualizar el entrenamiento. Por favor intenta de nuevo."
+    "updateError": "Error al actualizar el entrenamiento. Por favor intenta de nuevo.",
+    "createTitle": "Crear entrenamiento",
+    "nameRequired": "Por favor ingresa un nombre de entrenamiento",
+    "createSuccess": "Entrenamiento creado exitosamente",
+    "createError": "Error al crear el entrenamiento",
+    "selectSport": "Seleccionar deporte"
   },
   "workoutBuilder": {
     "tapToEdit": "Toca un bloque para editar",
@@ -322,6 +329,7 @@
     "duration": "Duración",
     "pace": "Ritmo",
     "heartRate": "Frecuencia cardíaca",
+    "avgHeartRate": "Frecuencia cardíaca media",
     "calories": "Calorías",
     "upload": "Subir actividad",
     "sync": "Sincronizar actividades",
@@ -412,6 +420,7 @@
       "feedbackSaveSuccess": "¡Feedback guardado exitosamente!",
       "feedbackSaveError": "Error al guardar el feedback. Por favor intenta de nuevo.",
       "loadingFeedback": "Cargando feedback...",
+      "perceivedExertion": "Esfuerzo percibido",
       "feedback": {
         "feel": "Sensación",
         "rpe": "Percepción del esfuerzo (RPE)",
@@ -606,6 +615,7 @@
     "sort": "Ordenar",
     "refresh": "Actualizar",
     "share": "Compartir",
+    "add": "Agregar",
     "environmentBanner": "{{environment}}"
   },
   "theme": {
@@ -855,20 +865,6 @@
     "placeholder": "Ingresa tu nombre",
     "continue": "Continuar"
   },
-  "analytics": {
-    "consentTitle": "Ayúdanos a mejorar",
-    "consentDescription": "Usamos herramientas para rastrear errores y mejorar la calidad de la IA. Estos datos nos ayudan a hacer la app más estable y mejorar tu experiencia de coaching.",
-    "whatWeCollect": "Qué recopilamos:",
-    "collectItem1": "Informes de errores y registros de fallos",
-    "collectItem2": "Métricas de calidad de conversaciones de IA",
-    "collectItem3": "Datos de rendimiento de la app",
-    "privacyNote": "Puedes cambiar esta configuración en cualquier momento en Ajustes. La app funciona completamente sin datos analíticos.",
-    "acceptAndContinue": "Aceptar y continuar",
-    "decline": "No, gracias",
-    "settingsTitle": "Análisis",
-    "settingsLabel": "Ayudar a mejorar la app",
-    "settingsDescription": "Compartir informes de errores anónimos y datos de calidad de IA"
-  },
   "byok": {
     "title": "Clave API propia",
     "showAdvanced": "Avanzado: Usar tu propia clave API",
@@ -909,6 +905,18 @@
     }
   },
   "analytics": {
+    "consentTitle": "Ayúdanos a mejorar",
+    "consentDescription": "Usamos herramientas para rastrear errores y mejorar la calidad de la IA. Estos datos nos ayudan a hacer la app más estable y mejorar tu experiencia de coaching.",
+    "whatWeCollect": "Qué recopilamos:",
+    "collectItem1": "Informes de errores y registros de fallos",
+    "collectItem2": "Métricas de calidad de conversaciones de IA",
+    "collectItem3": "Datos de rendimiento de la app",
+    "privacyNote": "Puedes cambiar esta configuración en cualquier momento en Ajustes. La app funciona completamente sin datos analíticos.",
+    "acceptAndContinue": "Aceptar y continuar",
+    "decline": "No, gracias",
+    "settingsTitle": "Análisis",
+    "settingsLabel": "Ayudar a mejorar la app",
+    "settingsDescription": "Compartir informes de errores anónimos y datos de calidad de IA",
     "title": "Analizar",
     "cycling": "Ciclismo",
     "running": "Carrera",
