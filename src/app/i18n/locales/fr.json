@@ -119,6 +119,8 @@
     "loadingWorkouts": "Chargement des entraînements...",
     "searchPlaceholder": "Rechercher des entraînements...",
     "visualization": "Visualisation",
+    "structure": "Structure",
+    "name": "Nom",
     "workoutText": "Entraînement",
     "sport": "Sport",
     "duration": "Durée",
@@ -130,7 +132,12 @@
     "descriptionPlaceholder": "Description (optionnel)",
     "workoutTextPlaceholder": "Entrez le texte de l'entraînement...",
     "updateSuccess": "Entraînement mis à jour avec succès",
-    "updateError": "Échec de la mise à jour de l'entraînement. Veuillez réessayer."
+    "updateError": "Échec de la mise à jour de l'entraînement. Veuillez réessayer.",
+    "createTitle": "Créer un entraînement",
+    "nameRequired": "Veuillez entrer un nom d'entraînement",
+    "createSuccess": "Entraînement créé avec succès",
+    "createError": "Échec de la création de l'entraînement",
+    "selectSport": "Sélectionner le sport"
   },
   "workoutBuilder": {
     "tapToEdit": "Appuyez sur un bloc pour modifier",
@@ -322,6 +329,7 @@
     "duration": "Durée",
     "pace": "Allure",
     "heartRate": "Fréquence cardiaque",
+    "avgHeartRate": "Fréquence cardiaque moy.",
     "calories": "Calories",
     "upload": "Télécharger une activité",
     "sync": "Synchroniser les activités",
@@ -412,6 +420,7 @@
       "feedbackSaveSuccess": "Feedback enregistré avec succès !",
       "feedbackSaveError": "Échec de l'enregistrement du feedback. Veuillez réessayer.",
       "loadingFeedback": "Chargement du feedback...",
+      "perceivedExertion": "Effort perçu",
       "feedback": {
         "feel": "Ressenti",
         "rpe": "Perception de l'effort (RPE)",
@@ -606,6 +615,7 @@
     "sort": "Trier",
     "refresh": "Actualiser",
     "share": "Partager",
+    "add": "Ajouter",
     "environmentBanner": "{{environment}}"
   },
   "theme": {
@@ -855,20 +865,6 @@
     "placeholder": "Entre ton nom",
     "continue": "Continuer"
   },
-  "analytics": {
-    "consentTitle": "Aidez-nous à nous améliorer",
-    "consentDescription": "Nous utilisons des outils pour suivre les erreurs et améliorer la qualité de l'IA. Ces données nous aident à rendre l'application plus stable et à améliorer votre expérience de coaching.",
-    "whatWeCollect": "Ce que nous collectons :",
-    "collectItem1": "Rapports d'erreurs et journaux de plantage",
-    "collectItem2": "Métriques de qualité des conversations IA",
-    "collectItem3": "Données de performance de l'application",
-    "privacyNote": "Vous pouvez modifier ce paramètre à tout moment dans les Paramètres. L'application fonctionne entièrement sans données analytiques.",
-    "acceptAndContinue": "Accepter et continuer",
-    "decline": "Non merci",
-    "settingsTitle": "Analyse",
-    "settingsLabel": "Aider à améliorer l'application",
-    "settingsDescription": "Partager des rapports d'erreurs anonymes et des données de qualité IA"
-  },
   "byok": {
     "title": "Clé API personnelle",
     "showAdvanced": "Avancé : Utiliser votre propre clé API",
@@ -909,6 +905,18 @@
     }
   },
   "analytics": {
+    "consentTitle": "Aidez-nous à nous améliorer",
+    "consentDescription": "Nous utilisons des outils pour suivre les erreurs et améliorer la qualité de l'IA. Ces données nous aident à rendre l'application plus stable et à améliorer votre expérience de coaching.",
+    "whatWeCollect": "Ce que nous collectons :",
+    "collectItem1": "Rapports d'erreurs et journaux de plantage",
+    "collectItem2": "Métriques de qualité des conversations IA",
+    "collectItem3": "Données de performance de l'application",
+    "privacyNote": "Vous pouvez modifier ce paramètre à tout moment dans les Paramètres. L'application fonctionne entièrement sans données analytiques.",
+    "acceptAndContinue": "Accepter et continuer",
+    "decline": "Non merci",
+    "settingsTitle": "Analyse",
+    "settingsLabel": "Aider à améliorer l'application",
+    "settingsDescription": "Partager des rapports d'erreurs anonymes et des données de qualité IA",
     "title": "Analyser",
     "cycling": "Cyclisme",
     "running": "Course",
