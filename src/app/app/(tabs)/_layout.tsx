@@ -48,6 +48,7 @@ export default function TabLayout() {
 		{name: "index", title: t("navigation.home"), icon: "house.fill", path: "/"},
 		{name: "activities", title: t("navigation.activities"), icon: "figure.run", path: "/activities"},
 		// {name: "workouts", title: t("navigation.workouts"), icon: "list.bullet.rectangle.portrait", path: "/workouts"},
+		{name: "analytics", title: t("navigation.analytics"), icon: "chart.bar.fill", path: "/analytics"},
 		{name: "calendar", title: t("navigation.calendar"), icon: "calendar", path: "/calendar"},
 
 		{name: "chat", title: t("navigation.chat"), icon: "message.fill", path: "/chat"},
@@ -94,6 +95,7 @@ export default function TabLayout() {
 					>
 						<Tabs.Screen name="index" />
 						<Tabs.Screen name="activities" options={{href: "/activities"}} />
+						<Tabs.Screen name="analytics" options={{href: "/analytics"}} />
 						<Tabs.Screen name="calendar" options={{href: "/calendar"}} />
 
 						<Tabs.Screen name="chat" />
@@ -196,6 +198,13 @@ export default function TabLayout() {
 							options={{
 								title: t("navigation.activities"),
 								href: "/activities",
+							}}
+						/>
+						<Tabs.Screen
+							name="analytics"
+							options={{
+								title: t("navigation.analytics"),
+								href: "/analytics",
 							}}
 						/>
 						<Tabs.Screen

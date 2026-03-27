@@ -108,7 +108,8 @@
     "chat": "Chat",
     "settings": "Settings",
     "openChat": "Open Chat",
-    "openHome": "Open Home"
+    "openHome": "Open Home",
+    "analytics": "Analyze"
   },
   "workouts": {
     "title": "Workouts",
@@ -207,7 +208,7 @@
     "user": "User",
     "userInfo": "User Information",
     "integrations": "Integrations",
-    "userAttributes": "User Attributes",
+
     "enableConnection": "Enable the connection to synchronize activities.",
     "disconnect": "Disconnect",
     "connecting": "Connecting...",
@@ -236,7 +237,7 @@
     "dangerZoneWarning": "Once you delete your account, there is no going back. Please be certain.",
     "sectionAccount": "Account",
     "sectionNotifications": "Notifications",
-    "sectionTraining": "Training",
+
     "sectionIntegrations": "Integrations",
     "sectionSubscription": "Subscription",
     "sectionAdvanced": "Advanced",
@@ -318,44 +319,6 @@
       "disconnectSuccess": "Apple Health disconnected",
       "lastSynced": "Last synced at {{time}}",
       "syncDescription": "Import activities automatically"
-    }
-  },
-  "userAttributes": {
-    "title": "User Attributes",
-    "description": "Performance parameters for better training planning",
-    "automatic": "Automatic",
-    "manual": "Manual",
-    "loadingAttributes": "Loading attributes...",
-    "signInRequired": "Please sign in to manage your performance parameters",
-    "automaticModeInfo": "In automatic mode, your values are calculated based on your training data. Switch to manual to enter values yourself.",
-    "performanceParameters": "Performance Parameters",
-    "maxHeartRate": "Max Heart Rate",
-    "thresholdHeartRate": "Threshold Heart Rate",
-    "functionalThresholdPower": "FTP (Functional Threshold Power)",
-    "unit": "Unit",
-    "calculating": "Calculating...",
-    "saving": "Saving...",
-    "automaticallyCalculated": "✓ Automatically calculated",
-    "recalculate": "Recalculate",
-    "calculateAutomatically": "Calculate automatically",
-    "bpm": "bpm",
-    "watt": "Watt",
-    "placeholders": {
-      "maxHeartRate": "e.g. 180",
-      "thresholdHeartRate": "e.g. 165",
-      "functionalThresholdPower": "e.g. 250"
-    },
-    "alerts": {
-      "notAvailable": "Not Available",
-      "aiCalculationsRequireAuth": "AI calculations are only available for registered users.",
-      "notSupported": "Not Supported",
-      "aiCalculationNotAvailable": "No AI calculation is available for this field.",
-      "success": "Success",
-      "calculatedValue": "{label} was automatically calculated: {value}\n\nExplanation: {explanation}",
-      "insufficientData": "Insufficient Data",
-      "moreDataRequired": "More training data is required for this calculation.",
-      "error": "Error",
-      "calculationFailed": "The calculation could not be performed. Please try again later."
     }
   },
   "activities": {
@@ -954,6 +917,112 @@
       "title": "Social",
       "description": "Train with friends and share your achievements",
       "timeline": "Q3 2026"
+    }
+  },
+  "analytics": {
+    "title": "Analyze",
+    "cycling": "Cycling",
+    "running": "Running",
+    "powerCurve": {
+      "title": "Power Curve",
+      "subtitle": "Best average power across all durations",
+      "range28d": "28 Days",
+      "rangeYear": "Year",
+      "rangeAll": "All Time",
+      "watts": "W",
+      "noData": "No power data available. Complete cycling activities with a power meter to see your power curve.",
+      "error": "Failed to load power curve. Pull to refresh."
+    },
+    "cpTimeline": {
+      "title": "Critical Power Over Time",
+      "subtitle": "Rolling 28-day best estimate",
+      "currentCp": "CP",
+      "wPrime": "W'",
+      "watts": "W",
+      "kilojoules": "kJ",
+      "cpInterpretation": "You can sustain {{cp}} W without fatigue -- this is your aerobic ceiling. Your {{wprime}} kJ anaerobic capacity (the energy reserve for efforts above CP) allows ~{{tenMinPower}} W for a 10-min effort.",
+      "noData": "Not enough cycling data to estimate Critical Power. Ride with varied efforts across different durations.",
+      "error": "Failed to load CP history. Pull to refresh."
+    },
+    "powerZones": {
+      "title": "Power Zones",
+      "subtitle": "Based on CP of {{cp}} W",
+      "zone1": "Recovery",
+      "zone2": "Endurance",
+      "zone3": "Tempo",
+      "zone4": "Threshold",
+      "zone5": "VO2max",
+      "zone6": "Anaerobic",
+      "zone7": "Neuromuscular",
+      "noData": "Power zones will appear once Critical Power is estimated.",
+      "error": "Failed to load power zones. Pull to refresh."
+    },
+    "runningPredictions": {
+      "title": "Race Predictions",
+      "vdotScore": "VDOT",
+      "fiveK": "5K",
+      "tenK": "10K",
+      "halfMarathon": "Half Marathon",
+      "marathon": "Marathon",
+      "predictedTime": "Predicted Time",
+      "predictedPace": "Pace",
+      "perKm": "/km",
+      "basedOn": "Based on best effort from last 12 weeks",
+      "noData": "No running data available. Complete runs of 12 minutes or longer to see predictions.",
+      "error": "Failed to load predictions. Pull to refresh."
+    },
+    "vdotTimeline": {
+      "title": "VDOT Over Time",
+      "subtitle": "Running fitness trend",
+      "noData": "Not enough running data to show VDOT trends.",
+      "error": "Failed to load VDOT history. Pull to refresh."
+    },
+    "maxHr": {
+      "title": "Max Heart Rate",
+      "auto": "Auto-detected",
+      "manual": "Manual",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "bpm": "bpm",
+      "noData": "No max HR detected yet. Complete activities with a heart rate monitor."
+    },
+    "hrCurve": {
+      "title": "Heart Rate Curve",
+      "subtitle": "Maximum sustained HR across durations",
+      "range28d": "28 Days",
+      "rangeYear": "Year",
+      "rangeAll": "All Time",
+      "bpm": "bpm",
+      "noData": "No heart rate data available. Complete activities with a heart rate monitor.",
+      "error": "Failed to load HR curve. Pull to refresh."
+    },
+    "hrZones": {
+      "title": "HR Zones",
+      "subtitle": "Based on LTHR of {{lthr}} bpm",
+      "zone1": "Recovery",
+      "zone2": "Aerobic",
+      "zone3": "Tempo",
+      "zone4": "Threshold",
+      "zone5": "Anaerobic",
+      "noData": "HR zones will appear once threshold HR is estimated.",
+      "noLthr": "Complete a session of 20+ minutes to estimate your threshold heart rate.",
+      "error": "Failed to load HR zones. Pull to refresh."
+    },
+    "lthrTimeline": {
+      "title": "Threshold HR Over Time",
+      "subtitle": "Rolling 90-day best",
+      "currentLthr": "LTHR",
+      "bpm": "bpm",
+      "noData": "Not enough data to show threshold HR trends.",
+      "error": "Failed to load LTHR history. Pull to refresh."
+    },
+    "efTimeline": {
+      "title": "Efficiency Factor",
+      "subtitle": "Higher values indicate better fitness",
+      "currentEf": "EF",
+      "noData": "Not enough data to show efficiency factor trends.",
+      "error": "Failed to load EF history. Pull to refresh."
     }
   }
 }

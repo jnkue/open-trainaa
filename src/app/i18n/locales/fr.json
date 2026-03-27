@@ -108,7 +108,8 @@
     "chat": "Chat",
     "settings": "Paramètres",
     "openChat": "Ouvrir le chat",
-    "openHome": "Ouvrir l'accueil"
+    "openHome": "Ouvrir l'accueil",
+    "analytics": "Analyser"
   },
   "workouts": {
     "title": "Entraînements",
@@ -200,7 +201,7 @@
     "user": "Utilisateur",
     "userInfo": "Informations utilisateur",
     "integrations": "Intégrations",
-    "userAttributes": "Attributs utilisateur",
+
     "enableConnection": "Activez la connexion pour synchroniser les activités.",
     "disconnect": "Déconnecter",
     "connecting": "Connexion...",
@@ -229,7 +230,7 @@
     "dangerZoneWarning": "Une fois que vous supprimez votre compte, il n'y a pas de retour en arrière. Soyez certain.",
     "sectionAccount": "Compte",
     "sectionNotifications": "Notifications",
-    "sectionTraining": "Entraînement",
+
     "sectionIntegrations": "Intégrations",
     "sectionSubscription": "Abonnement",
     "sectionAdvanced": "Avancé",
@@ -311,44 +312,6 @@
       "disconnectSuccess": "Apple Health déconnecté",
       "lastSynced": "Dernière synchronisation à {{time}}",
       "syncDescription": "Importer les activités automatiquement"
-    }
-  },
-  "userAttributes": {
-    "title": "Attributs utilisateur",
-    "description": "Paramètres de performance pour une meilleure planification d'entraînement",
-    "automatic": "Automatique",
-    "manual": "Manuel",
-    "loadingAttributes": "Chargement des attributs...",
-    "signInRequired": "Veuillez vous connecter pour gérer vos paramètres de performance",
-    "automaticModeInfo": "En mode automatique, vos valeurs sont calculées en fonction de vos données d'entraînement. Passez en manuel pour entrer les valeurs vous-même.",
-    "performanceParameters": "Paramètres de performance",
-    "maxHeartRate": "Fréquence cardiaque maximale",
-    "thresholdHeartRate": "Fréquence cardiaque au seuil",
-    "functionalThresholdPower": "FTP (Puissance au seuil fonctionnel)",
-    "unit": "Unité",
-    "calculating": "Calcul en cours...",
-    "saving": "Sauvegarde...",
-    "automaticallyCalculated": "✓ Calculé automatiquement",
-    "recalculate": "Recalculer",
-    "calculateAutomatically": "Calculer automatiquement",
-    "bpm": "bpm",
-    "watt": "Watts",
-    "placeholders": {
-      "maxHeartRate": "ex. 180",
-      "thresholdHeartRate": "ex. 165",
-      "functionalThresholdPower": "ex. 250"
-    },
-    "alerts": {
-      "notAvailable": "Non disponible",
-      "aiCalculationsRequireAuth": "Les calculs IA sont uniquement disponibles pour les utilisateurs enregistrés.",
-      "notSupported": "Non supporté",
-      "aiCalculationNotAvailable": "Aucun calcul IA n'est disponible pour ce champ.",
-      "success": "Succès",
-      "calculatedValue": "{label} a été calculé automatiquement : {value}\n\nExplication : {explanation}",
-      "insufficientData": "Données insuffisantes",
-      "moreDataRequired": "Plus de données d'entraînement sont nécessaires pour ce calcul.",
-      "error": "Erreur",
-      "calculationFailed": "Le calcul n'a pas pu être effectué. Veuillez réessayer plus tard."
     }
   },
   "activities": {
@@ -943,6 +906,112 @@
       "title": "Social",
       "description": "Entraînez-vous avec des amis et partagez vos réalisations",
       "timeline": "T3 2026"
+    }
+  },
+  "analytics": {
+    "title": "Analyser",
+    "cycling": "Cyclisme",
+    "running": "Course",
+    "powerCurve": {
+      "title": "Courbe de Puissance",
+      "subtitle": "Meilleure puissance moyenne sur toutes les durees",
+      "range28d": "28 Jours",
+      "rangeYear": "Annee",
+      "rangeAll": "Tout",
+      "watts": "W",
+      "noData": "Aucune donnee de puissance. Completez des activites cyclistes avec un capteur de puissance.",
+      "error": "Impossible de charger la courbe de puissance. Tirez vers le bas pour actualiser."
+    },
+    "cpTimeline": {
+      "title": "Puissance Critique dans le Temps",
+      "subtitle": "Meilleure estimation des 28 derniers jours",
+      "currentCp": "CP",
+      "wPrime": "W'",
+      "watts": "W",
+      "kilojoules": "kJ",
+      "cpInterpretation": "Vous pouvez maintenir {{cp}} W sans fatigue -- c'est votre plafond aerobie. Votre capacite anaerobie de {{wprime}} kJ (la reserve d'energie pour les efforts au-dessus de CP) permet par exemple ~{{tenMinPower}} W sur un effort de 10 min.",
+      "noData": "Pas assez de donnees cyclistes pour estimer la Puissance Critique.",
+      "error": "Impossible de charger l'historique CP. Tirez vers le bas pour actualiser."
+    },
+    "powerZones": {
+      "title": "Zones de Puissance",
+      "subtitle": "Base sur une CP de {{cp}} W",
+      "zone1": "Recuperation",
+      "zone2": "Endurance",
+      "zone3": "Tempo",
+      "zone4": "Seuil",
+      "zone5": "VO2max",
+      "zone6": "Anaerobie",
+      "zone7": "Neuromusculaire",
+      "noData": "Les zones de puissance apparaitront une fois la Puissance Critique estimee.",
+      "error": "Impossible de charger les zones de puissance. Tirez vers le bas pour actualiser."
+    },
+    "runningPredictions": {
+      "title": "Predictions de Course",
+      "vdotScore": "VDOT",
+      "fiveK": "5K",
+      "tenK": "10K",
+      "halfMarathon": "Semi-Marathon",
+      "marathon": "Marathon",
+      "predictedTime": "Temps Predit",
+      "predictedPace": "Allure",
+      "perKm": "/km",
+      "basedOn": "Base sur le meilleur effort des 12 dernieres semaines",
+      "noData": "Aucune donnee de course. Completez des courses d'au moins 12 minutes.",
+      "error": "Impossible de charger les predictions. Tirez vers le bas pour actualiser."
+    },
+    "vdotTimeline": {
+      "title": "VDOT dans le Temps",
+      "subtitle": "Tendance de forme en course",
+      "noData": "Pas assez de donnees de course pour afficher les tendances VDOT.",
+      "error": "Impossible de charger l'historique VDOT. Tirez vers le bas pour actualiser."
+    },
+    "maxHr": {
+      "title": "Frequence Cardiaque Maximale",
+      "auto": "Auto-detectee",
+      "manual": "Manuelle",
+      "edit": "Modifier",
+      "save": "Enregistrer",
+      "cancel": "Annuler",
+      "bpm": "bpm",
+      "noData": "Aucune FC max detectee. Completez des activites avec un moniteur de frequence cardiaque."
+    },
+    "hrCurve": {
+      "title": "Courbe de Frequence Cardiaque",
+      "subtitle": "FC maximale soutenue sur toutes les durees",
+      "range28d": "28 Jours",
+      "rangeYear": "Annee",
+      "rangeAll": "Tout",
+      "bpm": "bpm",
+      "noData": "Aucune donnee de frequence cardiaque. Completez des activites avec un moniteur de FC.",
+      "error": "Impossible de charger la courbe de FC. Tirez vers le bas pour actualiser."
+    },
+    "hrZones": {
+      "title": "Zones de FC",
+      "subtitle": "Base sur une LTHR de {{lthr}} bpm",
+      "zone1": "Recuperation",
+      "zone2": "Aerobie",
+      "zone3": "Tempo",
+      "zone4": "Seuil",
+      "zone5": "Anaerobie",
+      "noData": "Les zones de FC apparaitront une fois la FC seuil estimee.",
+      "noLthr": "Completez une seance de 20+ minutes pour estimer votre frequence cardiaque seuil.",
+      "error": "Impossible de charger les zones de FC. Tirez vers le bas pour actualiser."
+    },
+    "lthrTimeline": {
+      "title": "FC Seuil dans le Temps",
+      "subtitle": "Meilleure valeur des 90 derniers jours",
+      "currentLthr": "LTHR",
+      "bpm": "bpm",
+      "noData": "Pas assez de donnees pour afficher les tendances de FC seuil.",
+      "error": "Impossible de charger l'historique LTHR. Tirez vers le bas pour actualiser."
+    },
+    "efTimeline": {
+      "title": "Facteur d'Efficacite",
+      "subtitle": "Des valeurs plus elevees indiquent une meilleure forme",
+      "currentEf": "EF",
+      "noData": "Pas assez de donnees pour afficher les tendances du facteur d'efficacite.",
+      "error": "Impossible de charger l'historique EF. Tirez vers le bas pour actualiser."
     }
   }
 }

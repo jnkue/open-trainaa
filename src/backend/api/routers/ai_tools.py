@@ -1,4 +1,7 @@
-# Dummy imports for AI calculation (replace with actual AI service later)
+# DEPRECATED: This entire module is deprecated and will be deleted.
+# Max HR and FTP calculations have moved to the analytics module
+# (see api/analytics/hr_curve.py and api/analytics/cp_model.py).
+# The /ai-tools/calculate-attribute endpoint is no longer called from the frontend.
 
 from api.auth import User, get_current_user
 from api.log import LOGGER
@@ -25,8 +28,8 @@ class CalculationResponse(BaseModel):
 
 def calculate_max_average(data: list[float], window_size: int) -> int:
     """Calculate the maximum average over a sliding window.
-    TODO THIS MUST BE CORRECTED WHEN THERE IS PAUSE in the file this should be detected
 
+    Deprecated: Use api.analytics.power_curve.calculate_max_average_np instead.
     """
 
     if not data or len(data) < window_size:
@@ -43,6 +46,7 @@ def calculate_max_average(data: list[float], window_size: int) -> int:
 
 
 def save_max_watts(session_id: str) -> bool:
+    """Deprecated: Use api.analytics.power_curve.extract_power_curve instead."""
     try:
         response = (
             supabase.table("records")
@@ -75,6 +79,8 @@ def save_max_watts(session_id: str) -> bool:
 
 def max_heart_rate_user(user_id: str) -> int | None:
     """
+    Deprecated: Use api.analytics.hr_curve.detect_max_hr instead.
+
     Update or create user's max heart rate based on session data.
 
     This function:
@@ -305,6 +311,8 @@ def max_heart_rate_user(user_id: str) -> int | None:
 
 def calculate_ftp(user_id: str) -> int:
     """
+    Deprecated: Use api.analytics.cp_model.fit_cp_model instead.
+
     Calculate Functional Threshold Power (FTP) for a user based on recent activities.
 
     This function:
@@ -384,8 +392,10 @@ async def calculate_user_attribute(
     credentials: HTTPAuthorizationCredentials = Depends(security_bearer),
 ):
     """
-    Calculate user attribute using AI/ML models
-    Fetches user data automatically and returns calculated value
+    Deprecated: No longer called from the frontend. Will be deleted.
+
+    Calculate user attribute using AI/ML models.
+    Fetches user data automatically and returns calculated value.
     """
     try:
         LOGGER.info(f"Calculating {request.field_type} for user {request.user_id}")

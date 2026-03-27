@@ -21,12 +21,6 @@
     }
   },
   "submit": {
-    "production": {
-      "production": {
-        "android": {
-          "track": "beta"
-        }
-      }
-    }
+    "production": {}
   }
 }

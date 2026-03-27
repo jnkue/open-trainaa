@@ -108,7 +108,8 @@
     "chat": "Chat",
     "settings": "Einstellungen",
     "openChat": "Chat öffnen",
-    "openHome": "Startseite öffnen"
+    "openHome": "Startseite öffnen",
+    "analytics": "Analyse"
   },
   "home": {
     "welcome": "Willkommen",
@@ -162,7 +163,7 @@
     "user": "Benutzer",
     "userInfo": "Benutzerinformationen",
     "integrations": "Integrationen",
-    "userAttributes": "Benutzerattribute",
+
     "enableConnection": "Aktivieren Sie die Verbindung, um Aktivitäten zu synchronisieren.",
     "disconnect": "Verbindung trennen",
     "connecting": "Verbinde...",
@@ -191,7 +192,7 @@
     "dangerZoneWarning": "Sobald Sie Ihr Konto löschen, gibt es kein Zurück mehr. Bitte seien Sie sich sicher.",
     "sectionAccount": "Konto",
     "sectionNotifications": "Benachrichtigungen",
-    "sectionTraining": "Training",
+
     "sectionIntegrations": "Integrationen",
     "sectionSubscription": "Abonnement",
     "sectionAdvanced": "Erweitert",
@@ -273,44 +274,6 @@
       "disconnectSuccess": "Apple Health wurde getrennt",
       "lastSynced": "Zuletzt synchronisiert um {{time}}",
       "syncDescription": "Aktivitäten automatisch importieren"
-    }
-  },
-  "userAttributes": {
-    "title": "Benutzerattribute",
-    "description": "Performance-Parameter für bessere Trainingsplanung",
-    "automatic": "Automatisch",
-    "manual": "Manuell",
-    "loadingAttributes": "Lade Attribute...",
-    "signInRequired": "Melden Sie sich an, um Ihre Performance-Parameter zu verwalten",
-    "automaticModeInfo": "Im automatischen Modus werden Ihre Werte basierend auf Ihren Trainingsdaten berechnet. Schalten Sie auf manuell um, um Werte selbst einzugeben.",
-    "performanceParameters": "Performance-Parameter",
-    "maxHeartRate": "Max Herzfrequenz",
-    "thresholdHeartRate": "Schwellen Herzfrequenz",
-    "functionalThresholdPower": "FTP (Functional Threshold Power)",
-    "unit": "Einheit",
-    "calculating": "Berechnet...",
-    "saving": "Speichert...",
-    "automaticallyCalculated": "✓ Automatisch berechnet",
-    "recalculate": "Neu berechnen",
-    "calculateAutomatically": "Automatisch berechnen",
-    "bpm": "bpm",
-    "watt": "Watt",
-    "placeholders": {
-      "maxHeartRate": "z.B. 180",
-      "thresholdHeartRate": "z.B. 165",
-      "functionalThresholdPower": "z.B. 250"
-    },
-    "alerts": {
-      "notAvailable": "Nicht verfügbar",
-      "aiCalculationsRequireAuth": "KI-Berechnungen sind nur für angemeldete Benutzer verfügbar.",
-      "notSupported": "Nicht unterstützt",
-      "aiCalculationNotAvailable": "Für dieses Feld ist keine KI-Berechnung verfügbar.",
-      "success": "Erfolgreich",
-      "calculatedValue": "{label} wurde automatisch berechnet: {value}\n\nErklärung: {explanation}",
-      "insufficientData": "Nicht genügend Daten",
-      "moreDataRequired": "Für diese Berechnung sind mehr Trainingsdaten erforderlich.",
-      "error": "Fehler",
-      "calculationFailed": "Die Berechnung konnte nicht durchgeführt werden. Bitte versuchen Sie es später erneut."
     }
   },
   "activities": {
@@ -954,6 +917,112 @@
       "title": "Social",
       "description": "Trainiere mit Freunden und teile deine Erfolge",
       "timeline": "Q3 2026"
+    }
+  },
+  "analytics": {
+    "title": "Analyse",
+    "cycling": "Radfahren",
+    "running": "Laufen",
+    "powerCurve": {
+      "title": "Leistungskurve",
+      "subtitle": "Beste Durchschnittsleistung ueber alle Zeitraeume",
+      "range28d": "28 Tage",
+      "rangeYear": "Jahr",
+      "rangeAll": "Gesamt",
+      "watts": "W",
+      "noData": "Keine Leistungsdaten vorhanden. Absolviere Radfahrten mit einem Leistungsmesser.",
+      "error": "Leistungskurve konnte nicht geladen werden. Zum Aktualisieren nach unten ziehen."
+    },
+    "cpTimeline": {
+      "title": "Critical Power im Zeitverlauf",
+      "subtitle": "Bester Wert der letzten 28 Tage (rollierend)",
+      "currentCp": "CP",
+      "wPrime": "W'",
+      "watts": "W",
+      "kilojoules": "kJ",
+      "cpInterpretation": "Du kannst {{cp}} W ohne Ermuedung halten -- das ist deine aerobe Obergrenze. Deine {{wprime}} kJ anaerobe Kapazitaet (die Energiereserve fuer Belastungen ueber CP) ermoeglicht z.B. ~{{tenMinPower}} W fuer einen 10-min Effort.",
+      "noData": "Nicht genuegend Raddaten für eine Critical-Power-Schaetzung.",
+      "error": "CP-Verlauf konnte nicht geladen werden. Zum Aktualisieren nach unten ziehen."
+    },
+    "powerZones": {
+      "title": "Leistungszonen",
+      "subtitle": "Basierend auf CP von {{cp}} W",
+      "zone1": "Erholung",
+      "zone2": "Ausdauer",
+      "zone3": "Tempo",
+      "zone4": "Schwelle",
+      "zone5": "VO2max",
+      "zone6": "Anaerob",
+      "zone7": "Neuromuskulaer",
+      "noData": "Leistungszonen erscheinen sobald die Critical Power geschaetzt wurde.",
+      "error": "Leistungszonen konnten nicht geladen werden. Zum Aktualisieren nach unten ziehen."
+    },
+    "runningPredictions": {
+      "title": "Rennprognosen",
+      "vdotScore": "VDOT",
+      "fiveK": "5K",
+      "tenK": "10K",
+      "halfMarathon": "Halbmarathon",
+      "marathon": "Marathon",
+      "predictedTime": "Prognostizierte Zeit",
+      "predictedPace": "Pace",
+      "perKm": "/km",
+      "basedOn": "Basierend auf der besten Leistung der letzten 12 Wochen",
+      "noData": "Keine Laufdaten vorhanden. Absolviere Laeufe von mindestens 12 Minuten.",
+      "error": "Prognosen konnten nicht geladen werden. Zum Aktualisieren nach unten ziehen."
+    },
+    "vdotTimeline": {
+      "title": "VDOT im Zeitverlauf",
+      "subtitle": "Lauf-Fitnesstrend",
+      "noData": "Nicht genuegend Laufdaten für VDOT-Trends.",
+      "error": "VDOT-Verlauf konnte nicht geladen werden. Zum Aktualisieren nach unten ziehen."
+    },
+    "maxHr": {
+      "title": "Maximale Herzfrequenz",
+      "auto": "Automatisch erkannt",
+      "manual": "Manuell",
+      "edit": "Bearbeiten",
+      "save": "Speichern",
+      "cancel": "Abbrechen",
+      "bpm": "bpm",
+      "noData": "Noch keine maximale HF erkannt. Absolviere Aktivitaeten mit einem Herzfrequenzmesser."
+    },
+    "hrCurve": {
+      "title": "Herzfrequenzkurve",
+      "subtitle": "Maximale Durchschnitts-HF ueber alle Zeitraeume",
+      "range28d": "28 Tage",
+      "rangeYear": "Jahr",
+      "rangeAll": "Gesamt",
+      "bpm": "bpm",
+      "noData": "Keine Herzfrequenzdaten vorhanden. Absolviere Aktivitaeten mit einem Herzfrequenzmesser.",
+      "error": "Herzfrequenzkurve konnte nicht geladen werden. Zum Aktualisieren nach unten ziehen."
+    },
+    "hrZones": {
+      "title": "HF-Zonen",
+      "subtitle": "Basierend auf LTHR von {{lthr}} bpm",
+      "zone1": "Erholung",
+      "zone2": "Aerob",
+      "zone3": "Tempo",
+      "zone4": "Schwelle",
+      "zone5": "Anaerob",
+      "noData": "HF-Zonen erscheinen sobald die Schwellen-HF geschaetzt wurde.",
+      "noLthr": "Absolviere eine Einheit von 20+ Minuten um deine Schwellen-HF zu schaetzen.",
+      "error": "HF-Zonen konnten nicht geladen werden. Zum Aktualisieren nach unten ziehen."
+    },
+    "lthrTimeline": {
+      "title": "Schwellen-HF im Zeitverlauf",
+      "subtitle": "Bester Wert der letzten 90 Tage (rollierend)",
+      "currentLthr": "LTHR",
+      "bpm": "bpm",
+      "noData": "Nicht genuegend Daten fuer Schwellen-HF-Trends.",
+      "error": "LTHR-Verlauf konnte nicht geladen werden. Zum Aktualisieren nach unten ziehen."
+    },
+    "efTimeline": {
+      "title": "Effizienzfaktor",
+      "subtitle": "Hoehere Werte zeigen bessere Fitness an",
+      "currentEf": "EF",
+      "noData": "Nicht genuegend Daten fuer Effizienzfaktor-Trends.",
+      "error": "EF-Verlauf konnte nicht geladen werden. Zum Aktualisieren nach unten ziehen."
     }
   }
 }
