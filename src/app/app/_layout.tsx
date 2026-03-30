@@ -1,6 +1,6 @@
 import "../polyfills";
 import "../global.css";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {DarkTheme, DefaultTheme, ThemeProvider as NavigationThemeProvider} from "@react-navigation/native";
 import {PostHogProvider} from "posthog-react-native";
 import {useFonts} from "expo-font";
@@ -22,6 +22,7 @@ import {VersionCheckProvider, useVersionCheck} from "@/contexts/VersionCheckCont
 import {LanguageProvider} from "@/contexts/LanguageContext";
 import {AlertProvider} from "@/contexts/AlertContext";
 import UpdateRequiredScreen from "./update-required";
+import {WebPaywall} from "@/components/WebPaywall";
 import "@/i18n";
 
 
@@ -30,9 +31,8 @@ import {analyticsConsentStorage} from '@/utils/analyticsConsent';
 import {AnalyticsConsentModal} from '@/components/AnalyticsConsentModal';
 import {useAnalyticsConsent} from '@/hooks/useAnalyticsConsent';
 import {usePushNotifications} from '@/hooks/usePushNotifications';
-import {SetNameModal} from '@/components/SetNameModal';
 import {EnvironmentBanner} from '@/components/EnvironmentBanner';
-import {apiClient} from '@/services/api';
+import {useOnboardingStatus} from '@/hooks/useOnboardingStatus';
 
 const ENVIRONMENT = process.env.EXPO_PUBLIC_ENVIRONMENT;
 
@@ -94,43 +94,37 @@ const queryClient = new QueryClient({
  */
 function NavigationGuard({children}: {children: React.ReactNode}) {
 	const {user, loading: authLoading, initialized} = useAuth();
-	const {isProSubscriber, loading: subscriptionLoading} = useRevenueCat();
+	const {loading: subscriptionLoading} = useRevenueCat();
+	const {onboardingCompleted, loading: onboardingLoading} = useOnboardingStatus();
 	const segments = useSegments();
 	const router = useRouter();
 
 	useEffect(() => {
-		// Don't navigate while auth or subscription is initializing
-		if (!initialized || authLoading || subscriptionLoading) {
-			return;
-		}
+		if (!initialized || authLoading || subscriptionLoading) return;
+		if (user && onboardingLoading) return; // Wait for onboarding status
 
-		const inAuthGroup = segments[0] === "(auth)";
-		const inTabsGroup = segments[0] === "(tabs)";
-		const isResetPasswordRoute = segments[1] === "reset-password";
+		const inAuthGroup       = segments[0] === "(auth)";
+		const inTabsGroup       = segments[0] === "(tabs)";
+		const inOnboardingGroup = segments[0] === "(onboarding)";
+		const isResetPassword   = segments[1] === "reset-password";
 
 		console.log("🔒 NavigationGuard:", {
 			user: !!user,
-			isProSubscriber,
+			onboardingCompleted,
 			segments: segments.join("/"),
-			inAuthGroup,
-			inTabsGroup,
-			isResetPasswordRoute,
 		});
 
-		// Redirect to login if trying to access protected routes without authentication
-		if (!user && inTabsGroup) {
-			console.log("🚫 Unauthorized access to protected route, redirecting to login");
-			// Use setTimeout to ensure navigation happens in next tick (works better on web)
+		if (!user && (inTabsGroup || inOnboardingGroup)) {
 			setTimeout(() => router.replace("/(auth)/login"), 0);
-		}
-		// Redirect to tabs if already logged in and trying to access auth routes
-		// EXCEPT for reset-password route which should be accessible even when logged in
-		else if (user && inAuthGroup && !isResetPasswordRoute) {
-			console.log("✅ User logged in, redirecting from auth to tabs");
-			// Use setTimeout to ensure navigation happens in next tick (works better on web)
+		} else if (user && inAuthGroup && !isResetPassword) {
+			const dest = onboardingCompleted ? "/(tabs)" : "/(onboarding)/welcome";
+			setTimeout(() => router.replace(dest), 0);
+		} else if (user && inTabsGroup && onboardingCompleted === false) {
+			setTimeout(() => router.replace("/(onboarding)/welcome"), 0);
+		} else if (user && inOnboardingGroup && onboardingCompleted === true) {
 			setTimeout(() => router.replace("/(tabs)"), 0);
 		}
-	}, [user, isProSubscriber, authLoading, subscriptionLoading, initialized, segments, router]);
+	}, [user, onboardingCompleted, authLoading, subscriptionLoading, onboardingLoading, initialized, segments, router]);
 
 	return <>{children}</>;
 }
@@ -140,35 +134,31 @@ function PushNotificationRegistration() {
 	return null;
 }
 
-function SetNameWrapper() {
-	const {user} = useAuth();
-	const [showModal, setShowModal] = useState(false);
-	const needsName = !!user && !user.user_metadata?.full_name;
-
-	useEffect(() => {
-		setShowModal(needsName);
-	}, [needsName]);
-
-	if (!user) return null;
-
-	return (
-		<SetNameModal
-			open={showModal}
-			onSave={async (name) => {
-				await apiClient.supabase.auth.updateUser({data: {full_name: name}});
-				setShowModal(false);
-			}}
-		/>
-	);
-}
-
 function AnalyticsConsentWrapper() {
 	const {user} = useAuth();
 	const {showModal, saveConsent} = useAnalyticsConsent();
+	const {onboardingCompleted} = useOnboardingStatus();
 
-	if (!user || !user.user_metadata?.full_name) return null;
+	if (!user || onboardingCompleted !== true) return null;
 
 	return <AnalyticsConsentModal open={showModal} onConsent={saveConsent} />;
+}
+
+function WebPaywallModal() {
+	const {webPaywallVisible, setWebPaywallVisible, refreshCustomerInfo} = useRevenueCat();
+
+	if (Platform.OS !== "web" || !webPaywallVisible) return null;
+
+	return (
+		<WebPaywall
+			mode="modal"
+			onDismiss={() => setWebPaywallVisible(false)}
+			onPurchaseComplete={async () => {
+				setWebPaywallVisible(false);
+				await refreshCustomerInfo();
+			}}
+		/>
+	);
 }
 
 function AppContent() {
@@ -200,6 +190,7 @@ function AppContent() {
 									<Stack>
 										<Stack.Screen name="index" options={{headerShown: false, title: "TRAINAA"}} />
 										<Stack.Screen name="(auth)" options={{headerShown: false, title: "TRAINAA"}} />
+										<Stack.Screen name="(onboarding)" options={{headerShown: false, title: "TRAINAA"}} />
 										<Stack.Screen name="(tabs)" options={{headerShown: false, title: "TRAINAA"}} />
 										<Stack.Screen name="+not-found" />
 									</Stack>
@@ -209,8 +200,8 @@ function AppContent() {
 
 								</NavigationThemeProvider>
 							</NavigationGuard>
+							<WebPaywallModal />
 						</RevenueCatProvider>
-						<SetNameWrapper />
 						<AnalyticsConsentWrapper />
 					</AuthProvider>
 				</QueryClientProvider>

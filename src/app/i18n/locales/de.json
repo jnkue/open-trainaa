@@ -109,7 +109,8 @@
     "settings": "Einstellungen",
     "openChat": "Chat öffnen",
     "openHome": "Startseite öffnen",
-    "analytics": "Analyse"
+    "analytics": "Analyse",
+    "goalsAndRaces": "Ziele & Rennen"
   },
   "home": {
     "welcome": "Willkommen",
@@ -191,6 +192,7 @@
     "dangerZone": "Gefahrenzone",
     "dangerZoneWarning": "Sobald Sie Ihr Konto löschen, gibt es kein Zurück mehr. Bitte seien Sie sich sicher.",
     "sectionAccount": "Konto",
+    "sectionTraining": "Training",
     "sectionNotifications": "Benachrichtigungen",
 
     "sectionIntegrations": "Integrationen",
@@ -202,7 +204,8 @@
     "timezoneSearchPlaceholder": "Zeitzonen suchen...",
     "signedInWith": "Angemeldet mit",
     "providerGoogle": "Google",
-    "providerApple": "Apple"
+    "providerApple": "Apple",
+    "goalsAndRaces": "Ziele & Rennen"
   },
   "notifications": {
     "title": "Benachrichtigungen",
@@ -1021,5 +1024,142 @@
       "noData": "Nicht genuegend Daten fuer Effizienzfaktor-Trends.",
       "error": "EF-Verlauf konnte nicht geladen werden. Zum Aktualisieren nach unten ziehen."
     }
+  },
+  "onboarding": {
+    "step": "Schritt {{current}} von {{total}}",
+    "back": "Zurück",
+    "continue": "Weiter",
+    "welcome": {
+      "title": "Trainiere smarter",
+      "subtitle": "Mach es wie jeder erfolgreiche Athlet und hol dir personalisiertes Training genau für deine Bedürfnisse, deinen Zeitplan und deine Ziele.",
+      "cta": "Jetzt starten"
+    },
+    "name": {
+      "title": "Noch eine Sache",
+      "subtitle": "Wie sollen wir dich nennen?",
+      "placeholder": "Dein Name",
+      "saveError": "Dein Name konnte nicht gespeichert werden. Bitte versuche es erneut."
+    },
+    "days": {
+      "title": "Wie viele Tage pro Woche kannst du trainieren?",
+      "subtitle": "Basierend auf deinen Zielen für {{sports}}, finden wir deinen Rhythmus."
+    },
+    "hours": {
+      "title": "Wie viele Stunden pro Woche trainierst du?",
+      "subtitle": "Mit {{days}} Trainingstagen, wie viel Zeit kannst du investieren?"
+    },
+    "experience": {
+      "title": "Wie lange trainierst du schon?",
+      "subtitle": "Das hilft uns, den richtigen Startpunkt zu setzen."
+    },
+    "sports": {
+      "title": "Welche Sportarten trainierst du?",
+      "subtitle": "Wähle alles aus, was zutrifft.",
+      "running": "Laufen",
+      "trailrunning": "Trailrunning",
+      "cycling": "Radfahren",
+      "gym": "Fitnessstudio",
+      "swimming": "Schwimmen",
+      "triathlon": "Triathlon",
+      "yoga": "Yoga & Stretching",
+      "otherLabel": "Andere Sportarten, die du regelmäßig machst",
+      "otherPlaceholder": "z.B. CrossFit, Rudern, Kampfsport..."
+    },
+    "goal": {
+      "title": "Was sind deine Ziele?",
+      "subtitle": "Wähle alles aus, was zutrifft.",
+      "breakPR": "Einen persönlichen Rekord brechen",
+      "buildConsistency": "Konstanz aufbauen",
+      "weightManagement": "Gewichtsmanagement",
+      "trainForRace": "Fur ein Rennen trainieren",
+      "stayHealthy": "Gesund und verletzungsfrei bleiben",
+      "reduceStress": "Stress abbauen und besser fühlen",
+      "personalizedSubtitle": "Lass uns dein Coaching für {{sports}} anpassen."
+    },
+    "race": {
+      "title": "Hast du ein Rennen geplant?",
+      "subtitle": "Wir bauen deinen Plan darum herum.",
+      "yesButton": "Ja, ich habe ein Rennen",
+      "noButton": "Gerade nicht",
+      "nameLabel": "Rennname",
+      "namePlaceholder": "z.B. Berlin Marathon",
+      "dateLabel": "Renndatum",
+      "datePlaceholder": "Datum auswählen",
+      "eventTypeLabel": "Wettkampfart",
+      "eventTypePlaceholder": "z.B. Marathon, 10k, Sprint Tri"
+    },
+    "availability": {
+      "title": "Wie oft kannst du trainieren?",
+      "subtitle": "Sei ehrlich — wir bauen deinen Plan um dein echtes Leben.",
+      "daysLabel": "Tage pro Woche"
+    },
+    "fitness": {
+      "title": "Erzähl uns von deinem Training.",
+      "subtitle": "Das hilft uns, deinen Plan von Anfang an richtig einzustellen.",
+      "hoursLabel": "Wie viele Stunden trainierst du pro Woche?",
+      "yearsLabel": "Seit wie vielen Jahren trainierst du?",
+      "yearsUnit": "Jahre",
+      "weekLabel": "Woche",
+      "personalizedSubtitle": "Wir konzentrieren uns auf {{goals}} für dich."
+    },
+    "paywall": {
+      "title": "Dein personalisierter Plan ist fertig",
+      "benefit1": "Auf deine Ziele und deinen Zeitplan zugeschnitten",
+      "benefit2": "Passt sich deinem Fortschritt an",
+      "benefit3": "KI-Coaching, das deine Geschichte kennt",
+      "cta": "Kostenlos testen"
+    },
+    "building": {
+      "title": "Dein Plan wird erstellt",
+      "line1": "Dein Profil wird analysiert...",
+      "line2": "Deine Trainingsstrategie wird erstellt...",
+      "line3": "Fast geschafft...",
+      "saveError": "Dein Profil konnte nicht gespeichert werden. Bitte versuche es erneut.",
+      "commentLabel": "Anmerkungen oder Anpassungen?",
+      "commentPlaceholder": "z.B. Ich möchte mich mehr auf Tempotraining konzentrieren...",
+      "soundsPerfect": "Das klingt perfekt",
+      "sendAndContinue": "Feedback senden und weiter",
+      "addNotes": "Ich habe noch Anmerkungen",
+      "notesLaterHint": "Du kannst das auch später im Chat mitteilen."
+    }
+  },
+  "goalsAndRaces": {
+    "title": "Ziele & Rennen",
+    "goalSection": "Ziele",
+    "sportsSection": "Meine Sportarten",
+    "racesSection": "Bevorstehende Rennen",
+    "addRace": "Rennen hinzufügen",
+    "noRaces": "Noch keine bevorstehenden Rennen hinzugefügt.",
+    "editGoal": "Ziel ändern",
+    "editSports": "Sportarten ändern",
+    "saveChanges": "Änderungen speichern",
+    "deleteRaceConfirm": "Möchtest du dieses Rennen wirklich entfernen?"
+  },
+  "raceEvents": {
+    "createError": "Rennevent konnte nicht erstellt werden.",
+    "deleteError": "Rennevent konnte nicht gelöscht werden."
+  },
+  "webPaywall": {
+    "title": "Hol dir PRO",
+    "subtitle": "Erlebe dein volles Coaching-Erlebnis",
+    "benefit1Title": "Unbegrenzte Nachrichten",
+    "benefit1Desc": "Chatte mit deinem KI-Coach so viel du willst, wann immer du willst.",
+    "benefit2Title": "Adaptiver Trainingsplan",
+    "benefit2Desc": "Dein Plan passt sich automatisch an, wenn das Leben dazwischenkommt.",
+    "benefit3Title": "Detailliertes Session-Feedback",
+    "benefit3Desc": "Erhalte KI-gestuetzte Analyse nach jedem Training.",
+    "trialBadge": "7 Tage kostenlos - Jederzeit kuendbar",
+    "annual": "Jaehrlich",
+    "monthly": "Monatlich",
+    "afterTrial": "nach der Testphase nur",
+    "perMonth": "/Mo",
+    "discountBadge": "Spare {{percent}}%",
+    "ctaTrial": "Kostenlos starten",
+    "ctaNoTrial": "Weiter",
+    "terms": "AGB",
+    "privacy": "Datenschutz",
+    "loadingPrices": "Laden...",
+    "errorLoadingPrices": "Preise konnten nicht geladen werden. Bitte versuche es erneut.",
+    "retry": "Erneut versuchen"
   }
 }

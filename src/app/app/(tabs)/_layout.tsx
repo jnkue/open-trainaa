@@ -46,12 +46,11 @@ export default function TabLayout() {
 
 	const menuItems: {name: string; title: string; icon: string; path: string}[] = [
 		{name: "index", title: t("navigation.home"), icon: "house.fill", path: "/"},
+		{name: "chat", title: t("navigation.chat"), icon: "message.fill", path: "/chat"},
 		{name: "activities", title: t("navigation.activities"), icon: "figure.run", path: "/activities"},
-		// {name: "workouts", title: t("navigation.workouts"), icon: "list.bullet.rectangle.portrait", path: "/workouts"},
+		{name: "goals-and-races", title: t("navigation.goalsAndRaces"), icon: "target", path: "/goals-and-races"},
 		{name: "analytics", title: t("navigation.analytics"), icon: "chart.bar.fill", path: "/analytics"},
 		{name: "calendar", title: t("navigation.calendar"), icon: "calendar", path: "/calendar"},
-
-		{name: "chat", title: t("navigation.chat"), icon: "message.fill", path: "/chat"},
 		{name: "settings", title: t("navigation.settings"), icon: "gear", path: "/settings"},
 	];
 
@@ -94,18 +93,18 @@ export default function TabLayout() {
 						}}
 					>
 						<Tabs.Screen name="index" />
+						<Tabs.Screen name="chat" />
 						<Tabs.Screen name="activities" options={{href: "/activities"}} />
+						<Tabs.Screen name="goals-and-races" options={{href: "/goals-and-races"}} />
 						<Tabs.Screen name="analytics" options={{href: "/analytics"}} />
 						<Tabs.Screen name="calendar" options={{href: "/calendar"}} />
-
-						<Tabs.Screen name="chat" />
 						<Tabs.Screen name="settings" />
 						<Tabs.Screen name="workouts" options={{href: null}} />
 						<Tabs.Screen name="connect-strava" options={{href: null}} />
 						<Tabs.Screen name="connect-wahoo" options={{href: null}} />
 						<Tabs.Screen name="connect-garmin" options={{href: null}} />
 					</Tabs>
-					
+
 					<Modal visible={menuOpen} animationType="none" >
 							<View className="bg-card h-screen px-6 p-16 ">
 								<TouchableOpacity onPress={() => setMenuOpen(false)} className=" mt-3">
@@ -194,10 +193,23 @@ export default function TabLayout() {
 							}}
 						/>
 						<Tabs.Screen
+							name="chat"
+							options={{
+								title: t("navigation.chat"),
+							}}
+						/>
+						<Tabs.Screen
 							name="activities"
 							options={{
 								title: t("navigation.activities"),
 								href: "/activities",
+							}}
+						/>
+						<Tabs.Screen
+							name="goals-and-races"
+							options={{
+								title: t("navigation.goalsAndRaces"),
+								href: "/goals-and-races",
 							}}
 						/>
 						<Tabs.Screen
@@ -212,13 +224,6 @@ export default function TabLayout() {
 							options={{
 								title: t("navigation.calendar"),
 								href: "/calendar",
-							}}
-						/>
-
-						<Tabs.Screen
-							name="chat"
-							options={{
-								title: t("navigation.chat"),
 							}}
 						/>
 						<Tabs.Screen

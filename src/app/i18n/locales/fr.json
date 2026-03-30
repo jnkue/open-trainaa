@@ -109,7 +109,8 @@
     "settings": "Paramètres",
     "openChat": "Ouvrir le chat",
     "openHome": "Ouvrir l'accueil",
-    "analytics": "Analyser"
+    "analytics": "Analyser",
+    "goalsAndRaces": "Objectifs & Courses"
   },
   "workouts": {
     "title": "Entraînements",
@@ -236,6 +237,7 @@
     "dangerZone": "Zone de danger",
     "dangerZoneWarning": "Une fois que vous supprimez votre compte, il n'y a pas de retour en arrière. Soyez certain.",
     "sectionAccount": "Compte",
+    "sectionTraining": "Entraînement",
     "sectionNotifications": "Notifications",
 
     "sectionIntegrations": "Intégrations",
@@ -247,7 +249,8 @@
     "timezoneSearchPlaceholder": "Rechercher des fuseaux horaires...",
     "signedInWith": "Connecté avec",
     "providerGoogle": "Google",
-    "providerApple": "Apple"
+    "providerApple": "Apple",
+    "goalsAndRaces": "Objectifs et courses"
   },
   "notifications": {
     "title": "Notifications",
@@ -1021,5 +1024,142 @@
       "noData": "Pas assez de donnees pour afficher les tendances du facteur d'efficacite.",
       "error": "Impossible de charger l'historique EF. Tirez vers le bas pour actualiser."
     }
+  },
+  "onboarding": {
+    "step": "Étape {{current}} sur {{total}}",
+    "back": "Retour",
+    "continue": "Continuer",
+    "welcome": {
+      "title": "Entraîne-toi plus intelligemment",
+      "subtitle": "Fais comme tout athlète qui réussit et obtiens un entraînement personnalisé pour tes besoins, ton emploi du temps et tes objectifs.",
+      "cta": "Commencer maintenant"
+    },
+    "name": {
+      "title": "Une dernière chose",
+      "subtitle": "Comment veux-tu qu'on t'appelle ?",
+      "placeholder": "Ton prénom",
+      "saveError": "Impossible de sauvegarder ton prénom. Veuillez réessayer."
+    },
+    "days": {
+      "title": "Combien de jours par semaine peux-tu t'entraîner ?",
+      "subtitle": "En fonction de tes objectifs pour {{sports}}, trouvons ton rythme."
+    },
+    "hours": {
+      "title": "Combien d'heures par semaine t'entraînes-tu ?",
+      "subtitle": "Avec {{days}} jours d'entraînement, combien de temps peux-tu consacrer ?"
+    },
+    "experience": {
+      "title": "Depuis combien de temps t'entraînes-tu ?",
+      "subtitle": "Ça nous aide à trouver le bon point de départ."
+    },
+    "sports": {
+      "title": "Quels sports pratiques-tu ?",
+      "subtitle": "Sélectionne tout ce qui s'applique.",
+      "running": "Course à pied",
+      "trailrunning": "Trail",
+      "cycling": "Cyclisme",
+      "gym": "Salle de sport",
+      "swimming": "Natation",
+      "triathlon": "Triathlon",
+      "yoga": "Yoga et étirements",
+      "otherLabel": "Autres sports que tu pratiques régulièrement",
+      "otherPlaceholder": "ex. CrossFit, Aviron, Arts martiaux..."
+    },
+    "goal": {
+      "title": "Quels sont vos objectifs ?",
+      "subtitle": "Sélectionnez tout ce qui s'applique.",
+      "breakPR": "Battre un record personnel",
+      "buildConsistency": "Construire la régularité",
+      "weightManagement": "Gestion du poids",
+      "trainForRace": "S'entraîner pour une course",
+      "stayHealthy": "Rester en bonne santé et sans blessure",
+      "reduceStress": "Réduire le stress et se sentir mieux",
+      "personalizedSubtitle": "Adaptons ton coaching pour {{sports}}."
+    },
+    "race": {
+      "title": "Tu as une course à venir ?",
+      "subtitle": "Nous construirons ton plan autour d'elle.",
+      "yesButton": "Oui, j'ai une course",
+      "noButton": "Pas pour l'instant",
+      "nameLabel": "Nom de la course",
+      "namePlaceholder": "ex. Marathon de Berlin",
+      "dateLabel": "Date de la course",
+      "datePlaceholder": "Sélectionner une date",
+      "eventTypeLabel": "Type d'épreuve",
+      "eventTypePlaceholder": "ex. Marathon, 10 km, Sprint Tri"
+    },
+    "availability": {
+      "title": "Combien de fois peux-tu t'entraîner ?",
+      "subtitle": "Sois honnête — nous construirons autour de ta vraie vie.",
+      "daysLabel": "Jours par semaine"
+    },
+    "fitness": {
+      "title": "Parlez-nous de votre entraînement.",
+      "subtitle": "Cela nous aide à calibrer votre plan dès le premier jour.",
+      "hoursLabel": "Combien d'heures vous entraînez-vous par semaine ?",
+      "yearsLabel": "Depuis combien d'années vous entraînez-vous ?",
+      "yearsUnit": "ans",
+      "weekLabel": "semaine",
+      "personalizedSubtitle": "Nous nous concentrerons sur {{goals}} pour toi."
+    },
+    "paywall": {
+      "title": "Ton plan personnalisé est prêt",
+      "benefit1": "Adapté à tes objectifs et ton emploi du temps",
+      "benefit2": "S'adapte à ta progression",
+      "benefit3": "Coaché par une IA qui connaît ton historique",
+      "cta": "Commencer l'essai gratuit"
+    },
+    "building": {
+      "title": "Construction de ton plan",
+      "line1": "Analyse de ton profil...",
+      "line2": "Génération de ta stratégie d'entraînement...",
+      "line3": "Presque terminé...",
+      "saveError": "Impossible de sauvegarder ton profil. Veuillez réessayer.",
+      "commentLabel": "Des remarques ou ajustements ?",
+      "commentPlaceholder": "p.ex. Je voudrais me concentrer davantage sur le travail de vitesse...",
+      "soundsPerfect": "Ca me semble parfait",
+      "sendAndContinue": "Envoyer le retour et continuer",
+      "addNotes": "J'ai des remarques",
+      "notesLaterHint": "Tu peux aussi partager cela plus tard dans le chat."
+    }
+  },
+  "goalsAndRaces": {
+    "title": "Objectifs et courses",
+    "goalSection": "Objectifs",
+    "sportsSection": "Mes sports",
+    "racesSection": "Courses à venir",
+    "addRace": "Ajouter une course",
+    "noRaces": "Aucune course à venir ajoutée pour l'instant.",
+    "editGoal": "Changer l'objectif",
+    "editSports": "Changer les sports",
+    "saveChanges": "Enregistrer les modifications",
+    "deleteRaceConfirm": "Êtes-vous sûr de vouloir supprimer cette course ?"
+  },
+  "raceEvents": {
+    "createError": "Impossible de créer l'événement de course.",
+    "deleteError": "Impossible de supprimer l'événement de course."
+  },
+  "webPaywall": {
+    "title": "Obtenez PRO aujourd'hui",
+    "subtitle": "Debloquez votre experience de coaching complete",
+    "benefit1Title": "Messages illimites",
+    "benefit1Desc": "Chattez avec votre coach IA autant que vous voulez, quand vous voulez.",
+    "benefit2Title": "Plans d'entrainement adaptatifs",
+    "benefit2Desc": "Votre plan s'ajuste automatiquement quand la vie s'en mele.",
+    "benefit3Title": "Feedback detaille de seance",
+    "benefit3Desc": "Obtenez une analyse par IA apres chaque entrainement.",
+    "trialBadge": "7 jours gratuits - Annulez a tout moment",
+    "annual": "Annuel",
+    "monthly": "Mensuel",
+    "afterTrial": "apres l'essai seulement",
+    "perMonth": "/mois",
+    "discountBadge": "Economisez {{percent}}%",
+    "ctaTrial": "Commencer gratuitement",
+    "ctaNoTrial": "Continuer",
+    "terms": "Conditions",
+    "privacy": "Confidentialite",
+    "loadingPrices": "Chargement...",
+    "errorLoadingPrices": "Impossible de charger les prix. Veuillez reessayer.",
+    "retry": "Reessayer"
   }
 }

@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useEffect, useState} from "react";
-import {Platform, Linking} from "react-native";
+import {Platform, Linking, View, Modal} from "react-native";
 // iOS SDK
 import Purchases, {
 	CustomerInfo as CustomerInfoiOS,
@@ -20,10 +20,15 @@ interface RevenueCatContextType {
 	offerings: any | null;
 	subscriptionStore: string | null;
 	restorePurchases: () => Promise<void>;
+	/** @deprecated Use presentPaywall() instead. Kept for backwards compatibility with older app versions. */
 	showPaywall: (offering?: PurchasesOffering) => Promise<boolean>;
 	refreshCustomerInfo: () => Promise<void>;
 	cancelSubscription: () => Promise<{success: boolean; store: 'stripe' | 'app_store' | 'play_store' | 'none'}>;
+	/** @deprecated Use presentPaywall() instead. Kept for backwards compatibility with older app versions. */
 	purchasePackage: (packageToPurchase: any) => Promise<{customerInfo: any}>;
+	presentPaywall: () => Promise<boolean>;
+	webPaywallVisible: boolean;
+	setWebPaywallVisible: (visible: boolean) => void;
 }
 
 const RevenueCatContext = createContext<RevenueCatContextType | undefined>(
@@ -56,6 +61,9 @@ export const RevenueCatProvider: React.FC<RevenueCatProviderProps> = ({
 	const [customerInfo, setCustomerInfo] = useState<any | null>(null);
 	const [offerings, setOfferings] = useState<any | null>(null);
 	const [subscriptionStore, setSubscriptionStore] = useState<string | null>(null);
+	const [webPaywallVisible, setWebPaywallVisible] = useState(false);
+	const [nativePaywallVisible, setNativePaywallVisible] = useState(false);
+	const paywallResolveRef = React.useRef<((purchased: boolean) => void) | null>(null);
 
 	useEffect(() => {
 		const initializeRevenueCat = async () => {
@@ -295,6 +303,7 @@ export const RevenueCatProvider: React.FC<RevenueCatProviderProps> = ({
 		}
 	};
 
+	/** @deprecated Use presentPaywall() instead. Kept for backwards compatibility with older app versions. */
 	const showPaywall = async (offering?: PurchasesOffering): Promise<boolean> => {
 		try {
 			if (Platform.OS === "web") {
@@ -372,6 +381,7 @@ export const RevenueCatProvider: React.FC<RevenueCatProviderProps> = ({
 		}
 	};
 
+	/** @deprecated Use presentPaywall() instead. Kept for backwards compatibility with older app versions. */
 	const purchasePackage = async (packageToPurchase: any): Promise<{customerInfo: any}> => {
 		try {
 			console.log("=== purchasePackage called ===");
@@ -431,6 +441,28 @@ export const RevenueCatProvider: React.FC<RevenueCatProviderProps> = ({
 		}
 	};
 
+	const presentPaywall = async (): Promise<boolean> => {
+		if (Platform.OS === "web") {
+			return new Promise<boolean>((resolve) => {
+				paywallResolveRef.current = resolve;
+				setWebPaywallVisible(true);
+			});
+		}
+
+		// iOS/Android: Show fullscreen native paywall via component
+		return new Promise<boolean>((resolve) => {
+			paywallResolveRef.current = resolve;
+			setNativePaywallVisible(true);
+		});
+	};
+
+	const handlePaywallDismiss = (purchased: boolean) => {
+		setWebPaywallVisible(false);
+		setNativePaywallVisible(false);
+		paywallResolveRef.current?.(purchased);
+		paywallResolveRef.current = null;
+	};
+
 	const value: RevenueCatContextType = {
 		isProSubscriber,
 		hasByokKey,
@@ -443,11 +475,40 @@ export const RevenueCatProvider: React.FC<RevenueCatProviderProps> = ({
 		refreshCustomerInfo,
 		cancelSubscription,
 		purchasePackage,
+		presentPaywall,
+		webPaywallVisible,
+		setWebPaywallVisible: (visible: boolean) => {
+			if (!visible) {
+				handlePaywallDismiss(false);
+			} else {
+				setWebPaywallVisible(true);
+			}
+		},
 	};
+
+	// Get the paywall offering for native fullscreen component
+	const paywallOffering = offerings?.all?.["paywall"];
 
 	return (
 		<RevenueCatContext.Provider value={value}>
 			{children}
+			{/* Native fullscreen paywall */}
+			{nativePaywallVisible && Platform.OS !== "web" && (
+				<Modal
+					visible={true}
+					animationType="slide"
+					presentationStyle="fullScreen"
+				>
+					<View style={{flex: 1}}>
+						<RevenueCatUI.Paywall
+							options={paywallOffering ? {offering: paywallOffering} : undefined}
+							onPurchaseCompleted={() => handlePaywallDismiss(true)}
+							onRestoreCompleted={() => handlePaywallDismiss(true)}
+							onDismiss={() => handlePaywallDismiss(false)}
+						/>
+					</View>
+				</Modal>
+			)}
 		</RevenueCatContext.Provider>
 	);
 };

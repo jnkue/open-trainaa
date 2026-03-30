@@ -90,7 +90,7 @@ export default function ChatInterface({userId, accessToken}: ChatInterfaceProps)
 	const [conversationActive, setConversationActive] = useState(false);
 	const [messageLimitReached, setMessageLimitReached] = useState(false);
 	const [isPurchasing, setIsPurchasing] = useState(false);
-	const {offerings, purchasePackage, showPaywall} = useRevenueCat();
+	const {presentPaywall} = useRevenueCat();
 	const conversationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 	const aiRespondingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -338,7 +338,7 @@ export default function ChatInterface({userId, accessToken}: ChatInterfaceProps)
 				}
 			} else if (data.type === "limit_reached") {
 				// Handle message limit reached
-				console.log("🚫 Message limit reached:", data);
+				console.log("Message limit reached:", data);
 				setMessageLimitReached(true);
 
 				// Add system message about limit
@@ -351,16 +351,12 @@ export default function ChatInterface({userId, accessToken}: ChatInterfaceProps)
 					},
 				]);
 
-				// On native platforms, immediately show the paywall
-				if (Platform.OS !== "web") {
-					// Get the "limit" offering for chat limit paywall
-					const limitOffering = offerings?.all?.["limit"];
-					showPaywall(limitOffering).then((purchased) => {
-						if (purchased) {
-							setMessageLimitReached(false);
-						}
-					});
-				}
+				// Show paywall on all platforms
+				presentPaywall().then((purchased) => {
+					if (purchased) {
+						setMessageLimitReached(false);
+					}
+				});
 			} else if (data.type === "message_count") {
 				// Handle message count update
 				console.log("📊 Message count update:", data);
@@ -490,7 +486,7 @@ export default function ChatInterface({userId, accessToken}: ChatInterfaceProps)
 		} catch (error) {
 			console.error("Error parsing WebSocket message:", error);
 		}
-	}, [offerings?.all, showPaywall, t]);
+	}, [presentPaywall, t]);
 
 	// WebSocket connection management with useCallback to prevent dependency issues
 	const connectWebSocket = useCallback(
