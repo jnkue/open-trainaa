@@ -219,15 +219,18 @@ async def websocket_endpoint(
                 payload = json.loads(data)
                 user_input = payload.get("message", "")
                 trainer = payload.get("trainer", "Simon")
+                hide_from_history = payload.get("hide_from_history", False)
             except json.JSONDecodeError:
                 user_input = data
                 trainer = "Simon"
+                hide_from_history = False
 
             LOGGER.info(
                 f"Received message on thread {thread_id} from user {user_id}: {user_input[:100]}{'...' if len(user_input) > 100 else ''} (trainer: {trainer})"
             )
 
             # Check if user can send a message (subscription limits)
+            send_check = {"can_send": True, "is_pro": True, "message_count": 0, "remaining": 999}
             try:
                 from api.utils.subscription_limits import can_send_message
 
@@ -267,12 +270,15 @@ async def websocket_endpoint(
                 LOGGER.error(f"❌ Failed to check message send permission: {e}")
                 # On error, allow message to proceed (fail open)
 
-            # Save user message to chat_history
+            # Save user message to chat_history (skip for hidden messages like onboarding prompts)
             try:
                 from api.utils.chat_history import save_user_message
 
-                await save_user_message(user_id, thread_id, user_input)
-                LOGGER.debug("✅ Saved user message to chat_history")
+                if not hide_from_history:
+                    await save_user_message(user_id, thread_id, user_input)
+                    LOGGER.debug("✅ Saved user message to chat_history")
+                else:
+                    LOGGER.debug("⏭️ Skipped saving hidden message to chat_history")
 
                 # Send message count info to frontend (for free users)
                 if not send_check["is_pro"]:

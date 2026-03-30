@@ -9,7 +9,7 @@
       }
     ]
   },
-  "identifier" : "A753694B",
+  "identifier" : "91CC8A45",
   "nonRenewingSubscriptions" : [
 
   ],
@@ -24,7 +24,7 @@
     "_developerTeamID" : "2M3MQ8K539",
     "_disableDialogs" : false,
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 795450755.69372404,
+    "_lastSynchronizedDate" : 796571064.71727896,
     "_locale" : "en_US",
     "_renewalBillingIssuesEnabled" : false,
     "_storefront" : "USA",
@@ -37,7 +37,11 @@
     {
       "id" : "21918219",
       "localizations" : [
-
+        {
+          "description" : "",
+          "displayName" : "PRO Membership",
+          "locale" : "en_US"
+        }
       ],
       "name" : "PRO",
       "subscriptions" : [
@@ -53,11 +57,21 @@
           "groupNumber" : 1,
           "internalID" : "6758697482",
           "introductoryOffer" : {
-            "internalID" : "FAAC7E68",
+            "billingPlanType" : "BILLED_UPFRONT",
+            "internalID" : "598DC74F",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"
           },
+          "introductoryOffers" : [
+            {
+              "billingPlanType" : "BILLED_UPFRONT",
+              "internalID" : "598DC74F",
+              "numberOfPeriods" : 1,
+              "paymentMode" : "free",
+              "subscriptionPeriod" : "P1W"
+            }
+          ],
           "localizations" : [
             {
               "description" : "Access to unlimited messages with the Coach",
@@ -73,12 +87,95 @@
           "winbackOffers" : [
 
           ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "11.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6761358698",
+          "introductoryOffers" : [
+
+          ],
+          "localizations" : [
+            {
+              "description" : "Unlimitierte Nachrichten mit dem Trainer",
+              "displayName" : "Monatsabo",
+              "locale" : "de"
+            },
+            {
+              "description" : "Access to unlimited messages with the Coach",
+              "displayName" : "Monthly PRO",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "pro_0999_1m_notrial",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly 9.99 no Trial",
+          "subscriptionGroupID" : "21918219",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "99.99",
+          "familyShareable" : false,
+          "groupNumber" : 3,
+          "internalID" : "6761359165",
+          "introductoryOffer" : {
+            "billingPlanType" : "BILLED_UPFRONT",
+            "internalID" : "6B41DBE1",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "introductoryOffers" : [
+            {
+              "billingPlanType" : "BILLED_UPFRONT",
+              "internalID" : "6B41DBE1",
+              "numberOfPeriods" : 1,
+              "paymentMode" : "free",
+              "subscriptionPeriod" : "P1W"
+            }
+          ],
+          "localizations" : [
+            {
+              "description" : "Unlimitierte Nachrichten mit dem Trainer",
+              "displayName" : "Jahresabo",
+              "locale" : "de"
+            },
+            {
+              "description" : "Access to unlimited messages with the Coach",
+              "displayName" : "Yearly PRO",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "pro_9900_1y_trial",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Yearly 99.00",
+          "subscriptionGroupID" : "21918219",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
         }
       ]
     }
   ],
   "version" : {
-    "major" : 4,
+    "major" : 5,
     "minor" : 0
   }
 }

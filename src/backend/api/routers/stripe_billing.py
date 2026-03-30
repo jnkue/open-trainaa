@@ -20,6 +20,25 @@ router = APIRouter(
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 STRIPE_PRODUCT_ID = os.getenv("STRIPE_PRODUCT_ID", "prod_TO3KbDq1yErO8N")
 STRIPE_PRICE_ID = os.getenv("STRIPE_PRICE_ID", "price_1SRHDS0xcOuMcpDBHgaEdyq9")
+STRIPE_YEARLY_PRICE_ID = os.getenv("STRIPE_YEARLY_PRICE_ID")
+STRIPE_MONTHLY_PRICE_ID = os.getenv("STRIPE_MONTHLY_PRICE_ID")
+
+
+class PriceInfo(BaseModel):
+    price_id: str
+    amount: int  # in cents
+    currency: str
+    interval: str  # "year" or "month"
+    formatted: str  # e.g. "$69.99/year"
+    monthly_equivalent: str | None = None  # e.g. "$5.83/mo" (only for yearly)
+    has_trial: bool
+    trial_days: int
+
+
+class PricesResponse(BaseModel):
+    yearly: PriceInfo
+    monthly: PriceInfo
+
 
 # Initialize Stripe
 if STRIPE_SECRET_KEY:
@@ -31,6 +50,7 @@ else:
 class CheckoutSessionRequest(BaseModel):
     success_url: str | None = None
     cancel_url: str | None = None
+    price_id: str | None = None  # Optional: specific price ID. If not provided, uses STRIPE_PRICE_ID.
 
 
 class CheckoutSessionResponse(BaseModel):
@@ -74,7 +94,10 @@ async def create_checkout_session(
         LOGGER.error("Stripe secret key not configured")
         raise HTTPException(status_code=500, detail="Stripe billing is not configured")
 
-    if not STRIPE_PRICE_ID:
+    # Resolve price ID: use request override if provided, else fall back to env default
+    selected_price_id = request.price_id or STRIPE_PRICE_ID
+
+    if not selected_price_id:
         LOGGER.error("Stripe price ID not configured")
         raise HTTPException(status_code=500, detail="Stripe billing is not configured")
 
@@ -95,13 +118,22 @@ async def create_checkout_session(
     )
 
     try:
+        # Only apply the 7-day trial when the selected price is the yearly plan
+        subscription_data: dict = {
+            "metadata": {
+                "app_user_id": user_id,
+            },
+        }
+        if STRIPE_YEARLY_PRICE_ID and selected_price_id == STRIPE_YEARLY_PRICE_ID:
+            subscription_data["trial_period_days"] = 7
+
         # Create Stripe Checkout Session
         # Important: app_user_id in metadata is used by RevenueCat to identify the user
         session = stripe.checkout.Session.create(
             mode="subscription",
             line_items=[
                 {
-                    "price": STRIPE_PRICE_ID,
+                    "price": selected_price_id,
                     "quantity": 1,
                 }
             ],
@@ -120,12 +152,7 @@ async def create_checkout_session(
             metadata={
                 "app_user_id": user_id,
             },
-            subscription_data={
-                "trial_period_days": 7,
-                "metadata": {
-                    "app_user_id": user_id,
-                },
-            },
+            subscription_data=subscription_data,
         )
 
         LOGGER.info(f"Created Stripe Checkout Session for user {user_id}: {session.id}")
@@ -174,3 +201,70 @@ async def create_portal_session(
     LOGGER.info(f"Returning Stripe Customer Portal URL for user {user_id}")
 
     return PortalSessionResponse(url=portal_url)
+
+
+@router.get("/prices", response_model=PricesResponse)
+async def get_prices() -> PricesResponse:
+    """
+    Fetch current subscription prices from Stripe.
+
+    Returns yearly and monthly plan details including formatted price strings.
+    No authentication required — prices are public information.
+    """
+    if not STRIPE_SECRET_KEY:
+        raise HTTPException(status_code=500, detail="Stripe billing is not configured")
+
+    if not STRIPE_YEARLY_PRICE_ID or not STRIPE_MONTHLY_PRICE_ID:
+        raise HTTPException(
+            status_code=500,
+            detail="Stripe price IDs not configured",
+        )
+
+    try:
+        yearly_price = stripe.Price.retrieve(STRIPE_YEARLY_PRICE_ID)
+        monthly_price = stripe.Price.retrieve(STRIPE_MONTHLY_PRICE_ID)
+
+        def format_price(amount_cents: int, currency: str, interval: str) -> str:
+            amount = amount_cents / 100
+            symbol = "$" if currency == "usd" else currency.upper() + " "
+            if amount == int(amount):
+                return f"{symbol}{int(amount)}/{interval}"
+            return f"{symbol}{amount:.2f}/{interval}"
+
+        yearly_amount = yearly_price.unit_amount
+        yearly_currency = yearly_price.currency
+        monthly_amount = monthly_price.unit_amount
+        monthly_currency = monthly_price.currency
+
+        # Calculate monthly equivalent for yearly plan
+        monthly_equiv_cents = yearly_amount / 12
+        monthly_equiv = monthly_equiv_cents / 100
+        symbol = "$" if yearly_currency == "usd" else yearly_currency.upper() + " "
+        monthly_equivalent = f"{symbol}{monthly_equiv:.2f}/mo"
+
+        return PricesResponse(
+            yearly=PriceInfo(
+                price_id=STRIPE_YEARLY_PRICE_ID,
+                amount=yearly_amount,
+                currency=yearly_currency,
+                interval="year",
+                formatted=format_price(yearly_amount, yearly_currency, "year"),
+                monthly_equivalent=monthly_equivalent,
+                has_trial=True,
+                trial_days=7,
+            ),
+            monthly=PriceInfo(
+                price_id=STRIPE_MONTHLY_PRICE_ID,
+                amount=monthly_amount,
+                currency=monthly_currency,
+                interval="month",
+                formatted=format_price(monthly_amount, monthly_currency, "month"),
+                monthly_equivalent=None,
+                has_trial=False,
+                trial_days=0,
+            ),
+        )
+
+    except stripe.error.StripeError as e:
+        LOGGER.error(f"Stripe error fetching prices: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to fetch prices: {str(e)}")

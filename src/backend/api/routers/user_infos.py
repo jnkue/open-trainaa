@@ -54,6 +54,19 @@ class UserAttributesBase(BaseModel):
     push_notification_feedback: bool = False
     push_notification_daily_overview: bool = False
 
+    # Onboarding profile fields
+    name: str | None = None
+    sports: Optional[list[str]] = None
+    goals: Optional[list[str]] = None
+    training_days_per_week: Optional[int] = Field(None, ge=1, le=7)
+    weekly_training_hours: Optional[int] = Field(None, ge=0, le=40)
+    training_experience_years: Optional[int] = Field(None, ge=0, le=50)
+    onboarding_completed: Optional[bool] = None
+    commitment_acknowledged: Optional[bool] = None
+    commitment_note: Optional[str] = None
+    custom_sports: str | None = None
+    training_strategy: str | None = None
+
 
 class UserAttributesCreate(UserAttributesBase):
     pass
@@ -188,6 +201,8 @@ async def update_user_infos(
             clear_consent_cache(current_user.id)
 
         return UserAttributesResponse(**result.data[0])
+    except HTTPException:
+        raise
     except Exception as e:
         LOGGER.error(f"Error updating user attributes for user {current_user.id}: {e}")
         raise HTTPException(status_code=500, detail="Failed to update user attributes")
