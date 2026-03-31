@@ -347,8 +347,8 @@ PODS:
   - hermes-engine (0.81.5):
     - hermes-engine/Pre-built (= 0.81.5)
   - hermes-engine/Pre-built (0.81.5)
-  - libavif/core (0.11.1)
-  - libavif/libdav1d (0.11.1):
+  - libavif/core (1.0.0)
+  - libavif/libdav1d (1.0.0):
     - libavif/core
     - libdav1d (>= 0.6.0)
   - libdav1d (1.2.0)
@@ -387,7 +387,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - PostHog (3.38.0)
+  - PostHog (3.48.3)
   - posthog-react-native-session-replay (1.2.1):
     - hermes-engine
     - PostHog (~> 3.21)
@@ -412,11 +412,11 @@ PODS:
     - ReactNativeDependencies
     - Yoga
   - PromisesObjC (2.4.0)
-  - PurchasesHybridCommon (17.11.0):
-    - RevenueCat (= 5.44.1)
-  - PurchasesHybridCommonUI (17.11.0):
-    - PurchasesHybridCommon (= 17.11.0)
-    - RevenueCatUI (= 5.44.1)
+  - PurchasesHybridCommon (17.53.0):
+    - RevenueCat (= 5.66.0)
+  - PurchasesHybridCommonUI (17.53.0):
+    - PurchasesHybridCommon (= 17.53.0)
+    - RevenueCatUI (= 5.66.0)
   - RCTDeprecation (0.81.5)
   - RCTRequired (0.81.5)
   - RCTTypeSafety (0.81.5):
@@ -2233,9 +2233,9 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - RevenueCat (5.44.1)
-  - RevenueCatUI (5.44.1):
-    - RevenueCat (= 5.44.1)
+  - RevenueCat (5.66.0)
+  - RevenueCatUI (5.66.0):
+    - RevenueCat (= 5.66.0)
   - RNCAsyncStorage (2.2.0):
     - hermes-engine
     - RCTRequired
@@ -2327,11 +2327,11 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - RNPaywalls (9.6.0):
-    - PurchasesHybridCommonUI (= 17.11.0)
+  - RNPaywalls (9.15.0):
+    - PurchasesHybridCommonUI (= 17.53.0)
     - React-Core
-  - RNPurchases (9.6.0):
-    - PurchasesHybridCommon (= 17.11.0)
+  - RNPurchases (9.15.0):
+    - PurchasesHybridCommon (= 17.53.0)
     - React-Core
   - RNReanimated (4.1.3):
     - hermes-engine
@@ -2616,9 +2616,9 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - SDWebImage (5.21.5):
-    - SDWebImage/Core (= 5.21.5)
-  - SDWebImage/Core (5.21.5)
+  - SDWebImage (5.21.7):
+    - SDWebImage/Core (= 5.21.7)
+  - SDWebImage/Core (5.21.7)
   - SDWebImageAVIFCoder (0.11.1):
     - libavif/core (>= 0.11.0)
     - SDWebImage (~> 5.10)
@@ -3088,15 +3088,15 @@ SPEC CHECKSUMS:
   GTMAppAuth: 217a876b249c3c585a54fd6f73e6b58c4f5c4238
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   hermes-engine: 9f4dfe93326146a1c99eb535b1cb0b857a3cd172
-  libavif: 84bbb62fb232c3018d6f1bab79beea87e35de7b7
+  libavif: 5f8e715bea24debec477006f21ef9e95432e254d
   libdav1d: 23581a4d8ec811ff171ed5e2e05cd27bad64c39f
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
   NitroModules: 76063cb7bc1a21cf46d11b25abfcf1759bf0be47
-  PostHog: b42fd6ae60326411582e97bea5786ba748cab8a0
+  PostHog: 38e00e9376b90f0d92de958105029e4736ffe7f9
   posthog-react-native-session-replay: fa8e121b6135110f0dc7b81181515f684bdab429
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
-  PurchasesHybridCommon: d820837b12781f2af5dbb5faba428811a59b6743
-  PurchasesHybridCommonUI: 342938fc04b530604bc40fc22a58c47299db3ca3
+  PurchasesHybridCommon: 53d966ac5c39df13c3c759289bb3ef3e2f9f1622
+  PurchasesHybridCommonUI: c9ac2debefc5a098cfeca28bf05a9602eb49cb32
   RCTDeprecation: 943572d4be82d480a48f4884f670135ae30bf990
   RCTRequired: 8f3cfc90cc25cf6e420ddb3e7caaaabc57df6043
   RCTTypeSafety: 16a4144ca3f959583ab019b57d5633df10b5e97c
@@ -3169,22 +3169,22 @@ SPEC CHECKSUMS:
   ReactCommon: 08810150b1206cc44aecf5f6ae19af32f29151a8
   ReactNativeDependencies: 71ce9c28beb282aa720ea7b46980fff9669f428a
   ReactNativeHealthkit: b06f23893b9ccc7de3a12e74bc2509f9fd902542
-  RevenueCat: c63342889404269918c1196708246d7c21cf8e6d
-  RevenueCatUI: 13f74b22db7123d57efc6f2e6e4c919cb9122098
+  RevenueCat: a3cf721ad8b1b56a930d748a40342aba16c09bbb
+  RevenueCatUI: 1091be7f4e7eb6068bc0c78d470af3a2a19d3a49
   RNCAsyncStorage: 3a4f5e2777dae1688b781a487923a08569e27fe4
   RNDateTimePicker: be0e44bcb9ed0607c7c5f47dbedd88cf091f6791
   RNDeviceInfo: 36d7f232bfe7c9b5c494cb7793230424ed32c388
   RNGestureHandler: 2914750df066d89bf9d8f48a10ad5f0051108ac3
   RNGoogleSignin: 104dd7238c56fe354e4b0a8fd267f866039ffdf3
-  RNPaywalls: a36a98ac721aba5a3504b879cb0453fdb99e9284
-  RNPurchases: bdec1e60caabb2e27937d9def7e80c9694e066db
+  RNPaywalls: ce7defe6876f9d3952ea230b9ada67363925ec5f
+  RNPurchases: f3384f8db42ad8abb7525b13c2ecb9bd2a443102
   RNReanimated: 3895a29fdf77bbe2a627e1ed599a5e5d1df76c29
   RNScreens: d8d6f1792f6e7ac12b0190d33d8d390efc0c1845
   RNSentry: 41979b419908128847ef662cc130a400b7576fa9
   RNShare: 446a4a16e416c9daf64d381ed9196c3d972e71db
   RNSVG: 31d6639663c249b7d5abc9728dde2041eb2a3c34
   RNWorklets: 76fce72926e28e304afb44f0da23b2d24f2c1fa0
-  SDWebImage: e9c98383c7572d713c1a0d7dd2783b10599b9838
+  SDWebImage: e9fc87c1aab89a8ab1bbd74eba378c6f53be8abf
   SDWebImageAVIFCoder: afe194a084e851f70228e4be35ef651df0fc5c57
   SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380

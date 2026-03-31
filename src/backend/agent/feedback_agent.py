@@ -1,15 +1,168 @@
 import json
-from datetime import datetime, timedelta
+import os
+from datetime import date, datetime, timedelta
 from typing import Any, Dict
 
 from agent.core.singletons import get_llm, get_supabase_client_sync
 from agent.log import LOGGER
+
+# Optional Langfuse import
+try:
+    from langfuse.langchain import CallbackHandler
+
+    LANGFUSE_AVAILABLE = True
+except ImportError:
+    CallbackHandler = None
+    LANGFUSE_AVAILABLE = False
+from api.analytics.cp_model import compute_aggregate_envelope, fit_cp_model
+from api.analytics.vdot import predict_race_times
+from api.analytics.hr_curve import estimate_session_lthr
+
+
+# Configure Langfuse handler for feedback tracing
+_langfuse_handler = None
+if LANGFUSE_AVAILABLE and os.getenv("LANGFUSE_PUBLIC_API_KEY"):
+    try:
+        _langfuse_handler = CallbackHandler()
+    except Exception:
+        _langfuse_handler = None
 
 
 # Get Supabase client (singleton)
 def get_supabase():
     """Get Supabase client singleton (sync version for compatibility)."""
     return get_supabase_client_sync()
+
+
+def _format_time(seconds: int) -> str:
+    if seconds <= 0:
+        return "0:00"
+    hours = seconds // 3600
+    mins = (seconds % 3600) // 60
+    secs = seconds % 60
+    if hours > 0:
+        return f"{hours}:{mins:02d}:{secs:02d}"
+    return f"{mins}:{secs:02d}"
+
+
+async def _get_analytics_context(session_data: dict, user_id: str) -> dict:
+    """Compute current vs previous analytics to detect changes for feedback."""
+    sport = session_data.get("sport")
+    if sport not in ("cycling", "running"):
+        return {}
+
+    result: dict = {}
+    supabase = get_supabase()
+    today = date.today()
+
+    try:
+        # --- Cycling: CP comparison ---
+        if sport == "cycling":
+            cutoff = (today - timedelta(days=56)).isoformat()
+            response = (
+                supabase.table("sessions_no_duplicates")
+                .select("power_curve, start_time")
+                .eq("user_id", user_id)
+                .eq("sport", "cycling")
+                .not_.is_("power_curve", "null")
+                .gte("start_time", cutoff)
+                .order("start_time", desc=False)
+                .execute()
+            )
+            sessions = response.data or []
+            boundary = (today - timedelta(days=28)).isoformat()
+            current_curves = [
+                s["power_curve"] for s in sessions if s["start_time"][:10] >= boundary
+            ]
+            previous_curves = [
+                s["power_curve"] for s in sessions if s["start_time"][:10] < boundary
+            ]
+            current_cp = None
+            previous_cp = None
+            if current_curves:
+                envelope = compute_aggregate_envelope(current_curves)
+                cp_result = fit_cp_model(envelope)
+                if cp_result:
+                    current_cp = round(cp_result[0], 1)
+                    result["current_cp_watts"] = current_cp
+                    result["current_w_prime"] = round(cp_result[1], 0)
+            if previous_curves:
+                envelope = compute_aggregate_envelope(previous_curves)
+                cp_result = fit_cp_model(envelope)
+                if cp_result:
+                    previous_cp = round(cp_result[0], 1)
+                    result["previous_cp_watts"] = previous_cp
+            if current_cp is not None and previous_cp is not None:
+                result["cp_change_watts"] = round(current_cp - previous_cp, 1)
+
+        # --- Running: VDOT + race predictions ---
+        if sport == "running":
+            cutoff = (today - timedelta(weeks=24)).isoformat()
+            response = (
+                supabase.table("sessions_no_duplicates")
+                .select("vdot_estimate, start_time")
+                .eq("user_id", user_id)
+                .eq("sport", "running")
+                .not_.is_("vdot_estimate", "null")
+                .gte("start_time", cutoff)
+                .order("start_time", desc=False)
+                .execute()
+            )
+            sessions = response.data or []
+            boundary = (today - timedelta(weeks=12)).isoformat()
+            current_vdots = [
+                s["vdot_estimate"] for s in sessions if s["start_time"][:10] >= boundary
+            ]
+            previous_vdots = [
+                s["vdot_estimate"] for s in sessions if s["start_time"][:10] < boundary
+            ]
+            current_vdot = max(current_vdots) if current_vdots else None
+            previous_vdot = max(previous_vdots) if previous_vdots else None
+            if current_vdot is not None:
+                result["current_vdot"] = round(current_vdot, 1)
+                predictions = predict_race_times(current_vdot)
+                result["race_predictions"] = {
+                    dist: _format_time(secs) for dist, secs in predictions.items()
+                }
+            if previous_vdot is not None:
+                result["previous_vdot"] = round(previous_vdot, 1)
+            if current_vdot is not None and previous_vdot is not None:
+                result["vdot_change"] = round(current_vdot - previous_vdot, 1)
+
+        # --- Both sports: LTHR comparison ---
+        cutoff = (today - timedelta(days=180)).isoformat()
+        response = (
+            supabase.table("sessions_no_duplicates")
+            .select("hr_curve, start_time")
+            .eq("user_id", user_id)
+            .eq("sport", sport)
+            .not_.is_("hr_curve", "null")
+            .gte("start_time", cutoff)
+            .order("start_time", desc=False)
+            .execute()
+        )
+        sessions = response.data or []
+        boundary = (today - timedelta(days=90)).isoformat()
+        current_lthrs = []
+        previous_lthrs = []
+        for s in sessions:
+            lthr = estimate_session_lthr(s.get("hr_curve") or {})
+            if lthr is not None:
+                if s["start_time"][:10] >= boundary:
+                    current_lthrs.append(lthr)
+                else:
+                    previous_lthrs.append(lthr)
+        if current_lthrs:
+            result["current_lthr"] = round(max(current_lthrs), 1)
+        if previous_lthrs:
+            result["previous_lthr"] = round(max(previous_lthrs), 1)
+        if current_lthrs and previous_lthrs:
+            result["lthr_change"] = round(max(current_lthrs) - max(previous_lthrs), 1)
+
+    except Exception as e:
+        LOGGER.warning(f"Failed to compute analytics context for feedback: {e}")
+
+    return result
 
 
 async def give_feedback(session_id: str) -> Dict[str, Any]:
@@ -54,9 +207,12 @@ async def give_feedback(session_id: str) -> Dict[str, Any]:
         # Get recent training status
         training_status = await _get_recent_training_status(user_id)
 
+        # Get analytics context (CP, VDOT, LTHR changes)
+        analytics_context = await _get_analytics_context(session_data, user_id)
+
         # Generate feedback using LLM
         feedback_response = await _generate_feedback_with_llm(
-            session_data, todays_workouts, training_status, user_id
+            session_data, todays_workouts, training_status, user_id, analytics_context
         )
 
         # Get the session_custom_data_id from the session
@@ -189,6 +345,7 @@ async def _generate_feedback_with_llm(
     todays_workouts: Dict[str, Any],
     training_status: Dict[str, Any],
     user_id: str,
+    analytics_context: Dict[str, Any] | None = None,
 ) -> str:
     """Generate feedback using LLM with context about session and training status."""
 
@@ -212,6 +369,7 @@ async def _generate_feedback_with_llm(
         "session_data": session_data,
         "todays_workouts": todays_workouts,
         "user_information": user_info,
+        "analytics": analytics_context or {},
     }
 
     # Language-specific instruction
@@ -224,6 +382,7 @@ CONTEXT:
 - Today's scheduled workouts: What was planned vs what was completed
 - Recent training status: Fitness, fatigue, and form trends
 - User information: Goals, preferences, and training strategy
+- Analytics data: Current and recent fitness metrics (CP, VDOT, LTHR) with changes over time, plus race predictions
 
 FEEDBACK REQUIREMENTS:
 1. Keep it concise (2-3 sentences max)
@@ -238,7 +397,14 @@ FEEDBACK FOCUS AREAS:
 - Upcoming workout adjustments
 - Progress toward goals
 - Training load management
+- Analytics trends (CP, VDOT, LTHR changes)
 - Include sport science context where relevant
+
+ANALYTICS GUIDANCE:
+- If CP, VDOT, or LTHR changed notably (>1-2%), mention it briefly
+- Reference race predictions when relevant for runners
+- Focus on trends (improving, plateauing, declining), not raw numbers
+- Don't force analytics commentary if changes are minimal
 
 
  DONT just repeat data from the session
@@ -264,7 +430,17 @@ Do not include the language code in your response.
 
     # Get LLM instance (singleton)
     llm = get_llm("google/gemini-2.5-flash")
-    response = await llm.ainvoke(messages)
+    config: dict = {}
+    if _langfuse_handler:
+        from api.utils.consent import check_analytics_consent
+
+        if check_analytics_consent(user_id):
+            config["callbacks"] = [_langfuse_handler]
+            config["metadata"] = {
+                "langfuse_user_id": user_id,
+                "langfuse_session_id": f"feedback_{session_data.get('id', '')}",
+            }
+    response = await llm.ainvoke(messages, config=config)
     return response.content
 
 

@@ -109,7 +109,8 @@
     "settings": "Settings",
     "openChat": "Open Chat",
     "openHome": "Open Home",
-    "analytics": "Analyze"
+    "analytics": "Analyze",
+    "goalsAndRaces": "Goals & Races"
   },
   "workouts": {
     "title": "Workouts",
@@ -236,6 +237,7 @@
     "dangerZone": "Danger Zone",
     "dangerZoneWarning": "Once you delete your account, there is no going back. Please be certain.",
     "sectionAccount": "Account",
+    "sectionTraining": "Training",
     "sectionNotifications": "Notifications",
 
     "sectionIntegrations": "Integrations",
@@ -247,7 +249,8 @@
     "timezoneSearchPlaceholder": "Search timezones...",
     "signedInWith": "Signed in with",
     "providerGoogle": "Google",
-    "providerApple": "Apple"
+    "providerApple": "Apple",
+    "goalsAndRaces": "Goals & Races"
   },
   "notifications": {
     "title": "Notifications",
@@ -1021,5 +1024,160 @@
       "noData": "Not enough data to show efficiency factor trends.",
       "error": "Failed to load EF history. Pull to refresh."
     }
+  },
+  "onboarding": {
+    "step": "Step {{current}} of {{total}}",
+    "back": "Back",
+    "continue": "Continue",
+    "welcome": {
+      "title": "Train smarter",
+      "subtitle": "Do it like every successful athlete and get personalized training just for your needs, your schedule, and your goals.",
+      "cta": "Start now"
+    },
+    "name": {
+      "title": "One last thing",
+      "subtitle": "What should we call you?",
+      "placeholder": "Your name",
+      "saveError": "Could not save your name. Please try again."
+    },
+    "days": {
+      "title": "How many days per week can you train?",
+      "subtitle": "Based on your goals for {{sports}}, let's find your rhythm."
+    },
+    "hours": {
+      "title": "How many hours per week do you train?",
+      "subtitle": "With {{days}} training days, how much time can you commit?"
+    },
+    "experience": {
+      "title": "How long have you been training?",
+      "subtitle": "This helps us set the right starting point."
+    },
+    "sports": {
+      "title": "Which sports do you train for?",
+      "subtitle": "Select everything that applies.",
+      "running": "Running",
+      "trailrunning": "Trail Running",
+      "cycling": "Cycling",
+      "gym": "Gym",
+      "swimming": "Swimming",
+      "triathlon": "Triathlon",
+      "yoga": "Yoga & Stretching",
+      "otherLabel": "Other sports you regularly do",
+      "otherPlaceholder": "e.g. CrossFit, Rowing, Martial Arts..."
+    },
+    "goal": {
+      "title": "What are your goals?",
+      "subtitle": "Select everything that applies.",
+      "breakPR": "Break a personal record",
+      "buildConsistency": "Build consistency",
+      "weightManagement": "Weight management",
+      "trainForRace": "Train for a race",
+      "stayHealthy": "Stay healthy & injury-free",
+      "reduceStress": "Reduce stress & feel better",
+      "personalizedSubtitle": "Let's tailor your coaching for {{sports}}."
+    },
+    "race": {
+      "title": "Do you have a race coming up?",
+      "subtitle": "We'll build your plan around it.",
+      "yesButton": "Yes, I have a race",
+      "noButton": "Not right now",
+      "nameLabel": "Race name",
+      "namePlaceholder": "e.g. Berlin Marathon",
+      "dateLabel": "Race date",
+      "datePlaceholder": "Select a date",
+      "eventTypeLabel": "Event type",
+      "eventTypePlaceholder": "e.g. Marathon, 10k, Sprint Tri"
+    },
+    "availability": {
+      "title": "How often can you train?",
+      "subtitle": "Be honest — we'll build around your real life.",
+      "daysLabel": "Days per week"
+    },
+    "fitness": {
+      "title": "Tell us about your training.",
+      "subtitle": "This helps us calibrate your plan from day one.",
+      "hoursLabel": "How many hours do you train per week?",
+      "yearsLabel": "How many years have you been training?",
+      "yearsUnit": "years",
+      "weekLabel": "week",
+      "personalizedSubtitle": "We'll focus on {{goals}} for you."
+    },
+    "paywall": {
+      "title": "Your personalized plan is ready",
+      "benefit1": "Tailored to your goals and schedule",
+      "benefit2": "Adapts as you progress",
+      "benefit3": "Coached by AI that knows your history",
+      "cta": "Start free trial"
+    },
+    "trial": {
+      "headline_breakPR": "Your next PR starts here",
+      "headline_buildConsistency": "Build the habit that sticks",
+      "headline_weightManagement": "Your plan to feel stronger",
+      "headline_trainForRace": "Your race prep starts now",
+      "headline_stayHealthy": "Stay on track, injury-free",
+      "headline_reduceStress": "Your daily reset starts here",
+      "headline_default": "Your coaching starts here",
+      "subtitle": "A personal trainer costs 50\u2013100 per session. We're giving you yours free for 7 days as a welcome gift.",
+      "benefit1Title": "7 days on us",
+      "benefit1Desc": "Full access to everything, completely free. Our gift to you for getting started.",
+      "benefit2Title": "A coach that knows your goal",
+      "benefit2Desc": "Get answers in seconds, not hours. Your plan adapts as you progress.",
+      "benefit3Title": "Results from week one",
+      "benefit3Desc": "Train smarter from day one instead of months of trial and error.",
+      "cta": "Continue",
+      "trust": "No commitment. Cancel anytime."
+    },
+    "building": {
+      "title": "Building your plan",
+      "line1": "Analyzing your profile...",
+      "line2": "Generating your training strategy...",
+      "line3": "Almost there...",
+      "saveError": "Failed to save your profile. Please try again.",
+      "commentLabel": "Any thoughts or adjustments?",
+      "commentPlaceholder": "e.g. I'd like to focus more on speed work...",
+      "soundsPerfect": "This sounds perfect",
+      "sendAndContinue": "Send feedback and continue",
+      "addNotes": "I have additional notes",
+      "notesLaterHint": "You can also share this later in the chat."
+    }
+  },
+  "goalsAndRaces": {
+    "title": "Goals & Races",
+    "goalSection": "Goals",
+    "sportsSection": "My sports",
+    "racesSection": "Upcoming races",
+    "addRace": "Add a race",
+    "noRaces": "No upcoming races added yet.",
+    "editGoal": "Change goal",
+    "editSports": "Change sports",
+    "saveChanges": "Save changes",
+    "deleteRaceConfirm": "Are you sure you want to remove this race?"
+  },
+  "raceEvents": {
+    "createError": "Failed to create race event.",
+    "deleteError": "Failed to delete race event."
+  },
+  "webPaywall": {
+    "title": "Get PRO today",
+    "subtitle": "Unlock your full coaching experience",
+    "benefit1Title": "Unlimited messages",
+    "benefit1Desc": "Chat with your AI coach as much as you want, whenever you want.",
+    "benefit2Title": "Adaptive training plans",
+    "benefit2Desc": "Your plan adjusts automatically when life gets in the way.",
+    "benefit3Title": "Detailed session feedback",
+    "benefit3Desc": "Get AI-powered analysis after every workout.",
+    "trialBadge": "7 days free - Cancel anytime",
+    "annual": "Annual",
+    "monthly": "Monthly",
+    "afterTrial": "after the free trial only",
+    "perMonth": "/mo",
+    "discountBadge": "Save {{percent}}%",
+    "ctaTrial": "Start for free",
+    "ctaNoTrial": "Continue",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "loadingPrices": "Loading...",
+    "errorLoadingPrices": "Could not load prices. Please try again.",
+    "retry": "Retry"
   }
 }

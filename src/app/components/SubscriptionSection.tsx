@@ -8,55 +8,28 @@ import {showAlert} from "@/utils/alert";
 import {SettingsSection} from "@/components/settings/SettingsSection";
 
 export function SubscriptionSection() {
-	const {isProSubscriber, customerInfo, purchasePackage, showPaywall, cancelSubscription, loading} = useRevenueCat();
+	const {isProSubscriber, customerInfo, presentPaywall, cancelSubscription, loading} = useRevenueCat();
 	const {t} = useTranslation();
 	const [purchasing, setPurchasing] = useState(false);
 
 	const handleSubscribe = async () => {
-		console.log("=== handleSubscribe called ===");
-		console.log("Platform.OS:", Platform.OS);
-
 		try {
 			setPurchasing(true);
-
-			if (Platform.OS === "web") {
-				// Web platform: Use Stripe Checkout directly (no offerings needed)
-				console.log("Web: Initiating Stripe Checkout...");
-
-				// Call purchasePackage with null - it will handle Stripe redirect
-				await purchasePackage(null);
-
-				// Note: User will be redirected to Stripe Checkout
-				// After payment, they'll return and entitlement will sync automatically
-				console.log("Web: User redirected to Stripe Checkout");
-			} else {
-				// iOS/Android: Show RevenueCat paywall (uses default offering)
-				console.log("iOS/Android: Showing RevenueCat paywall");
-				const purchased = await showPaywall();
-
-				if (purchased) {
-					showAlert(
-						t("subscription.title"),
-						t("subscription.restoreSuccessMessage")
-					);
-				}
+			const purchased = await presentPaywall();
+			if (purchased) {
+				showAlert(
+					t("subscription.title"),
+					t("subscription.restoreSuccessMessage")
+				);
 			}
 		} catch (error: any) {
 			console.error("Error during subscription purchase:", error);
-			console.error("Error details:", JSON.stringify(error, null, 2));
-
-			// Check if user cancelled
-			if (error.userCancelled) {
-				console.log("User cancelled purchase");
-				return;
-			}
-
+			if (error.userCancelled) return;
 			showAlert(
 				t("common.error"),
 				error.message || t("subscription.manageSubscriptionError")
 			);
 		} finally {
-			console.log("Setting purchasing to false");
 			setPurchasing(false);
 		}
 	};

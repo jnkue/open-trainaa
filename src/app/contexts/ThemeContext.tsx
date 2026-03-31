@@ -17,7 +17,7 @@ const THEME_STORAGE_KEY = "@trainaa_theme";
 
 export function ThemeProvider({children}: {children: React.ReactNode}) {
 	const systemColorScheme = useSystemColorScheme();
-	const [theme, setTheme] = useState<Theme>("system");
+	const [theme, setTheme] = useState<Theme>("light");
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	// Calculate the actual color scheme based on theme setting

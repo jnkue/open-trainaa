@@ -56,6 +56,22 @@ export interface ActivitiesResponse {
   perPage: number;
 }
 
+export interface PriceInfo {
+  price_id: string;
+  amount: number;
+  currency: string;
+  interval: string;
+  formatted: string;
+  monthly_equivalent: string | null;
+  has_trial: boolean;
+  trial_days: number;
+}
+
+export interface PricesResponse {
+  yearly: PriceInfo;
+  monthly: PriceInfo;
+}
+
 export interface VersionCheckResponse {
   version: string;
   is_supported: boolean;
@@ -1253,7 +1269,7 @@ export class ApiClient {
   }
 
   // Stripe billing methods
-  async createStripeCheckoutSession(successUrl?: string, cancelUrl?: string): Promise<{ url: string; session_id: string }> {
+  async createStripeCheckoutSession(successUrl?: string, cancelUrl?: string, priceId?: string): Promise<{ url: string; session_id: string }> {
     return await this.apiCall<{ url: string; session_id: string }>(
       `/stripe/create-checkout-session`,
       {
@@ -1261,8 +1277,15 @@ export class ApiClient {
         body: JSON.stringify({
           success_url: successUrl,
           cancel_url: cancelUrl,
+          price_id: priceId,
         }),
       }
+    );
+  }
+
+  async getStripePrices(): Promise<PricesResponse> {
+    return await this.apiCall<PricesResponse>(
+      `/stripe/prices`
     );
   }
 
