@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {View, Text, TouchableOpacity, Modal, TextInput, ActivityIndicator, useWindowDimensions, KeyboardAvoidingView, Platform} from "react-native";
 import {useTheme} from "@/contexts/ThemeContext";
 import {useTranslation} from "react-i18next";
+import {useSafeAreaInsets} from "react-native-safe-area-context";
 
 interface SetNameModalProps {
 	open: boolean;
@@ -15,6 +16,7 @@ export function SetNameModal({open, onSave}: SetNameModalProps) {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const {width} = useWindowDimensions();
 	const isLargeScreen = width >= 768;
+	const insets = useSafeAreaInsets();
 
 	const handleSave = async () => {
 		const trimmed = name.trim();
@@ -60,7 +62,7 @@ export function SetNameModal({open, onSave}: SetNameModalProps) {
 				}}
 			>
 				<View style={cardStyle}>
-					<View className="p-6">
+					<View className="p-6" style={{ paddingBottom: Math.max(insets.bottom, 24) }}>
 						<Text className="text-xl font-bold text-foreground mb-4">
 							{t("setName.title")}
 						</Text>

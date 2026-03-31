@@ -10,6 +10,7 @@ import {
   TextInput
 } from 'react-native';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export interface FeedbackDialogProps {
   open: boolean;
@@ -20,6 +21,7 @@ export interface FeedbackDialogProps {
 
 export function FeedbackDialog({ open, onOpenChange, onSubmit, initialType = 'feature_request' }: FeedbackDialogProps) {
   const { isDark } = useTheme();
+  const insets = useSafeAreaInsets();
   const [feedbackType, setFeedbackType] = useState<'feature_request' | 'bug_report' | 'general_feedback' | 'feeling_feedback'>(initialType);
   const [feedbackText, setFeedbackText] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -161,7 +163,7 @@ export function FeedbackDialog({ open, onOpenChange, onSubmit, initialType = 'fe
               </View>
             </ScrollView>
 
-            <View className="flex-row gap-3 mt-4" style={{ paddingTop: 12 }}>
+            <View className="flex-row gap-3 mt-4" style={{ paddingTop: 12, paddingBottom: insets.bottom }}>
               <TouchableOpacity
                 onPress={handleCancel}
                 disabled={isSubmitting}
