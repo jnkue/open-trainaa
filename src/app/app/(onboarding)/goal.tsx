@@ -11,10 +11,10 @@ import { useOnboardingSteps } from "@/hooks/useOnboardingSteps";
 import type { GoalSlug } from "@/types/onboarding";
 
 const GOALS: GoalSlug[] = [
-  "breakPR",
-  "buildConsistency",
-  "weightManagement",
   "trainForRace",
+  "buildConsistency",
+  "breakPR",
+  "weightManagement",
   "stayHealthy",
   "reduceStress",
 ];

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ActivityIndicator, Alert, Platform, ScrollView, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Alert, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, View } from "react-native";
 import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
 import Markdown from "react-native-markdown-display";
 import { useRouter } from "expo-router";
@@ -21,21 +21,27 @@ const BACKEND_BASE_URL = process.env.EXPO_PUBLIC_BACKEND_BASE_URL;
 function buildStrategyPrompt(state: ReturnType<typeof useOnboarding>["state"], language: string): string {
   const allSports = [...state.sports.map(s => s), ...(state.customSports ? [state.customSports] : [])].join(", ");
 
-  const raceBlock =
-    state.hasRace && state.race
-      ? `They have a race coming up: ${state.race.name} on ${state.race.date}${state.race.eventType ? ` (${state.race.eventType})` : ""}. Factor this into the plan — outline a rough periodization leading up to it.`
-      : "";
+  let raceBlock = "";
+  if (state.hasRace && state.race) {
+    const raceDateMs = new Date(state.race.date).getTime();
+    const nowMs = Date.now();
+    const daysUntilRace = Math.max(0, Math.round((raceDateMs - nowMs) / (1000 * 60 * 60 * 24)));
+    const weeksUntilRace = Math.round(daysUntilRace / 7);
+    raceBlock = `They have a race coming up: ${state.race.name} on ${state.race.date}${state.race.eventType ? ` (${state.race.eventType})` : ""}. That is ${daysUntilRace} days (${weeksUntilRace} weeks) from now. Factor this into the plan — outline a rough periodization leading up to it.`;
+  }
 
   return `You MUST respond in the language "${language}". This is non-negotiable.
 
 You are their new coach. First conversation. Be direct, warm, no filler. No "Great news!", no "I'm excited". Talk like a coach who texts their athletes.
+
+Today's date: ${new Date().toISOString().split("T")[0]}
 
 New athlete: ${state.name}
 Sports: ${allSports}
 Goals: ${state.goals.join(", ")}
 ${state.trainingDaysPerWeek} days/week, ${state.weeklyTrainingHours}h total
 ${state.trainingExperienceYears} years of training experience
-${raceBlock} 
+${raceBlock}
 
 Greet them by name, do NOT summarize all the information.
 
@@ -88,6 +94,7 @@ async function generateStrategy(
 
     ws.onopen = () => {
       const prompt = buildStrategyPrompt(state, language);
+      console.log("Sending strategy prompt:", prompt);
       ws.send(
         JSON.stringify({
           type: "user_message",
@@ -312,12 +319,13 @@ export default function BuildingScreen() {
   // ── Strategy result view (shown once generation completes, even on failure) ──
   if (strategy !== null) {
     return (
-      <View
+      <KeyboardAvoidingView
         className="flex-1 bg-background"
         style={[
           { paddingTop: insets.top },
           isWeb && { alignItems: "center" as const },
         ]}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
         <View
           style={isWeb ? { width: "100%", maxWidth: 480, flex: 1 } : { flex: 1 }}
@@ -384,7 +392,7 @@ export default function BuildingScreen() {
             {isWeb && <View className="h-8" />}
           </ScrollView>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, ScrollView, TouchableOpacity, View } from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";
 import { Text } from "@/components/ui/text";
@@ -34,12 +34,13 @@ export function OnboardingLayout({
   const { t } = useTranslation();
 
   return (
-    <View
+    <KeyboardAvoidingView
       className="flex-1 bg-background"
       style={[
         { paddingTop: insets.top },
         isWeb && { alignItems: "center" },
       ]}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <View
         style={isWeb ? { width: "100%", maxWidth: 480, flex: 1 } : { flex: 1 }}
@@ -108,6 +109,6 @@ export function OnboardingLayout({
           </View>
         )}
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }

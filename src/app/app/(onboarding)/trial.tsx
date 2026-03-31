@@ -14,10 +14,10 @@ const logoWhite = require("@/assets/images/logo-white.png");
 const logoBlack = require("@/assets/images/logo-black.png");
 
 const GOAL_HEADLINE_KEY: Record<string, string> = {
+  trainForRace: "onboarding.trial.headline_trainForRace",
   breakPR: "onboarding.trial.headline_breakPR",
   buildConsistency: "onboarding.trial.headline_buildConsistency",
   weightManagement: "onboarding.trial.headline_weightManagement",
-  trainForRace: "onboarding.trial.headline_trainForRace",
   stayHealthy: "onboarding.trial.headline_stayHealthy",
   reduceStress: "onboarding.trial.headline_reduceStress",
 };
@@ -47,30 +47,49 @@ export default function TrialScreen() {
           flexGrow: 1,
           alignItems: "center",
           justifyContent: "center",
-          paddingVertical: 40,
           paddingTop: insets.top + 40,
           paddingBottom: insets.bottom + 40,
         }}
         showsVerticalScrollIndicator={false}
       >
         <View style={{ width: "100%", maxWidth: 440, paddingHorizontal: 24 }}>
-          {/* Logo + Headline */}
-          <Animated.View entering={FadeIn.duration(600)} style={{ alignItems: "center", marginBottom: 32 }}>
+          {/* Logo */}
+          <Animated.View entering={FadeIn.duration(600)} style={{ alignItems: "center", marginBottom: 24 }}>
             <Image
               source={isDark ? logoWhite : logoBlack}
-              style={{ width: 120, height: 32, alignSelf: "center" }}
+              style={{ width: 120, height: 32 }}
               resizeMode="contain"
             />
-            <Text className="text-3xl font-bold text-foreground text-center" style={{ marginTop: 16 }}>
+          </Animated.View>
+
+          {/* Gift hero */}
+          <Animated.View entering={FadeInDown.delay(100).duration(500)} style={{ alignItems: "center", marginBottom: 28 }}>
+            <View
+              style={{
+                width: 80,
+                height: 80,
+                borderRadius: 40,
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: isDark ? "rgba(96,165,250,0.12)" : "rgba(37,99,235,0.08)",
+              }}
+            >
+              <Gift size={40} color={accentColor} strokeWidth={1.6} />
+            </View>
+          </Animated.View>
+
+          {/* Headline + subtitle */}
+          <Animated.View entering={FadeInDown.delay(200).duration(500)} style={{ alignItems: "center", marginBottom: 32 }}>
+            <Text className="text-3xl font-bold text-foreground text-center">
               {t(headlineKey)}
             </Text>
-            <Text className="text-base text-muted-foreground text-center" style={{ marginTop: 6, lineHeight: 22 }}>
+            <Text className="text-base text-muted-foreground text-center" style={{ marginTop: 8, lineHeight: 22 }}>
               {t("onboarding.trial.subtitle")}
             </Text>
           </Animated.View>
 
           {/* Benefits */}
-          <Animated.View entering={FadeInDown.delay(150).duration(500)} style={{ marginBottom: 32 }}>
+          <Animated.View entering={FadeInDown.delay(350).duration(500)} style={{ marginBottom: 36 }}>
             {BENEFITS.map(({ titleKey, descKey, Icon }, i) => (
               <View
                 key={titleKey}
@@ -106,7 +125,7 @@ export default function TrialScreen() {
           </Animated.View>
 
           {/* CTA */}
-          <Animated.View entering={FadeInDown.delay(300).duration(500)}>
+          <Animated.View entering={FadeInDown.delay(500).duration(500)}>
             <Button
               onPress={() => router.replace("/(onboarding)/paywall")}
               className="w-full"
