@@ -9,8 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [1.1.21] - 2026-31-03
+
+### Added
+- Onbarding flow
+- Feedback improvements
 
 ### Changed
+- Analytics improved
 
 ### Deprecated
 
