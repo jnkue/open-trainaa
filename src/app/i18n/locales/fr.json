@@ -1109,6 +1109,24 @@
       "benefit3": "Coaché par une IA qui connaît ton historique",
       "cta": "Commencer l'essai gratuit"
     },
+    "trial": {
+      "headline_breakPR": "Ton prochain record commence ici",
+      "headline_buildConsistency": "Construis l'habitude qui dure",
+      "headline_weightManagement": "Ton plan pour te sentir plus fort",
+      "headline_trainForRace": "Ta préparation commence maintenant",
+      "headline_stayHealthy": "Reste en forme, sans blessures",
+      "headline_reduceStress": "Ton reset quotidien commence ici",
+      "headline_default": "Ton coaching commence ici",
+      "subtitle": "Un coach personnel coûte 50 à 100 € par séance. En cadeau de bienvenue, le tien est inclus gratuitement pendant 7 jours.",
+      "benefit1Title": "Ton cadeau de bienvenue",
+      "benefit1Desc": "7 jours d'accès complet, entièrement gratuit. Pas de frais cachés.",
+      "benefit2Title": "Un coach qui connaît ton objectif",
+      "benefit2Desc": "Des réponses en secondes, pas en heures. Ton plan s'adapte à ta progression.",
+      "benefit3Title": "Des résultats dès la première semaine",
+      "benefit3Desc": "Entraîne-toi plus intelligemment dès le premier jour, sans des mois de tâtonnements.",
+      "cta": "Continuer",
+      "trust": "Sans engagement. Annulable à tout moment."
+    },
     "building": {
       "title": "Construction de ton plan",
       "line1": "Analyse de ton profil...",

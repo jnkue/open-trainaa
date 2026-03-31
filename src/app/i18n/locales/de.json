@@ -1109,6 +1109,24 @@
       "benefit3": "KI-Coaching, das deine Geschichte kennt",
       "cta": "Kostenlos testen"
     },
+    "trial": {
+      "headline_breakPR": "Dein nächster PR beginnt hier",
+      "headline_buildConsistency": "Bau die Routine auf, die bleibt",
+      "headline_weightManagement": "Dein Plan, dich stärker zu fühlen",
+      "headline_trainForRace": "Deine Wettkampf-Vorbereitung startet jetzt",
+      "headline_stayHealthy": "Bleib auf Kurs, verletzungsfrei",
+      "headline_reduceStress": "Dein täglicher Reset beginnt hier",
+      "headline_default": "Dein Coaching beginnt hier",
+      "subtitle": "Ein Personal Trainer kostet 50\u2013100 € pro Stunde. Als Willkommensgeschenk bekommst du deinen 7 Tage kostenlos.",
+      "benefit1Title": "Dein Willkommensgeschenk",
+      "benefit1Desc": "7 Tage voller Zugang, komplett kostenlos. Keine versteckten Kosten.",
+      "benefit2Title": "Ein Coach, der dein Ziel kennt",
+      "benefit2Desc": "Antworten in Sekunden, nicht Stunden. Dein Plan passt sich deinem Fortschritt an.",
+      "benefit3Title": "Ergebnisse ab Woche eins",
+      "benefit3Desc": "Trainiere von Anfang an smarter, statt monatelang herumzuprobieren.",
+      "cta": "Weiter",
+      "trust": "Keine Verpflichtung. Jederzeit kündbar."
+    },
     "building": {
       "title": "Dein Plan wird erstellt",
       "line1": "Dein Profil wird analysiert...",

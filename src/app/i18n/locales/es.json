@@ -1109,6 +1109,24 @@
       "benefit3": "Entrenado por IA que conoce tu historial",
       "cta": "Comenzar prueba gratis"
     },
+    "trial": {
+      "headline_breakPR": "Tu próximo récord empieza aquí",
+      "headline_buildConsistency": "Crea el hábito que perdura",
+      "headline_weightManagement": "Tu plan para sentirte más fuerte",
+      "headline_trainForRace": "Tu preparación empieza ahora",
+      "headline_stayHealthy": "Mantente en forma, sin lesiones",
+      "headline_reduceStress": "Tu reseteo diario empieza aquí",
+      "headline_default": "Tu coaching empieza aquí",
+      "subtitle": "Un entrenador personal cuesta 50\u2013100 € por sesión. Como regalo de bienvenida, el tuyo es gratis durante 7 días.",
+      "benefit1Title": "Tu regalo de bienvenida",
+      "benefit1Desc": "7 días de acceso completo, totalmente gratis. Sin trucos, sin costes ocultos.",
+      "benefit2Title": "Un coach que conoce tu objetivo",
+      "benefit2Desc": "Respuestas en segundos, no en horas. Tu plan se adapta a tu progreso.",
+      "benefit3Title": "Resultados desde la primera semana",
+      "benefit3Desc": "Entrena de forma inteligente desde el primer día, sin meses de prueba y error.",
+      "cta": "Continuar",
+      "trust": "Sin compromiso. Cancela en cualquier momento."
+    },
     "building": {
       "title": "Construyendo tu plan",
       "line1": "Analizando tu perfil...",

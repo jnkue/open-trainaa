@@ -18,7 +18,7 @@
         "@react-navigation/bottom-tabs": "^7.3.10",
         "@react-navigation/elements": "^2.6.4",
         "@react-navigation/native": "^7.1.6",
-        "@revenuecat/purchases-js": "^1.16.1",
+        "@revenuecat/purchases-js": "^1.30.0",
         "@rn-primitives/accordion": "^1.2.0",
         "@rn-primitives/alert-dialog": "^1.2.0",
         "@rn-primitives/aspect-ratio": "^1.2.0",
@@ -619,7 +619,7 @@
 
     "@react-navigation/routers": ["@react-navigation/routers@7.5.1", "", { "dependencies": { "nanoid": "^3.3.11" } }, "sha512-pxipMW/iEBSUrjxz2cDD7fNwkqR4xoi0E/PcfTQGCcdJwLoaxzab5kSadBLj1MTJyT0YRrOXL9umHpXtp+Dv4w=="],
 
-    "@revenuecat/purchases-js": ["@revenuecat/purchases-js@1.17.0", "", {}, "sha512-FhGO0r5uVaIiWGScfrV3kQ3XHIEQlhq4ynYWLVkd0LX1YyJ+n0lPtJqmEUSCZTCjLOnG+B9A4qXqJFY5bplK7Q=="],
+    "@revenuecat/purchases-js": ["@revenuecat/purchases-js@1.30.0", "", {}, "sha512-aNlk6lPWrJ1DncPnw0WZh8nZKbd5S++EcsQxlLnv3HX/jOnMO54zr0SKsz3GJyFa6zh04N6b3qHAgWWm51EWpg=="],
 
     "@revenuecat/purchases-js-hybrid-mappings": ["@revenuecat/purchases-js-hybrid-mappings@17.53.0", "", { "dependencies": { "@revenuecat/purchases-js": "1.29.0" } }, "sha512-Cq4cpN7w+boIhsc1o9jftmn36pg+eJzNmhOBQlc4WEl22Djx3QGcqj449LBvMtOAsS7qxq/sggmuUP+4MVsSCg=="],
 

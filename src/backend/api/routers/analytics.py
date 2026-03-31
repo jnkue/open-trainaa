@@ -147,6 +147,23 @@ async def get_cp_history(
                     w_prime=round(cp_result[1], 0),
                 ))
         current_date += timedelta(days=7)
+    # Always include a data point for today
+    if history and history[-1].date != date.today().isoformat():
+        window_start = (date.today() - timedelta(days=28)).isoformat()
+        window_end = date.today().isoformat()
+        window_curves = [
+            s["power_curve"] for s in sessions
+            if s["start_time"][:10] >= window_start and s["start_time"][:10] <= window_end
+        ]
+        if window_curves:
+            envelope = compute_aggregate_envelope(window_curves)
+            cp_result = fit_cp_model(envelope)
+            if cp_result:
+                history.append(CPHistoryPoint(
+                    date=date.today().isoformat(),
+                    cp_watts=round(cp_result[0], 1),
+                    w_prime=round(cp_result[1], 0),
+                ))
     return CPHistoryResponse(history=history)
 
 
@@ -389,6 +406,20 @@ async def get_hr_threshold_history(
                 lthr=round(best_lthr, 1),
             ))
         current_date += timedelta(days=7)
+    # Always include a data point for today
+    if history and history[-1].date != date.today().isoformat():
+        window_start = (date.today() - timedelta(days=90)).isoformat()
+        window_end = date.today().isoformat()
+        window_lthrs = [
+            lthr for d, lthr in session_lthrs
+            if window_start <= d <= window_end
+        ]
+        if window_lthrs:
+            best_lthr = max(window_lthrs)
+            history.append(HRThresholdHistoryPoint(
+                date=date.today().isoformat(),
+                lthr=round(best_lthr, 1),
+            ))
     return HRThresholdHistoryResponse(history=history)
 
 

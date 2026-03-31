@@ -26,7 +26,7 @@
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.6.4",
     "@react-navigation/native": "^7.1.6",
-    "@revenuecat/purchases-js": "^1.16.1",
+    "@revenuecat/purchases-js": "^1.30.0",
     "@rn-primitives/accordion": "^1.2.0",
     "@rn-primitives/alert-dialog": "^1.2.0",
     "@rn-primitives/aspect-ratio": "^1.2.0",

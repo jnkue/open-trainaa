@@ -1109,6 +1109,24 @@
       "benefit3": "Coached by AI that knows your history",
       "cta": "Start free trial"
     },
+    "trial": {
+      "headline_breakPR": "Your next PR starts here",
+      "headline_buildConsistency": "Build the habit that sticks",
+      "headline_weightManagement": "Your plan to feel stronger",
+      "headline_trainForRace": "Your race prep starts now",
+      "headline_stayHealthy": "Stay on track, injury-free",
+      "headline_reduceStress": "Your daily reset starts here",
+      "headline_default": "Your coaching starts here",
+      "subtitle": "A personal trainer costs 50\u2013100 per session. As a welcome gift, get yours included free for 7 days.",
+      "benefit1Title": "Your welcome gift",
+      "benefit1Desc": "7 days of full access, completely free. No credit card tricks, no hidden fees.",
+      "benefit2Title": "A coach that knows your goal",
+      "benefit2Desc": "Get answers in seconds, not hours. Your plan adapts as you progress.",
+      "benefit3Title": "Results from week one",
+      "benefit3Desc": "Train smarter from day one instead of months of trial and error.",
+      "cta": "Continue",
+      "trust": "No commitment. Cancel anytime."
+    },
     "building": {
       "title": "Building your plan",
       "line1": "Analyzing your profile...",

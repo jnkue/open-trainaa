@@ -35,17 +35,22 @@ Sports: ${allSports}
 Goals: ${state.goals.join(", ")}
 ${state.trainingDaysPerWeek} days/week, ${state.weeklyTrainingHours}h total
 ${state.trainingExperienceYears} years of training experience
-${raceBlock}
+${raceBlock} 
 
 Greet them by name, do NOT summarize all the information.
-Instead give them information how you want to setup the training and then give them a concrete weekly training structure (max 150 words). Be specific to their sports and goals — not generic fitness advice. For example: which days for what, how to split intensity (easy vs hard), when to rest. If they do multiple sports, show how to balance them across the week.
 
-Then ask 2-3 short follow-up questions to refine the plan. Focus on things you actually need to know as a coach, like: current injury status, recent training volume, specific weaknesses, pace/performance level, equipment access. Don't ask things already covered above.
+Give infromation how you want to approach the training plan building based on the info they gave you. For example, if they have low experience, you might want to start with a base building phase. If they have a race coming up, you might want to talk about periodization. If they have multiple sports, you might want to talk about how to balance them.
+
+Then give them a concrete weekly training structure. Be specific to their sports and goals — not generic fitness advice. For example: which days for what, how to split intensity (easy vs hard), when to rest. If they do multiple sports, show how to balance them across the week.
+
+Then give a short time estimate for the training plan periodization.
+
+Then ask 1 short follow-up questions to refine the plan. Focus on things you actually need to know as a coach.
 
 Important:
 End by telling them they can answer now or anytime in the chat.
 
-Style: bold only for the weekly structure. No bullet point walls. Keep it conversational.`;
+Style: Keep it short and simple. Keep it conversational.`;
 }
 
 async function generateStrategy(
@@ -220,7 +225,7 @@ export default function BuildingScreen() {
     });
 
     const minTimerPromise = new Promise<void>((resolve) =>
-      setTimeout(resolve, 2000),
+      setTimeout(resolve, 200),
     );
 
     Promise.all([savePromise, strategyPromise, minTimerPromise]).then(
@@ -301,7 +306,7 @@ export default function BuildingScreen() {
         console.warn("Failed to send onboarding feedback:", err);
       }
     }
-    router.replace("/(onboarding)/paywall");
+    router.replace("/(onboarding)/trial");
   };
 
   // ── Strategy result view (shown once generation completes, even on failure) ──
@@ -325,14 +330,14 @@ export default function BuildingScreen() {
             keyboardShouldPersistTaps="handled"
           >
             {strategy.length > 0 && (
-              <Animated.View entering={FadeInDown.duration(400)}>
+              <Animated.View entering={FadeInDown.duration(40)}>
                 <View className="bg-card rounded-xl border border-border px-5 py-4 mb-6">
                   <Markdown style={mdStyles}>{strategy}</Markdown>
                 </View>
               </Animated.View>
             )}
 
-            <Animated.View entering={FadeInDown.delay(200).duration(400)} className="gap-4">
+            <Animated.View entering={FadeInDown.delay(20).duration(40)} className="gap-4">
               <Button onPress={handleContinue} className="w-full">
                 <Text>{t("onboarding.building.soundsPerfect")}</Text>
               </Button>
@@ -350,8 +355,8 @@ export default function BuildingScreen() {
             </Animated.View>
 
             {showComment && (
-              <Animated.View entering={FadeInDown.duration(300)} className="mt-6">
-                <Text className="text-sm font-medium text-foreground mb-1.5">
+              <Animated.View entering={FadeInDown.duration(30)} className="mt-6">
+                <Text className="text-sm font-medium text-foreground mb-1.5 mt-2">
                   {t("onboarding.building.commentLabel")}
                 </Text>
                 <Input
@@ -398,14 +403,14 @@ export default function BuildingScreen() {
         </Text>
 
         <View className="gap-4 mb-8">
-          <Animated.View entering={FadeIn.duration(400)}>
+          <Animated.View entering={FadeIn.duration(40)}>
             <Text className="text-base text-muted-foreground">
               {t("onboarding.building.line1")}
             </Text>
           </Animated.View>
 
           {phase >= 2 && (
-            <Animated.View entering={FadeIn.duration(400)}>
+            <Animated.View entering={FadeIn.duration(40)}>
               <Text className="text-base text-muted-foreground">
                 {t("onboarding.building.line2")}
               </Text>
@@ -413,7 +418,7 @@ export default function BuildingScreen() {
           )}
 
           {phase >= 3 && (
-            <Animated.View entering={FadeIn.duration(400)}>
+            <Animated.View entering={FadeIn.duration(40)}>
               <Text className="text-base text-primary font-semibold">
                 {t("onboarding.building.line3")}
               </Text>
