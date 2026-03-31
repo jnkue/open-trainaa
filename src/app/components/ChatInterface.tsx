@@ -1721,6 +1721,7 @@ export default function ChatInterface({userId, accessToken}: ChatInterfaceProps)
 							borderTopLeftRadius: 24,
 							borderTopRightRadius: 24,
 							padding: 24,
+							paddingBottom: Math.max(insets.bottom, 24),
 							maxHeight: 384,
 							backgroundColor: isDark ? "#1f1f23" : "#ffffff",
 						}}
@@ -1818,6 +1819,7 @@ export default function ChatInterface({userId, accessToken}: ChatInterfaceProps)
 							borderTopLeftRadius: 24,
 							borderTopRightRadius: 24,
 							padding: 24,
+							paddingBottom: Math.max(insets.bottom, 24),
 							maxHeight: 384,
 							backgroundColor: isDark ? "#1f1f23" : "#ffffff",
 						}}

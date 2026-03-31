@@ -1,5 +1,5 @@
 import {Dimensions, View, KeyboardAvoidingView, TouchableOpacity, Text, Modal, Image, Animated, Platform} from "react-native";
-import {SafeAreaView} from "react-native-safe-area-context";
+import {SafeAreaView, useSafeAreaInsets} from "react-native-safe-area-context";
 import {useAuth} from "../../contexts/AuthContext";
 import {ThemeToggleIcon} from "../../components/ThemeSwitch";
 import {useTheme} from "../../contexts/ThemeContext";
@@ -14,6 +14,7 @@ export default function TabLayout() {
 	const [menuTranslateY] = useState(new Animated.Value(-Dimensions.get("window").height)); // Initial position off-screen top
 	const {user, session} = useAuth();
 	const {colorScheme, isDark} = useTheme();
+	const insets = useSafeAreaInsets();
 	const {t} = useTranslation();
 
 	useEffect(() => {
@@ -106,7 +107,7 @@ export default function TabLayout() {
 					</Tabs>
 
 					<Modal visible={menuOpen} animationType="none" >
-							<View className="bg-card h-screen px-6 p-16 ">
+							<View className="bg-card h-screen px-6" style={{ paddingTop: Math.max(insets.top, 16), paddingBottom: insets.bottom }}>
 								<TouchableOpacity onPress={() => setMenuOpen(false)} className=" mt-3">
 									<Text className="text-xl text-foreground">✕</Text>
 								</TouchableOpacity>

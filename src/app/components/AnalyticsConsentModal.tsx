@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import {useTheme} from "@/contexts/ThemeContext";
 import {useTranslation} from "react-i18next";
+import {useSafeAreaInsets} from "react-native-safe-area-context";
 
 interface AnalyticsConsentModalProps {
 	open: boolean;
@@ -25,6 +26,7 @@ export function AnalyticsConsentModal({
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const {width} = useWindowDimensions();
 	const isLargeScreen = width >= 768;
+	const insets = useSafeAreaInsets();
 
 	const handleChoice = async (consented: boolean) => {
 		setIsSubmitting(true);
@@ -67,7 +69,7 @@ export function AnalyticsConsentModal({
 			}}>
 				{!isLargeScreen && <View style={{flex: 1, minHeight: 60}} />}
 				<View style={cardStyle}>
-					<View className="p-6">
+					<View className="p-6" style={{ paddingBottom: Math.max(insets.bottom, 24) }}>
 						<Text className="text-xl font-bold text-foreground mb-2">
 							{t("analytics.consentTitle")}
 						</Text>

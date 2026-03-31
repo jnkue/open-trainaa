@@ -7,6 +7,7 @@ import {
 	FlatList,
 	ActivityIndicator,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Text } from "@/components/ui/text";
 import { useTranslation } from "react-i18next";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -54,6 +55,7 @@ export default function GoalsAndRacesScreen() {
 	const { t } = useTranslation();
 	const { user } = useAuth();
 	const { isDark } = useTheme();
+	const insets = useSafeAreaInsets();
 	const queryClient = useQueryClient();
 
 	const iconColor = isDark ? "#9CA3AF" : "#6B7280";
@@ -279,7 +281,7 @@ export default function GoalsAndRacesScreen() {
 
 			{/* ── Goals Modal ───────────────────────────────────────────── */}
 			<Modal visible={goalModalOpen} animationType="slide" presentationStyle="pageSheet">
-				<View className="flex-1 bg-background">
+				<View className="flex-1 bg-background" style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
 					<View className="flex-row items-center justify-between px-4 py-4 border-b border-border">
 						<TouchableOpacity onPress={() => setGoalModalOpen(false)}>
 							<Text className="text-base text-muted-foreground">{t("common.cancel")}</Text>
@@ -312,7 +314,7 @@ export default function GoalsAndRacesScreen() {
 
 			{/* ── Sports Modal ──────────────────────────────────────────── */}
 			<Modal visible={sportsModalOpen} animationType="slide" presentationStyle="pageSheet">
-				<View className="flex-1 bg-background">
+				<View className="flex-1 bg-background" style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
 					<View className="flex-row items-center justify-between px-4 py-4 border-b border-border">
 						<TouchableOpacity onPress={() => setSportsModalOpen(false)}>
 							<Text className="text-base text-muted-foreground">{t("common.cancel")}</Text>
@@ -344,7 +346,7 @@ export default function GoalsAndRacesScreen() {
 
 			{/* ── Add Race Modal ────────────────────────────────────────── */}
 			<Modal visible={raceModalOpen} animationType="slide" presentationStyle="pageSheet">
-				<View className="flex-1 bg-background">
+				<View className="flex-1 bg-background" style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
 					<View className="flex-row items-center justify-between px-4 py-4 border-b border-border">
 						<TouchableOpacity onPress={() => setRaceModalOpen(false)}>
 							<Text className="text-base text-muted-foreground">{t("common.cancel")}</Text>
