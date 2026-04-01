@@ -2,6 +2,7 @@
 Garmin Connect authentication router with OAuth2 PKCE flow.
 """
 
+import asyncio
 import os
 from datetime import datetime, timedelta
 from typing import Optional
@@ -264,23 +265,81 @@ async def garmin_exchange_token(
             LOGGER.error(f"Failed to upsert Garmin token: {e_upsert}")
             return RedirectResponse(url=f"{redirect_uri}?error=database_save_failed")
 
-        # Trigger backfill of last 21 days of activities in background
-        # This is asynchronous - activities will arrive later via Push/Ping notifications
-        def backfill_activities():
-            """Background task to trigger activity backfill after connection."""
-            try:
-                LOGGER.info(f"Triggering 21-day activity backfill for user {user_id}")
-                success = trigger_activity_backfill(access_token, days=21)
-                if success:
-                    LOGGER.info(f"Successfully triggered backfill for user {user_id}")
-                else:
-                    LOGGER.warning(f"Failed to trigger backfill for user {user_id}")
-            except Exception as e_backfill:
+        # Retry permissions and backfill in background with exponential backoff.
+        # Garmin registers the user-partner association asynchronously after OAuth,
+        # so immediate API calls often fail with 403. Retrying after a delay fixes this.
+        # Note: the access token was just minted (expires_in=86400s) so it will be
+        # valid for the entire retry window (~100s).
+        _needs_permission_retry = permissions == []
+        _access_token = access_token
+        _user_id = user_id
+
+        async def retry_permissions_and_backfill():
+            """Background task to retry permissions fetch and trigger backfill."""
+            permission_pending = _needs_permission_retry
+            backfill_pending = True
+            delays = [10, 30, 60]
+
+            for delay in delays:
+                if not permission_pending and not backfill_pending:
+                    return
+
+                await asyncio.sleep(delay)
+
+                if permission_pending:
+                    try:
+                        retried = await asyncio.to_thread(
+                            fetch_garmin_permissions, _access_token
+                        )
+                        if retried is not None and len(retried) > 0:
+                            supabase.table("garmin_tokens").update(
+                                {
+                                    "permissions": retried,
+                                    "upload_workouts_enabled": "WORKOUT_IMPORT"
+                                    in retried,
+                                    "download_activities_enabled": "ACTIVITY_EXPORT"
+                                    in retried,
+                                }
+                            ).eq("user_id", _user_id).execute()
+                            LOGGER.info(
+                                f"Successfully updated permissions on retry for user {_user_id}: {retried}"
+                            )
+                            permission_pending = False
+                    except Exception as e_perm:
+                        LOGGER.warning(
+                            f"Permission retry failed for user {_user_id}: {e_perm}"
+                        )
+
+                if backfill_pending:
+                    try:
+                        LOGGER.info(
+                            f"Triggering 21-day activity backfill for user {_user_id}"
+                        )
+                        success = await asyncio.to_thread(
+                            trigger_activity_backfill, _access_token, 21
+                        )
+                        if success:
+                            LOGGER.info(
+                                f"Successfully triggered backfill for user {_user_id}"
+                            )
+                            backfill_pending = False
+                        else:
+                            LOGGER.warning(
+                                f"Backfill not accepted for user {_user_id}, will retry"
+                            )
+                    except Exception as e_backfill:
+                        LOGGER.warning(
+                            f"Backfill retry failed for user {_user_id}: {e_backfill}"
+                        )
+
+            if permission_pending or backfill_pending:
                 LOGGER.error(
-                    f"Error in backfill background task for user {user_id}: {e_backfill}"
+                    f"Failed after all retries for user {_user_id}: "
+                    f"permissions={'pending' if permission_pending else 'ok'}, "
+                    f"backfill={'pending' if backfill_pending else 'ok'}"
                 )
 
-        background_tasks.add_task(backfill_activities)
+        background_tasks.add_task(retry_permissions_and_backfill)
 
         return RedirectResponse(
             url=f"{redirect_uri}?success=garmin_connected&athlete_id={athlete_id}&user_id={user_id}"

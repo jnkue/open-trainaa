@@ -59,9 +59,11 @@ export function useGarminIntegration() {
 			const redirectUri = Linking.createURL("connect-garmin");
 			const result = await WebBrowser.openAuthSessionAsync(authorizeUrl || "", redirectUri);
 
-			// On success or dismiss, refresh status
+			// On success or dismiss, refresh status and get a fresh authorize URL
+			// (the PKCE verifier for the old URL was consumed during token exchange)
 			if (result.type === "success" || result.type === "dismiss") {
 				await loadGarminStatus();
+				prefetchGarminAuthUrl();
 			}
 		} catch (error) {
 			console.error("Error connecting to Garmin:", error);
@@ -80,6 +82,7 @@ export function useGarminIntegration() {
 				await apiClient.disconnectGarmin();
 				showAlert(t("integrations.garmin.disconnectSuccess") || "Garmin connection has been disconnected.");
 				await loadGarminStatus();
+				prefetchGarminAuthUrl();
 			} catch (error) {
 				console.error("Error disconnecting Garmin:", error);
 				showAlert(t("integrations.garmin.disconnectError") || "Failed to disconnect Garmin.");
@@ -98,6 +101,7 @@ export function useGarminIntegration() {
 								await apiClient.disconnectGarmin();
 								showAlert(t("common.ok") || "Success", t("integrations.garmin.disconnectSuccess") || "Garmin connection has been disconnected.");
 								await loadGarminStatus();
+								prefetchGarminAuthUrl();
 							} catch (error) {
 								console.error("Error disconnecting Garmin:", error);
 								showAlert(t("common.error") || "Error", t("integrations.garmin.disconnectError") || "Failed to disconnect Garmin.");
