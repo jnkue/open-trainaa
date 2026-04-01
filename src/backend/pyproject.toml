@@ -1,6 +1,6 @@
 [project]
 name = "open-trainaa"
-version = "1.1.21"
+version = "1.1.22"
 description = "Add your description here"
 requires-python = ">=3.12"
 dependencies = [
