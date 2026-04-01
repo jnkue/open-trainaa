@@ -400,9 +400,42 @@ async def node_generate_response(state: ChatAgentState, config: RunnableConfig) 
                     "TRAINING CONTEXT: Unable to load current training data"
                 )
 
+        # Check if this is an onboarding greeting (explicitly set by the frontend)
+        is_onboarding = config.get("configurable", {}).get("is_onboarding", False)
+
+        # Fetch race context for onboarding so the coach knows about upcoming races
+        race_context = ""
+        if is_onboarding and user_id:
+            try:
+                from agent.core.singletons import get_supabase_client
+                supabase = await get_supabase_client()
+                race_result = (
+                    supabase.table("race_events")
+                    .select("name, event_date, event_type")
+                    .eq("user_id", user_id)
+                    .gte("event_date", datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+                    .order("event_date", desc=False)
+                    .execute()
+                )
+                if race_result.data:
+                    today = datetime.now(timezone.utc).date()
+                    lines = []
+                    for race in race_result.data:
+                        race_date = datetime.strptime(race["event_date"], "%Y-%m-%d").date()
+                        days_until = (race_date - today).days
+                        weeks_until = round(days_until / 7)
+                        event_type = f" ({race['event_type']})" if race.get("event_type") else ""
+                        lines.append(f"- {race['name']}{event_type} on {race['event_date']} — {days_until} days ({weeks_until} weeks) from now")
+                    race_context = "\n".join(lines)
+            except Exception as e:
+                LOGGER.warning(f"Failed to fetch race events for onboarding: {e}")
+
         # Build system prompt with dynamic weekly context and temporal awareness
         system_prompt_content = get_system_prompt(
-            temporal_context=temporal_context, weekly_context=weekly_context
+            temporal_context=temporal_context,
+            weekly_context=weekly_context,
+            is_first_message=is_onboarding,
+            race_context=race_context,
         )
 
         # Ensure the current user query is in the message history
@@ -587,6 +620,7 @@ async def astream_main_agent(
     thread_id,
     trainer_name: str = DEFAULT_PERSONA["name"],
     openrouter_api_key: Optional[str] = None,
+    is_onboarding: bool = False,
 ):
     """Run the agent workflow in streaming mode.
 
@@ -663,6 +697,7 @@ async def astream_main_agent(
     configurable = {
         "thread_id": thread_id,
         "user_id": user_id,
+        "is_onboarding": is_onboarding,
     }
     if openrouter_api_key:
         configurable["openrouter_api_key"] = openrouter_api_key

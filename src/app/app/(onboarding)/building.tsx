@@ -18,45 +18,11 @@ import { apiClient } from "@/services/api";
 const isWeb = Platform.OS === "web";
 const BACKEND_BASE_URL = process.env.EXPO_PUBLIC_BACKEND_BASE_URL;
 
-function buildStrategyPrompt(state: ReturnType<typeof useOnboarding>["state"], language: string): string {
-  const allSports = [...state.sports.map(s => s), ...(state.customSports ? [state.customSports] : [])].join(", ");
-
-  let raceBlock = "";
-  if (state.hasRace && state.race) {
-    const raceDateMs = new Date(state.race.date).getTime();
-    const nowMs = Date.now();
-    const daysUntilRace = Math.max(0, Math.round((raceDateMs - nowMs) / (1000 * 60 * 60 * 24)));
-    const weeksUntilRace = Math.round(daysUntilRace / 7);
-    raceBlock = `They have a race coming up: ${state.race.name} on ${state.race.date}${state.race.eventType ? ` (${state.race.eventType})` : ""}. That is ${daysUntilRace} days (${weeksUntilRace} weeks) from now. Factor this into the plan — outline a rough periodization leading up to it.`;
-  }
-
-  return `You MUST respond in the language "${language}". This is non-negotiable.
-
-You are their new coach. First conversation. Be direct, warm, no filler. No "Great news!", no "I'm excited". Talk like a coach who texts their athletes.
-
-Today's date: ${new Date().toISOString().split("T")[0]}
-
-New athlete: ${state.name}
-Sports: ${allSports}
-Goals: ${state.goals.join(", ")}
-${state.trainingDaysPerWeek} days/week, ${state.weeklyTrainingHours}h total
-${state.trainingExperienceYears} years of training experience
-${raceBlock}
-
-Greet them by name, do NOT summarize all the information.
-
-Give infromation how you want to approach the training plan building based on the info they gave you. For example, if they have low experience, you might want to start with a base building phase. If they have a race coming up, you might want to talk about periodization. If they have multiple sports, you might want to talk about how to balance them.
-
-Then give them a concrete weekly training structure. Be specific to their sports and goals — not generic fitness advice. For example: which days for what, how to split intensity (easy vs hard), when to rest. If they do multiple sports, show how to balance them across the week.
-
-Then give a short time estimate for the training plan periodization.
-
-Then ask 1 short follow-up questions to refine the plan. Focus on things you actually need to know as a coach.
-
-Important:
-End by telling them they can answer now or anytime in the chat.
-
-Style: Keep it short and simple. Keep it conversational.`;
+function buildOnboardingGreeting(state: ReturnType<typeof useOnboarding>["state"], language: string): string {
+  // Simple, natural message that stays clean in chat history.
+  // The system prompt handles all coaching instructions for first conversations.
+  // Language hint ensures the AI responds in the correct language.
+  return `[lang:${language}] Hey! I just finished setting up my profile. My name is ${state.name}.`;
 }
 
 async function generateStrategy(
@@ -93,14 +59,14 @@ async function generateStrategy(
     }, 30000);
 
     ws.onopen = () => {
-      const prompt = buildStrategyPrompt(state, language);
-      console.log("Sending strategy prompt:", prompt);
+      const message = buildOnboardingGreeting(state, language);
       ws.send(
         JSON.stringify({
           type: "user_message",
-          message: prompt,
-          content: prompt,
+          message: message,
+          content: message,
           trainer: "Simon",
+          is_onboarding: true,
           hide_from_history: true,
         }),
       );
@@ -201,6 +167,9 @@ export default function BuildingScreen() {
     setPhase(1);
     setStrategy(null);
 
+    // Save onboarding data FIRST, then generate strategy.
+    // The strategy generation relies on get_user_information() and query_database()
+    // on the backend, so the data must be persisted before the agent queries it.
     const savePromise = (async () => {
       await saveOnboardingData(state);
       // Dedup race events: only create if no matching event exists
@@ -224,19 +193,23 @@ export default function BuildingScreen() {
       saveErrorRef.current = true;
     });
 
-    const strategyPromise = generateStrategy(state, i18n.language || "en", (p) => {
-      if (!cancelled) setPhase(p);
-    }).catch((err) => {
-      console.error("Strategy generation failed:", err);
-      return null;
+    // Wait for save to complete before starting strategy generation
+    const strategyPromise = savePromise.then(() => {
+      if (saveErrorRef.current) return null;
+      return generateStrategy(state, i18n.language || "en", (p) => {
+        if (!cancelled) setPhase(p);
+      }).catch((err) => {
+        console.error("Strategy generation failed:", err);
+        return null;
+      });
     });
 
     const minTimerPromise = new Promise<void>((resolve) =>
       setTimeout(resolve, 200),
     );
 
-    Promise.all([savePromise, strategyPromise, minTimerPromise]).then(
-      ([, result]) => {
+    Promise.all([strategyPromise, minTimerPromise]).then(
+      ([result]) => {
         if (cancelled) return;
 
         if (saveErrorRef.current) {
