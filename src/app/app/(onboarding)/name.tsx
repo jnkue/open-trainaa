@@ -68,6 +68,8 @@ export default function NameScreen() {
           placeholder={t("onboarding.name.placeholder")}
           autoFocus
           autoCapitalize="words"
+          autoComplete="off"
+          textContentType="none"
           returnKeyType="done"
           onSubmitEditing={() => { if (state.name.trim().length > 0) handleContinue(); }}
         />

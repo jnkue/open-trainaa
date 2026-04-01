@@ -4,6 +4,7 @@ import Animated, { FadeIn, useAnimatedStyle, useSharedValue, withSpring } from "
 import { Text } from "@/components/ui/text";
 import { useTheme } from "@/contexts/ThemeContext";
 import { lightHaptic } from "@/utils/haptics";
+import { Check } from "lucide-react-native";
 import {
   Footprints,
   Mountain,
@@ -43,35 +44,38 @@ export function SportCard({ slug, label, selected, onPress, index = 0 }: SportCa
 
   const handlePress = () => {
     lightHaptic();
-    scale.value = withSpring(0.95, { damping: 15, stiffness: 400 });
+    scale.value = withSpring(0.97, { damping: 15, stiffness: 400 });
     setTimeout(() => { scale.value = withSpring(1, { damping: 12, stiffness: 300 }); }, 80);
     onPress();
   };
 
   return (
-    <Animated.View entering={FadeIn.delay(index * 60).duration(300)} style={animatedStyle} className="min-w-[30%] flex-1">
+    <Animated.View entering={FadeIn.delay(index * 60).duration(300)} style={animatedStyle}>
       <Pressable
         onPress={handlePress}
-        className={`items-center justify-center rounded-2xl border py-6 px-3 ${
+        className={`flex-row items-center rounded-xl border px-4 py-3 ${
           selected
             ? "border-primary bg-primary/10"
             : "border-border bg-card"
         }`}
       >
-        <View className="mb-2">
+        <View className="mr-3">
           <Icon
-            size={28}
+            size={22}
             color={selected ? selectedColor : unselectedColor}
             strokeWidth={selected ? 2.2 : 1.6}
           />
         </View>
         <Text
-          className={`text-sm text-center ${
+          className={`flex-1 text-base ${
             selected ? "text-foreground font-semibold" : "text-muted-foreground font-medium"
           }`}
         >
           {label}
         </Text>
+        {selected && (
+          <Check size={18} color={selectedColor} strokeWidth={2.5} />
+        )}
       </Pressable>
     </Animated.View>
   );
