@@ -220,10 +220,12 @@ async def websocket_endpoint(
                 user_input = payload.get("message", "")
                 trainer = payload.get("trainer", "Simon")
                 hide_from_history = payload.get("hide_from_history", False)
+                is_onboarding = payload.get("is_onboarding", False)
             except json.JSONDecodeError:
                 user_input = data
                 trainer = "Simon"
                 hide_from_history = False
+                is_onboarding = False
 
             LOGGER.info(
                 f"Received message on thread {thread_id} from user {user_id}: {user_input[:100]}{'...' if len(user_input) > 100 else ''} (trainer: {trainer})"
@@ -320,7 +322,7 @@ async def websocket_endpoint(
 
             # Create the async generator for proper cleanup
             agent_stream = astream_main_agent(
-                user_input, user_id, thread_id, openrouter_api_key=byok_api_key
+                user_input, user_id, thread_id, openrouter_api_key=byok_api_key, is_onboarding=is_onboarding
             )
             stream_finalized = False
             try:

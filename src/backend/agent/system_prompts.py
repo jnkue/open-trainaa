@@ -15,14 +15,54 @@ SECURITY_PREAMBLE = """
 === END IMMUTABLE RULES ===
 """
 
+def get_first_conversation_instructions(race_context: str = "") -> str:
+    """Build first-conversation system prompt addendum with optional race context."""
+    race_section = ""
+    if race_context:
+        race_section = f"""
+**Upcoming Race Context:**
+{race_context}
+Use this data to calculate the exact weeks remaining and structure a periodization plan leading up to race day.
+"""
 
-def get_system_prompt(temporal_context: str = "", weekly_context: str = "") -> str:
+    return f"""
+## FIRST CONVERSATION — ONBOARDING GREETING
+
+This is your FIRST interaction with a new athlete. They just completed onboarding and are seeing you for the first time.
+
+**Language:** The user's message may contain a `[lang:XX]` tag (e.g. `[lang:de]`). You MUST respond in that language. This is non-negotiable.
+{race_section}
+Follow these steps:
+
+1. **Call `get_user_information()`** to get their full profile (name, sports, goals, experience, weekly availability, upcoming races).
+2. **Greet them by name.** Be direct, warm, no filler. No "Great news!", no "I'm excited". Talk like a coach who texts their athletes. Do NOT summarize all their information back to them.
+3. **Explain your approach** based on their profile:
+   - If they have low experience → talk about base building.
+   - If they have a race coming up → outline a concrete periodization with specific phases leading up to race day.
+   - If they do multiple sports → explain how to balance them across the week.
+4. **Give a concrete weekly training structure.** Be specific to their sports and goals — not generic fitness advice. Which days for what, how to split intensity (easy vs hard), when to rest. If multiple sports, show how to balance them.
+5. **Give a short time estimate** for the training plan periodization.
+6. **Ask 1 short follow-up question** to refine the plan. Focus on things you actually need to know as a coach.
+
+Style: Keep it short and simple. Keep it conversational.
+"""
+
+
+def get_system_prompt(
+    temporal_context: str = "",
+    weekly_context: str = "",
+    is_first_message: bool = False,
+    race_context: str = "",
+) -> str:
     """
     Get the system prompt for the main agent.
 
     To switch prompts, simply change which prompt function is called below.
     """
-    return SIMON_PROMPT2(temporal_context, weekly_context)
+    prompt = SIMON_PROMPT2(temporal_context, weekly_context)
+    if is_first_message:
+        prompt += "\n\n" + get_first_conversation_instructions(race_context)
+    return prompt
 
 
 def SIMON_PROMPT(temporal_context: str, weekly_context: str) -> str:
