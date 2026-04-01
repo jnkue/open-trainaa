@@ -53,7 +53,7 @@ export default function SportsScreen() {
           {t("onboarding.sports.subtitle")}
         </Text>
       </Animated.View>
-      <View className="flex-row flex-wrap gap-3">
+      <View className="gap-2">
         {SPORTS.map((slug, i) => (
           <SportCard
             key={slug}
@@ -65,8 +65,8 @@ export default function SportsScreen() {
           />
         ))}
       </View>
-      <Animated.View entering={FadeInDown.delay(200).duration(400)} className="mt-6">
-        <Text className="text-sm font-medium text-foreground mb-1.5">
+      <Animated.View entering={FadeInDown.delay(200).duration(400)} className="mt-8">
+        <Text className="text-sm font-medium text-foreground my-3">
           {t("onboarding.sports.otherLabel")}
         </Text>
         <Input

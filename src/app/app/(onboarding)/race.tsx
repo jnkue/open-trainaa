@@ -66,16 +66,16 @@ export default function RaceScreen() {
           <Button
             onPress={handleYes}
             variant={selected === "yes" ? "default" : "outline"}
-            className="flex-1"
+            className="flex-1 px-2"
           >
-            <Text>{t("onboarding.race.yesButton")}</Text>
+            <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.75}>{t("onboarding.race.yesButton")}</Text>
           </Button>
           <Button
             onPress={handleNo}
             variant={selected === "no" ? "default" : "outline"}
-            className="flex-1"
+            className="flex-1 px-2"
           >
-            <Text>{t("onboarding.race.noButton")}</Text>
+            <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.75}>{t("onboarding.race.noButton")}</Text>
           </Button>
         </View>
       </Animated.View>
