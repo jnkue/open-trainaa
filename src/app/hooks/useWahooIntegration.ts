@@ -75,9 +75,10 @@ export function useWahooIntegration() {
 			const redirectUri = Linking.createURL("connect-wahoo");
 			const result = await WebBrowser.openAuthSessionAsync(authorizeUrl || "", redirectUri);
 
-			// On success or dismiss, refresh status
+			// On success or dismiss, refresh status and get a fresh authorize URL
 			if (result.type === "success" || result.type === "dismiss") {
 				await loadWahooStatus();
+				prefetchWahooAuthUrl();
 			}
 		} catch (error) {
 			console.error("Error connecting to Wahoo:", error);
@@ -96,6 +97,7 @@ export function useWahooIntegration() {
 				await apiClient.disconnectWahoo();
 				showAlert(t("integrations.wahoo.disconnectSuccess") || "Wahoo connection has been disconnected.");
 				await loadWahooStatus();
+				prefetchWahooAuthUrl();
 			} catch (error) {
 				console.error("Error disconnecting Wahoo:", error);
 				showAlert(t("integrations.wahoo.disconnectError") || "Failed to disconnect Wahoo.");
@@ -114,6 +116,7 @@ export function useWahooIntegration() {
 								await apiClient.disconnectWahoo();
 								showAlert(t("common.ok") || "Success", t("integrations.wahoo.disconnectSuccess") || "Wahoo connection has been disconnected.");
 								await loadWahooStatus();
+								prefetchWahooAuthUrl();
 							} catch (error) {
 								console.error("Error disconnecting Wahoo:", error);
 								showAlert(t("common.error") || "Error", t("integrations.wahoo.disconnectError") || "Failed to disconnect Wahoo.");
