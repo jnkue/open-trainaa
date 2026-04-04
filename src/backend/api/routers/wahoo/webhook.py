@@ -307,6 +307,21 @@ async def _handle_workout_summary_event(
         )
         return
 
+    # Check if this workout was already imported (e.g. from a previous connection)
+    existing_fit = (
+        supabase.table("fit_files")
+        .select("file_id")
+        .eq("user_id", user_id)
+        .eq("file_path", f"wahoo/workout_{workout_summary_id}.fit")
+        .limit(1)
+        .execute()
+    )
+    if existing_fit.data:
+        LOGGER.info(
+            f"⏭️ Workout {workout_summary_id} already imported for user {user_id}, skipping"
+        )
+        return
+
     # Download and process the FIT file
     try:
         LOGGER.info(f"Downloading FIT file from {file_url}")
