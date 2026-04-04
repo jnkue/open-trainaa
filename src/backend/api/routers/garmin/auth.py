@@ -286,6 +286,31 @@ async def garmin_exchange_token(
 
                 await asyncio.sleep(delay)
 
+                # Check if user is still connected (they may have disconnected or re-authed)
+                try:
+                    token_check = (
+                        supabase.table("garmin_tokens")
+                        .select("access_token")
+                        .eq("user_id", _user_id)
+                        .execute()
+                    )
+                    if not token_check.data:
+                        LOGGER.info(
+                            f"User {_user_id} no longer has Garmin token, stopping retry"
+                        )
+                        return
+                    # If the stored token differs from ours, another OAuth flow completed
+                    if token_check.data[0]["access_token"] != _access_token:
+                        LOGGER.info(
+                            f"Access token changed for user {_user_id}, "
+                            f"another OAuth flow took over. Stopping retry."
+                        )
+                        return
+                except Exception as e_check:
+                    LOGGER.warning(
+                        f"Failed to check token status for user {_user_id}: {e_check}"
+                    )
+
                 if permission_pending:
                     try:
                         retried = await asyncio.to_thread(

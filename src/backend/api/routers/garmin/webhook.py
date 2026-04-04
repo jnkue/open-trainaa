@@ -479,6 +479,22 @@ async def _process_activity_file_event(activity_file: GarminWebhookActivityFile)
             )
             return
 
+        # Check if this activity was already imported (e.g. from a previous backfill)
+        existing_activity = (
+            supabase.table("activities")
+            .select("id")
+            .eq("user_id", user_id)
+            .eq("external_id", str(activity_id))
+            .eq("upload_source", "garmin")
+            .limit(1)
+            .execute()
+        )
+        if existing_activity.data:
+            LOGGER.info(
+                f"⏭️ Activity {activity_id} already exists for user {user_id}, skipping"
+            )
+            return
+
         # Get valid access token
         access_token = get_valid_access_token(user_id)
         if not access_token:
