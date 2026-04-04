@@ -252,6 +252,12 @@ def make_garmin_api_request(
         else:
             raise ValueError(f"Unsupported HTTP method: {method}")
 
+        if response.status_code == 409:
+            LOGGER.warning(
+                f"Garmin API conflict (409): {response.text}"
+            )
+            return {"success": True, "duplicate": True}
+
         if response.status_code not in [200, 201, 202, 204]:
             LOGGER.error(
                 f"Garmin API request failed: {response.status_code} - {response.text}"
@@ -325,6 +331,12 @@ def trigger_activity_backfill(access_token: str, days: int = 21) -> bool:
             LOGGER.info(
                 f"Garmin activity backfill request accepted for {days} days. "
                 f"Activities will arrive via Push/Ping notifications."
+            )
+            return True
+        elif result and result.get("duplicate"):
+            LOGGER.info(
+                f"Garmin activity backfill already in progress for {days} days. "
+                f"Treating as success."
             )
             return True
         else:
